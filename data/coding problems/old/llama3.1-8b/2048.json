@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2048",
+    "problem_id": "p03384",
+    "language": "Python",
+    "solution": "```python\nimport sys\ninput = sys.stdin.readline\n\ndef find(x):\n    if fa[x] == x:\n        return x\n    fa[x] = find(fa[x])\n    return fa[x]\n\ndef merge(x, y):\n    x = find(x)\n    y = find(y)\n    if x == y:\n        return False\n    fa[x] = y\n    return True\n\nn = int(input())\nv = [0] * (n + 1)\nw = [0] * (n + 1)\nfa = [i for i in range(n + 1)]\ne = [[] for _ in range(n + 1)]\nfor i in range(1, n + 1):\n    u, v[i] = map(int, input().split())\n    e[u].append(v[i])\n    e[v[i]].append(u)\n\nfor i in range(1, n + 1):\n    if len(e[i]) == 1:\n        root = i\n        break\n\ndef dfs(u, f):\n    for v in e[u]:\n        if v == f:\n            continue\n        dfs(v, u)\n        if len(e[v]) > len(e[u]):\n            e[u], e[v] = e[v], e[u]\n    global ans\n    ans.append(u)\n\ndfs(root, 0)\nans = [1] + ans\nfor i in range(1, n + 1):\n    if find(i) == i:\n        print(-1)\n        exit()\n\nans = [find(x) for x in ans]\nans.sort()\nprint(*ans)\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

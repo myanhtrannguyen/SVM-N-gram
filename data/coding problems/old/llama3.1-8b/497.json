@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-497",
+    "problem_id": "p00638",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nusing namespace std;\n\nbool dfs(vector<vector<int>>& dp, vector<vector<int>>& a, int i, int j, int n) {\n    if (i == n - 1) return a[i][1] >= j;\n    if (dp[i][j] != -1) return dp[i][j];\n    bool res = false;\n    for (int k = 0; k <= min(j, a[i][1]); k++) {\n        res = res || dfs(dp, a, i + 1, j - k, n);\n        if (res) break;\n    }\n    return dp[i][j] = res;\n}\n\nint main() {\n    int t;\n    cin >> t;\n    while (t--) {\n        int n;\n        cin >> n;\n        vector<vector<int>> a(n, vector<int>(2));\n        for (int i = 0; i < n; i++) {\n            cin >> a[i][0] >> a[i][1];\n        }\n        vector<vector<int>> dp(n, vector<int>(10000, -1));\n        bool res = dfs(dp, a, 0, a[0][1], n);\n        cout << (res ? \"Yes\" : \"No\") << endl;\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

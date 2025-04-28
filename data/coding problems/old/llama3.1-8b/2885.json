@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2885",
+    "problem_id": "p03717",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n#define MOD 1000000007\n\nint n, m;\nint l[300], r[300], x[300];\nint dp[300][300][4];\n\nint dfs(int i, int j, int k) {\n    if (i > j) return 1;\n    if (dp[i][j][k] != -1) return dp[i][j][k];\n    int ans = 0;\n    for (int c = 0; c < 3; c++) {\n        if (c != k && c != x[i]) {\n            ans = (ans + dfs(i, j, c)) % MOD;\n        }\n    }\n    return dp[i][j][k] = ans;\n}\n\nint main() {\n    scanf(\"%d %d\", &n, &m);\n    for (int i = 0; i < m; i++) {\n        scanf(\"%d %d %d\", &l[i], &r[i], &x[i]);\n        l[i]--;\n    }\n    memset(dp, -1, sizeof(dp));\n    int ans = dfs(0, m - 1, -1);\n    printf(\"%d\\n\", ans);\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

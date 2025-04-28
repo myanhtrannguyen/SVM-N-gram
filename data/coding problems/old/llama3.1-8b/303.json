@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-303",
+    "problem_id": "p00386",
+    "language": "Python",
+    "solution": "```python\nimport sys\nimport heapq\n\nN, Q = map(int, input().split())\n\ngraph = [[] for _ in range(N + 1)]\nfor _ in range(N - 1):\n    u, v, w = map(int, input().split())\n    graph[u].append((v, w))\n    graph[v].append((u, w))\n\ndist = [float('inf')] * (N + 1)\ndist[1] = 0\npq = [(0, 1)]\n\nwhile pq:\n    d, u = heapq.heappop(pq)\n    if d > dist[u]:\n        continue\n    for v, w in graph[u]:\n        if dist[v] > dist[u] + w:\n            dist[v] = dist[u] + w\n            heapq.heappush(pq, (dist[v], v))\n\nfor _ in range(Q):\n    a, b, c = map(int, input().split())\n    ans = min(dist[a], dist[b], dist[c])\n    print(ans)\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

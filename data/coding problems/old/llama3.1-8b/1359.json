@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1359",
+    "problem_id": "p00876",
+    "language": "Python",
+    "solution": "```python\nimport heapq\n\ndef swimming_jam():\n    while True:\n        n = int(input())\n        if n == 0:\n            break\n\n        swimmers = []\n        for _ in range(n):\n            t, c = map(int, input().split())\n            swimmers.append((t * c, t))\n\n        swimmers.sort(key=lambda x: x[0])\n\n        time = 0\n        q = []\n        for t, _ in swimmers:\n            heapq.heappush(q, t)\n            if len(q) == 2:\n                time = max(time, heapq.heappop(q) + heapq.heappop(q))\n                heapq.heappush(q, time)\n\n        print(time)\n\nswimming_jam()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

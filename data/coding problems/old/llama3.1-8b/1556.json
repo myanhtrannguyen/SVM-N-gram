@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1556",
+    "problem_id": "p02928",
+    "language": "Python",
+    "solution": "```python\nimport sys\ninput = sys.stdin.readline\n\nmod = 10**9 + 7\n\ndef add(a, b):\n    return (a + b) % mod\n\ndef sub(a, b):\n    return (a - b + mod) % mod\n\ndef mul(a, b):\n    return (a * b) % mod\n\ndef inv(a):\n    return pow(a, mod - 2, mod)\n\ndef comb(n, k):\n    if k > n: return 0\n    ans = 1\n    for i in range(1, k + 1):\n        ans = mul(ans, n - i + 1)\n        ans = mul(ans, inv(i))\n    return ans\n\ndef solve():\n    n, k = map(int, input().split())\n    a = list(map(int, input().split()))\n    m = max(a)\n    cnt = [0] * (m + 1)\n    for i in a:\n        cnt[i] += 1\n    ans = 0\n    for i in range(1, m + 1):\n        ans = add(ans, mul(comb(n * k, cnt[i]), mul(cnt[i], (n * k - cnt[i]))))\n        for j in range(i + 1, m + 1):\n            ans = add(ans, mul(comb(n * k, cnt[i]), mul(cnt[j], (n * k - cnt[j]))))\n            ans = add(ans, mul(comb(n * k, cnt[i]), mul(cnt[j], (n * k - cnt[j]))))\n            ans = add(ans, mul(comb(n * k, cnt[i]), mul(cnt[j], (n * k - cnt[j]))))\n    print(ans)\n\nt = 1\nfor _ in range(t):\n    solve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

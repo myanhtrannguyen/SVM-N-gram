@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1312",
+    "problem_id": "p00865",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n\n#define MAX 1000000000\n\nint main() {\n    double prob[10];\n    double sum;\n    int n, m, k, i, j, num;\n\n    while (scanf(\"%d %d %d\", &n, &m, &k) == 3) {\n        if (n == 0 && m == 0 && k == 0) break;\n\n        for (i = 0; i < 10; i++) {\n            prob[i] = 0;\n        }\n\n        for (i = 0; i < n; i++) {\n            for (j = 1; j <= m; j++) {\n                for (num = 1; num <= m; num++) {\n                    if (i == 0 && k >= num) continue;\n                    prob[k - num + 1] += 1.0 / (m * n);\n                }\n            }\n        }\n\n        sum = 0;\n        for (i = 1; i <= k; i++) {\n            sum += prob[i] * i;\n        }\n        for (i = k + 1; i <= m * n; i++) {\n            sum += prob[i] * (k + 1);\n        }\n\n        printf(\"%.10f\\n\", sum);\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1994",
+    "problem_id": "p03177",
+    "language": "Python",
+    "solution": "```python\nimport sys\ninput = sys.stdin.readline\n\nmod = 10**9 + 7\n\ndef pow_mod(a, b):\n    res = 1\n    while b:\n        if b & 1:\n            res = res * a % mod\n        a = a * a % mod\n        b >>= 1\n    return res\n\ndef main():\n    n, k = map(int, input().split())\n    a = [list(map(int, input().split())) for _ in range(n)]\n\n    dp = [[0] * n for _ in range(n)]\n    for i in range(n):\n        dp[i][i] = 1\n\n    for _ in range(k - 1):\n        ndp = [[0] * n for _ in range(n)]\n        for i in range(n):\n            for j in range(n):\n                for k in range(n):\n                    if a[i][k] == 1:\n                        ndp[i][j] = (ndp[i][j] + dp[k][j]) % mod\n        dp = ndp\n\n    ans = 0\n    for i in range(n):\n        for j in range(n):\n            ans = (ans + dp[i][j]) % mod\n\n    print(ans)\n\nif __name__ == '__main__':\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

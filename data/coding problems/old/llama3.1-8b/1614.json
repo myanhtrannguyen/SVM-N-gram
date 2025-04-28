@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1614",
+    "problem_id": "p02943",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <string>\n#include <algorithm>\n\nusing namespace std;\n\nint main() {\n    int n, k;\n    cin >> n >> k;\n    string s;\n    cin >> s;\n\n    int mid = n / 2;\n    if (n % 2 == 0) {\n        if (s.substr(0, mid) > s.substr(mid, n - mid)) {\n            reverse(s.begin(), s.end());\n        }\n    } else {\n        if (k % 2 == 1) {\n            reverse(s.begin(), s.end());\n        }\n        if (s.substr(0, mid) > s.substr(mid, n - mid)) {\n            reverse(s.begin(), s.end());\n        }\n    }\n\n    string ans = s;\n    for (int i = 0; i < n; i++) {\n        string t = s;\n        reverse(t.begin(), t.begin() + i);\n        reverse(t.begin() + i, t.end());\n        reverse(t.begin(), t.begin() + n - i);\n        reverse(t.begin() + n - i, t.end());\n        if (t < ans) {\n            ans = t;\n        }\n    }\n\n    cout << ans << endl;\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

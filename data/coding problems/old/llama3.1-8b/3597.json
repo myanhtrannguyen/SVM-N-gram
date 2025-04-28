@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3597",
+    "problem_id": "p02090",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nstruct Yokan {\n    int l, r;\n};\n\nbool compareYokans(const Yokan& a, const Yokan& b) {\n    return a.r < b.r;\n}\n\nint main() {\n    int n, m;\n    std::cin >> n >> m;\n\n    std::vector<Yokan> yokans(n);\n    for (int i = 0; i < n; ++i) {\n        std::cin >> yokans[i].l >> yokans[i].r;\n    }\n\n    std::sort(yokans.begin(), yokans.end(), compareYokans);\n\n    int l = 0, r = 0, dist = 0;\n    for (int i = 0; i < n; ++i) {\n        if (yokans[i].l >= r) {\n            dist += yokans[i].l - r;\n            r = yokans[i].r;\n        } else if (yokans[i].r <= l) {\n            dist += yokans[i].r - l;\n            l = yokans[i].l;\n        } else {\n            dist += yokans[i].r - l;\n            l = yokans[i].l;\n            r = yokans[i].r;\n        }\n    }\n\n    std::cout << dist << std::endl;\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-929",
+    "problem_id": "p00769",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <string>\n#include <vector>\n#include <algorithm>\n\nint minVotes(const std::string& district) {\n    int minVotes = 0;\n    int maxVotes = 0;\n    int sum = 0;\n    int count = 0;\n\n    for (char c : district) {\n        if (c == '[') {\n            continue;\n        } else if (c == ']') {\n            if (count % 2 == 1) {\n                sum += maxVotes;\n                maxVotes = 0;\n            }\n            count = 0;\n        } else {\n            count++;\n            int num = c - '0';\n            while (c + 1 < district.size() && district[c + 1] >= '0' && district[c + 1] <= '9') {\n                num = num * 10 + (district[c + 1] - '0');\n                c++;\n            }\n            sum += num;\n            maxVotes = std::max(maxVotes, num);\n        }\n    }\n\n    if (count % 2 == 1) {\n        sum += maxVotes;\n    }\n\n    return sum;\n}\n\nint main() {\n    int n;\n    std::cin >> n;\n\n    for (int i = 0; i < n; i++) {\n        std::string district;\n        std::cin >> district;\n        std::cout << minVotes(district) << std::endl;\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

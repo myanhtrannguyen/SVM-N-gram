@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2414",
+    "problem_id": "p03599",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <algorithm>\n#include <climits>\n\nusing namespace std;\n\nint main() {\n    int A, B, C, D, E, F;\n    cin >> A >> B >> C >> D >> E >> F;\n\n    int ans = 0;\n    int sugar = 0;\n\n    for (int a = 1; a <= F / (A + E); a++) {\n        for (int b = 1; b <= F / (B + E); b++) {\n            int w = min(a * A, b * B);\n            int s = min(a * C, b * D);\n\n            if (w + s <= F && w * E <= s * 100) {\n                int density = (w * E + s * 100) / (w + s);\n                if (density > ans) {\n                    ans = density;\n                    sugar = s;\n                }\n            }\n        }\n    }\n\n    cout << ans * 100 << \" \" << sugar << endl;\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

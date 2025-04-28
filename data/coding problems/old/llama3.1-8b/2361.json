@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2361",
+    "problem_id": "p03586",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n\ntypedef long long ll;\n\nint gcd(int a, int b) {\n    if (b == 0) return a;\n    return gcd(b, a % b);\n}\n\nint main() {\n    int q;\n    scanf(\"%d\", &q);\n    while (q--) {\n        int a, m;\n        scanf(\"%d %d\", &a, &m);\n        if (a == 1) {\n            printf(\"1\\n\");\n            continue;\n        }\n        int g = gcd(a, m);\n        if (m % g != 0) {\n            printf(\"-1\\n\");\n            continue;\n        }\n        int x = m / g;\n        int y = a % x;\n        if (y == 0) {\n            printf(\"%d\\n\", x);\n            continue;\n        }\n        int k = 1;\n        while (1) {\n            ll val = powll(a, k) % m;\n            if (val == y) {\n                printf(\"%lld\\n\", k);\n                break;\n            }\n            k++;\n        }\n    }\n    return 0;\n}\n\nll powll(ll a, ll b) {\n    ll res = 1;\n    while (b) {\n        if (b & 1) res = res * a;\n        a = a * a;\n        b >>= 1;\n    }\n    return res;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

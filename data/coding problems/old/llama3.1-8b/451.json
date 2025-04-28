@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-451",
+    "problem_id": "p00605",
+    "language": "Python",
+    "solution": "```python\ndef vampirish_night():\n    while True:\n        try:\n            N, K = map(int, input().split())\n            if N == 0 and K == 0:\n                break\n            fridge = list(map(int, input().split()))\n            vampires = [list(map(int, input().split())) for _ in range(N)]\n            can_prepare = True\n            for i in range(K):\n                fridge[i] -= sum([vampires[j][i] for j in range(N)])\n                if fridge[i] < 0:\n                    can_prepare = False\n                    break\n            if can_prepare:\n                print(\"Yes\")\n            else:\n                print(\"No\")\n        except EOFError:\n            break\n\nvampirish_night()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

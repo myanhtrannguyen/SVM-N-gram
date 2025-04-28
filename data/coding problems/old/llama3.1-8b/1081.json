@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1081",
+    "problem_id": "p00807",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <string>\n#include <vector>\n#include <algorithm>\n\nbool isSameLayout(const std::string& s1, const std::string& s2) {\n    if (s1.length() != s2.length()) return false;\n    std::vector<int> v1(6, 0), v2(6, 0);\n    for (int i = 0; i < s1.length(); ++i) {\n        switch (s1[i]) {\n            case 'a': v1[0] = 1; break;\n            case 'b': v1[1] = 1; break;\n            case 'c': v1[2] = 1; break;\n            case 'd': v1[3] = 1; break;\n            case 'e': v1[4] = 1; break;\n            case 'f': v1[5] = 1; break;\n        }\n        switch (s2[i]) {\n            case 'a': v2[0] = 1; break;\n            case 'b': v2[1] = 1; break;\n            case 'c': v2[2] = 1; break;\n            case 'd': v2[3] = 1; break;\n            case 'e': v2[4] = 1; break;\n            case 'f': v2[5] = 1; break;\n        }\n    }\n    return v1 == v2;\n}\n\nint main() {\n    int n;\n    std::cin >> n;\n    for (int i = 0; i < n; ++i) {\n        std::string s1, s2, s3;\n        std::cin >> s1 >> s2 >> s3;\n        std::cout << (isSameLayout(s1, s2) ? \"true\" : \"false\") << std::endl;\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

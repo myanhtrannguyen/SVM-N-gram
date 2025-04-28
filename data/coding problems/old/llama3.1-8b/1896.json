@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1896",
+    "problem_id": "p03153",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nusing namespace std;\n\nlong long solve(vector<int>& A, int D) {\n    int n = A.size();\n    long long res = 0;\n    for (int i = 0; i < n - 1; i++) {\n        res += abs(i - (n - 1)) * D + A[i] + A[n - 1];\n    }\n    for (int i = 0; i < n - 1; i++) {\n        res = min(res, solve(A, D, i, n - 1));\n    }\n    return res;\n}\n\nlong long solve(vector<int>& A, int D, int l, int r) {\n    if (l + 1 >= r) return 0;\n    int m = (l + r) / 2;\n    long long res = 0;\n    for (int i = l; i < m; i++) {\n        res += abs(i - l) * D + A[i] + A[l];\n    }\n    for (int i = m; i < r; i++) {\n        res += abs(i - m) * D + A[i] + A[m];\n    }\n    long long minRes = 1e18;\n    for (int i = l; i <= m; i++) {\n        minRes = min(minRes, solve(A, D, i, m - 1) + solve(A, D, m, r));\n    }\n    return min(res, minRes);\n}\n\nint main() {\n    int n, D;\n    cin >> n >> D;\n    vector<int> A(n);\n    for (int i = 0; i < n; i++) {\n        cin >> A[i];\n    }\n    sort(A.begin(), A.end());\n    cout << solve(A, D) << endl;\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

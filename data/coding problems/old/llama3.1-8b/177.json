@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-177",
+    "problem_id": "p00355",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nstruct Reservation {\n    int start;\n    int end;\n};\n\nbool compareReservations(const Reservation& a, const Reservation& b) {\n    return a.start < b.start;\n}\n\nint main() {\n    int newStart, newEnd;\n    std::cin >> newStart >> newEnd;\n\n    int n;\n    std::cin >> n;\n\n    std::vector<Reservation> reservations(n);\n    for (int i = 0; i < n; ++i) {\n        std::cin >> reservations[i].start >> reservations[i].end;\n    }\n\n    std::sort(reservations.begin(), reservations.end(), compareReservations);\n\n    bool overlap = false;\n    for (int i = 0; i < n; ++i) {\n        if (reservations[i].start < newEnd && reservations[i].end > newStart) {\n            overlap = true;\n            break;\n        }\n    }\n\n    std::cout << (overlap ? 1 : 0) << std::endl;\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

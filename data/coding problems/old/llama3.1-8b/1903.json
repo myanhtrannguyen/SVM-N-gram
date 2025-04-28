@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1903",
+    "problem_id": "p03155",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n\nint main() {\n    int n, h, w;\n    scanf(\"%d %d %d\", &n, &h, &w);\n\n    long long ways = 1;\n    for (int i = 1; i <= h; i++) {\n        ways *= (n - i + 1);\n    }\n    for (int i = 1; i <= w; i++) {\n        ways /= (n - h + 1 - i);\n    }\n    for (int i = 1; i <= w; i++) {\n        ways /= i;\n    }\n\n    printf(\"%lld\\n\", ways);\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

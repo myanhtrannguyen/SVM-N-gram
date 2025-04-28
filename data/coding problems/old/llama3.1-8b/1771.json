@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1771",
+    "problem_id": "p03122",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n\ntypedef long long ll;\n\nint main() {\n    int N;\n    scanf(\"%d\", &N);\n    ll x[N], y[N];\n    for (int i = 0; i < N; i++) {\n        scanf(\"%lld %lld\", &x[i], &y[i]);\n    }\n    ll X = 0, Y = 0;\n    for (int i = 0; i < N; i++) {\n        X = (X < x[i]) ? x[i] : X;\n        Y = (Y < y[i]) ? y[i] : Y;\n    }\n    for (int i = 0; i < N; i++) {\n        if (x[i] == X && y[i] == Y) {\n            printf(\"%lld %lld\\n\", X - 1, Y - 1);\n            return 0;\n        }\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

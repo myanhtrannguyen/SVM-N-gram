@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2782",
+    "problem_id": "p03691",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nusing namespace std;\n\nconst int N = 405;\nconst int M = 100005;\n\nint n, m;\nint x[M], y[M];\nint dp[N][N];\nint ans;\n\nint main() {\n    cin >> n >> m;\n    for (int i = 1; i <= m; i++) {\n        cin >> x[i] >> y[i];\n    }\n    for (int i = 1; i <= n; i++) {\n        for (int j = 1; j <= n; j++) {\n            dp[i][j] = 1;\n        }\n    }\n    for (int i = 1; i <= m; i++) {\n        for (int j = 1; j <= n; j++) {\n            for (int k = 1; k <= n; k++) {\n                if (j != k) {\n                    dp[j][k] = (dp[j][k] + dp[j][x[i]] * dp[k][y[i]]) / 2;\n                    dp[j][k] = (dp[j][k] + dp[j][y[i]] * dp[k][x[i]]) / 2;\n                    dp[j][k] = (dp[j][k] + dp[j][x[i]] * dp[k][x[i]]) / 2;\n                    dp[j][k] = (dp[j][k] + dp[j][y[i]] * dp[k][y[i]]) / 2;\n                }\n            }\n        }\n    }\n    for (int i = 1; i <= n; i++) {\n        for (int j = i + 1; j <= n; j++) {\n            if (dp[i][j] > 0) {\n                ans++;\n            }\n        }\n    }\n    cout << ans << endl;\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

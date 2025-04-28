@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3431",
+    "problem_id": "p01956",
+    "language": "Python",
+    "solution": "```python\nn, h, w = map(int, input().split())\nx = list(map(int, input().split()))\n\nleft = 0\nright = 0\n\nfor i in range(n):\n    if i % 2 == 0:\n        left += x[i]\n        right += x[i]\n    else:\n        left -= x[i]\n        right -= x[i]\n\n        if left < 0:\n            left = 0\n        if right < 0:\n            right = 0\n\n        if left > w:\n            left = w\n        if right > w:\n            right = w\n\nprint((right - left) * h)\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

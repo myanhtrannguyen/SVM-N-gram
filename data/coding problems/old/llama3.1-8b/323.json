@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-323",
+    "problem_id": "p00391",
+    "language": "Python",
+    "solution": "```python\ndef is_relevant(W, H, A, B):\n    if sum(A) != W or sum(B) != H:\n        return 0\n    for a in A:\n        if a > H:\n            return 0\n    for b in B:\n        if b > W:\n            return 0\n    return 1\n\nW, H = map(int, input().split())\nA = list(map(int, input().split()))\nB = list(map(int, input().split()))\n\nprint(is_relevant(W, H, A, B))\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

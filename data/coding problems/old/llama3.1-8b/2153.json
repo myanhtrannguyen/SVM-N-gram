@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2153",
+    "problem_id": "p03411",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\ntypedef struct {\n    int x, y;\n} Point;\n\nint compare(const void *a, const void *b) {\n    Point *p1 = (Point *)a;\n    Point *p2 = (Point *)b;\n    if (p1->x < p2->x) return -1;\n    if (p1->x > p2->x) return 1;\n    if (p1->y < p2->y) return -1;\n    if (p1->y > p2->y) return 1;\n    return 0;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    Point red[n], blue[n];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d %d\", &red[i].x, &red[i].y);\n    }\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d %d\", &blue[i].x, &blue[i].y);\n    }\n    qsort(red, n, sizeof(Point), compare);\n    qsort(blue, n, sizeof(Point), compare);\n    int count = 0;\n    int i = 0, j = 0;\n    while (i < n && j < n) {\n        if (red[i].x < blue[j].x && red[i].y < blue[j].y) {\n            count++;\n            i++;\n            j++;\n        } else if (red[i].x < blue[j].x) {\n            i++;\n        } else {\n            j++;\n        }\n    }\n    printf(\"%d\\n\", count);\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

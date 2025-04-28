@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1684",
+    "problem_id": "p02960",
+    "language": "Python",
+    "solution": "```python\nMOD = 10**9 + 7\nMAXN = 100005\n\ndef solve():\n    s = input()\n    n = len(s)\n    dp = [[0] * 10 for _ in range(n + 1)]\n    dp[0][0] = 1\n    for i in range(n):\n        for j in range(10):\n            if i > 0:\n                dp[i][j] += dp[i - 1][j]\n                dp[i][j] %= MOD\n            if s[i] == '?':\n                for k in range(10):\n                    if (j * 10 + k) % 13 == 5:\n                        dp[i + 1][k] += dp[i][j]\n                        dp[i + 1][k] %= MOD\n            else:\n                if (j * 10 + int(s[i])) % 13 == 5:\n                    dp[i + 1][int(s[i])] += dp[i][j]\n                    dp[i + 1][int(s[i])] %= MOD\n    ans = 0\n    for i in range(10):\n        ans += dp[n][i]\n        ans %= MOD\n    print(ans)\n\nif __name__ == '__main__':\n    solve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

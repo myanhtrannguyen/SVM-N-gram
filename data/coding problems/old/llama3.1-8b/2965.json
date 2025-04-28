@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2965",
+    "problem_id": "p01599",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nstruct Train {\n    int cars, depart, arrive;\n};\n\nbool compareTrains(const Train& a, const Train& b) {\n    return a.arrive < b.arrive;\n}\n\nint main() {\n    int NAB, NBA;\n    std::cin >> NAB >> NBA;\n\n    std::vector<Train> trainsA(NAB), trainsB(NBA);\n\n    for (int i = 0; i < NAB; i++) {\n        std::cin >> trainsA[i].cars >> trainsA[i].depart >> trainsA[i].arrive;\n    }\n\n    for (int i = 0; i < NBA; i++) {\n        std::cin >> trainsB[i].cars >> trainsB[i].depart >> trainsB[i].arrive;\n    }\n\n    std::sort(trainsA.begin(), trainsA.end(), compareTrains);\n    std::sort(trainsB.begin(), trainsB.end(), compareTrains);\n\n    int maxUnits = 0;\n    int i = 0, j = 0;\n\n    while (i < NAB && j < NBA) {\n        if (trainsA[i].arrive <= trainsB[j].depart) {\n            maxUnits = std::max(maxUnits, trainsA[i].cars + trainsB[j].cars);\n            i++;\n        } else {\n            j++;\n        }\n    }\n\n    std::cout << maxUnits << std::endl;\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

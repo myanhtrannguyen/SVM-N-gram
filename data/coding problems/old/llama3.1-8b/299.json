@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-299",
+    "problem_id": "p00385",
+    "language": "Python",
+    "solution": "```python\nimport sys\n\ndef rotate(A, k):\n    n = len(A)\n    k = k % n\n    return A[-k:] + A[:-k]\n\ndef solve():\n    K, N, Q = map(int, sys.stdin.readline().split())\n    A = list(map(int, sys.stdin.readline().split()))\n    for _ in range(Q):\n        l, r = map(int, sys.stdin.readline().split())\n        l -= 1\n        r -= 1\n        A[l], A[r] = A[r], A[l]\n        A = rotate(A, (A[r] + A[l]) // 2)\n        ans = (A[0] + K) % K\n        if ans == 0:\n            ans = K\n        print(-ans)\n\nif __name__ == \"__main__\":\n    T = 1\n    for _ in range(T):\n        solve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

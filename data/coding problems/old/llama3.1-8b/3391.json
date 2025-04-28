@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3391",
+    "problem_id": "p01946",
+    "language": "Python",
+    "solution": "```python\nimport sys\n\ndef slimming_plan():\n    S, T, D = map(int, input().split())\n    w = list(map(int, input().split()))\n\n    day = 0\n    while True:\n        day += 1\n        if S <= T:\n            print(day)\n            return\n        S += w[day % D]\n        if S > T:\n            if day > 100000:\n                print(-1)\n                return\n\nslimming_plan()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

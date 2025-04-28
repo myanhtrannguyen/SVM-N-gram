@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-134",
+    "problem_id": "p00103",
+    "language": "Java",
+    "solution": "```java\nimport java.util.Scanner;\n\npublic class BaseballSimulation {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        int n = scanner.nextInt();\n        scanner.nextLine(); // Consume newline left-over\n\n        for (int i = 0; i < n; i++) {\n            int score = 0;\n            int outs = 0;\n            int runners = 0;\n\n            String inning = scanner.nextLine();\n            String[] events = inning.split(\" \");\n\n            for (String event : events) {\n                switch (event) {\n                    case \"HIT\":\n                        runners++;\n                        break;\n                    case \"HOMERUN\":\n                        score += runners + 1;\n                        runners = 0;\n                        break;\n                    case \"OUT\":\n                        outs++;\n                        runners = 0;\n                        break;\n                }\n\n                if (outs == 3) {\n                    break;\n                }\n            }\n\n            System.out.println(score);\n        }\n    }\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

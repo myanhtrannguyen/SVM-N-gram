@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-384",
+    "problem_id": "p00589",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\ntypedef struct {\n    char *str;\n    int len;\n} Button;\n\nButton buttons[] = {\n    {\"\", 0},  // 0\n    {\" \", 1},  // 1\n    {\",\", 2},  // 2\n    {\"A\", 3},  // 3\n    {\"B\", 4},  // 4\n    {\"C\", 5},  // 5\n    {\"D\", 6},  // 6\n    {\"E\", 7},  // 7\n    {\"F\", 8},  // 8\n    {\" \", 1},  // 9\n    {\" \", 0}   // 0 (special)\n};\n\nint main() {\n    char input[10001];\n    int i, j, k, n, m, count;\n    Button *p;\n\n    while (fgets(input, 10001, stdin) != NULL) {\n        for (i = 0; input[i] != '\\n' && input[i] != '\\0'; i++) {\n            count = 0;\n            p = &buttons[input[i] - '0'];\n            for (j = 0; j < p->len; j++) {\n                if (count == 0) {\n                    printf(\"%c\", p->str[j]);\n                }\n                count = (count + 1) % 6;\n            }\n            if (p->len == 0 && count == 0) {\n                for (k = 0; k < i; k++) {\n                    printf(\" \");\n                }\n            }\n        }\n        printf(\"\\n\");\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

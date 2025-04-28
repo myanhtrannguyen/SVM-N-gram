@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2156",
+    "problem_id": "p03411",
+    "language": "Python",
+    "solution": "```python\nimport sys\n\nn = int(input())\nred = []\nblue = []\n\nfor _ in range(n):\n    x, y = map(int, input().split())\n    red.append((x, y))\n\nfor _ in range(n):\n    x, y = map(int, input().split())\n    blue.append((x, y))\n\nred.sort()\nblue.sort()\n\ni = j = 0\ncount = 0\n\nwhile i < n and j < n:\n    if red[i][0] < blue[j][0] and red[i][1] < blue[j][1]:\n        count += 1\n        i += 1\n        j += 1\n    elif red[i][0] < blue[j][0]:\n        i += 1\n    else:\n        j += 1\n\nprint(count)\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

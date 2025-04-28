@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1300",
+    "problem_id": "p00862",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <math.h>\n\ntypedef struct {\n    double x, y;\n} Point;\n\ndouble distance(Point p1, Point p2) {\n    return sqrt(pow(p1.x - p2.x, 2) + pow(p1.y - p2.y, 2));\n}\n\ndouble max_distance(Point p, Point *points, int n) {\n    double max = 0;\n    for (int i = 0; i < n; i++) {\n        double d = distance(p, points[i]);\n        if (d > max) max = d;\n    }\n    return max;\n}\n\nint main() {\n    int n;\n    while (scanf(\"%d\", &n) == 1) {\n        if (n == 0) break;\n        Point points[n];\n        for (int i = 0; i < n; i++) {\n            scanf(\"%lf %lf\", &points[i].x, &points[i].y);\n        }\n        Point center = {points[0].x, points[0].y};\n        for (int i = 0; i < n; i++) {\n            center.x += points[i].x;\n            center.y += points[i].y;\n        }\n        center.x /= n;\n        center.y /= n;\n        double max = 0;\n        for (int i = 0; i < n; i++) {\n            double d = distance(center, points[i]);\n            if (d > max) max = d;\n        }\n        printf(\"%.10lf\\n\", max);\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

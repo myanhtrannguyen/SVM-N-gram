@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2625",
+    "problem_id": "p03652",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n#define MAX_N 300\n#define MAX_M 300\n\nint main() {\n    int n, m;\n    scanf(\"%d %d\", &n, &m);\n\n    int a[MAX_N][MAX_M];\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < m; j++) {\n            scanf(\"%d\", &a[i][j]);\n            a[i][j]--;\n        }\n    }\n\n    int count[MAX_M] = {0};\n    for (int i = 0; i < n; i++) {\n        count[a[i][0]]++;\n    }\n\n    int max_count = 0;\n    for (int i = 0; i < m; i++) {\n        max_count = (count[i] > max_count) ? count[i] : max_count;\n    }\n\n    int min_max_count = max_count;\n    for (int i = 0; i < m; i++) {\n        for (int j = 0; j < n; j++) {\n            if (a[j][0] != i) {\n                count[i]--;\n                count[a[j][0]]++;\n                max_count = (count[i] > max_count) ? count[i] : max_count;\n                min_max_count = (max_count < min_max_count) ? max_count : min_max_count;\n                count[i]++;\n                count[a[j][0]]--;\n            }\n        }\n    }\n\n    printf(\"%d\\n\", min_max_count + 1);\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

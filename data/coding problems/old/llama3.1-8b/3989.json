@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3989",
+    "problem_id": "p02318",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <string>\n\nint editDistance(const std::string& s1, const std::string& s2) {\n    int m = s1.length();\n    int n = s2.length();\n\n    std::vector<std::vector<int>> dp(m + 1, std::vector<int>(n + 1, 0));\n\n    for (int i = 0; i <= m; ++i) {\n        dp[i][0] = i;\n    }\n\n    for (int j = 0; j <= n; ++j) {\n        dp[0][j] = j;\n    }\n\n    for (int i = 1; i <= m; ++i) {\n        for (int j = 1; j <= n; ++j) {\n            if (s1[i - 1] == s2[j - 1]) {\n                dp[i][j] = dp[i - 1][j - 1];\n            } else {\n                dp[i][j] = 1 + std::min(std::min(dp[i - 1][j], dp[i][j - 1]), dp[i - 1][j - 1]);\n            }\n        }\n    }\n\n    return dp[m][n];\n}\n\nint main() {\n    std::string s1, s2;\n    std::getline(std::cin, s1);\n    std::getline(std::cin, s2);\n\n    std::cout << editDistance(s1, s2) << std::endl;\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

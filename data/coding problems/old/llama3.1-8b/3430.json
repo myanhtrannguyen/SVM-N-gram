@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3430",
+    "problem_id": "p01956",
+    "language": "Java",
+    "solution": "```java\nimport java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n\n        int n = scanner.nextInt();\n        int h = scanner.nextInt();\n        int w = scanner.nextInt();\n\n        int[] x = new int[n];\n        for (int i = 0; i < n; i++) {\n            x[i] = scanner.nextInt();\n        }\n\n        int left = 0;\n        int right = 0;\n\n        for (int i = 0; i < n; i++) {\n            if (i % 2 == 0) {\n                left += x[i];\n                right += x[i];\n            } else {\n                left -= x[i];\n                right -= x[i];\n            }\n\n            if (left < 0) {\n                left = 0;\n            }\n            if (right > w) {\n                right = w;\n            }\n        }\n\n        int area = (right - left) * h;\n        System.out.println(area);\n    }\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

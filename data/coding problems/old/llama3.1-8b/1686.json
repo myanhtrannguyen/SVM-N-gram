@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1686",
+    "problem_id": "p02961",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <queue>\n#include <unordered_set>\n#include <unordered_map>\n\nusing namespace std;\n\nstruct Node {\n    int x, y, step;\n};\n\nint main() {\n    int x, y, k;\n    cin >> x >> y >> k;\n\n    queue<Node> q;\n    unordered_set<string> vis;\n    unordered_map<string, int> dis;\n\n    q.push({0, 0, 0});\n    vis.insert(\"0,0\");\n    dis[\"0,0\"] = 0;\n\n    int dx[] = {k, k, -k, -k};\n    int dy[] = {k, -k, k, -k};\n\n    while (!q.empty()) {\n        Node u = q.front();\n        q.pop();\n\n        if (u.x == x && u.y == y) {\n            cout << u.step << endl;\n            return 0;\n        }\n\n        for (int i = 0; i < 4; i++) {\n            int nx = u.x + dx[i];\n            int ny = u.y + dy[i];\n\n            string key = to_string(nx) + \",\" + to_string(ny);\n            if (vis.find(key) == vis.end()) {\n                q.push({nx, ny, u.step + 1});\n                vis.insert(key);\n                dis[key] = u.step + 1;\n            }\n        }\n    }\n\n    cout << -1 << endl;\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

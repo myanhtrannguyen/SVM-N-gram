@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-707",
+    "problem_id": "p00713",
+    "language": "Python",
+    "solution": "```python\nimport math\n\ndef distance(p1, p2):\n    return math.sqrt((p1[0] - p2[0])**2 + (p1[1] - p2[1])**2)\n\ndef max_points(points):\n    n = len(points)\n    max_points = 0\n    for i in range(n):\n        min_dist = float('inf')\n        for j in range(n):\n            if i != j:\n                dist = distance(points[i], points[j])\n                if dist < min_dist:\n                    min_dist = dist\n        if min_dist > 1.0001:\n            max_points = max(max_points, 1)\n        else:\n            max_points = max(max_points, 0)\n    return max_points + 1\n\ndef main():\n    while True:\n        n = int(input())\n        if n == 0:\n            break\n        points = []\n        for _ in range(n):\n            x, y = map(float, input().split())\n            points.append((x, y))\n        print(max_points(points))\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

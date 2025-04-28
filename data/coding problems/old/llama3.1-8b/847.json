@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-847",
+    "problem_id": "p00748",
+    "language": "Python",
+    "solution": "```python\ndef tetrahedral(n):\n    return n * (n + 1) * (n + 2) // 6\n\ndef odd_tetrahedral(n):\n    return tetrahedral(n) if n % 2 == 1 else 0\n\ndef min_tetrahedral_sum(n):\n    min_sum = float('inf')\n    min_odd_sum = float('inf')\n    for i in range(1, n + 1):\n        sum_ = 0\n        odd_sum = 0\n        for j in range(i, n + 1):\n            sum_ += tetrahedral(j)\n            odd_sum += odd_tetrahedral(j)\n            if sum_ >= n:\n                if sum_ - n < min_sum:\n                    min_sum = sum_ - n\n                if odd_sum < min_odd_sum:\n                    min_odd_sum = odd_sum\n                break\n    return min_sum, min_odd_sum\n\ndef main():\n    while True:\n        n = int(input())\n        if n == 0:\n            break\n        print(min_tetrahedral_sum(n))\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

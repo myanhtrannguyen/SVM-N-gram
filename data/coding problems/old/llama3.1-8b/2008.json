@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2008",
+    "problem_id": "p03374",
+    "language": "Python",
+    "solution": "```python\nimport sys\n\ndef solve():\n    n, c = map(int, sys.stdin.readline().split())\n    x = [0]\n    v = [0]\n    for _ in range(n):\n        xi, vi = map(int, sys.stdin.readline().split())\n        x.append(xi)\n        v.append(vi)\n    x.append(c)\n    v.append(0)\n    x.sort()\n    v.sort(reverse=True)\n    ans = 0\n    for i in range(n):\n        ans = max(ans, v[i] + (x[i+1] - x[i]) - (c - x[i+1] + x[i]))\n    print(ans)\n\nif __name__ == \"__main__\":\n    solve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

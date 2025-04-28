@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3107",
+    "problem_id": "p01704",
+    "language": "Python",
+    "solution": "```python\nimport sys\nimport math\n\ndef solve():\n    n = int(input())\n    pw = int(input())\n    vw = []\n    pf = []\n    vf = []\n    th = []\n    for _ in range(n):\n        v, p, f, t = map(int, input().split())\n        vw.append(v)\n        pf.append(p)\n        vf.append(f)\n        th.append(t)\n    ans = 0\n    for i in range(n):\n        ans += pf[i]\n    w = 0\n    for i in range(n):\n        w += (th[i] - vw[i] * w - vf[i]) / vf[i]\n    ans += pw * w\n    print(f\"{ans:.1f}\")\n\nt = 1\nfor _ in range(t):\n    solve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3880",
+    "problem_id": "p02291",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int p1x, p1y, p2x, p2y;\n    int q;\n    scanf(\"%d %d %d %d\", &p1x, &p1y, &p2x, &p2y);\n\n    while (scanf(\"%d %d\", &p2x, &p2y) == 2) {\n        double p0x, p0y;\n        scanf(\"%lf %lf\", &p0x, &p0y);\n\n        double a = 2 * (p2x - p1x);\n        double b = 2 * (p2y - p1y);\n        double c = p1x * p1x + p1y * p1y - p2x * p2x - p2y * p2y;\n\n        double x = ((a * p0x) + (b * p0y) + c) / (a * a + b * b);\n\n        double y = (a * (p0x - x)) + (b * (p0y - x)) + p1x;\n        y = (y + p1y) / 2;\n\n        printf(\"%.10lf %.10lf\\n\", x, y);\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

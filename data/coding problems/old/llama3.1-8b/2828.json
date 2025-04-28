@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2828",
+    "problem_id": "p03702",
+    "language": "Python",
+    "solution": "```python\nimport sys\n\nn, a, b = map(int, input().split())\nh = list(map(int, input().split()))\n\nh.sort()\nans = 0\nfor i in range(n):\n    if h[i] - (a - b) * i <= 0:\n        ans += (h[i] - (a - b) * i) // b + 1\n    else:\n        ans += (a - b) * i + 1\n        h[i] -= (a - b) * i + 1\n        h[i] = max(h[i], 0)\n        h.sort()\n        ans += sum((h[j] - (a - b) * j) // b + 1 for j in range(i + 1, n))\n\nprint(ans)\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

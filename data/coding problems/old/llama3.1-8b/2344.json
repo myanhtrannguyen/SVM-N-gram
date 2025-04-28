@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2344",
+    "problem_id": "p03581",
+    "language": "Python",
+    "solution": "```python\nMOD = 10**9 + 7\n\ndef ncr(n, r):\n    if r > n:\n        return 0\n    res = 1\n    for i in range(r):\n        res = (res * (n - i)) % MOD\n        res = (res * pow(i + 1, MOD - 2, MOD)) % MOD\n    return res\n\ndef solve():\n    A, B = map(int, input().split())\n    n = A + B\n    ans = 0\n    for i in range(n):\n        ans = (ans + ncr(n - 1, i) * ncr(n - 1 - i, A - 1)) % MOD\n    print(ans)\n\nif __name__ == \"__main__\":\n    solve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

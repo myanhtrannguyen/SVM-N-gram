@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2485",
+    "problem_id": "p03617",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n\nint main() {\n    int Q, H, S, D;\n    long long N;\n    long long min = 1000000000000000000LL;\n\n    scanf(\"%d %d %d %d %lld\", &Q, &H, &S, &D, &N);\n\n    long long temp = N;\n    while (temp >= 2) {\n        if (temp >= 2 && temp % 2 == 0) {\n            long long cost = D + (temp - 2) * Q;\n            if (cost < min) {\n                min = cost;\n            }\n            temp -= 2;\n        } else if (temp >= 1 && temp % 0.5 == 0) {\n            long long cost = H + (temp - 1) * Q;\n            if (cost < min) {\n                min = cost;\n            }\n            temp -= 1;\n        } else if (temp >= 1 && temp % 1 == 0) {\n            long long cost = S + (temp - 1) * Q;\n            if (cost < min) {\n                min = cost;\n            }\n            temp -= 1;\n        } else {\n            long long cost = Q * temp;\n            if (cost < min) {\n                min = cost;\n            }\n            temp -= 1;\n        }\n    }\n\n    printf(\"%lld\\n\", min);\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

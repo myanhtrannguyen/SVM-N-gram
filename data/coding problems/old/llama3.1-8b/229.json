@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-229",
+    "problem_id": "p00368",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nusing namespace std;\n\nint main() {\n    int W, H;\n    cin >> W >> H;\n\n    vector<vector<int>> grid(H, vector<int>(W));\n    for (int i = 0; i < H; i++) {\n        for (int j = 0; j < W; j++) {\n            cin >> grid[i][j];\n        }\n    }\n\n    vector<int> row_counts(W, 0);\n    vector<int> col_counts(H, 0);\n\n    for (int i = 0; i < H; i++) {\n        for (int j = 0; j < W; j++) {\n            if (grid[i][j] == 1) {\n                row_counts[j]++;\n                col_counts[i]++;\n            }\n        }\n    }\n\n    for (int i = 0; i < W; i++) {\n        if (row_counts[i] % 2 != 0) {\n            cout << \"no\" << endl;\n            return 0;\n        }\n    }\n\n    for (int i = 0; i < H; i++) {\n        if (col_counts[i] % 2 != 0) {\n            cout << \"no\" << endl;\n            return 0;\n        }\n    }\n\n    cout << \"yes\" << endl;\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3625",
+    "problem_id": "p02097",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n\nint main() {\n    int n;\n    std::cin >> n;\n\n    if (n % 2 == 0) {\n        std::cout << \"No\" << std::endl;\n        return 0;\n    }\n\n    std::cout << \"Yes\" << std::endl;\n\n    for (int i = 1; i <= n; ++i) {\n        for (int j = 1; j <= n; ++j) {\n            if (i == j) {\n                std::cout << (2 * n - 1 - i) << \" \";\n            } else if (i < j) {\n                std::cout << (2 * n - i) << \" \";\n            } else {\n                std::cout << (2 * n - j) << \" \";\n            }\n        }\n        std::cout << std::endl;\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-443",
+    "problem_id": "p00603",
+    "language": "Python",
+    "solution": "```python\ndef riffle_shuffle(n, r, operations):\n    deck = list(range(n))\n    for c in operations:\n        deck_a = deck[:n//2 + n%2]\n        deck_b = deck[n//2 + n%2:]\n        deck_c = []\n        while deck_a or deck_b:\n            if len(deck_a) >= c:\n                deck_c += deck_a[:c]\n                deck_a = deck_a[c:]\n            else:\n                deck_c += deck_a\n                deck_a = []\n            if len(deck_b) >= c:\n                deck_c += deck_b[:c]\n                deck_b = deck_b[c:]\n            else:\n                deck_c += deck_b\n                deck_b = []\n        deck = deck_c\n    return deck[-1]\n\nt = 1\nwhile t > 0:\n    n, r = map(int, input().split())\n    operations = list(map(int, input().split()))\n    print(riffle_shuffle(n, r, operations))\n    t -= 1\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

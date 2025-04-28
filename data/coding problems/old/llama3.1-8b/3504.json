@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3504",
+    "problem_id": "p02005",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n#define MAXN 100005\n#define MAXC 20\n\ntypedef struct {\n    char color[MAXC];\n    int density;\n    int index;\n} Color;\n\nint compare(const void *a, const void *b) {\n    Color *x = (Color *)a;\n    Color *y = (Color *)b;\n    return x->density - y->density;\n}\n\nint main() {\n    int N, M;\n    scanf(\"%d\", &N);\n    Color colors[N];\n    for (int i = 0; i < N; i++) {\n        scanf(\"%s %d\", colors[i].color, &colors[i].density);\n        colors[i].index = i;\n    }\n    qsort(colors, N, sizeof(Color), compare);\n    scanf(\"%d\", &M);\n    int last_index = N;\n    for (int i = 0; i < M; i++) {\n        char color[MAXC];\n        scanf(\"%s\", color);\n        int found = 0;\n        for (int j = last_index - 1; j >= 0; j--) {\n            if (strcmp(colors[j].color, color) == 0) {\n                found = 1;\n                last_index = j;\n                break;\n            }\n        }\n        if (!found) {\n            printf(\"No\\n\");\n            return 0;\n        }\n    }\n    printf(\"Yes\\n\");\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

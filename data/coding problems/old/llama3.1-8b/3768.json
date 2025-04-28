@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3768",
+    "problem_id": "p02263",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n#define MAX_SIZE 100\n\nint main() {\n    char expression[MAX_SIZE];\n    char *token;\n    int stack[MAX_SIZE];\n    int top = 0;\n\n    fgets(expression, MAX_SIZE, stdin);\n    expression[strcspn(expression, \"\\n\")] = 0;\n\n    token = strtok(expression, \" \");\n    while (token != NULL) {\n        int operand = atoi(token);\n        if (operand >= 0 && operand < 100000000) {\n            stack[top++] = operand;\n        } else {\n            int operand2 = stack[--top];\n            int operand1 = stack[--top];\n\n            switch (operand) {\n                case '+':\n                    stack[top++] = operand1 + operand2;\n                    break;\n                case '-':\n                    stack[top++] = operand1 - operand2;\n                    break;\n                case '*':\n                    stack[top++] = operand1 * operand2;\n                    break;\n            }\n        }\n        token = strtok(NULL, \" \");\n    }\n\n    printf(\"%d\\n\", stack[0]);\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

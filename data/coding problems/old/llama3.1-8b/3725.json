@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3725",
+    "problem_id": "p02252",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nstruct Item {\n    double value;\n    double weight;\n    double ratio;\n};\n\nbool compareItems(const Item& a, const Item& b) {\n    return a.ratio > b.ratio;\n}\n\nint main() {\n    int N;\n    double W;\n    std::cin >> N >> W;\n\n    std::vector<Item> items(N);\n    for (int i = 0; i < N; i++) {\n        std::cin >> items[i].value >> items[i].weight;\n        items[i].ratio = items[i].value / items[i].weight;\n    }\n\n    std::sort(items.begin(), items.end(), compareItems);\n\n    double totalValue = 0.0;\n    double remainingCapacity = W;\n\n    for (int i = 0; i < N; i++) {\n        if (remainingCapacity >= items[i].weight) {\n            totalValue += items[i].value;\n            remainingCapacity -= items[i].weight;\n        } else {\n            double fraction = remainingCapacity / items[i].weight;\n            totalValue += items[i].value * fraction;\n            break;\n        }\n    }\n\n    std::cout << std::fixed << std::setprecision(10) << totalValue << std::endl;\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3236",
+    "problem_id": "p01796",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <string.h>\n\n#define N 17\n#define K 14\n\nint n, k;\nchar s[N][K + 1];\nint cnt[N][N];\nint vis[N];\nint ord[N];\n\nvoid dfs(int u) {\n    if (vis[u]) return;\n    vis[u] = 1;\n    for (int i = 0; i < n; i++) {\n        if (cnt[u][i] == k - 1) {\n            dfs(i);\n            ord[u] = i;\n        }\n    }\n}\n\nint main() {\n    scanf(\"%d %d\", &n, &k);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%s\", s[i]);\n        for (int j = 0; j < n; j++) {\n            cnt[i][j] = 0;\n            for (int l = 0; l < k; l++) {\n                if (s[i][l] == 'A' + j) cnt[i][j]++;\n            }\n        }\n    }\n    for (int i = 0; i < n; i++) {\n        if (!vis[i]) dfs(i);\n    }\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            if (ord[j] > ord[i] && cnt[i][j] == k - 1) {\n                printf(\"Invalid order\\n\");\n                return 0;\n            }\n        }\n    }\n    for (int i = 0; i < n; i++) {\n        printf(\"%c\", 'A' + ord[i]);\n    }\n    printf(\"\\n\");\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

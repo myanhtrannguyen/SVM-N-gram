@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2180",
+    "problem_id": "p03540",
+    "language": "Python",
+    "solution": "```python\nfrom collections import deque\n\ndef bfs(i, j):\n    q = deque([(i, j)])\n    visited = {(i, j)}\n    while q:\n        x, y = q.popleft()\n        for dx, dy in [(-1, 0), (1, 0), (0, -1), (0, 1)]:\n            nx, ny = x + dx, y + dy\n            if 0 <= nx < h and 0 <= ny < w and grid[nx][ny] == '+' and (nx, ny) not in visited:\n                q.append((nx, ny))\n                visited.add((nx, ny))\n    return visited\n\ndef solve():\n    global h, w, grid\n    h, w = map(int, input().split())\n    grid = [list(input()) for _ in range(h)]\n    p_i, p_j = -1, -1\n    for i in range(h):\n        for j in range(w):\n            if grid[i][j] == 'P':\n                p_i, p_j = i, j\n                break\n        if p_i != -1:\n            break\n    iceberg = bfs(p_i, p_j)\n    iceberg.remove((p_i, p_j))\n    ans = len(iceberg)\n    for i in range(h):\n        for j in range(w):\n            if grid[i][j] == '#' and (i, j) not in iceberg:\n                grid[i][j] = '+'\n                iceberg = bfs(i, j)\n                iceberg.remove((i, j))\n                ans = min(ans, len(iceberg))\n    print(ans)\n\nsolve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

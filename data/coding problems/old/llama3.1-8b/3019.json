@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3019",
+    "problem_id": "p01668",
+    "language": "Python",
+    "solution": "```python\ndef solve():\n    A, B, C = map(int, input().split())\n    C = str(C)\n    mod = 10**9 + 7\n    ans = 0\n    for i in range(len(str(A)), len(str(B)) + 1):\n        for j in range(len(str(B)) - i + 1):\n            num = int(str(B)[:j] + C + str(B)[j + i:])\n            if A <= num <= B:\n                ans += 1\n    print(ans % mod)\n\nif __name__ == \"__main__\":\n    solve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

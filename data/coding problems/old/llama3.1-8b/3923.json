@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3923",
+    "problem_id": "p02301",
+    "language": "Python",
+    "solution": "```python\nimport math\n\ndef distance(p1, p2):\n    return math.sqrt((p1[0] - p2[0])**2 + (p1[1] - p2[1])**2)\n\ndef diameter(n, points):\n    max_distance = 0\n    for i in range(n):\n        for j in range(i+1, n):\n            dist = distance(points[i], points[j])\n            if dist > max_distance:\n                max_distance = dist\n    return max_distance\n\nn = int(input())\npoints = []\nfor _ in range(n):\n    x, y = map(float, input().split())\n    points.append((x, y))\n\nprint(f\"{diameter(n, points):.5f}\")\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

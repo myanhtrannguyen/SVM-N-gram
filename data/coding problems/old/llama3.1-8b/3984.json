@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3984",
+    "problem_id": "p02317",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\n#define MAX_N 100000\n\nint lis[MAX_N + 1];\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n\n    for (int i = 0; i <= n; i++) {\n        lis[i] = 0;\n    }\n\n    for (int i = 1; i <= n; i++) {\n        int x;\n        scanf(\"%d\", &x);\n\n        int l = 0, r = i;\n        while (l < r) {\n            int m = (l + r) / 2;\n            if (lis[m] < x) {\n                l = m + 1;\n            } else {\n                r = m;\n            }\n        }\n\n        lis[r] = x;\n    }\n\n    int max = 0;\n    for (int i = 1; i <= n; i++) {\n        if (lis[i] > lis[max]) {\n            max = i;\n        }\n    }\n\n    printf(\"%d\\n\", max);\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

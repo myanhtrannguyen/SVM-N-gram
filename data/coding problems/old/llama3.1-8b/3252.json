@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3252",
+    "problem_id": "p01800",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <math.h>\n\n#define PI 3.14159265358979323846\n\nint main() {\n    double x, y, theta, omega;\n    scanf(\"%lf %lf %lf %lf\", &x, &y, &theta, &omega);\n\n    theta = theta * PI / 180;\n    omega = omega * PI / 180;\n\n    double a = x * sin(theta) - y * cos(theta);\n    double b = x * cos(theta) + y * sin(theta);\n\n    double c = sqrt(a * a + b * b);\n    double d = atan2(b, a);\n\n    double v = 0;\n    double t = 0;\n    double dt = 1e-6;\n    double t_max = 1e6;\n\n    while (t < t_max) {\n        double alpha = omega * dt;\n        double t1 = (d - theta + alpha) / omega;\n        double t2 = (d - theta - alpha) / omega;\n\n        if (t1 > 0 && t1 < t2) {\n            t = t1;\n            v = c / (t + dt);\n            break;\n        } else if (t2 > 0 && t2 < t1) {\n            t = t2;\n            v = c / (t + dt);\n            break;\n        } else {\n            t += dt;\n        }\n    }\n\n    printf(\"%.10lf\\n\", v);\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

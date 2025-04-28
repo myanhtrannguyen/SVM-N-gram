@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-371",
+    "problem_id": "p00563",
+    "language": "Python",
+    "solution": "```python\nimport sys\ninput = sys.stdin.readline\n\nN, M = map(int, input().split())\nC = [0] + list(map(int, input().split()))\ncnt = [0] * (M + 1)\nfor i in range(1, N + 1):\n    cnt[C[i]] += 1\n\ndp = [[0] * (N + 1) for _ in range(N + 1)]\nfor i in range(1, N + 1):\n    for j in range(1, N + 1):\n        if i + j <= N:\n            dp[i][j] = dp[i][j - 1] + cnt[C[i + j - 1]]\n        else:\n            dp[i][j] = dp[i][j - 1]\n\nans = [0] * (M + 1)\nfor c in range(1, M + 1):\n    if cnt[c] == 0:\n        continue\n    for i in range(1, N + 1):\n        if cnt[c] == 1 and i == 1:\n            ans[c] = 0\n        else:\n            ans[c] = max(ans[c], dp[cnt[c] - 1][i - 1] + cnt[c] * (N - i))\n\nfor i in range(1, M + 1):\n    print(ans[i])\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3543",
+    "problem_id": "p02014",
+    "language": "Python",
+    "solution": "```python\nimport sys\n\ndef rough_sorting(n, k, arr):\n    inv = 0\n    for i in range(n - 1):\n        if arr[i] > arr[i + 1]:\n            inv += 1\n    if inv <= k:\n        return arr\n\n    swaps = 0\n    for i in range(n - 1):\n        if arr[i] > arr[i + 1]:\n            swaps += 1\n            if swaps <= k:\n                arr[i], arr[i + 1] = arr[i + 1], arr[i]\n            else:\n                break\n\n    inv = 0\n    for i in range(n - 1):\n        if arr[i] > arr[i + 1]:\n            inv += 1\n    if inv > k:\n        for i in range(n - 1, -1, -1):\n            if arr[i] < arr[i - 1]:\n                arr[i], arr[i - 1] = arr[i - 1], arr[i]\n                inv -= 1\n                if inv == k:\n                    break\n\n    return arr\n\ndef main():\n    input = sys.stdin.readline\n    n, k = map(int, input().split())\n    arr = [0] * n\n    for i in range(n):\n        arr[i] = int(input())\n    arr = rough_sorting(n, k, arr)\n    for i in range(n):\n        print(arr[i])\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

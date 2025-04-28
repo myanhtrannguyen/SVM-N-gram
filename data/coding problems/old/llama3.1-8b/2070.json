@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2070",
+    "problem_id": "p03390",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nint main() {\n    int q;\n    std::cin >> q;\n\n    std::vector<long long> a(q), b(q);\n    for (int i = 0; i < q; ++i) {\n        std::cin >> a[i] >> b[i];\n    }\n\n    for (int i = 0; i < q; ++i) {\n        long long x = a[i] - 1, y = b[i] - 1;\n        long long ans = (x + y) * (x + y + 1) / 2 - x - y;\n        std::cout << ans << std::endl;\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2421",
+    "problem_id": "p03601",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n\nint main() {\n    int A, B, C, D, E, F;\n    scanf(\"%d %d %d %d %d %d\", &A, &B, &C, &D, &E, &F);\n\n    int max_water = F / (A + E);\n    int max_sugar = F - max_water * A;\n\n    int max_density = 0;\n    int max_mass = 0;\n    int max_sugar_mass = 0;\n\n    for (int i = 0; i <= max_water; i++) {\n        for (int j = 0; j <= max_sugar; j++) {\n            if (i * A + j > F) {\n                break;\n            }\n            if (i * B + j > F) {\n                break;\n            }\n            if (i * A + j <= F && i * B + j <= F) {\n                int sugar = (i * A + j) * E / (A + E);\n                if (sugar + j <= max_sugar && i * B + (sugar + j) <= F) {\n                    int density = (100 * sugar) / (i * A + (sugar + j));\n                    if (density > max_density) {\n                        max_density = density;\n                        max_mass = i * A + (sugar + j);\n                        max_sugar_mass = sugar;\n                    }\n                }\n            }\n        }\n    }\n\n    printf(\"%d %d\\n\", max_mass, max_sugar_mass);\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

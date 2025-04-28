@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2390",
+    "problem_id": "p03593",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <string>\n#include <set>\n#include <algorithm>\n\nusing namespace std;\n\nbool isPalindrome(const string& s) {\n    return s == string(s.rbegin(), s.rend());\n}\n\nbool check(const vector<string>& A) {\n    int H = A.size();\n    int W = A[0].size();\n\n    for (int i = 0; i < H; ++i) {\n        set<char> row;\n        for (int j = 0; j < W; ++j) {\n            row.insert(A[i][j]);\n        }\n        if (row.size() % 2 == 1) return false;\n        if (!isPalindrome(string(row.begin(), row.end()))) return false;\n    }\n\n    for (int j = 0; j < W; ++j) {\n        set<char> col;\n        for (int i = 0; i < H; ++i) {\n            col.insert(A[i][j]);\n        }\n        if (col.size() % 2 == 1) return false;\n        if (!isPalindrome(string(col.begin(), col.end()))) return false;\n    }\n\n    return true;\n}\n\nint main() {\n    int H, W;\n    cin >> H >> W;\n\n    vector<string> A(H);\n    for (int i = 0; i < H; ++i) {\n        cin >> A[i];\n    }\n\n    if (check(A)) {\n        cout << \"Yes\" << endl;\n    } else {\n        cout << \"No\" << endl;\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

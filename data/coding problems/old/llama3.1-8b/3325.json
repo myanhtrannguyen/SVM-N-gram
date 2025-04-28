@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3325",
+    "problem_id": "p01835",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nstruct Task {\n    int l, r, x;\n};\n\nbool compareTasks(const Task& a, const Task& b) {\n    return a.x < b.x;\n}\n\nint main() {\n    int N, K, T;\n    std::cin >> N >> K >> T;\n\n    std::vector<Task> tasks(T);\n    for (int i = 0; i < T; i++) {\n        std::cin >> tasks[i].l >> tasks[i].r >> tasks[i].x;\n    }\n\n    std::sort(tasks.begin(), tasks.end(), compareTasks);\n\n    std::vector<int> lastTask(N + 1, -1);\n    int count = 0;\n\n    for (int i = 0; i < T; i++) {\n        int l = tasks[i].l, r = tasks[i].r, x = tasks[i].x;\n        if (lastTask[x] == -1) {\n            count += r - l + 1;\n            for (int j = l; j <= r; j++) {\n                lastTask[j] = x;\n            }\n        } else {\n            for (int j = l; j <= std::min(r, lastTask[x] - 1); j++) {\n                count++;\n                lastTask[j] = x;\n            }\n            lastTask[x] = std::max(lastTask[x], r + 1);\n        }\n    }\n\n    std::cout << count << std::endl;\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

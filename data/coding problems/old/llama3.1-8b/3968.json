@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3968",
+    "problem_id": "p02313",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <math.h>\n\n#define PI 3.14159265358979311600\n\ndouble distance(double x1, double y1, double x2, double y2) {\n    return sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2));\n}\n\ndouble area_of_intersection(double x1, double y1, double r1, double x2, double y2, double r2) {\n    double d = distance(x1, y1, x2, y2);\n    if (d > r1 + r2 || d <= abs(r1 - r2)) {\n        return 0;\n    }\n    if (d == 0 && r1 == r2) {\n        return PI * pow(r1, 2);\n    }\n    double a = (pow(r1, 2) * pow(r2, 2)) / pow(d, 2);\n    double h = sqrt(pow(r1, 2) - pow(a, 2));\n    double area = PI * h * (2 * a + h);\n    return area;\n}\n\nint main() {\n    double x1, y1, r1, x2, y2, r2;\n    scanf(\"%lf %lf %lf %lf %lf %lf\", &x1, &y1, &r1, &x2, &y2, &r2);\n    printf(\"%.20lf\\n\", area_of_intersection(x1, y1, r1, x2, y2, r2));\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

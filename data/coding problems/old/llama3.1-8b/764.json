@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-764",
+    "problem_id": "p00728",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n#define MAX_JUDGES 100\n#define MAX_SCORE 1000\n\nint main() {\n    int n, i, j, max, min, sum, count;\n    int scores[MAX_JUDGES];\n\n    while (scanf(\"%d\", &n) == 1) {\n        if (n == 0) break;\n\n        for (i = 0; i < n; i++) {\n            scanf(\"%d\", &scores[i]);\n        }\n\n        max = scores[0];\n        min = scores[0];\n        sum = 0;\n        count = 0;\n\n        for (i = 0; i < n; i++) {\n            if (scores[i] > max) {\n                max = scores[i];\n                count = 1;\n            } else if (scores[i] == max) {\n                count++;\n            }\n\n            if (scores[i] < min) {\n                min = scores[i];\n                count = 1;\n            } else if (scores[i] == min) {\n                count++;\n            }\n\n            if (count > 1) continue;\n\n            sum += scores[i];\n            count++;\n        }\n\n        printf(\"%d\\n\", sum / (count - 2));\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

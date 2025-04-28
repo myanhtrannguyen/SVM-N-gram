@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3092",
+    "problem_id": "p01701",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <string.h>\n\nint gcd(int a, int b) {\n    if (b == 0) return a;\n    return gcd(b, a % b);\n}\n\nint main() {\n    char dir[100];\n    int n, w, i, sum, angle;\n    while (scanf(\"%s\", dir) == 1) {\n        if (strcmp(dir, \"#\") == 0) break;\n        n = 0, w = 0;\n        for (i = 0; i < strlen(dir); i++) {\n            if (dir[i] == 'n') n++;\n            else if (dir[i] == 'w') w++;\n        }\n        sum = n + w;\n        angle = 90 * (w - n);\n        for (i = 0; i < sum - 1; i++) {\n            angle += 45 / (1 << (sum - i - 1));\n        }\n        if (gcd(angle, 1) == 1) printf(\"%d\\n\", angle);\n        else printf(\"%d/%d\\n\", angle / gcd(angle, 1), gcd(angle, 1));\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3459",
+    "problem_id": "p01963",
+    "language": "Python",
+    "solution": "```python\nimport sys\ninput = sys.stdin.readline\n\nN = 10**5 + 5\nmod = 10**9 + 7\n\ndef kmp(s):\n    n = len(s)\n    pi = [0] * n\n    j = 0\n    for i in range(1, n):\n        while j > 0 and s[i] != s[j]:\n            j = pi[j - 1]\n        if s[i] == s[j]:\n            j += 1\n        pi[i] = j\n    return pi\n\ndef solve():\n    n = int(input())\n    s = [input().strip() for _ in range(n)]\n    t = input().strip()\n    dp = [0] * (len(t) + 1)\n    dp[0] = 1\n    pi = kmp(t)\n    for i in range(1, len(t) + 1):\n        dp[i] = dp[i - 1]\n        for j in range(n):\n            if i - len(s[j]) >= 0 and pi[i - len(s[j])] == i - len(s[j]) and s[j] == t[i - len(s[j]):i]:\n                dp[i] = (dp[i] + dp[i - len(s[j])]) % mod\n    print(dp[-1] - 1)\n\nsolve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

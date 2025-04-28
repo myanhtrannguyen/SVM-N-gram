@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-80",
+    "problem_id": "p00020",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <ctype.h>\n\nint main() {\n    char text[201];\n    printf(\"Enter a text: \");\n    fgets(text, 200, stdin);\n    text[strcspn(text, \"\\n\")] = 0; // remove newline character\n\n    for (int i = 0; text[i] != '\\0'; i++) {\n        if (islower(text[i])) {\n            text[i] = toupper(text[i]);\n        }\n    }\n\n    printf(\"Capitalized text: %s\\n\", text);\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

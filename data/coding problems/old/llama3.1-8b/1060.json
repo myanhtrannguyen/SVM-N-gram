@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1060",
+    "problem_id": "p00802",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <math.h>\n\n#define N 41\n#define M 21\n\ndouble max_area[N][M];\ndouble p[N];\n\nvoid init() {\n    for (int i = 0; i < N; i++) {\n        for (int j = 0; j < M; j++) {\n            max_area[i][j] = -1.0;\n        }\n    }\n}\n\ndouble area(int n, int m, double p[]) {\n    if (m == 1) return 0.0;\n    if (m == 2) return 0.5 * sin(2 * M_PI * (p[n - 1] - p[0]));\n    if (m == 3) return 0.5 * sin(2 * M_PI * (p[n - 1] - p[0])) + 0.5 * sin(2 * M_PI * (p[1] - p[0])) + 0.5 * sin(2 * M_PI * (p[n - 1] - p[1]));\n    if (max_area[n][m] != -1.0) return max_area[n][m];\n    double max = 0.0;\n    for (int i = 0; i < n - 1; i++) {\n        double area = area(n - 1, m - 1, p) + 0.5 * sin(2 * M_PI * (p[i + 1] - p[i]));\n        if (area > max) max = area;\n    }\n    max_area[n][m] = max;\n    return max;\n}\n\nint main() {\n    int n, m;\n    while (scanf(\"%d %d\", &n, &m) == 2) {\n        for (int i = 0; i < n; i++) {\n            scanf(\"%lf\", &p[i]);\n        }\n        printf(\"%.6f\\n\", area(n, m, p));\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

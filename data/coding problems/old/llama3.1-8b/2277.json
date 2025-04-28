@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2277",
+    "problem_id": "p03565",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <string.h>\n\n#define MAXN 55\n\nchar s[MAXN], t[MAXN];\nint n, m;\n\nint check(char *s, char *t) {\n    int i, j;\n    for (i = 0; i < n; i++) {\n        for (j = 0; j < m; j++) {\n            if (s[i + j] != '?' && s[i + j] != t[j]) return 0;\n        }\n    }\n    return 1;\n}\n\nint main() {\n    scanf(\"%s %s\", s, t);\n    n = strlen(s);\n    m = strlen(t);\n    int i, j;\n    for (i = 0; i <= n - m; i++) {\n        for (j = 0; j < 26; j++) {\n            char temp[n + 1];\n            strcpy(temp, s);\n            temp[i] = 'a' + j;\n            if (check(temp, t)) {\n                printf(\"%s\\n\", temp);\n                return 0;\n            }\n        }\n    }\n    printf(\"UNRESTORABLE\\n\");\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-492",
+    "problem_id": "p00637",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n\nint main() {\n    int n, i, j, k;\n    int a[100];\n\n    while (scanf(\"%d\", &n) == 1 && n != 0) {\n        for (i = 0; i < n; i++) {\n            scanf(\"%d\", &a[i]);\n        }\n\n        for (i = 0; i < n - 1; i++) {\n            if (a[i + 1] == a[i] + 1) {\n                if (i == 0 || a[i] != a[i - 1] + 1) {\n                    printf(\"%d\", a[i]);\n                }\n                if (i != n - 2) {\n                    printf(\"-\");\n                }\n            } else {\n                if (i == 0) {\n                    printf(\"%d\", a[i]);\n                } else {\n                    printf(\" %d\", a[i]);\n                }\n                if (i != n - 2) {\n                    printf(\"-\");\n                }\n            }\n        }\n        if (n > 0) {\n            printf(\" %d\", a[n - 1]);\n        }\n        printf(\"\\n\");\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

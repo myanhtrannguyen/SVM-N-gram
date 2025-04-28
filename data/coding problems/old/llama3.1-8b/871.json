@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-871",
+    "problem_id": "p00754",
+    "language": "Python",
+    "solution": "```python\ndef is_balanced(s):\n    stack = []\n    bracket_map = {')': '(', ']': '['}\n    for c in s:\n        if c in bracket_map.values():\n            stack.append(c)\n        elif c in bracket_map.keys():\n            if not stack or stack.pop() != bracket_map[c]:\n                return False\n    return not stack\n\ndef main():\n    while True:\n        s = input()\n        if s == '.':\n            break\n        print('yes' if is_balanced(s) else 'no')\n\nif __name__ == '__main__':\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

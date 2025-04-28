@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1768",
+    "problem_id": "p03121",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n#include <utility>\n\nusing namespace std;\n\ntypedef long long ll;\n\nconst int N = 1e5 + 5;\n\nll n, x[N], y[N];\n\nint main() {\n    ios_base::sync_with_stdio(false);\n    cin.tie(nullptr);\n\n    cin >> n;\n    for (int i = 1; i <= n; i++) {\n        cin >> x[i] >> y[i];\n    }\n\n    sort(x + 1, x + n + 1);\n    sort(y + 1, y + n + 1);\n\n    ll ans = x[1];\n    for (int i = 1; i <= n; i++) {\n        if (y[i] - y[i - 1] > 1) {\n            ans = min(ans, x[i] - (y[i] - y[i - 1] - 1));\n        }\n    }\n\n    cout << ans << '\\n';\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

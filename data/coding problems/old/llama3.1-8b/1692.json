@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1692",
+    "problem_id": "p02962",
+    "language": "Python",
+    "solution": "```python\nimport math\n\ns = input()\nt = input()\n\ndef gcd(a, b):\n    while b:\n        a, b = b, a % b\n    return a\n\ndef lcm(a, b):\n    return a * b // gcd(a, b)\n\ndef check(i):\n    return (len(s) * i + len(t) - 1) // len(t) <= len(s) // len(t)\n\ndef solve():\n    if len(t) > len(s):\n        print(-1)\n        return\n\n    if len(t) == 1:\n        print(0)\n        return\n\n    if len(t) == len(s):\n        print(1)\n        return\n\n    if len(t) > len(s):\n        print(-1)\n        return\n\n    lcm_val = lcm(len(s), len(t))\n    i = 0\n    while True:\n        if check(i):\n            i += 1\n        else:\n            break\n\n    print(i - 1)\n\nsolve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

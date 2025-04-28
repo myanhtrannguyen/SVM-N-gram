@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1979",
+    "problem_id": "p03174",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\n#define MOD 1000000007\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n\n    int a[n][n];\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            scanf(\"%d\", &a[i][j]);\n        }\n    }\n\n    int dp[1 << n];\n    for (int i = 0; i < (1 << n); i++) {\n        dp[i] = 0;\n    }\n\n    dp[0] = 1;\n\n    for (int i = 0; i < (1 << n); i++) {\n        for (int j = 0; j < n; j++) {\n            if ((i & (1 << j)) == 0 && a[i][j] == 1) {\n                int next = i | (1 << j);\n                dp[next] = (dp[next] + dp[i]) % MOD;\n            }\n        }\n    }\n\n    int ans = 0;\n    for (int i = 0; i < (1 << n); i++) {\n        if ((i & (i - 1)) == 0) {\n            ans = (ans + dp[i]) % MOD;\n        }\n    }\n\n    printf(\"%d\\n\", ans);\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

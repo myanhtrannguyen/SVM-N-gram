@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2164",
+    "problem_id": "p03536",
+    "language": "Python",
+    "solution": "```python\nimport sys\n\ndef solve():\n    n = int(input())\n    participants = []\n    for _ in range(n):\n        h, p = map(int, input().split())\n        participants.append((h, p))\n\n    participants.sort(key=lambda x: x[1], reverse=True)\n\n    stack = 0\n    count = 0\n    for h, p in participants:\n        if stack + p <= h:\n            continue\n        stack += p\n        count += 1\n\n    print(count)\n\nif __name__ == \"__main__\":\n    solve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

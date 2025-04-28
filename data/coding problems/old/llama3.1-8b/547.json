@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-547",
+    "problem_id": "p00650",
+    "language": "Python",
+    "solution": "```python\nfrom collections import deque\n\ndef min_cost(n, m, edges):\n    graph = [[] for _ in range(n)]\n    for u, v, c in edges:\n        graph[u].append((v, c))\n\n    visited = [False] * n\n    queue = deque()\n    for i in range(n):\n        if not visited[i]:\n            queue.append(i)\n            visited[i] = True\n            while queue:\n                u = queue.popleft()\n                for v, c in graph[u]:\n                    if not visited[v]:\n                        queue.append(v)\n                        visited[v] = True\n\n    cost = 0\n    for u, v, c in edges:\n        if not visited[u] or not visited[v]:\n            cost += c\n\n    return cost\n\ndef main():\n    while True:\n        n, m = map(int, input().split())\n        if n == 0 and m == 0:\n            break\n        edges = []\n        for _ in range(m):\n            u, v, c = map(int, input().split())\n            edges.append((u, v, c))\n        print(min_cost(n, m, edges))\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

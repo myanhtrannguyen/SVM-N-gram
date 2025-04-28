@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1464",
+    "problem_id": "p02773",
+    "language": "Python",
+    "solution": "```python\nfrom collections import defaultdict\n\nn = int(input())\nvotes = defaultdict(int)\nfor _ in range(n):\n    s = input()\n    votes[s] += 1\n\nmax_votes = max(votes.values())\nprint('\\n'.join(sorted([k for k, v in votes.items() if v == max_votes])))\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

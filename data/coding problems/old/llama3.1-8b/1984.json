@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1984",
+    "problem_id": "p03175",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n#include <numeric>\n\nusing namespace std;\n\nconst int MOD = 1e9 + 7;\n\nstruct Edge {\n    int to;\n    int id;\n};\n\nint dfs(int u, int p, vector<vector<Edge>>& graph, vector<int>& dp) {\n    int res = 1;\n    for (auto& e : graph[u]) {\n        if (e.to == p) continue;\n        res = (res * (2 * dfs(e.to, u, graph, dp) % MOD)) % MOD;\n    }\n    dp[u] = (res + 1) % MOD;\n    return dp[u];\n}\n\nint main() {\n    int n;\n    cin >> n;\n    vector<vector<Edge>> graph(n + 1);\n    for (int i = 0; i < n - 1; i++) {\n        int u, v;\n        cin >> u >> v;\n        graph[u].push_back({v, i});\n        graph[v].push_back({u, i});\n    }\n    vector<int> dp(n + 1);\n    dfs(1, -1, graph, dp);\n    long long res = 0;\n    for (int i = 0; i < n - 1; i++) {\n        int u, v;\n        cin >> u >> v;\n        if (u == v) continue;\n        int x = dp[u];\n        int y = dp[v];\n        res = (res + (x * y) % MOD) % MOD;\n    }\n    cout << res << endl;\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

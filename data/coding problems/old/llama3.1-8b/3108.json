@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3108",
+    "problem_id": "p01705",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int n;\n    while (scanf(\"%d\", &n) == 1) {\n        if (n == 0) break;\n        int x[n], r[n];\n        for (int i = 0; i < n; i++) {\n            scanf(\"%d %d\", &x[i], &r[i]);\n        }\n        double ans = 0;\n        for (int i = 0; i < n; i++) {\n            double l = x[i] - r[i];\n            double r_ = x[i] + r[i];\n            double d = 0;\n            for (int j = i + 1; j < n; j++) {\n                d = d + 2 * r[j];\n            }\n            double L = l - d;\n            double R = r_ + d;\n            if (L < R) {\n                ans = fmax(ans, fmin(R, L + 2 * r[i]));\n            }\n        }\n        printf(\"%.6f\\n\", ans);\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

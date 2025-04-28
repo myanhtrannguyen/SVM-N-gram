@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3148",
+    "problem_id": "p01734",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n#define MAXN 100005\n\ntypedef struct {\n    int x1, x2;\n} Point;\n\nint cmp(const void *a, const void *b) {\n    Point *p1 = (Point *)a;\n    Point *p2 = (Point *)b;\n    return p1->x1 - p2->x1;\n}\n\nint main() {\n    int N;\n    scanf(\"%d\", &N);\n    Point *P = (Point *)malloc(N * sizeof(Point));\n    for (int i = 0; i < N; i++) {\n        scanf(\"%d %d %d %d\", &P[i].x1, &P[i].x2, &P[i].x1, &P[i].x2);\n    }\n    qsort(P, N, sizeof(Point), cmp);\n    int cnt = 1;\n    int ans = 1;\n    for (int i = 1; i < N; i++) {\n        if (P[i].x1 >= P[i - 1].x2) {\n            cnt++;\n            ans = (cnt > ans) ? cnt : ans;\n        } else {\n            cnt = 1;\n        }\n    }\n    printf(\"%d\\n\", ans);\n    free(P);\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

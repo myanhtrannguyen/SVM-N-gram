@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-519",
+    "problem_id": "p00643",
+    "language": "Python",
+    "solution": "```python\nimport sys\n\ndef get_penalty(grid, start, end, direction):\n    penalty = 0\n    for i in range(start[0], end[0] + 1):\n        for j in range(start[1], end[1] + 1):\n            if (i, j) != start:\n                penalty += grid[i][j] * direction[(i - start[0]) * 2 + (j - start[1])]\n    return penalty\n\ndef solve(grid, start, end):\n    directions = [(0, 1), (1, 0), (0, -1), (-1, 0), (1, 1), (-1, -1), (1, -1), (-1, 1)]\n    min_penalty = float('inf')\n    for direction in directions:\n        penalty = get_penalty(grid, start, end, direction)\n        min_penalty = min(min_penalty, penalty)\n    return min_penalty\n\ndef main():\n    input = sys.stdin.readlines()\n    for i in range(0, len(input), 6):\n        h, w = map(int, input[i].split())\n        grid = [list(map(int, input[i + 1].split())) for _ in range(h)]\n        start = map(int, input[i + 2].split())\n        end = map(int, input[i + 3].split())\n        print(solve(grid, (start[0], start[1]), (end[0], end[1])))\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

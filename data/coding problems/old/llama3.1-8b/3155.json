@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3155",
+    "problem_id": "p01735",
+    "language": "Python",
+    "solution": "```python\nimport sys\n\ndef negamax(node, alpha, beta, visited):\n    if node in visited:\n        return 0\n    visited.add(node)\n    if not children[node]:\n        return leaf_values[node]\n    min_eval = 0\n    max_eval = 0\n    for child in children[node]:\n        eval = -negamax(child, -beta, -alpha, visited)\n        if eval >= beta:\n            return eval\n        if eval > alpha:\n            alpha = eval\n        min_eval += 1\n        max_eval += 1\n    return alpha\n\ndef main():\n    n = int(input())\n    p = list(map(int, input().split()))\n    leaf_values = {}\n    children = {}\n    for i in range(n):\n        line = list(map(int, input().split()))\n        k = line[0]\n        children[i+1] = line[1:k+1]\n        if k == 0:\n            leaf_values[i+1] = p[i]\n    min_eval = 0\n    max_eval = 0\n    for i in range(1, n+1):\n        visited = set()\n        alpha = -sys.maxsize - 1\n        beta = sys.maxsize\n        eval = -negamax(i, alpha, beta, visited)\n        min_eval += 1 if eval != 0 else 0\n        max_eval += 1\n    print(min_eval, max_eval)\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

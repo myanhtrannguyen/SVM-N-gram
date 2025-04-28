@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3324",
+    "problem_id": "p01835",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\n#define N 200000\n#define K 200000\n\nint max(int a, int b) {\n    return (a > b) ? a : b;\n}\n\nint min(int a, int b) {\n    return (a < b) ? a : b;\n}\n\nint main() {\n    int n, k, t, l, r, x, i, j, a[N + 1], b[N + 1], c[N + 1], d[N + 1], e[N + 1], f[N + 1];\n\n    scanf(\"%d %d %d\", &n, &k, &t);\n    for (i = 1; i <= t; i++) {\n        scanf(\"%d %d %d\", &l, &r, &x);\n        a[x] = max(a[x], l);\n        b[x] = min(b[x], r);\n    }\n    for (i = 1; i <= k; i++) {\n        a[i] = max(a[i], a[i - 1]);\n        b[i] = min(b[i], b[i - 1]);\n    }\n    for (i = 1; i <= k; i++) {\n        if (a[i] <= b[i]) {\n            c[i] = a[i];\n            d[i] = b[i];\n        } else {\n            c[i] = a[i - 1];\n            d[i] = b[i - 1];\n        }\n    }\n    for (i = 1; i <= k; i++) {\n        e[i] = max(e[i - 1], c[i]);\n        f[i] = min(f[i - 1], d[i]);\n    }\n    j = 0;\n    for (i = 1; i <= k; i++) {\n        if (e[i] <= f[i]) {\n            j++;\n        }\n    }\n    printf(\"%d\\n\", n - j);\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

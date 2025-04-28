@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-607",
+    "problem_id": "p00688",
+    "language": "Python",
+    "solution": "```python\nimport math\n\ndef gcd(a, b):\n    while b:\n        a, b = b, a % b\n    return a\n\ndef factorize(a, b, c):\n    if a == 1:\n        p, q, r, s = 1, c, 1, -b\n    else:\n        g = gcd(a, c)\n        a //= g\n        c //= g\n        b *= g // gcd(a, b)\n        g = gcd(b, c)\n        b //= g\n        c //= g\n        p, q, r, s = a, c, 1, -b\n    if (p * s + q * r) % b != 0 or (p * r + q * s) % b != 0:\n        return \"Impossible\"\n    return \"{} {} {} {}\".format(p, q, r, s)\n\nfor _ in range(int(input())):\n    a, b, c = map(int, input().split())\n    if a == 0:\n        print(\"Impossible\")\n    else:\n        print(factorize(a, b, c))\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

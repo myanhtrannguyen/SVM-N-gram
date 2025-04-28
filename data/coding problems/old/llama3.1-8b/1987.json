@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1987",
+    "problem_id": "p03176",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\ntypedef struct {\n    int height;\n    int beauty;\n} Flower;\n\nint compare(const void *a, const void *b) {\n    Flower *f1 = (Flower *)a;\n    Flower *f2 = (Flower *)b;\n    return f1->height - f2->height;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n\n    Flower *flowers = (Flower *)malloc(n * sizeof(Flower));\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &flowers[i].height);\n    }\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &flowers[i].beauty);\n    }\n\n    qsort(flowers, n, sizeof(Flower), compare);\n\n    long long sum = 0;\n    int max_height = 0;\n    for (int i = 0; i < n; i++) {\n        if (flowers[i].height > max_height) {\n            sum += flowers[i].beauty;\n            max_height = flowers[i].height;\n        }\n    }\n\n    printf(\"%lld\\n\", sum);\n\n    free(flowers);\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

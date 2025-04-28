@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-383",
+    "problem_id": "p00588",
+    "language": "Python",
+    "solution": "```python\nimport sys\n\ndef min_cost(N, books):\n    dp = [[0] * (N + 1) for _ in range(2)]\n    dp[0][0] = 0\n    dp[1][0] = 0\n    for i in range(1, 4 * N + 1):\n        if books[i - 1] == 'Y':\n            dp[0][i] = dp[0][i - 1] + 0.5\n            dp[1][i] = dp[1][i - 1] + 0.5\n        else:\n            dp[0][i] = dp[0][i - 1]\n            dp[1][i] = dp[1][i - 1]\n        if i % 4 == 0:\n            dp[0][i] = min(dp[0][i], dp[0][i - 1] + 1)\n            dp[1][i] = min(dp[1][i], dp[1][i - 1] + 1)\n    return int(dp[0][4 * N] + dp[1][4 * N])\n\nT = int(input())\nfor _ in range(T):\n    N = int(input())\n    books = input()\n    print(min_cost(N, books))\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

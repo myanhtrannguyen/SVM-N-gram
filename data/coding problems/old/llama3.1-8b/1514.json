@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1514",
+    "problem_id": "p02786",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n#include <numeric>\n\nusing namespace std;\n\ntypedef long long ll;\n\nll solve(ll h) {\n    vector<ll> dp(h + 1);\n    dp[0] = 0;\n    for (ll i = 1; i <= h; i++) {\n        ll x = i;\n        ll cnt = 0;\n        while (x > 0) {\n            ll y = x / 2;\n            x = y;\n            cnt++;\n        }\n        dp[i] = cnt + dp[i - (1ll << (cnt - 1))];\n    }\n    return dp[h];\n}\n\nint main() {\n    ios_base::sync_with_stdio(false);\n    cin.tie(nullptr);\n    cout.tie(nullptr);\n\n    ll h;\n    cin >> h;\n    cout << solve(h) << '\\n';\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

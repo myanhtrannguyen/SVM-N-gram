@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3299",
+    "problem_id": "p01828",
+    "language": "Python",
+    "solution": "```python\ndef is_possible(s, t):\n    n = len(s)\n    for i in range(2):\n        flag = True\n        for j in range(n):\n            if s[j] != t[(j + i) % n]:\n                flag = False\n                break\n        if flag:\n            return \"Yes\"\n    return \"No\"\n\ns = input()\nt = input()\nprint(is_possible(s, t))\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

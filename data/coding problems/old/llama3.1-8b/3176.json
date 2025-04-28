@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3176",
+    "problem_id": "p01780",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\n#define MAXN 100005\n\nint n, ans;\nint depth[MAXN], parent[MAXN], child[MAXN][2];\n\nvoid dfs(int u, int d) {\n    depth[u] = d;\n    ans += d - depth[parent[u]];\n    if (child[parent[u]][0] == u) {\n        child[parent[u]][0] = child[u][0];\n        child[parent[u]][1] = child[u][1];\n    } else {\n        child[parent[u]][1] = child[u][0];\n        child[parent[u]][0] = child[u][1];\n    }\n    for (int i = 0; i < 2; i++) {\n        if (child[u][i] != -1) {\n            dfs(child[u][i], d + 1);\n        }\n    }\n}\n\nint main() {\n    scanf(\"%d\", &n);\n    for (int i = 2; i <= n; i++) {\n        scanf(\"%d\", &parent[i]);\n        child[parent[i]][0] = i;\n        child[parent[i]][1] = -1;\n    }\n    dfs(1, 0);\n    printf(\"%d\\n\", ans);\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

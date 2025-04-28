@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1426",
+    "problem_id": "p02764",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n#include <cmath>\n\nusing namespace std;\n\nstruct Meat {\n    int x, y, c;\n};\n\nbool compareMeat(Meat a, Meat b) {\n    return a.c * sqrt(a.x * a.x + a.y * a.y) < b.c * sqrt(b.x * b.x + b.y * b.y);\n}\n\ndouble solve(vector<Meat>& meats, int k) {\n    sort(meats.begin(), meats.end(), compareMeat);\n    double ans = 1e9;\n    for (int i = 0; i < meats.size(); i++) {\n        double x = meats[i].x, y = meats[i].y;\n        double time = 0;\n        for (int j = 0; j < k; j++) {\n            time = max(time, meats[j].c * sqrt((x - meats[j].x) * (x - meats[j].x) + (y - meats[j].y) * (y - meats[j].y)));\n        }\n        ans = min(ans, time);\n    }\n    return ans;\n}\n\nint main() {\n    int n, k;\n    cin >> n >> k;\n    vector<Meat> meats(n);\n    for (int i = 0; i < n; i++) {\n        cin >> meats[i].x >> meats[i].y >> meats[i].c;\n    }\n    cout << fixed << setprecision(6) << solve(meats, k) << endl;\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

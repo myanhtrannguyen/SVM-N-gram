@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-655",
+    "problem_id": "p00700",
+    "language": "Python",
+    "solution": "```python\nimport math\n\ndef find_treasure(dxi, dyi):\n    max_distance = 0\n    max_x = 0\n    x, y = 0, 0\n    for i in range(len(dxi)):\n        dx, dy = dxi[i], dyi[i]\n        if dx == 0 and dy == 0:\n            break\n        x += dx\n        y += dy\n        distance = math.sqrt(x**2 + y**2)\n        if distance > max_distance or (distance == max_distance and x > max_x):\n            max_distance = distance\n            max_x = x\n    return x, y\n\ndef main():\n    n = int(input())\n    for _ in range(n):\n        dxi = []\n        dyi = []\n        while True:\n            dx, dy = map(int, input().split())\n            if dx == 0 and dy == 0:\n                break\n            dxi.append(dx)\n            dyi.append(dy)\n        x, y = find_treasure(dxi, dyi)\n        print(x, y)\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

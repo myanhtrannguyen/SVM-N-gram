@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1134",
+    "problem_id": "p00820",
+    "language": "Java",
+    "solution": "```java\nimport java.util.Scanner;\n\npublic class Main {\n    static int[] sieve = new int[65536];\n\n    public static void main(String[] args) {\n        sieve[0] = 1;\n        sieve[1] = 1;\n        for (int i = 2; i * i < 65536; i++) {\n            if (sieve[i] == 0) {\n                for (int j = i * i; j < 65536; j += i) {\n                    sieve[j] = 1;\n                }\n            }\n        }\n\n        Scanner scanner = new Scanner(System.in);\n        while (true) {\n            int n = scanner.nextInt();\n            if (n == 0) break;\n            int count = 0;\n            for (int i = 0; i < 65536; i++) {\n                if (i * i > n) break;\n                for (int j = 0; j < 65536; j++) {\n                    if (j * j > n - i * i) break;\n                    int k = n - i * i - j * j;\n                    if (k < 0) continue;\n                    if (k * k < 65536 && sieve[k * k] == 0) {\n                        count++;\n                    }\n                }\n            }\n            System.out.println(count);\n        }\n    }\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

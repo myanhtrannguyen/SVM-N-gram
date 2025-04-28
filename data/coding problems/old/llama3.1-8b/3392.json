@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3392",
+    "problem_id": "p01947",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\n#define N 105\n#define M 21000\n\nint n, m, cnt, head[N * N], nxt[M], to[M], vis[N * N], pos[N][N];\nint tot, a[M], b[M];\n\nvoid add(int x, int y) {\n    nxt[++tot] = head[x];\n    head[x] = tot;\n    to[tot] = y;\n}\n\nvoid dfs(int u) {\n    vis[u] = 1;\n    for (int i = head[u]; i; i = nxt[i]) {\n        int v = to[i];\n        if (!vis[v]) {\n            pos[v / n][v % n] = ++cnt;\n            dfs(v);\n        }\n    }\n}\n\nint main() {\n    scanf(\"%d\", &n);\n    m = 2 * n * n - 2 * n;\n    for (int i = 1; i <= m; i++) {\n        scanf(\"%d%d\", &a[i], &b[i]);\n        add(a[i], b[i]);\n        add(b[i], a[i]);\n    }\n    dfs(1);\n    for (int i = 1; i <= n; i++) {\n        for (int j = 1; j <= n; j++) {\n            printf(\"%d \", pos[i][j]);\n        }\n        printf(\"\\n\");\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

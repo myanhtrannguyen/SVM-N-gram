@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3751",
+    "problem_id": "p02258",
+    "language": "Python",
+    "solution": "```python\nimport sys\n\ndef max_profit(n, rates):\n    max_diff = 0\n    min_rate = rates[0]\n    for rate in rates:\n        max_diff = max(max_diff, rate - min_rate)\n        min_rate = min(min_rate, rate)\n    return max_diff\n\nn = int(input())\nrates = []\nfor _ in range(n):\n    rates.append(int(input()))\nprint(max_profit(n, rates))\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

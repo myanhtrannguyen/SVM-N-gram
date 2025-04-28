@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2852",
+    "problem_id": "p03708",
+    "language": "Python",
+    "solution": "```python\nimport sys\n\ndef solve():\n    a, b = map(int, sys.stdin.readline().split())\n    ans = 1\n    for i in range(60):\n        if (a & (1 << i)) and (b & (1 << i)):\n            ans *= (1 << (i + 1)) - 1\n        elif a & (1 << i):\n            ans *= (1 << i)\n        elif b & (1 << i):\n            ans *= (1 << (i + 1)) - 1\n    print(ans)\n\nif __name__ == '__main__':\n    solve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

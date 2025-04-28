@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2270",
+    "problem_id": "p03563",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <cmath>\n\nint main() {\n    double R, G;\n    std::cin >> R >> G;\n    double performance = 2 * G - R;\n    if (performance > 4500) {\n        std::cout << performance - 4500 << \"-\" << 4500;\n    } else {\n        std::cout << performance;\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

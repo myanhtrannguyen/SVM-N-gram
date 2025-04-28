@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2804",
+    "problem_id": "p03696",
+    "language": "Python",
+    "solution": "```python\nimport sys\n\ndef solve():\n    n = int(input())\n    s = input()\n    cnt = s.count('(')\n    if cnt == n:\n        print(s)\n        return\n    if cnt == 0:\n        print('()' * (n // 2))\n        return\n    ans = []\n    for i in range(n - cnt):\n        ans.append('(')\n    for i in range(cnt):\n        ans.append(')')\n    for i in range(n - cnt):\n        ans.append('(')\n    for i in range(cnt):\n        ans.append(')')\n    print(''.join(ans))\n\nt = 1\nfor _ in range(t):\n    solve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

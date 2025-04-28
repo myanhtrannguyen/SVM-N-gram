@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3870",
+    "problem_id": "p02288",
+    "language": "Java",
+    "solution": "```java\nimport java.util.Scanner;\n\npublic class Main {\n    static int H;\n    static int[] A;\n\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        H = scanner.nextInt();\n        A = new int[H + 1];\n        for (int i = 1; i <= H; i++) {\n            A[i] = scanner.nextInt();\n        }\n        buildMaxHeap();\n        for (int i = 1; i <= H; i++) {\n            System.out.print(A[i] + \" \");\n        }\n    }\n\n    public static void maxHeapify(int[] A, int i) {\n        int l = 2 * i;\n        int r = 2 * i + 1;\n        int largest = i;\n        if (l <= H && A[l] > A[i]) {\n            largest = l;\n        }\n        if (r <= H && A[r] > A[largest]) {\n            largest = r;\n        }\n        if (largest != i) {\n            swap(A, i, largest);\n            maxHeapify(A, largest);\n        }\n    }\n\n    public static void buildMaxHeap() {\n        for (int i = H / 2; i >= 1; i--) {\n            maxHeapify(A, i);\n        }\n    }\n\n    public static void swap(int[] A, int i, int j) {\n        int temp = A[i];\n        A[i] = A[j];\n        A[j] = temp;\n    }\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

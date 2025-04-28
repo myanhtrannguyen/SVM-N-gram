@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3187",
+    "problem_id": "p01783",
+    "language": "Python",
+    "solution": "```python\nimport re\n\ndef replace_question_marks(s):\n    s = re.sub(r'\\?', '0', s)\n    return s\n\ndef is_valid(s):\n    if not re.match(r'^[LR\\(\\),0-9]+$', s):\n        return False\n    if re.search(r'\\([0-9]+[0-9]*\\)', s):\n        return False\n    if re.search(r'[0-9]+[0-9]*\\)', s):\n        return False\n    if re.search(r'\\([0-9]+[0-9]*\\)[0-9]+', s):\n        return False\n    if re.search(r'[0-9]+[0-9]*\\)[0-9]+', s):\n        return False\n    return True\n\ndef calculate_score(s):\n    s = replace_question_marks(s)\n    if not is_valid(s):\n        return 'invalid'\n    s = s.replace('L(', '(')\n    s = s.replace('R(', '(')\n    s = s.replace('R)', ')')\n    s = s.replace('L)', ')')\n    s = s.replace('L', '')\n    s = s.replace('R', '')\n    s = s.replace('(', '')\n    s = s.replace(')', '')\n    s = s.replace(',', '')\n    return s\n\ndef main():\n    s = input()\n    print(calculate_score(s))\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

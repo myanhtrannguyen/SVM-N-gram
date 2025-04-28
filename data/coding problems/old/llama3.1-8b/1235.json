@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1235",
+    "problem_id": "p00845",
+    "language": "Python",
+    "solution": "```python\nimport math\n\ndef distance(p1, p2):\n    return math.sqrt((p1[0] - p2[0])**2 + (p1[1] - p2[1])**2 + (p1[2] - p2[2])**2)\n\ndef angle(p1, p2):\n    return math.acos((p1[0]*p2[0] + p1[1]*p2[1] + p1[2]*p2[2]) / (distance(p1, (0, 0, 0)) * distance(p2, (0, 0, 0))))\n\ndef observable_stars(stars, telescopes):\n    seen = set()\n    for i, star in enumerate(stars):\n        for j, telescope in enumerate(telescopes):\n            if angle(star, telescope[:3]) < telescope[3]:\n                seen.add(i)\n    return len(seen)\n\ndef main():\n    while True:\n        n = int(input())\n        stars = []\n        for _ in range(n):\n            stars.append(tuple(map(float, input().split())))\n        m = int(input())\n        telescopes = []\n        for _ in range(m):\n            telescopes.append(tuple(map(float, input().split())))\n        if n == 0 and m == 0:\n            break\n        print(observable_stars(stars, telescopes))\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1626",
+    "problem_id": "p02946",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <string>\n#include <sstream>\n\nint main() {\n    int K, X;\n    std::cin >> K >> X;\n\n    int min = X - K + 1;\n    int max = X + K - 1;\n\n    if (min < 0) {\n        std::cout << min << \" \";\n        min++;\n    }\n\n    for (int i = min; i <= max; i++) {\n        std::cout << i << \" \";\n    }\n\n    if (max < 0) {\n        std::cout << max;\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

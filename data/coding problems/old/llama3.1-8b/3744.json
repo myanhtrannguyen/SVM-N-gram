@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3744",
+    "problem_id": "p02257",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdbool.h>\n\nbool is_prime(int num) {\n    if (num <= 1) return false;\n    for (int i = 2; i * i <= num; i++) {\n        if (num % i == 0) return false;\n    }\n    return true;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n\n    int count = 0;\n    for (int i = 0; i < n; i++) {\n        int num;\n        scanf(\"%d\", &num);\n        if (is_prime(num)) count++;\n    }\n\n    printf(\"%d\\n\", count);\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

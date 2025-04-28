@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3529",
+    "problem_id": "p02011",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n#include <cmath>\n\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n\n    vector<pair<double, double>> points(n);\n    for (int i = 0; i < n; i++) {\n        cin >> points[i].first >> points[i].second;\n    }\n\n    sort(points.begin(), points.end(), [](pair<double, double> a, pair<double, double> b) {\n        return a.first * a.first + a.second * a.second < b.first * b.first + b.second * b.second;\n    });\n\n    double sum = 0;\n    for (int i = 0; i < n; i++) {\n        double r = 0;\n        for (int j = 0; j < i; j++) {\n            double d = sqrt((points[i].first - points[j].first) * (points[i].first - points[j].first) +\n                            (points[i].second - points[j].second) * (points[i].second - points[j].second));\n            r = max(r, d);\n        }\n        sum += 2 * M_PI * r;\n    }\n\n    cout << fixed << setprecision(10) << sum << endl;\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

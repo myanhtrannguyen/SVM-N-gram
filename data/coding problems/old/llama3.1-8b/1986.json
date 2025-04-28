@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1986",
+    "problem_id": "p03175",
+    "language": "Python",
+    "solution": "```python\nfrom collections import defaultdict\nimport sys\n\ninput = sys.stdin.readline\n\nMOD = 10**9 + 7\n\ndef dfs(node, parent):\n    global dp\n    dp[node] = 1\n    for child in adj[node]:\n        if child == parent:\n            continue\n        dfs(child, node)\n        dp[node] = (dp[node] * (2 * dp[child] - 1 + MOD)) % MOD\n\nN = int(input())\nadj = defaultdict(list)\nfor _ in range(N - 1):\n    u, v = map(int, input().split())\n    adj[u].append(v)\n    adj[v].append(u)\n\ndp = [0] * (N + 1)\ndfs(1, -1)\nprint((dp[1] + MOD) % MOD)\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

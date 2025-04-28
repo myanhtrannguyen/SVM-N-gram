@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2321",
+    "problem_id": "p03576",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n#define MAXN 55\n\ntypedef struct {\n    int x, y;\n} Point;\n\nint cmpx(const void *a, const void *b) {\n    return ((Point *)a)->x - ((Point *)b)->x;\n}\n\nint cmpy(const void *a, const void *b) {\n    return ((Point *)a)->y - ((Point *)b)->y;\n}\n\nint main() {\n    int n, k;\n    scanf(\"%d%d\", &n, &k);\n\n    Point p[MAXN];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d%d\", &p[i].x, &p[i].y);\n    }\n\n    qsort(p, n, sizeof(Point), cmpx);\n    int minx = p[0].x, maxx = p[n - 1].x;\n\n    qsort(p, n, sizeof(Point), cmpy);\n    int miny = p[0].y, maxy = p[n - 1].y;\n\n    int ans = (maxx - minx) * (maxy - miny);\n    for (int i = 0; i < n - k + 1; i++) {\n        int x = p[i].x;\n        for (int j = i + 1; j < n - k + 1; j++) {\n            int y = p[j].y;\n            int minx = p[i].x, maxx = p[i + k - 1].x;\n            int miny = p[j].y, maxy = p[j + k - 1].y;\n            int area = (maxx - minx) * (maxy - miny);\n            ans = (area < ans) ? area : ans;\n        }\n    }\n\n    printf(\"%d\\n\", ans);\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

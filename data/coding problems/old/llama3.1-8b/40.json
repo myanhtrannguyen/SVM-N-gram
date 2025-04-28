@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-40",
+    "problem_id": "p00010",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <math.h>\n\ntypedef struct {\n    double x, y;\n} Point;\n\ndouble distance(Point p1, Point p2) {\n    return sqrt(pow(p1.x - p2.x, 2) + pow(p1.y - p2.y, 2));\n}\n\ndouble circumcenter(Point p1, Point p2, Point p3) {\n    double a = distance(p1, p2);\n    double b = distance(p2, p3);\n    double c = distance(p3, p1);\n    double s = (a + b + c) / 2;\n    double area = sqrt(s * (s - a) * (s - b) * (s - c));\n    double x = ((s - b) * (s - c)) / (2 * area);\n    double y = ((s - a) * (s - c)) / (2 * area);\n    return sqrt(pow(x - p1.x, 2) + pow(y - p1.y, 2));\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    while (n--) {\n        Point p1, p2, p3;\n        scanf(\"%lf %lf %lf %lf %lf %lf\", &p1.x, &p1.y, &p2.x, &p2.y, &p3.x, &p3.y);\n        double r = circumcenter(p1, p2, p3);\n        printf(\"%.3lf %.3lf %.3lf\\n\", (p1.x + p2.x + p3.x) / 3, (p1.y + p2.y + p3.y) / 3, r);\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

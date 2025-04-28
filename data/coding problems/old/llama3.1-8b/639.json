@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-639",
+    "problem_id": "p00696",
+    "language": "Python",
+    "solution": "```python\ndef print_multi_column(plen, cnum, width, cspace, lines):\n    page = []\n    current_line = ''\n    for line in lines:\n        if line:\n            if len(current_line) + len(line) + cspace > width:\n                page.append(current_line)\n                current_line = ''\n            current_line += line.ljust(width) + '.' * cspace\n        else:\n            if current_line:\n                page.append(current_line)\n                current_line = ''\n            page.append('.' * width)\n    if current_line:\n        page.append(current_line)\n    page.append('#')\n    return '\\n'.join(page[:cnum])\n\ndef main():\n    while True:\n        plen = int(input())\n        cnum = int(input())\n        width = int(input())\n        cspace = int(input())\n        lines = []\n        while True:\n            line = input()\n            if line == '?':\n                break\n            lines.append(line)\n        if lines:\n            print(print_multi_column(plen, cnum, width, cspace, lines))\n            print('?')\n        else:\n            break\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

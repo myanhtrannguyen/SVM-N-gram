@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-47",
+    "problem_id": "p00011",
+    "language": "Python",
+    "solution": "```python\ndef draw_lots(w, n, lines):\n    nums = list(range(1, w + 1))\n    for a, b in lines:\n        a -= 1\n        b -= 1\n        nums[a], nums[b] = nums[b], nums[a]\n    return ' '.join(map(str, nums))\n\nw = int(input())\nn = int(input())\nlines = [tuple(map(int, input().split(','))) for _ in range(n)]\nprint(draw_lots(w, n, lines))\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

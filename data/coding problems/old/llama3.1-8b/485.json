@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-485",
+    "problem_id": "p00614",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nint main() {\n    int p, n[7];\n    while (std::cin >> p) {\n        if (p == 0) break;\n        for (int i = 0; i < 7; ++i) {\n            std::cin >> n[i];\n        }\n        std::vector<int> coins = {500, 100, 50, 10, 5, 1};\n        std::vector<int> change;\n        for (int coin : coins) {\n            while (p >= coin && n[coin / 500] > 0) {\n                p -= coin;\n                n[coin / 500]--;\n                change.push_back(coin);\n            }\n        }\n        std::cout << change.size() + n[0] << std::endl;\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

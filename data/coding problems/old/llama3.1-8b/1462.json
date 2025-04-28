@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1462",
+    "problem_id": "p02773",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <map>\n#include <vector>\n#include <algorithm>\n#include <string>\n\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n\n    map<string, int> votes;\n    for (int i = 0; i < n; i++) {\n        string s;\n        cin >> s;\n        votes[s]++;\n    }\n\n    int maxVotes = 0;\n    for (auto& pair : votes) {\n        maxVotes = max(maxVotes, pair.second);\n    }\n\n    vector<string> result;\n    for (auto& pair : votes) {\n        if (pair.second == maxVotes) {\n            result.push_back(pair.first);\n        }\n    }\n\n    sort(result.begin(), result.end());\n\n    for (const auto& str : result) {\n        cout << str << endl;\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

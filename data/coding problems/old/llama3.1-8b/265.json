@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-265",
+    "problem_id": "p00377",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nint main() {\n    int n, c;\n    std::cin >> n >> c;\n\n    std::vector<int> cakes(c);\n    for (int i = 0; i < c; ++i) {\n        std::cin >> cakes[i];\n    }\n\n    int total_cakes = 0;\n    for (int cake : cakes) {\n        total_cakes += cake;\n    }\n\n    int total_people = n;\n    int cakes_per_person = total_cakes / total_people;\n    int remaining_cakes = total_cakes % total_people;\n\n    int my_cakes = cakes_per_person + remaining_cakes;\n\n    std::cout << my_cakes << std::endl;\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

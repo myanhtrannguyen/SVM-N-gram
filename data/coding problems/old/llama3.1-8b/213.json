@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-213",
+    "problem_id": "p00364",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nint main() {\n    int N, t;\n    std::cin >> N >> t;\n\n    std::vector<std::pair<int, int>> buildings(N);\n    for (int i = 0; i < N; ++i) {\n        std::cin >> buildings[i].first >> buildings[i].second;\n    }\n\n    std::sort(buildings.begin(), buildings.end());\n\n    int max_height = 0;\n    for (int i = 0; i < N; ++i) {\n        if (buildings[i].first < t) {\n            max_height = std::max(max_height, buildings[i].second);\n        }\n    }\n\n    double required_height = static_cast<double>(max_height) * (t - 1) / (buildings[N - 1].first - 1);\n    if (buildings[N - 1].first == 1) {\n        required_height = max_height;\n    }\n\n    std::cout << required_height << std::endl;\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3427",
+    "problem_id": "p01955",
+    "language": "Python",
+    "solution": "```python\nfrom collections import deque\nimport sys\ninput = sys.stdin.readline\n\nN = 10**5 + 5\nM = 10**9 + 7\n\ndef dfs(u, fa):\n    global cnt\n    if vis[u]:\n        return\n    vis[u] = 1\n    cnt += 1\n    for v in G[u]:\n        if v == fa:\n            continue\n        dfs(v, u)\n\ndef solve():\n    global cnt, vis, G, ans\n    n, q = map(int, input().split())\n    G = [[] for _ in range(n + 1)]\n    vis = [0] * (n + 1)\n    for _ in range(q):\n        x, y = map(int, input().split())\n        if x == y:\n            print(1)\n            continue\n        G[x].append(y)\n        G[y].append(x)\n        vis = [0] * (n + 1)\n        cnt = 0\n        dfs(1, 0)\n        if cnt == n:\n            ans = 1\n        else:\n            ans = 0\n            for i in range(1, n + 1):\n                if vis[i]:\n                    continue\n                cnt = 0\n                dfs(i, 0)\n                if cnt == n:\n                    ans = 2\n                    break\n        print(ans)\n\nT = 1\nfor _ in range(T):\n    solve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

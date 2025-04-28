@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-196",
+    "problem_id": "p00360",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <string.h>\n\nchar s[2000001];\nint n, k;\n\nvoid swap(char *a, char *b) {\n    char temp = *a;\n    *a = *b;\n    *b = temp;\n}\n\nvoid solve() {\n    for (int i = 0; i < n - 1; i++) {\n        for (int j = 0; j < n - i - 1; j++) {\n            if (s[j] > s[j + 1]) {\n                swap(&s[j], &s[j + 1]);\n                k--;\n                if (k == 0) {\n                    break;\n                }\n            }\n        }\n        if (k == 0) {\n            break;\n        }\n    }\n}\n\nint main() {\n    scanf(\"%s\", s);\n    scanf(\"%d\", &k);\n    n = strlen(s);\n    solve();\n    printf(\"%s\\n\", s);\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

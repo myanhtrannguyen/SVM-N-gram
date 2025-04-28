@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-919",
+    "problem_id": "p00766",
+    "language": "Python",
+    "solution": "```python\ndef count_pieces(h, w, grid):\n    visited = [[False for _ in range(w)] for _ in range(h)]\n    pieces = 0\n\n    def dfs(i, j):\n        if i < 0 or i >= h or j < 0 or j >= w or not grid[i][j] or visited[i][j]:\n            return\n        visited[i][j] = True\n        dfs(i - 1, j)\n        dfs(i + 1, j)\n        dfs(i, j - 1)\n        dfs(i, j + 1)\n\n    for i in range(h):\n        for j in range(w):\n            if grid[i][j] and not visited[i][j]:\n                dfs(i, j)\n                pieces += 1\n\n    return pieces\n\n\ndef main():\n    while True:\n        h, w = map(int, input().split())\n        if h == 0 and w == 0:\n            break\n        grid = []\n        for _ in range(h):\n            grid.append(list(input()))\n        print(count_pieces(h, w, grid))\n\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

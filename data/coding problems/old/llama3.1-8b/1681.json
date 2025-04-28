@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1681",
+    "problem_id": "p02960",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <string.h>\n#include <math.h>\n\n#define MOD 1000000007\n#define MAX 100005\n\nint dp[MAX][13];\nchar s[MAX];\n\nint dfs(int pos, int val) {\n    if (pos == strlen(s)) {\n        return (val % 13 == 5);\n    }\n    if (dp[pos][val] != -1) {\n        return dp[pos][val];\n    }\n    int res = 0;\n    for (int i = 0; i <= 9; i++) {\n        res += dfs(pos + 1, val * 10 + i);\n        res %= MOD;\n    }\n    if (s[pos] == '?') {\n        for (int i = 0; i <= 9; i++) {\n            res += dfs(pos + 1, val * 10 + i);\n            res %= MOD;\n        }\n    }\n    dp[pos][val] = res;\n    return res;\n}\n\nint main() {\n    scanf(\"%s\", s);\n    memset(dp, -1, sizeof(dp));\n    printf(\"%d\\n\", dfs(0, 0));\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-4",
+    "problem_id": "p00001",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n\nint main() {\n    int heights[10];\n    int i, j, temp;\n\n    // Read heights of mountains\n    for (i = 0; i < 10; i++) {\n        printf(\"Enter height of mountain %d: \", i + 1);\n        scanf(\"%d\", &heights[i]);\n    }\n\n    // Sort heights in descending order\n    for (i = 0; i < 10; i++) {\n        for (j = i + 1; j < 10; j++) {\n            if (heights[i] < heights[j]) {\n                temp = heights[i];\n                heights[i] = heights[j];\n                heights[j] = temp;\n            }\n        }\n    }\n\n    // Print heights of top 3 mountains\n    printf(\"Height of the 1st mountain: %d\\n\", heights[0]);\n    printf(\"Height of the 2nd mountain: %d\\n\", heights[1]);\n    printf(\"Height of the 3rd mountain: %d\\n\", heights[2]);\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

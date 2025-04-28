@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2488",
+    "problem_id": "p03617",
+    "language": "Python",
+    "solution": "```python\nimport sys\n\nq, h, s, d = map(int, input().split())\nn = int(input())\n\nbottles = [d, 0.5*h, 0.25*q, s]\ncosts = [d, 0.5*h, 0.25*q, s]\nfor i in range(3, -1, -1):\n    while n >= bottles[i] and n - bottles[i] >= bottles[i-1]:\n        n -= bottles[i]\n        print(costs[i], end='')\n\n    if n >= bottles[i]:\n        n -= bottles[i]\n        print(costs[i], end='')\n    else:\n        print(costs[i]*n, end='')\n        break\n\nprint()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2054",
+    "problem_id": "p03386",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <set>\n#include <algorithm>\n\nint main() {\n    int A, B, K;\n    std::cin >> A >> B >> K;\n\n    std::set<int> S;\n    for (int i = A; i <= B; ++i) {\n        S.insert(i);\n    }\n\n    std::set<int> smallest(K);\n    std::set<int> largest(K);\n\n    for (auto it = S.begin(); it != S.end() && smallest.size() < K; ++it) {\n        smallest.insert(*it);\n    }\n\n    for (auto it = S.rbegin(); it != S.rend() && largest.size() < K; ++it) {\n        largest.insert(*it);\n    }\n\n    for (auto it = S.begin(); it != S.end(); ++it) {\n        if (std::find(smallest.begin(), smallest.end(), *it) != smallest.end() ||\n            std::find(largest.begin(), largest.end(), *it) != largest.end()) {\n            std::cout << *it << \" \";\n        }\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

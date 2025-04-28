@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-807",
+    "problem_id": "p00738",
+    "language": "Python",
+    "solution": "```python\nimport math\n\ndef check_collision(x, y, r, blocks):\n    for block in blocks:\n        minx, miny, maxx, maxy, h = block\n        if (minx <= x <= maxx and miny <= y <= maxy and\n            math.sqrt((x - minx)**2 + (y - miny)**2) <= r + h):\n            return True\n    return False\n\ndef find_radius(sx, sy, ex, ey, blocks):\n    if (sx, sy) == (ex, ey):\n        return 0\n    for r in range(1001):\n        x, y = sx, sy\n        while x < ex:\n            if check_collision(x, y, r, blocks):\n                break\n            x += 1\n            if x == ex and y == ey:\n                return r\n        if x == ex and y == ey:\n            return r\n    return 0\n\ndef main():\n    while True:\n        n = int(input())\n        if n == 0:\n            break\n        sx, sy, ex, ey = map(int, input().split())\n        blocks = []\n        for _ in range(n):\n            minx, miny, maxx, maxy, h = map(int, input().split())\n            blocks.append((minx, miny, maxx, maxy, h))\n        print(find_radius(sx, sy, ex, ey, blocks))\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

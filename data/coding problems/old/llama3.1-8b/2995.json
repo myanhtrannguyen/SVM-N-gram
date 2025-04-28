@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2995",
+    "problem_id": "p01651",
+    "language": "Python",
+    "solution": "```python\nimport sys\n\ndef solve():\n    n = int(input())\n    if n == 0:\n        return\n    k = [0] * 64\n    for i in range(n):\n        k[i] = int(input())\n    a = 0\n    b = 0\n    for i in range(n):\n        if k[i] == 0:\n            break\n        a |= (1 << i) * (k[i] - (k[i-1] if i > 0 else 0))\n        b |= (1 << i) * (k[i] - (k[i-1] if i > 0 else 0))\n    if a == b:\n        print(\"None\")\n    elif (b - a + 1) == (1 << n):\n        print(a, b)\n    else:\n        print(\"Many\")\n\nt = 1\nwhile True:\n    solve()\n    t -= 1\n    if t == 0:\n        break\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

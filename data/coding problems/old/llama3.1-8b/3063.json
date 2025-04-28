@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3063",
+    "problem_id": "p01679",
+    "language": "Python",
+    "solution": "```python\nimport sys\nfrom collections import deque\n\ndef dijkstra(graph, start):\n    distances = {node: float('inf') for node in graph}\n    distances[start] = 0\n    queue = deque([start])\n    while queue:\n        node = queue.popleft()\n        for neighbor, weight in graph[node].items():\n            if distances[neighbor] > distances[node] + weight:\n                distances[neighbor] = distances[node] + weight\n                queue.append(neighbor)\n    return distances\n\ndef solve():\n    n, m, l, s, t = map(int, sys.stdin.readline().split())\n    graph = {i: {} for i in range(1, n + 1)}\n    for _ in range(m):\n        u, v, w = map(int, sys.stdin.readline().split())\n        graph[u][v] = w\n        graph[v][u] = w\n    siros = {}\n    for _ in range(l):\n        j, e = map(int, sys.stdin.readline().split())\n        siros[j] = e\n    distances = dijkstra(graph, s)\n    max_eat = 0\n    for siro in siros:\n        if distances[siro] + siros[siro] <= t:\n            max_eat += 1\n    print(max_eat)\n\nfor _ in range(int(sys.stdin.readline())):\n    solve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

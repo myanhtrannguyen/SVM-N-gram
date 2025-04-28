@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2264",
+    "problem_id": "p03561",
+    "language": "Python",
+    "solution": "```python\nimport math\n\ndef feis(k, n):\n    total = 0\n    for i in range(1, k + 1):\n        total += math.comb(n + i - 1, i - 1)\n    return total\n\ndef find_sequence(k, n):\n    total = feis(k, n)\n    target = math.ceil(total / 2)\n    sequence = []\n    for i in range(1, k + 1):\n        for j in range(1, i + 1):\n            if len(sequence) == n:\n                break\n            total -= math.comb(n + i - 1, i - 1)\n            if total <= target:\n                sequence.append(i)\n                break\n    return ' '.join(map(str, sequence))\n\nk, n = map(int, input().split())\nprint(find_sequence(k, n))\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-89",
+    "problem_id": "p00022",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <climits>\n\nint maxSubsequenceSum(const std::vector<int>& arr) {\n    int maxSum = INT_MIN;\n    int currentSum = 0;\n\n    for (int num : arr) {\n        currentSum = std::max(num, currentSum + num);\n        maxSum = std::max(maxSum, currentSum);\n    }\n\n    return maxSum;\n}\n\nint main() {\n    int n;\n    while (std::cin >> n) {\n        if (n == 0) break;\n\n        std::vector<int> arr(n);\n        for (int i = 0; i < n; ++i) {\n            std::cin >> arr[i];\n        }\n\n        std::cout << maxSubsequenceSum(arr) << std::endl;\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1275",
+    "problem_id": "p00855",
+    "language": "Python",
+    "solution": "```python\ndef sieve_of_eratosthenes(n):\n    primes = [True] * (n + 1)\n    primes[0] = primes[1] = False\n    p = 2\n    while p**2 <= n:\n        if primes[p]:\n            for i in range(p**2, n + 1, p):\n                primes[i] = False\n        p += 1\n    return [p for p in range(2, n + 1) if primes[p]]\n\ndef prime_gap(n, primes):\n    for i in range(len(primes) - 1):\n        if primes[i] < n < primes[i + 1]:\n            return primes[i + 1] - primes[i] - (n - primes[i] - 1)\n    return 0\n\nprimes = sieve_of_eratosthenes(1299709)\nwhile True:\n    try:\n        n = int(input())\n        if n == 0:\n            break\n        print(prime_gap(n, primes))\n    except ValueError:\n        break\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

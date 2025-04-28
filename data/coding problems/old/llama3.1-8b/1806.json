@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1806",
+    "problem_id": "p03130",
+    "language": "Python",
+    "solution": "```python\nfrom collections import defaultdict\n\ndef can_visit_all_towns():\n    roads = defaultdict(list)\n    for a, b in (map(int, line.split()) for line in open(0)):\n        roads[a].append(b)\n        roads[b].append(a)\n\n    visited = set()\n    for town in roads:\n        if town not in visited:\n            visited.add(town)\n            stack = [(town, roads[town])]\n            while stack:\n                current_town, neighbors = stack.pop()\n                if len(visited) == 4:\n                    return \"YES\"\n                for neighbor in neighbors:\n                    if neighbor not in visited:\n                        visited.add(neighbor)\n                        stack.append((neighbor, roads[neighbor]))\n\n    return \"NO\"\n\nprint(can_visit_all_towns())\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

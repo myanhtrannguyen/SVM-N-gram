@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2947",
+    "problem_id": "p03732",
+    "language": "Java",
+    "solution": "```java\nimport java.util.Scanner;\n\npublic class Main {\n    static int N, W;\n    static int[][] items = new int[101][2];\n\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        N = scanner.nextInt();\n        W = scanner.nextInt();\n        for (int i = 1; i <= N; i++) {\n            items[i][0] = scanner.nextInt();\n            items[i][1] = scanner.nextInt();\n        }\n        System.out.println(knapsack(W));\n    }\n\n    public static int knapsack(int W) {\n        int[][] dp = new int[N + 1][W + 1];\n        for (int i = 1; i <= N; i++) {\n            for (int j = 1; j <= W; j++) {\n                if (items[i][0] > j) {\n                    dp[i][j] = dp[i - 1][j];\n                } else {\n                    dp[i][j] = Math.max(dp[i - 1][j], dp[i - 1][j - items[i][0]] + items[i][1]);\n                }\n            }\n        }\n        return dp[N][W];\n    }\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

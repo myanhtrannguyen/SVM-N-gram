@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3579",
+    "problem_id": "p02075",
+    "language": "Python",
+    "solution": "```python\nimport sys\nimport math\n\ninput = sys.stdin.readline\n\nN = int(input())\nxZ, vZ = map(float, input().split())\ninf = 1e18\nans = [inf] * N\n\nfor i in range(N):\n    xi, vi = map(float, input().split())\n    if vi == 0:\n        if xi < xZ:\n            ans[i] = -1\n        else:\n            ans[i] = inf\n        continue\n    t = (xZ - xi) / (vi - vZ)\n    if t < 0:\n        ans[i] = -1\n    elif t > 0:\n        ans[i] = t\n\nfor i in range(N):\n    if ans[i] == inf:\n        ans[i] = -1\nprint('\\n'.join(map(str, ans)))\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

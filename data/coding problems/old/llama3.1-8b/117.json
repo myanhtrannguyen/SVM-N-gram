@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-117",
+    "problem_id": "p00029",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <string>\n#include <map>\n#include <algorithm>\n\nint main() {\n    std::string text;\n    std::getline(std::cin, text);\n\n    std::map<std::string, int> wordCount;\n    std::map<std::string, int> maxWordLength;\n\n    size_t pos = 0;\n    while ((pos = text.find(' ')) != std::string::npos) {\n        std::string word = text.substr(0, pos);\n        ++wordCount[word];\n        maxWordLength[word] = std::max(maxWordLength[word], static_cast<int>(word.length()));\n        text.erase(0, pos + 1);\n    }\n\n    std::string maxWord;\n    int maxCount = 0;\n    for (const auto& pair : wordCount) {\n        if (pair.second > maxCount) {\n            maxCount = pair.second;\n            maxWord = pair.first;\n        }\n    }\n\n    std::string maxWordLengthWord;\n    for (const auto& pair : maxWordLength) {\n        if (pair.second > maxWordLength[\"\"]) {\n            maxWordLength[\"\"] = pair.second;\n            maxWordLengthWord = pair.first;\n        }\n    }\n\n    std::cout << maxWord << \" \" << maxWordLengthWord << std::endl;\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

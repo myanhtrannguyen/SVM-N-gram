@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3791",
+    "problem_id": "p02268",
+    "language": "Python",
+    "solution": "```python\nn = int(input())\nS = list(map(int, input().split()))\nq = int(input())\nT = list(map(int, input().split()))\n\ni = 0\nfor num in T:\n    while i < n and S[i] < num:\n        i += 1\n    if i < n and S[i] == num:\n        i += 1\n\nprint(n - i)\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

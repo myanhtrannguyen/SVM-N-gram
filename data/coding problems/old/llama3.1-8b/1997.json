@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1997",
+    "problem_id": "p03372",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n\ntypedef struct {\n    int x;\n    int v;\n} sushi;\n\nint cmp(const void *a, const void *b) {\n    return ((sushi *)a)->x - ((sushi *)b)->x;\n}\n\nint main() {\n    int N;\n    long long C;\n    scanf(\"%d%lld\", &N, &C);\n\n    sushi *s = (sushi *)malloc(N * sizeof(sushi));\n    for (int i = 0; i < N; i++) {\n        scanf(\"%d%d\", &s[i].x, &s[i].v);\n    }\n\n    qsort(s, N, sizeof(sushi), cmp);\n\n    long long max = 0;\n    long long sum = 0;\n    long long dist = 0;\n    for (int i = 0; i < N; i++) {\n        dist = (s[i].x - s[0].x + C) % C;\n        sum = s[i].v - dist;\n        if (sum > max) {\n            max = sum;\n        }\n    }\n\n    printf(\"%lld\\n\", max);\n\n    free(s);\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

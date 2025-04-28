@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2842",
+    "problem_id": "p03706",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <string>\n#include <algorithm>\n\nusing namespace std;\n\nint main() {\n    string s;\n    cin >> s;\n    int n = s.length();\n    vector<int> up(n + 1), down(n + 1);\n    for (int i = 1; i <= n; i++) {\n        if (s[i - 1] == 'U') up[i] = up[i - 1] + 1;\n        else down[i] = down[i - 1] + 1;\n    }\n    long long ans = 0;\n    for (int i = 1; i <= n; i++) {\n        for (int j = 1; j <= n; j++) {\n            int x = abs(i - j);\n            int y = up[i] + down[j] - 1;\n            if (i < j) y = min(y, up[i] + down[j]);\n            else y = min(y, down[i] + up[j]);\n            ans += y;\n        }\n    }\n    cout << ans << endl;\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

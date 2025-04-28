@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1743",
+    "problem_id": "p03115",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n\ntypedef long long ll;\n\nstruct point {\n    ll x, y;\n};\n\nint cmpx(const void *a, const void *b) {\n    return ((struct point *)a)->x - ((struct point *)b)->x;\n}\n\nint cmpy(const void *a, const void *b) {\n    return ((struct point *)a)->y - ((struct point *)b)->y;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    struct point *p = (struct point *)malloc(n * sizeof(struct point));\n    for (int i = 0; i < n; i++) {\n        scanf(\"%lld %lld\", &p[i].x, &p[i].y);\n    }\n    qsort(p, n, sizeof(struct point), cmpy);\n    ll x = p[0].x;\n    for (int i = 0; i < n; i++) {\n        if (p[i].y == p[i + 1].y) {\n            x = p[i].x;\n        } else {\n            break;\n        }\n    }\n    printf(\"%lld\\n\", x - p[0].y);\n    free(p);\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

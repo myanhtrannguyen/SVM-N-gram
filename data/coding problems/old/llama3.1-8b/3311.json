@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3311",
+    "problem_id": "p01831",
+    "language": "Python",
+    "solution": "```python\ndef line_gimmick(n, s):\n    s = ' ' + s\n    ans = 0\n    i = 1\n    while i <= n:\n        cnt = 0\n        while i <= n and s[i] == s[i-1]:\n            i += 1\n            cnt += 1\n        if s[i] == s[i-1]:\n            break\n        ans += cnt + 1\n        i += 1\n    return ans\n\nn = int(input())\ns = input()\nprint(line_gimmick(n, s))\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

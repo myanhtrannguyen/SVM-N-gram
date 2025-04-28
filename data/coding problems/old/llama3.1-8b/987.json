@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-987",
+    "problem_id": "p00783",
+    "language": "Python",
+    "solution": "```python\nimport re\nimport itertools\n\ndef find_palindromes(line):\n    # Remove non-alphabet characters and convert to uppercase\n    line = re.sub('[^a-zA-Z]', '', line).upper()\n    \n    # Find all substrings of length 3 or more\n    substrings = [''.join(p) for i in range(len(line)) for p in itertools.combinations(line, i+3)]\n    \n    # Filter out palindromes\n    palindromes = [s for s in substrings if s == s[::-1]]\n    \n    # Remove palindromes that appear in the center of another palindrome\n    for p in palindromes[:]:\n        for q in palindromes:\n            if p != q and p in q:\n                    palindromes.remove(p)\n    \n    # Remove duplicates\n    palindromes = list(set(palindromes))\n    \n    return ' '.join(palindromes)\n\nwith open('input.txt', 'r') as f:\n    for line in f:\n        print(find_palindromes(line.strip()))\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

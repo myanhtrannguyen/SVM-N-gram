@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3341",
+    "problem_id": "p01880",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n#include <string>\n#include <sstream>\n\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n\n    vector<int> a(n);\n    for (int i = 0; i < n; i++) {\n        cin >> a[i];\n    }\n\n    int max_product = -1;\n    for (int i = 0; i < n; i++) {\n        for (int j = i + 1; j < n; j++) {\n            string product_str = to_string(a[i]) + to_string(a[j]);\n            string sorted_str = product_str;\n            sort(sorted_str.begin(), sorted_str.end());\n\n            if (product_str == sorted_str) {\n                int product = a[i] * a[j];\n                max_product = max(max_product, product);\n            }\n        }\n    }\n\n    cout << max_product << endl;\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

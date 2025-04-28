@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3135",
+    "problem_id": "p01711",
+    "language": "Python",
+    "solution": "```python\ndef is_idempotent(filter_str):\n    n = 64\n    filter_map = {}\n    for i in range(n):\n        filter_map[i] = filter_str[i*8:(i+1)*8]\n\n    for i in range(n):\n        new_filter = ''\n        for j in range(n):\n            bits = (i & j) << 3\n            for k in range(8):\n                new_filter += filter_map.get(bits + (j >> 3) * 8 + k, '0')\n        if filter_map.get(i, '0') != new_filter:\n            return False\n    return True\n\nwhile True:\n    filter_str = input()\n    if filter_str == '#':\n        break\n    print('yes' if is_idempotent(filter_str) else 'no')\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

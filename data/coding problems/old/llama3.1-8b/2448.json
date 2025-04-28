@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2448",
+    "problem_id": "p03607",
+    "language": "Python",
+    "solution": "```python\nfrom collections import defaultdict\n\nn = int(input())\nA = list(map(int, input().split()))\n\nseen = defaultdict(int)\ncount = 0\n\nfor num in A:\n    if seen[num]:\n        seen[num] = 0\n    else:\n        seen[num] = 1\n        count += 1\n\nprint(count)\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

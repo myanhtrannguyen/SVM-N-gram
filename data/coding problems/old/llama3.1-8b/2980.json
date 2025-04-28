@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2980",
+    "problem_id": "p01648",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n#define MAXN 1005\n#define MAXM 10005\n\ntypedef struct Edge {\n    int u, v, w;\n} Edge;\n\nint n, m;\nEdge e[MAXM];\nint fa[MAXN];\n\nint find(int x) {\n    if (fa[x] != x) fa[x] = find(fa[x]);\n    return fa[x];\n}\n\nint kruskal() {\n    int i, j, cnt = 0, sum = 0;\n    for (i = 1; i <= n; i++) fa[i] = i;\n    qsort(e, m, sizeof(Edge), cmp);\n    for (i = 0; i < m; i++) {\n        int u = find(e[i].u), v = find(e[i].v);\n        if (u != v) {\n            fa[u] = v;\n            cnt++;\n            sum += e[i].w;\n            if (cnt == n - 1) break;\n        }\n    }\n    return sum / (n - 1);\n}\n\nint cmp(const void *a, const void *b) {\n    Edge *x = (Edge *)a, *y = (Edge *)b;\n    return x->w - y->w;\n}\n\nint main() {\n    while (scanf(\"%d%d\", &n, &m) == 2 && n && m) {\n        int i;\n        for (i = 0; i < m; i++) scanf(\"%d%d%d\", &e[i].u, &e[i].v, &e[i].w);\n        printf(\"%d\\n\", kruskal());\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

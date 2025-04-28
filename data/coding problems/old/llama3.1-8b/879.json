@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-879",
+    "problem_id": "p00756",
+    "language": "Python",
+    "solution": "```python\nimport math\nfrom collections import defaultdict\n\ndef distance(x1, y1, x2, y2):\n    return math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2)\n\ndef can_remove(discs, i, j):\n    return discs[i]['x'] == discs[j]['x'] and discs[i]['y'] == discs[j]['y']\n\ndef dfs(discs, visited, color, i):\n    if visited[i]:\n        return 0\n    visited[i] = True\n    max_removal = 1\n    for j in range(len(discs)):\n        if discs[i]['color'] == discs[j]['color'] and not can_remove(discs, i, j) and not visited[j]:\n            max_removal = max(max_removal, 1 + dfs(discs, visited, color, j))\n    return max_removal\n\ndef solve():\n    n = int(input())\n    discs = []\n    for _ in range(n):\n        x, y, r, c = map(int, input().split())\n        discs.append({'x': x, 'y': y, 'r': r, 'color': c})\n    visited = [False] * n\n    max_removal = 0\n    for i in range(n):\n        if not visited[i]:\n            max_removal = max(max_removal, dfs(discs, visited, discs[i]['color'], i))\n    print(max_removal)\n\nwhile True:\n    n = int(input())\n    if n == 0:\n        break\n    solve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

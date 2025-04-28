@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1155",
+    "problem_id": "p00825",
+    "language": "Python",
+    "solution": "```python\nimport sys\n\nclass Application:\n    def __init__(self, i, j, w):\n        self.i = i\n        self.j = j\n        self.w = w\n\ndef solve(apps):\n    apps.sort(key=lambda x: x.w, reverse=True)\n    rooms = [0] * 366\n    total_income = 0\n\n    for app in apps:\n        for day in range(app.i, app.j + 1):\n            if rooms[day] == 0:\n                rooms[day] = app.w\n                total_income += app.w\n                break\n\n    return total_income\n\ndef main():\n    input = sys.stdin.readline\n    output = sys.stdout.write\n\n    t = 1\n    for _ in range(t):\n        n = int(input())\n        apps = []\n        for _ in range(n):\n            i, j, w = map(int, input().split())\n            apps.append(Application(i, j, w))\n\n        output(str(solve(apps)) + '\\n')\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

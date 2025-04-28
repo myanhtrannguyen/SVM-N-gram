@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1852",
+    "problem_id": "p03142",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <map>\n#include <algorithm>\n\nusing namespace std;\n\nconst int N = 1e5 + 5;\n\nint n, m;\nvector<int> g[N];\nmap<pair<int, int>, int> mp;\nint par[N];\n\nvoid dfs(int u) {\n    for (int v : g[u]) {\n        if (par[v] == 0) {\n            par[v] = u;\n            dfs(v);\n        }\n    }\n}\n\nint main() {\n    ios_base::sync_with_stdio(false);\n    cin.tie(nullptr);\n\n    cin >> n >> m;\n    for (int i = 1; i <= n + m - 1; i++) {\n        int u, v;\n        cin >> u >> v;\n        mp[{u, v}] = i;\n        g[i].push_back(u);\n        g[i].push_back(v);\n    }\n\n    for (auto& [key, value] : mp) {\n        int u = key.first, v = key.second;\n        if (par[u] == 0) {\n            par[u] = v;\n            dfs(u);\n        }\n    }\n\n    for (int i = 1; i <= n; i++) {\n        if (par[i] == 0) {\n            par[i] = i;\n        }\n        cout << par[i] << '\\n';\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

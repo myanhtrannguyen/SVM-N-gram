@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2628",
+    "problem_id": "p03652",
+    "language": "Python",
+    "solution": "```python\nfrom collections import Counter\n\nn, m = map(int, input().split())\nA = [list(map(int, input().split())) for _ in range(n)]\n\ncnt = Counter()\nfor row in A:\n    cnt[row[0]] += 1\n\nans = n\nfor i in range(1, m + 1):\n    cnt[i] -= 1\n    ans = min(ans, max(cnt.values()))\n\nprint(ans)\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

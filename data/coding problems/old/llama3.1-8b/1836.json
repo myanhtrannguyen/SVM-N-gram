@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1836",
+    "problem_id": "p03138",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nint maxXor(std::vector<int>& nums, int k) {\n    int n = nums.size();\n    int maxVal = 0;\n    for (int i = 0; i < n; i++) {\n        maxVal = std::max(maxVal, nums[i]);\n    }\n    int maxRes = 0;\n    for (int i = 0; i < n; i++) {\n        int res = 0;\n        for (int j = 0; j < 32; j++) {\n            if ((maxVal >> j) & 1) {\n                if ((nums[i] >> j) & 1) {\n                    res += (1 << j);\n                } else {\n                    res += (1 << (j + 1)) - 1;\n                }\n            } else {\n                if ((nums[i] >> j) & 1) {\n                    res += (1 << (j + 1)) - 1;\n                }\n            }\n        }\n        maxRes = std::max(maxRes, res);\n    }\n    return maxRes;\n}\n\nint main() {\n    std::vector<int> nums = {1, 2, 3, 4, 5};\n    int k = 3;\n    std::cout << maxXor(nums, k) << std::endl;\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2844",
+    "problem_id": "p03706",
+    "language": "Python",
+    "solution": "```python\nimport sys\n\ndef solve():\n    S = input()\n    n = len(S)\n    up = [0] * n\n    down = [0] * n\n    up[0] = 1\n    down[n - 1] = 1\n    for i in range(1, n):\n        if S[i] == 'U':\n            up[i] = up[i - 1] + 1\n        else:\n            down[n - i - 1] = down[n - i] + 1\n    ans = 0\n    for i in range(n):\n        for j in range(n):\n            ans += abs(i - j) + up[i] + down[j]\n    print(ans)\n\nif __name__ == \"__main__\":\n    solve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-903",
+    "problem_id": "p00762",
+    "language": "Python",
+    "solution": "```python\ndef roll_dice(t, f, dice):\n    if t == 1 or t == 2 or t == 3:\n        return dice\n    else:\n        if f == 1 or f == 2 or f == 3:\n            return [t, f]\n        else:\n            if t > f:\n                return [t, f]\n            else:\n                return [f, t]\n\ndef fall_dice(dice):\n    new_dice = []\n    for i in range(len(dice) - 1):\n        new_dice.append(dice[i])\n    return new_dice\n\ndef count_faces(dice):\n    count = [0, 0, 0, 0, 0, 0]\n    for i in range(len(dice)):\n        count[dice[i][0] - 1] += 1\n    return count\n\ndef main():\n    while True:\n        n = int(input())\n        if n == 0:\n            break\n        dice = []\n        for i in range(n):\n            t, f = map(int, input().split())\n            dice.append(roll_dice(t, f, dice))\n        while len(dice) > 1:\n            dice = fall_dice(dice)\n            for i in range(len(dice) - 1):\n                dice[i] = roll_dice(dice[i][0], dice[i + 1][1], dice[i])\n        count = count_faces(dice)\n        print(*count)\n\nmain()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

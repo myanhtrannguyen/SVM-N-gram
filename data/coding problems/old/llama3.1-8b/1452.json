@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1452",
+    "problem_id": "p02770",
+    "language": "Python",
+    "solution": "```python\nimport sys\n\ndef solve():\n    k, q = map(int, sys.stdin.readline().split())\n    d = list(map(int, sys.stdin.readline().split()))\n\n    for _ in range(q):\n        n, x, m = map(int, sys.stdin.readline().split())\n        ans = 0\n        a = [x]\n        for i in range(n - 1):\n            a.append(a[-1] + d[i % k])\n        for i in range(n - 2):\n            if (a[i + 1] % m) > (a[i] % m):\n                ans += 1\n        print(ans)\n\nif __name__ == \"__main__\":\n    solve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

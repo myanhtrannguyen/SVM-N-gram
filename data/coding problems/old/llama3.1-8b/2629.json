@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2629",
+    "problem_id": "p03653",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\ntypedef struct {\n    int gold;\n    int silver;\n    int bronze;\n} Person;\n\nint compare(const void *a, const void *b) {\n    Person *p1 = (Person *)a;\n    Person *p2 = (Person *)b;\n    if (p1->gold > p2->gold) return -1;\n    if (p1->gold < p2->gold) return 1;\n    if (p1->silver > p2->silver) return -1;\n    if (p1->silver < p2->silver) return 1;\n    if (p1->bronze > p2->bronze) return -1;\n    if (p1->bronze < p2->bronze) return 1;\n    return 0;\n}\n\nint main() {\n    int X, Y, Z;\n    scanf(\"%d %d %d\", &X, &Y, &Z);\n    Person people[X + Y + Z];\n    for (int i = 0; i < X + Y + Z; i++) {\n        scanf(\"%d %d %d\", &people[i].gold, &people[i].silver, &people[i].bronze);\n    }\n    qsort(people, X + Y + Z, sizeof(Person), compare);\n    long long total = 0;\n    for (int i = 0; i < X; i++) {\n        total += people[i].gold;\n    }\n    for (int i = X; i < X + Y; i++) {\n        total += people[i].silver;\n    }\n    for (int i = X + Y; i < X + Y + Z; i++) {\n        total += people[i].bronze;\n    }\n    printf(\"%lld\\n\", total);\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

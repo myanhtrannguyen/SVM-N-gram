@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3567",
+    "problem_id": "p02072",
+    "language": "Python",
+    "solution": "```python\nimport math\nimport sys\n\ndef distance(x1, y1, x2, y2):\n    return math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2)\n\ndef calculate_sum(base_positions, k):\n    n = len(base_positions)\n    base_positions.sort(key=lambda x: distance(0, 0, x[0], x[1]))\n    furthest_k_bases = base_positions[-k:]\n    headquarters = (0, 0)\n    min_sum = sys.float_info.max\n    for i in range(n):\n        for j in range(i + 1, n):\n            x1, y1 = base_positions[i]\n            x2, y2 = base_positions[j]\n            headquarters_x = (x1 + x2) / 2\n            headquarters_y = (y1 + y2) / 2\n            sum_distance = 0\n            for base in furthest_k_bases:\n                sum_distance += distance(headquarters_x, headquarters_y, base[0], base[1])\n            min_sum = min(min_sum, sum_distance)\n    return min_sum\n\ndef main():\n    n, k = map(int, input().split())\n    base_positions = []\n    for _ in range(n):\n        x, y = map(int, input().split())\n        base_positions.append((x, y))\n    print(f\"{calculate_sum(base_positions, k):.5f}\")\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

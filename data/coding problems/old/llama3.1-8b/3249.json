@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3249",
+    "problem_id": "p01799",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nstruct Character {\n    int hp, dp;\n};\n\nbool compareCharacters(const Character& a, const Character& b) {\n    if (std::abs(a.hp - b.hp) > C) {\n        return a.hp > b.hp;\n    } else {\n        return a.dp > b.dp;\n    }\n}\n\nint C;\n\nint main() {\n    int N;\n    std::cin >> N >> C;\n\n    std::vector<Character> characters(N);\n    for (int i = 0; i < N; i++) {\n        std::cin >> characters[i].hp >> characters[i].dp;\n    }\n\n    std::sort(characters.begin(), characters.end(), compareCharacters);\n\n    int count = 1;\n    for (int i = 1; i < N; i++) {\n        if (std::abs(characters[i].hp - characters[0].hp) > C) {\n            if (characters[i].hp > characters[0].hp) {\n                count++;\n            }\n        } else {\n            if (characters[i].dp > characters[0].dp) {\n                count++;\n            }\n        }\n    }\n\n    std::cout << count << std::endl;\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

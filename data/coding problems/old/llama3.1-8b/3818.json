@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3818",
+    "problem_id": "p02275",
+    "language": "Java",
+    "solution": "```java\nimport java.util.Scanner;\n\npublic class CountingSort {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        int n = scanner.nextInt();\n        int[] A = new int[n];\n        int[] B = new int[n];\n        int[] C = new int[10001];\n\n        for (int i = 0; i < n; i++) {\n            A[i] = scanner.nextInt();\n        }\n\n        for (int i = 0; i < n; i++) {\n            C[A[i]]++;\n        }\n\n        for (int i = 1; i < 10001; i++) {\n            C[i] += C[i - 1];\n        }\n\n        for (int i = n - 1; i >= 0; i--) {\n            B[C[A[i]] - 1] = A[i];\n            C[A[i]]--;\n        }\n\n        for (int i = 0; i < n; i++) {\n            System.out.print(B[i] + \" \");\n        }\n    }\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

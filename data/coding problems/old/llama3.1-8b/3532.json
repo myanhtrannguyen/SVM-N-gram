@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3532",
+    "problem_id": "p02012",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\ntypedef long long ll;\n\nll sum(ll n) {\n    return n * (n + 1) / 2;\n}\n\nint main() {\n    ll S;\n    scanf(\"%lld\", &S);\n\n    ll ans = 0;\n    for (ll i = 1; i <= 10000; i++) {\n        ll x = sum(i) * sum(i);\n        if (x > S) break;\n        ll y = S - x;\n        ll j = 1;\n        while (j * (j + 1) / 2 <= y) j++;\n        j--;\n        ans += j;\n    }\n\n    printf(\"%lld\\n\", ans);\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

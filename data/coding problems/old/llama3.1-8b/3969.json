@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3969",
+    "problem_id": "p02313",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <cmath>\n\ndouble areaOfIntersection(int c1x, int c1y, int c1r, int c2x, int c2y, int c2r) {\n    double dx = c1x - c2x;\n    double dy = c1y - c2y;\n    double d = std::sqrt(dx * dx + dy * dy);\n    double a = (c1r * c1r - c2r * c2r + d * d) / (2 * d);\n    double h = std::sqrt(c1r * c1r - a * a);\n    double area = 0.0;\n\n    if (a == 0) {\n        if (d == 0 && c1r == c2r) {\n            area = std::pow(c1r, 2) * std::acos(-1);\n        } else {\n            return 0.0;\n        }\n    } else {\n        area += 0.5 * std::acos((d + a - c1r) / (2 * a)) * h;\n        area += 0.5 * std::acos((d + a - c2r) / (2 * a)) * h;\n        area += 0.5 * std::acos((d - a - c1r) / (2 * h)) * a;\n        area += 0.5 * std::acos((d - a - c2r) / (2 * h)) * a;\n    }\n\n    return area;\n}\n\nint main() {\n    int c1x, c1y, c1r, c2x, c2y, c2r;\n    std::cin >> c1x >> c1y >> c1r >> c2x >> c2y >> c2r;\n    double result = areaOfIntersection(c1x, c1y, c1r, c2x, c2y, c2r);\n    std::cout << std::fixed << std::setprecision(15) << result << std::endl;\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

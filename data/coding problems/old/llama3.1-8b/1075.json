@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1075",
+    "problem_id": "p00805",
+    "language": "Python",
+    "solution": "```python\nimport math\n\ndef calculate_distance(x1, y1, x2, y2):\n    return math.sqrt((x2 - x1)**2 + (y2 - y1)**2)\n\ndef calculate_mesh_size(n, a, b, c, d):\n    min_distance = float('inf')\n    for i in range(n):\n        distance1 = calculate_distance(a[i], 0, b[i], 1)\n        distance2 = calculate_distance(c[i], 0, d[i], 1)\n        min_distance = min(min_distance, distance1, distance2)\n    return min_distance\n\ndef main():\n    while True:\n        n = int(input())\n        a = list(map(float, input().split()))\n        b = list(map(float, input().split()))\n        c = list(map(float, input().split()))\n        d = list(map(float, input().split()))\n        print(f\"{calculate_mesh_size(n, a, b, c, d):.6f}\")\n        if n == 0:\n            break\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

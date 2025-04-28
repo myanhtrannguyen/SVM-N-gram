@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-746",
+    "problem_id": "p00723",
+    "language": "Java",
+    "solution": "```java\nimport java.io.*;\nimport java.util.*;\n\npublic class Main {\n    static final int N = 26;\n    static final int M = 72;\n    static final int MAX = 1 << 20;\n\n    public static void main(String[] args) throws IOException {\n        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));\n        int T = Integer.parseInt(br.readLine());\n        while (T-- > 0) {\n            String s = br.readLine();\n            int n = s.length();\n            int[] dp = new int[1 << n];\n            Arrays.fill(dp, -1);\n            System.out.println(f(s, 0, n, dp));\n        }\n    }\n\n    static int f(String s, int i, int n, int[] dp) {\n        if (i == n) return 1;\n        if (dp[1 << i] != -1) return dp[1 << i];\n        int res = 0;\n        for (int j = i + 1; j <= n; j++) {\n            res += f(s, j, n, dp);\n        }\n        for (int j = i + 1; j <= n; j++) {\n            int a = f(s, i, j - 1, dp);\n            int b = f(s, j, n, dp);\n            res += a * b;\n            if (i != j - 1) {\n                res += a * b;\n            }\n        }\n        dp[1 << i] = res;\n        return res;\n    }\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

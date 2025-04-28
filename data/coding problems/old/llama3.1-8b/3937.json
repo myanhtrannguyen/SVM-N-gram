@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3937",
+    "problem_id": "p02305",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <cmath>\n\nint main() {\n    int c1x, c1y, c1r, c2x, c2y, c2r;\n    std::cin >> c1x >> c1y >> c1r >> c2x >> c2y >> c2r;\n\n    int d = std::abs(c1x - c2x);\n    int a = std::pow(c1r, 2);\n    int b = std::pow(c2r, 2);\n    int c = std::pow(d, 2);\n\n    if (a + b < c || a > c + b || b > c + a) {\n        std::cout << \"0\" << std::endl;\n    } else if (a + b == c) {\n        std::cout << \"1\" << std::endl;\n    } else if (a + b > c && a + b == c + a + b - std::pow(c, 2)) {\n        std::cout << \"2\" << std::endl;\n    } else if (a + b > c && a + b < c + a + b - std::pow(c, 2)) {\n        std::cout << \"3\" << std::endl;\n    } else {\n        std::cout << \"4\" << std::endl;\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

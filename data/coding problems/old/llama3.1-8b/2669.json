@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2669",
+    "problem_id": "p03663",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n#define MAX 64\n\nlong long n, low, high;\n\nvoid ask(long long x) {\n    printf(\"? %lld\\n\", x);\n    fflush(stdout);\n}\n\nint getAns() {\n    char ans[2];\n    scanf(\"%s\", ans);\n    return ans[0] == 'Y';\n}\n\nvoid solve() {\n    long long i, j, mid;\n    for (i = 1, j = 1e18; i <= j; i = mid + 1, j = mid) {\n        mid = (i + j) / 2;\n        ask(mid);\n        if (getAns()) {\n            low = mid;\n            j = mid - 1;\n        } else {\n            i = mid + 1;\n        }\n    }\n    ask(low);\n    if (getAns()) {\n        printf(\"! %lld\\n\", low);\n    } else {\n        printf(\"! %lld\\n\", low + 1);\n    }\n    fflush(stdout);\n    exit(0);\n}\n\nint main() {\n    solve();\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-515",
+    "problem_id": "p00642",
+    "language": "Python",
+    "solution": "```python\nimport math\n\ndef calculate_expected_value(n):\n    if n == 0:\n        return 0\n    else:\n        return 1 + 0.5 * calculate_expected_value(n - 1)\n\nn = int(input())\nwhile n != 0:\n    print(calculate_expected_value(n))\n    n = int(input())\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

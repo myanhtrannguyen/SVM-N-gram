@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-132",
+    "problem_id": "p00103",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n\n    for (int i = 0; i < n; i++) {\n        int score = 0;\n        int outs = 0;\n        int runners[3] = {0, 0, 0};\n\n        int event_count;\n        scanf(\"%d\", &event_count);\n\n        for (int j = 0; j < event_count; j++) {\n            char event[10];\n            scanf(\"%s\", event);\n\n            if (strcmp(event, \"HIT\") == 0) {\n                for (int k = 2; k >= 0; k--) {\n                    if (runners[k] == 1) {\n                        runners[k] = 0;\n                        runners[k - 1] = 1;\n                    }\n                }\n                runners[0] = 1;\n            } else if (strcmp(event, \"HOMERUN\") == 0) {\n                score += runners[0] + 1;\n                for (int k = 0; k < 3; k++) {\n                    runners[k] = 1;\n                }\n            } else if (strcmp(event, \"OUT\") == 0) {\n                outs++;\n            }\n        }\n\n        if (outs == 3) {\n            score = 0;\n        }\n\n        printf(\"%d\\n\", score);\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

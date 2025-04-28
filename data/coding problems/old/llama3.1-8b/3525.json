@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3525",
+    "problem_id": "p02010",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <string>\n#include <vector>\n#include <algorithm>\n\nusing namespace std;\n\nint main() {\n    int N;\n    string S;\n    cin >> N >> S;\n\n    int res = 0;\n    int sum = 0;\n    int i = 0;\n    while (i < S.size()) {\n        if (S[i] == '+') {\n            if (i + 1 < S.size() && S[i + 1] == '0') {\n                res = -1;\n                break;\n            }\n            if (sum + 1 > N) {\n                res = -1;\n                break;\n            }\n            sum++;\n            i++;\n        } else {\n            int num = 0;\n            while (i < S.size() && S[i] != '+') {\n                num = num * 10 + (S[i] - '0');\n                i++;\n            }\n            if (sum + num > N) {\n                res = -1;\n                break;\n            }\n            sum += num;\n        }\n    }\n\n    if (res == -1) {\n        cout << -1 << endl;\n    } else {\n        cout << S.size() - i << endl;\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

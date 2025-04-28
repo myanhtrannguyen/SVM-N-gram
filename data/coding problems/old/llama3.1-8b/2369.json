@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2369",
+    "problem_id": "p03588",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n#define MAX_N 100005\n\ntypedef struct {\n    int a, b;\n} fact;\n\nint cmp(const void *a, const void *b) {\n    return ((fact *)a)->a - ((fact *)b)->a;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    fact *facts = (fact *)malloc(n * sizeof(fact));\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d %d\", &facts[i].a, &facts[i].b);\n    }\n    qsort(facts, n, sizeof(fact), cmp);\n    int count = 0;\n    int max = 0;\n    for (int i = 0; i < n; i++) {\n        if (facts[i].b > max) {\n            count++;\n            max = facts[i].b;\n        }\n    }\n    printf(\"%d\\n\", count);\n    free(facts);\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

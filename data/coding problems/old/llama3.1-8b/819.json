@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-819",
+    "problem_id": "p00741",
+    "language": "Python",
+    "solution": "```python\nfrom typing import List\n\ndef numIslands(grid: List[List[int]]) -> int:\n    if not grid:\n        return 0\n\n    rows, cols = len(grid), len(grid[0])\n    count = 0\n\n    def dfs(r: int, c: int) -> None:\n        if 0 <= r < rows and 0 <= c < cols and grid[r][c] == 1:\n            grid[r][c] = 0\n            dfs(r - 1, c)\n            dfs(r + 1, c)\n            dfs(r, c - 1)\n            dfs(r, c + 1)\n\n    for r in range(rows):\n        for c in range(cols):\n            if grid[r][c] == 1:\n                dfs(r, c)\n                count += 1\n\n    return count\n\ndef main():\n    while True:\n        w, h = map(int, input().split())\n        if w == 0 and h == 0:\n            break\n        grid = [list(map(int, input().split())) for _ in range(h)]\n        print(numIslands(grid))\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1665",
+    "problem_id": "p02956",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\n#define MOD 998244353\n\ntypedef struct {\n    int x, y;\n} Point;\n\nint compare_points(const void *a, const void *b) {\n    Point *p1 = (Point *)a;\n    Point *p2 = (Point *)b;\n    if (p1->x != p2->x) return p1->x - p2->x;\n    return p1->y - p2->y;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    Point *points = (Point *)malloc(n * sizeof(Point));\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d %d\", &points[i].x, &points[i].y);\n    }\n    qsort(points, n, sizeof(Point), compare_points);\n    long long ans = 0;\n    int x = points[0].x, y = points[0].y;\n    int cnt = 1;\n    for (int i = 1; i < n; i++) {\n        if (points[i].x == x && points[i].y == y) {\n            cnt++;\n        } else {\n            ans = (ans + (long long)cnt * (cnt + 1) / 2) % MOD;\n            x = points[i].x;\n            y = points[i].y;\n            cnt = 1;\n        }\n    }\n    ans = (ans + (long long)cnt * (cnt + 1) / 2) % MOD;\n    printf(\"%lld\\n\", ans);\n    free(points);\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

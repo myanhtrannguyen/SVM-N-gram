@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1916",
+    "problem_id": "p03158",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nusing namespace std;\n\nint main() {\n    int n, q;\n    cin >> n >> q;\n\n    vector<int> a(n);\n    for (int i = 0; i < n; i++) {\n        cin >> a[i];\n    }\n\n    vector<int> x(q);\n    for (int i = 0; i < q; i++) {\n        cin >> x[i];\n    }\n\n    vector<long long> ans(q);\n\n    for (int i = 0; i < q; i++) {\n        int x_i = x[i];\n        int l = 0, r = n - 1;\n        while (l < r) {\n            int mid = (l + r) / 2;\n            if (a[mid] >= x_i) r = mid;\n            else l = mid + 1;\n        }\n\n        int idx = l;\n        long long sum = 0;\n        while (idx < n) {\n            sum += a[idx];\n            int left = idx + 1, right = n - 1;\n            while (left < right) {\n                int mid = (left + right + 1) / 2;\n                if (a[mid] <= x_i) left = mid;\n                else right = mid - 1;\n            }\n            idx = left + 1;\n        }\n\n        ans[i] = sum;\n    }\n\n    for (int i = 0; i < q; i++) {\n        cout << ans[i] << endl;\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

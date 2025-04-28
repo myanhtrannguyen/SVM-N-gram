@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1404",
+    "problem_id": "p02758",
+    "language": "Python",
+    "solution": "```python\nimport sys\ninput = sys.stdin.readline\n\nmod = 998244353\n\ndef solve():\n    n = int(input())\n    a = []\n    for _ in range(n):\n        x, d = map(int, input().split())\n        a.append((x, d))\n\n    a.sort()\n\n    ans = 1\n    stack = []\n    for x, d in a:\n        while stack and stack[-1][1] <= x:\n            stack.pop()\n        if stack:\n            if stack[-1][0] < x + d:\n                ans = (ans * 2) % mod\n        stack.append((x + d, d))\n\n    print(ans)\n\nt = 1\nfor _ in range(t):\n    solve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

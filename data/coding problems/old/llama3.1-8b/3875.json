@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3875",
+    "problem_id": "p02289",
+    "language": "Python",
+    "solution": "```python\nimport heapq\n\nclass PriorityQueue:\n    def __init__(self):\n        self.heap = []\n\n    def insert(self, k):\n        heapq.heappush(self.heap, -k)\n\n    def extractMax(self):\n        if self.heap:\n            return -heapq.heappop(self.heap)\n        else:\n            return None\n\ndef main():\n    pq = PriorityQueue()\n    while True:\n        operation = input().split()\n        if operation[0] == \"insert\":\n            k = int(operation[1])\n            pq.insert(k)\n        elif operation[0] == \"extract\":\n            print(pq.extractMax())\n        elif operation[0] == \"end\":\n            break\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

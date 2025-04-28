@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1728",
+    "problem_id": "p02971",
+    "language": "Python",
+    "solution": "```python\nimport sys\n\nn = int(input())\na = list(map(int, input().split()))\n\nfor i in range(n):\n    max_val = max([x for j, x in enumerate(a) if j != i])\n    print(max_val)\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

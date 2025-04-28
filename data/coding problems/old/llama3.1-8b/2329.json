@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2329",
+    "problem_id": "p03578",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int n, m;\n    scanf(\"%d\", &n);\n    int* d = (int*)malloc(n * sizeof(int));\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &d[i]);\n    }\n    scanf(\"%d\", &m);\n    int* t = (int*)malloc(m * sizeof(int));\n    for (int i = 0; i < m; i++) {\n        scanf(\"%d\", &t[i]);\n    }\n\n    int* count = (int*)malloc(1000001 * sizeof(int));\n    for (int i = 0; i < 1000001; i++) {\n        count[i] = 0;\n    }\n\n    for (int i = 0; i < n; i++) {\n        count[d[i]]++;\n    }\n\n    int i = 0;\n    while (i < m) {\n        int j = 0;\n        while (j < n && d[j] < t[i]) {\n            j++;\n        }\n        if (j == n) {\n            printf(\"NO\\n\");\n            return 0;\n        }\n        if (count[t[i]] > 0) {\n            count[t[i]]--;\n        } else {\n            count[d[j]]--;\n            d[j] = t[i];\n            count[d[j]]++;\n        }\n        i++;\n    }\n\n    printf(\"YES\\n\");\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2963",
+    "problem_id": "p01598",
+    "language": "Python",
+    "solution": "```python\ndef is_sorted_network(n, d, wiring):\n    for i in range(d - 1):\n        stage = wiring[i]\n        for j in range(n // 2):\n            if stage[j] > stage[n // 2 + j]:\n                return False\n    return True\n\ndef main():\n    n, d = map(int, input().split())\n    wiring = []\n    for _ in range(d - 1):\n        wiring.append(list(map(int, input().split())))\n    if is_sorted_network(n, d, wiring):\n        print(\"Yes\")\n    else:\n        print(\"No\")\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

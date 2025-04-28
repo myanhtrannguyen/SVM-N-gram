@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3355",
+    "problem_id": "p01883",
+    "language": "Python",
+    "solution": "```python\ndef generate_string(n):\n    if n % 2 == 0:\n        return \"()\" * (n // 2)\n    else:\n        result = \"()\" * ((n - 5) // 2) + \")(\" + \"()\" * ((n - 1) // 2)\n        return result\n\ndef main():\n    n = int(input())\n    print(generate_string(n))\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

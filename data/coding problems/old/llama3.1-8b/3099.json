@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3099",
+    "problem_id": "p01702",
+    "language": "Python",
+    "solution": "```python\nimport sys\nimport math\n\ndef solve():\n    n, m, q = map(int, input().split())\n    switches = []\n    for _ in range(q):\n        s, b = input().split('::')\n        switches.append((s, b))\n    ans = ['?'] * m\n    for i in range(q):\n        s, b = switches[i]\n        for j in range(m):\n            if b[j] == '1':\n                for k in range(n):\n                    if s[k] == '1':\n                        if ans[j] == '?':\n                            ans[j] = chr(97 + k)\n                        elif ans[j] != chr(97 + k):\n                            ans[j] = '?'\n    print(''.join(ans))\n\nt = 1\nwhile True:\n    try:\n        solve()\n    except ValueError:\n        break\n    t -= 1\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

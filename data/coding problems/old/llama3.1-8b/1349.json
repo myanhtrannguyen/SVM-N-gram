@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1349",
+    "problem_id": "p00874",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nusing namespace std;\n\nint main() {\n    int w, d;\n    while (cin >> w >> d) {\n        if (w == 0 && d == 0) break;\n        vector<int> h(w), h_(d);\n        for (int i = 0; i < w; ++i) cin >> h[i];\n        for (int i = 0; i < d; ++i) cin >> h_[i];\n\n        vector<int> dp(w + 1, 1e9);\n        dp[0] = 0;\n        for (int i = 0; i < w; ++i) {\n            for (int j = i; j >= 0; --j) {\n                dp[j + 1] = min(dp[j + 1], dp[j] + h[i]);\n            }\n        }\n\n        vector<int> dp_(d + 1, 1e9);\n        dp_[0] = 0;\n        for (int i = 0; i < d; ++i) {\n            for (int j = i; j >= 0; --j) {\n                dp_[j + 1] = min(dp_[j + 1], dp_[j] + h_[i]);\n            }\n        }\n\n        int ans = 1e9;\n        for (int i = 0; i <= w; ++i) {\n            for (int j = 0; j <= d; ++j) {\n                ans = min(ans, dp[i] + dp_[j] + max(i, j));\n            }\n        }\n\n        cout << ans << endl;\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

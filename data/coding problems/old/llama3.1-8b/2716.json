@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2716",
+    "problem_id": "p03674",
+    "language": "Python",
+    "solution": "```python\nMOD = 10**9 + 7\n\ndef solve():\n    n = int(input())\n    a = list(map(int, input().split()))\n    a.sort()\n    dp = [0] * (n + 1)\n    dp[0] = 1\n    for i in range(n + 1):\n        if i > 0:\n            dp[i] = (dp[i - 1] * (i + 1)) % MOD\n        for j in range(i):\n            if a[j] == a[i]:\n                dp[i] = (dp[i] + dp[j]) % MOD\n    for i in range(n + 1):\n        print(dp[i])\n\nif __name__ == \"__main__\":\n    solve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

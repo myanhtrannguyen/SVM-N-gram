@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2850",
+    "problem_id": "p03708",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <bitset>\n#include <string>\n\nusing namespace std;\n\nint main() {\n    long long a, b;\n    cin >> a >> b;\n\n    string aBin = bitset<64>(a).to_string();\n    string bBin = bitset<64>(b).to_string();\n\n    int count = 0;\n    for (int i = 0; i < 64; i++) {\n        if (aBin[i] == '1' && bBin[i] == '0') {\n            count++;\n        }\n    }\n\n    long long res = (1LL << count) - 1;\n    cout << res << endl;\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

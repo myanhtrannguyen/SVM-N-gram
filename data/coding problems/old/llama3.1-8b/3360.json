@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3360",
+    "problem_id": "p01885",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n#include <math.h>\n\n#define N 100005\n\nint compare(const void *a, const void *b) {\n    return (*(int*)a - *(int*)b);\n}\n\nint main() {\n    int n, l, a[N], b[N], c[N];\n    scanf(\"%d %d\", &n, &l);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d %d\", &a[i], &b[i]);\n    }\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &c[i]);\n    }\n    qsort(a, n, sizeof(int), compare);\n    qsort(b, n, sizeof(int), compare);\n    qsort(c, n, sizeof(int), compare);\n    int day = 0, position = 0, sum = 0;\n    while (day < n) {\n        sum += a[day] - b[day];\n        if (sum >= l) {\n            printf(\"%d\\n\", day + 1);\n            return 0;\n        }\n        position += a[day] - b[day];\n        if (position >= c[day]) {\n            printf(\"-1\\n\");\n            return 0;\n        }\n        day++;\n    }\n    printf(\"-1\\n\");\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

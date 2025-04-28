@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3269",
+    "problem_id": "p01821",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <cmath>\n\nint main() {\n    int N;\n    std::cin >> N;\n\n    if (N == 2) {\n        std::cout << -1 << std::endl;\n        return 0;\n    }\n\n    int k = 1;\n    while (true) {\n        bool found = true;\n        for (int a = 1; a < N; a++) {\n            long long x = 1;\n            for (int i = 0; i < k; i++) {\n                x = (x * a) % N;\n            }\n            if (x != a) {\n                found = false;\n                break;\n            }\n        }\n        if (found) {\n            std::cout << k << std::endl;\n            return 0;\n        }\n        k++;\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

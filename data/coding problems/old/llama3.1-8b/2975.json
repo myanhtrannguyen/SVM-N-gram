@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2975",
+    "problem_id": "p01646",
+    "language": "Python",
+    "solution": "```python\ndef is_lexicographically_ordered(words):\n    for i in range(len(words) - 1):\n        if not words[i + 1].startswith(words[i]):\n            return False\n    return True\n\nn = int(input())\nwords = []\nwhile n != 0:\n    for _ in range(n):\n        words.append(input())\n    if is_lexicographically_ordered(words):\n        print(\"yes\")\n    else:\n        print(\"no\")\n    n = int(input())\n    words = []\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

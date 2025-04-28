@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1961",
+    "problem_id": "p03169",
+    "language": "Java",
+    "solution": "```java\nimport java.util.Scanner;\n\npublic class Main {\n    static final int N = 300;\n    static final double INF = 1e18;\n\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        int n = scanner.nextInt();\n        double[] f = new double[N + 1];\n        double[] g = new double[N + 1];\n        double[] h = new double[N + 1];\n\n        for (int i = 1; i <= n; i++) {\n            int a = scanner.nextInt();\n            f[i] = g[i] = h[i] = 0;\n            for (int j = 1; j <= a; j++) {\n                f[i] += 1.0 / n;\n                g[i] += (j + 1.0) / n;\n                h[i] += (j + 1.0) * (j + 2.0) / (2.0 * n);\n            }\n        }\n\n        for (int i = n; i >= 1; i--) {\n            for (int j = i + 1; j <= n; j++) {\n                f[i] += f[j] * (1.0 - g[i] / g[j]);\n                g[i] += g[j] * (1.0 - g[i] / g[j]);\n                h[i] += h[j] * (1.0 - g[i] / g[j]) + f[j] * (g[i] / g[j]) * (g[j] - g[i]);\n                h[i] += f[j] * (g[i] / g[j]) * (g[j] - g[i]) * (j + 1.0);\n            }\n        }\n\n        System.out.printf(\"%.10f\\n\", h[1]);\n    }\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

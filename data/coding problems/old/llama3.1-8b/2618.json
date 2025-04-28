@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2618",
+    "problem_id": "p03650",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <queue>\n#include <algorithm>\n\nusing namespace std;\n\nconst int N = 200005;\n\nint n, p[N], deg[N], cnt;\nvector<int> g[N];\nqueue<int> q;\n\nvoid dfs(int u) {\n    for (int v : g[u]) {\n        if (!deg[v]) {\n            deg[v] = u;\n            dfs(v);\n        }\n    }\n}\n\nint main() {\n    ios_base::sync_with_stdio(false);\n    cin.tie(nullptr);\n\n    cin >> n;\n    for (int i = 1; i <= n; i++) {\n        cin >> p[i];\n        g[p[i]].push_back(i);\n    }\n\n    for (int i = 1; i <= n; i++) {\n        if (!deg[i]) {\n            dfs(i);\n        }\n    }\n\n    for (int i = 1; i <= n; i++) {\n        if (deg[i] == i) {\n            cout << \"IMPOSSIBLE\\n\";\n            return 0;\n        }\n    }\n\n    for (int i = 1; i <= n; i++) {\n        if (deg[i] == p[i]) {\n            cout << \"IMPOSSIBLE\\n\";\n            return 0;\n        }\n    }\n\n    for (int i = 1; i <= n; i++) {\n        if (deg[i] != i && deg[i] != p[i]) {\n            cout << \"IMPOSSIBLE\\n\";\n            return 0;\n        }\n    }\n\n    cout << \"POSSIBLE\\n\";\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

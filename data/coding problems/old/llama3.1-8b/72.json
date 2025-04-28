@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-72",
+    "problem_id": "p00018",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n\nint main() {\n    int a, b, c, d, e;\n\n    printf(\"Enter five numbers: \");\n    scanf(\"%d %d %d %d %d\", &a, &b, &c, &d, &e);\n\n    int numbers[5] = {a, b, c, d, e};\n    int temp;\n\n    for (int i = 0; i < 5; i++) {\n        for (int j = i + 1; j < 5; j++) {\n            if (numbers[i] < numbers[j]) {\n                temp = numbers[i];\n                numbers[i] = numbers[j];\n                numbers[j] = temp;\n            }\n        }\n    }\n\n    printf(\"Sorted numbers in descending order: %d %d %d %d %d\\n\", numbers[0], numbers[1], numbers[2], numbers[3], numbers[4]);\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

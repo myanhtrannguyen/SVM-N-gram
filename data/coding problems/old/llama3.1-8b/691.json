@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-691",
+    "problem_id": "p00709",
+    "language": "Python",
+    "solution": "```python\nimport sys\n\ndef min_carpets(w, h, panels):\n    def dfs(x, y, size):\n        if x + size > w or y + size > h:\n            return 0\n        count = 0\n        for i in range(x, x + size):\n            for j in range(y, y + size):\n                if panels[i][j] == 1:\n                    count += 1\n        for i in range(x, x + size):\n            for j in range(y, y + size):\n                if panels[i][j] == 1:\n                    panels[i][j] = 0\n        return 1 + dfs(x, y, size * 2) + dfs(x + size, y, size * 2) + dfs(x, y + size, size * 2) + dfs(x + size, y + size, size * 2)\n\n    min_size = 1\n    while min_size * 2 <= min(w, h):\n        min_size *= 2\n    return dfs(0, 0, min_size)\n\ndef main():\n    while True:\n        w, h = map(int, sys.stdin.readline().split())\n        if w == 0 and h == 0:\n            break\n        panels = []\n        for _ in range(h):\n            panels.append(list(map(int, sys.stdin.readline().split())))\n        print(min_carpets(w, h, panels))\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

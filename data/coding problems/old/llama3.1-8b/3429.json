@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3429",
+    "problem_id": "p01956",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nint main() {\n    int n, h, w;\n    std::cin >> n >> h >> w;\n\n    std::vector<int> x(n);\n    for (int i = 0; i < n; ++i) {\n        std::cin >> x[i];\n    }\n\n    int left = 0;\n    for (int i = 0; i < n; ++i) {\n        if (i % 2 == 0) {\n            left += x[i];\n        } else {\n            left -= x[i];\n        }\n        left = std::max(0, std::min(left, w));\n    }\n\n    int right = w;\n    for (int i = 0; i < n; ++i) {\n        if (i % 2 != 0) {\n            right += x[i];\n        } else {\n            right -= x[i];\n        }\n        right = std::max(0, std::min(right, w));\n    }\n\n    std::cout << (right - left) * h << std::endl;\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

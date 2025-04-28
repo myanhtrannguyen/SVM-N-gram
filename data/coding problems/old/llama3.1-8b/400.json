@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-400",
+    "problem_id": "p00593",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n\nvoid print_matrix(int n) {\n    int i, j;\n    for (i = 0; i < n; i++) {\n        for (j = 0; j < n; j++) {\n            int value = (i + j) * 2 + (i % 2 == 0 ? 0 : 1);\n            if (i == n - 1 && j == n - 1) {\n                printf(\"%3d\\n\", value);\n            } else {\n                printf(\"%3d \", value);\n            }\n        }\n        printf(\"\\n\");\n    }\n}\n\nint main() {\n    int n, case_num = 1;\n    while (scanf(\"%d\", &n) == 1) {\n        if (n == 0) break;\n        printf(\"Case %d:\\n\", case_num++);\n        print_matrix(n);\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

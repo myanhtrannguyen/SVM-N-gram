@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3729",
+    "problem_id": "p02253",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nstruct Activity {\n    int start;\n    int finish;\n};\n\nbool compareActivities(const Activity& a, const Activity& b) {\n    return a.finish < b.finish;\n}\n\nint main() {\n    int n;\n    std::cin >> n;\n\n    std::vector<Activity> activities(n);\n    for (int i = 0; i < n; ++i) {\n        std::cin >> activities[i].start >> activities[i].finish;\n    }\n\n    std::sort(activities.begin(), activities.end(), compareActivities);\n\n    int count = 1;\n    int finish = activities[0].finish;\n\n    for (int i = 1; i < n; ++i) {\n        if (activities[i].start >= finish) {\n            count++;\n            finish = activities[i].finish;\n        }\n    }\n\n    std::cout << count << std::endl;\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

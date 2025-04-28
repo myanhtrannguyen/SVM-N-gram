@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2280",
+    "problem_id": "p03565",
+    "language": "Python",
+    "solution": "```python\nimport sys\nimport string\n\ndef solve():\n    s = input()\n    t = input()\n    n, m = len(s), len(t)\n    s = list(s)\n    for i in range(n):\n        if s[i] == '?':\n            for c in string.ascii_lowercase:\n                s[i] = c\n                if ''.join(s[i:i+m]) == t:\n                    if i == 0 or s[i-1] > c:\n                        break\n                    elif i > 0 and s[i-1] < c:\n                        s[i] = '?'\n                        break\n            else:\n                continue\n            break\n    else:\n        print('UNRESTORABLE')\n        return\n    for i in range(n):\n        if s[i] == '?':\n            s[i] = 'a'\n    print(''.join(s))\n\nif __name__ == '__main__':\n    solve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

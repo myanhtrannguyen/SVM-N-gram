@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1668",
+    "problem_id": "p02956",
+    "language": "Python",
+    "solution": "```python\nimport sys\ninput = sys.stdin.readline\n\nmod = 998244353\n\ndef pow_mod(a, b):\n    res = 1\n    while b:\n        if b & 1:\n            res = res * a % mod\n        a = a * a % mod\n        b >>= 1\n    return res\n\ndef inv(a):\n    return pow_mod(a, mod - 2)\n\ndef add(a, b):\n    return (a + b) % mod\n\ndef sub(a, b):\n    return (a - b + mod) % mod\n\ndef mul(a, b):\n    return a * b % mod\n\ndef comb(n, m):\n    if m > n:\n        return 0\n    return mul(fac[n], mul(inv(fac[m]), inv(fac[n - m])))\n\nN = int(input())\nx = []\ny = []\nfor _ in range(N):\n    xi, yi = map(int, input().split())\n    x.append(xi)\n    y.append(yi)\n\nx.sort()\ny.sort()\n\nn = len(x)\nm = len(y)\n\nfac = [1] * (n + 1)\nfor i in range(1, n + 1):\n    fac[i] = mul(fac[i - 1], i)\n\nans = 0\nfor i in range(n):\n    for j in range(i + 1, n):\n        a = x[i]\n        b = x[j]\n        for k in range(m):\n            for l in range(k + 1, m):\n                c = y[k]\n                d = y[l]\n                ans = add(ans, mul(comb(n, j - i + 1), mul(comb(m, l - k + 1), mul((b - a + 1) % mod, (d - c + 1) % mod))))\n\nprint(ans)\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

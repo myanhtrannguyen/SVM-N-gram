@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1313",
+    "problem_id": "p00865",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <iomanip>\n\nusing namespace std;\n\nint main() {\n    double result;\n    while (true) {\n        int n, m, k;\n        cin >> n >> m >> k;\n        if (n == 0 && m == 0 && k == 0) break;\n\n        result = 0;\n        for (int i = k + 1; i <= n * m + k; ++i) {\n            double prob = 0;\n            for (int j = 0; j < i - k; ++j) {\n                prob += 1.0 / m;\n            }\n            for (int j = 0; j < n - i + k; ++j) {\n                prob *= 1.0 / m;\n            }\n            result += prob * i;\n        }\n        cout << fixed << setprecision(10) << result << endl;\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3412",
+    "problem_id": "p01952",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n\n#define N 100\n#define INF 1e18\n\ntypedef struct {\n    double x, y;\n} Point;\n\nint n, h, w, r;\nPoint p[N];\n\ndouble dist(Point a, Point b) {\n    return sqrt(pow(a.x - b.x, 2) + pow(a.y - b.y, 2));\n}\n\nint check(Point *p, int n, double R) {\n    double minx = INF, maxx = -INF, miny = INF, maxy = -INF;\n    for (int i = 0; i < n; i++) {\n        minx = fmin(minx, p[i].x - R);\n        maxx = fmax(maxx, p[i].x + R);\n        miny = fmin(miny, p[i].y - R);\n        maxy = fmax(maxy, p[i].y + R);\n    }\n    return (minx >= -R && maxx <= w + R && miny >= -R && maxy <= h + R);\n}\n\nint main() {\n    scanf(\"%d %d %d %d\", &n, &h, &w, &r);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%lf %lf\", &p[i].x, &p[i].y);\n    }\n    for (int i = 0; i < n; i++) {\n        for (int j = i + 1; j < n; j++) {\n            double d = dist(p[i], p[j]);\n            if (d > 2 * r) {\n                printf(\"No\\n\");\n                return 0;\n            }\n        }\n    }\n    printf(\"Yes\\n\");\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

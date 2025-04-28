@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1441",
+    "problem_id": "p02768",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n\nconst int MOD = 1e9 + 7;\n\nlong long power(long long a, long long b) {\n    long long res = 1;\n    while (b) {\n        if (b & 1) res = res * a % MOD;\n        a = a * a % MOD;\n        b >>= 1;\n    }\n    return res;\n}\n\nint main() {\n    int n, a, b;\n    scanf(\"%d %d %d\", &n, &a, &b);\n    if (a > b) {\n        int temp = a;\n        a = b;\n        b = temp;\n    }\n    long long ans = (power(2, n) - power(2, a - 1) - power(2, b - 1) + 2) % MOD;\n    if (ans < 0) ans += MOD;\n    printf(\"%lld\\n\", ans);\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

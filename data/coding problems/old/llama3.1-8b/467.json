@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-467",
+    "problem_id": "p00609",
+    "language": "Python",
+    "solution": "```python\nimport sys\n\ndef count_points(x, y, r, points):\n    count = 0\n    for point in points:\n        if (x - point[0])**2 + (y - point[1])**2 <= (2*r)**2:\n            count += 1\n    return count\n\ndef main():\n    for line in sys.stdin:\n        line = line.strip()\n        if not line:\n            continue\n        if line == \"0 0\":\n            break\n        an, bn, r = map(int, line.split())\n        planes = []\n        bullets = []\n        for _ in range(an):\n            x, y = map(int, sys.stdin.readline().strip().split())\n            planes.append((x, y))\n        for _ in range(bn):\n            x, y = map(int, sys.stdin.readline().strip().split())\n            bullets.append((x, y))\n        total_power = 0\n        for plane in planes:\n            total_power += count_points(plane[0], plane[1], r, bullets)\n        print(total_power)\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-8",
+    "problem_id": "p00002",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int a, b, sum, digits;\n\n    while (scanf(\"%d %d\", &a, &b) == 2) {\n        sum = a + b;\n        digits = 0;\n\n        if (sum == 0) {\n            printf(\"1\\n\");\n        } else {\n            while (sum != 0) {\n                sum /= 10;\n                digits++;\n            }\n\n            printf(\"%d\\n\", digits);\n        }\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

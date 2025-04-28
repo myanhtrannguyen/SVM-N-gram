@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-759",
+    "problem_id": "p00726",
+    "language": "Python",
+    "solution": "```python\nimport re\n\ndef decompress(s, i):\n    stack = []\n    num = ''\n    for c in s:\n        if c.isdigit():\n            num += c\n        else:\n            if num:\n                stack.append((int(num), c))\n                num = ''\n            else:\n                stack.append((1, c))\n    while stack:\n        count, seq = stack.pop()\n        if seq.isalpha():\n            i -= 1\n            if i < 0:\n                return ''\n            print(seq)\n        else:\n            new_count, new_seq = stack.pop()\n            stack.append((new_count * count, seq))\n    return ''\n\nfor _ in range(int(input())):\n    s, i = input().split()\n    decompress(s, int(i))\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

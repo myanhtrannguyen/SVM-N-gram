@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-436",
+    "problem_id": "p00602",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\n#define N 1001\n\nint f(int i) {\n    if (i <= 1) return 1;\n    return f(i - 1) + f(i - 2);\n}\n\nint main() {\n    int v, d, i, j, count, connected;\n    int *F;\n\n    while (scanf(\"%d %d\", &v, &d) == 2) {\n        F = (int *)malloc((v + 1) * sizeof(int));\n        F[0] = 1;\n        F[1] = 1;\n\n        for (i = 2; i <= v; i++) {\n            F[i] = (f(i) % N);\n        }\n\n        count = 0;\n        connected = 0;\n\n        for (i = 0; i < v; i++) {\n            for (j = i + 1; j < v; j++) {\n                if (abs(F[i] - F[j]) < d) {\n                    connected = 1;\n                }\n            }\n            if (connected) {\n                count++;\n                connected = 0;\n            }\n        }\n\n        printf(\"%d\\n\", count + 1);\n        free(F);\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3589",
+    "problem_id": "p02088",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nint main() {\n    int n;\n    std::cin >> n;\n\n    std::vector<int> a(n);\n    for (int i = 0; i < n; ++i) {\n        std::cin >> a[i];\n    }\n\n    int even = 0, odd = 0;\n    for (int i = 0; i < n; ++i) {\n        if (a[i] % 2 == 0) {\n            even++;\n        } else {\n            odd++;\n        }\n    }\n\n    if (even == 0 || odd == 0) {\n        std::cout << 0 << std::endl;\n        return 0;\n    }\n\n    int ans = 0;\n    while (even > 1 && odd > 1) {\n        ans++;\n        even--;\n        odd--;\n        int sum = a[even] + a[odd];\n        a.push_back(sum);\n        if (sum % 2 == 0) {\n            even++;\n        } else {\n            odd++;\n        }\n    }\n\n    std::cout << ans << std::endl;\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

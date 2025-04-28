@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3407",
+    "problem_id": "p01950",
+    "language": "Python",
+    "solution": "```python\nfrom collections import deque\n\ndef bfs(n, edges):\n    graph = [[] for _ in range(n + 1)]\n    for u, v in edges:\n        graph[u].append(v)\n        graph[v].append(u)\n\n    visited = set()\n    current = [1]\n    iteration = 0\n    while True:\n        iteration += 1\n        next_level = set()\n        for node in current:\n            if node not in visited:\n                visited.add(node)\n                next_level.update(graph[node])\n        if len(next_level) == 0:\n            return iteration\n        current = list(next_level)\n\ndef main():\n    n, m = map(int, input().split())\n    edges = []\n    for _ in range(m):\n        u, v = map(int, input().split())\n        edges.append((u, v))\n    result = bfs(n, edges)\n    if result == float('inf'):\n        print(-1)\n    else:\n        print(result)\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

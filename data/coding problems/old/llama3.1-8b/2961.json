@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2961",
+    "problem_id": "p01598",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nbool isSorted(const std::vector<int>& arr) {\n    for (int i = 0; i < arr.size() - 1; i++) {\n        if (arr[i] > arr[i + 1]) {\n            return false;\n        }\n    }\n    return true;\n}\n\nbool checkCircuit(int n, int d, std::vector<std::vector<int>>& wiring) {\n    std::vector<int> arr(n);\n    for (int i = 0; i < n; i++) {\n        arr[i] = i + 1;\n    }\n\n    for (int i = 0; i < d - 1; i++) {\n        std::vector<int> new_arr(n);\n        for (int j = 0; j < n; j++) {\n            new_arr[j] = arr[wiring[i][j] - 1];\n        }\n        arr = new_arr;\n    }\n\n    return isSorted(arr);\n}\n\nint main() {\n    int n, d;\n    std::cin >> n >> d;\n\n    std::vector<std::vector<int>> wiring(d - 1, std::vector<int>(n));\n    for (int i = 0; i < d - 1; i++) {\n        for (int j = 0; j < n; j++) {\n            std::cin >> wiring[i][j];\n        }\n    }\n\n    if (checkCircuit(n, d, wiring)) {\n        std::cout << \"Yes\" << std::endl;\n    } else {\n        std::cout << \"No\" << std::endl;\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

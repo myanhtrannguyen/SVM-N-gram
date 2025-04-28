@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3721",
+    "problem_id": "p02251",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nint minCoins(int n) {\n    std::vector<int> coins = {25, 10, 5, 1};\n    std::vector<int> dp(n + 1, 0);\n    for (int i = 1; i <= n; i++) {\n        dp[i] = dp[i - 1] + 1;\n        for (int coin : coins) {\n            if (i >= coin && dp[i - coin] + 1 < dp[i]) {\n                dp[i] = dp[i - coin] + 1;\n            }\n        }\n    }\n    return dp[n];\n}\n\nint main() {\n    int n;\n    std::cin >> n;\n    std::cout << minCoins(n) << std::endl;\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

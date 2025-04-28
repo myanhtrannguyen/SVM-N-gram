@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3556",
+    "problem_id": "p02070",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\n#define N 205\n\nint cmp(const void *a, const void *b) {\n    return *(int *)a - *(int *)b;\n}\n\nint main() {\n    int n, p[N], q[N], pos[N], vis[N], ans = 0;\n    scanf(\"%d\", &n);\n    for (int i = 1; i <= n; i++) scanf(\"%d\", &p[i]);\n    for (int i = 1; i <= n; i++) scanf(\"%d\", &q[i]);\n    for (int i = 1; i <= n; i++) pos[p[i]] = i;\n    for (int i = 1; i <= n; i++) vis[i] = 0;\n    qsort(pos + 1, n, sizeof(int), cmp);\n    for (int i = 1; i <= n; i++) {\n        if (pos[i] != i) {\n            int j = pos[i];\n            while (j != i) {\n                vis[j] = 1;\n                j = pos[j];\n            }\n            ans = 1;\n        }\n    }\n    for (int i = 1; i <= n; i++) {\n        if (vis[i]) {\n            int j = i;\n            while (j <= n && vis[j]) j++;\n            for (int k = i; k < j; k++) {\n                if (q[k] > q[k + 1]) {\n                    ans = -1;\n                    break;\n                }\n            }\n            if (ans == -1) break;\n        }\n    }\n    printf(\"%d\\n\", ans);\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

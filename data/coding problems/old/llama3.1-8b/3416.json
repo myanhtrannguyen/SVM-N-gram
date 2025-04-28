@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3416",
+    "problem_id": "p01953",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\n#define N 100000\n#define C 100\n\nint main() {\n    int n, c, i, j, k, l, r, a[N + 1], w[N + 1], b[N + 1], p[N + 1], sum[N + 1], ans = 0;\n\n    scanf(\"%d%d\", &n, &c);\n    for (i = 1; i <= n; i++) {\n        scanf(\"%d%d\", &b[i], &w[i]);\n        p[b[i]] = i;\n    }\n\n    for (i = 1; i <= n; i++) {\n        a[i] = p[i];\n        sum[i] = sum[i - 1] + w[a[i]];\n    }\n\n    for (i = 1; i <= n; i++) {\n        l = 1;\n        r = i - 1;\n        while (l <= r) {\n            j = (l + r) / 2;\n            if (a[j] < i) {\n                l = j + 1;\n            } else {\n                r = j - 1;\n            }\n        }\n        k = l;\n        while (k <= i - 1) {\n            if (a[k] == i) {\n                break;\n            }\n            k++;\n        }\n        ans += sum[n] - sum[i - 1] - (sum[i - 1] - sum[k - 1]) + c * (i - k) * w[i];\n    }\n\n    printf(\"%d\\n\", ans);\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

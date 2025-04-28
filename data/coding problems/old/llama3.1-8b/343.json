@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-343",
+    "problem_id": "p00396",
+    "language": "Python",
+    "solution": "```python\nimport sys\n\ndef solve():\n    n = int(input())\n    areas = []\n    for _ in range(n):\n        w, b = map(int, input().split())\n        areas.append((w, b))\n\n    total_w = sum(w for w, _ in areas)\n    total_b = sum(b for _, b in areas)\n\n    if total_w < total_b:\n        print(0)\n        return\n\n    for w, b in areas:\n        if w < b:\n            print(1)\n            return\n\n    print(1)\n\nif __name__ == \"__main__\":\n    solve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

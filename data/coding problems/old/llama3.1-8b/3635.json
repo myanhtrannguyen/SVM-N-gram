@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3635",
+    "problem_id": "p02226",
+    "language": "Python",
+    "solution": "```python\nclass UnionFind:\n    def __init__(self, n):\n        self.parent = list(range(n))\n        self.rank = [0] * n\n\n    def find(self, x):\n        if self.parent[x] != x:\n            self.parent[x] = self.find(self.parent[x])\n        return self.parent[x]\n\n    def union(self, x, y):\n        root_x = self.find(x)\n        root_y = self.find(y)\n        if root_x != root_y:\n            if self.rank[root_x] > self.rank[root_y]:\n                self.parent[root_y] = root_x\n            elif self.rank[root_x] < self.rank[root_y]:\n                self.parent[root_x] = root_y\n            else:\n                self.parent[root_y] = root_x\n                self.rank[root_x] += 1\n\ndef main():\n    n = int(input())\n    uf = UnionFind(n)\n    for _ in range(n - 1):\n        x, y = map(int, input().split())\n        uf.union(x - 1, y - 1)\n\n    groups = {}\n    for i in range(n):\n        root = uf.find(i)\n        if root not in groups:\n            groups[root] = []\n        groups[root].append(i)\n\n    print(len(groups))\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-97",
+    "problem_id": "p00024",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <cmath>\n\nint main() {\n    while (true) {\n        double v;\n        if (!(std::cin >> v)) {\n            break;\n        }\n        if (v <= 0 || v > 200) {\n            std::cerr << \"Invalid input: velocity should be between 0 and 200\" << std::endl;\n            continue;\n        }\n        double t = v / 9.8;\n        int n = static_cast<int>(std::sqrt(2 * t * 9.8 / 9.8)) + 1;\n        int y = 5 * n - 5;\n        std::cout << y << std::endl;\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

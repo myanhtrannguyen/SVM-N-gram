@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2184",
+    "problem_id": "p03541",
+    "language": "Python",
+    "solution": "```python\nimport sys\ninput = sys.stdin.readline\n\nN = 18\nMAX = 1 << N\n\ndef dfs(u, v):\n    if u == v:\n        return True\n    if u > v:\n        return False\n    if not vis[u]:\n        vis[u] = True\n        for i in range(1, 1 << (n - 1)):\n            if not vis[2 * u + i] and dfs(2 * u + i, v):\n                return True\n        return False\n    return dfs(2 * u, v)\n\ndef solve():\n    global n\n    n = int(input())\n    A = list(map(int, input().split()))\n    vis = [False] * MAX\n    for i in range(1 << n):\n        if A[i - 1] != 0:\n            vis[A[i - 1] - 1] = True\n    for i in range(1 << n):\n        if not vis[i]:\n            print(\"NO\")\n            return\n    print(\"YES\")\n    for i in range(1 << n):\n        if vis[i]:\n            print(A[i - 1] if A[i - 1] != 0 else 0, end=' ')\n    print()\n\nT = 1\nfor _ in range(T):\n    solve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

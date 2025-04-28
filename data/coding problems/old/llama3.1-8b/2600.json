@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2600",
+    "problem_id": "p03645",
+    "language": "Python",
+    "solution": "```python\nimport sys\nfrom collections import defaultdict\n\ndef main():\n    input = sys.stdin.readline\n    N, M = map(int, input().split())\n    graph = defaultdict(list)\n    for _ in range(M):\n        u, v = map(int, input().split())\n        graph[u].append(v)\n    visited = set()\n    stack = [(1, 0, 0)]\n    while stack:\n        u, d, p = stack.pop()\n        if u == N:\n            print(d + 1)\n            return\n        if u in visited:\n            continue\n        visited.add(u)\n        for v in graph[u]:\n            if v != p:\n                stack.append((v, d + 1, u))\n    print(\"IMPOSSIBLE\")\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3587",
+    "problem_id": "p02077",
+    "language": "Python",
+    "solution": "```python\nfrom collections import defaultdict\n\ndef solve():\n    N, M, K, L = map(int, input().split())\n    B = [input() for _ in range(N)]\n    S = input()\n\n    damage = defaultdict(int)\n    x, y = 1, 1\n    for _ in range(L):\n        for i in range(N):\n            for j in range(N):\n                if B[i][j] == 'X':\n                    damage[x + i - 1, y + j - 1] += 1\n        if S[_] == 'U':\n            y -= 1\n        elif S[_] == 'D':\n            y += 1\n        elif S[_] == 'L':\n            x -= 1\n        else:\n            x += 1\n        if x < 1 or x > M - N + 1 or y < 1 or y > M - N + 1:\n            break\n\n    ans = 0\n    for x in range(1, M - N + 2):\n        for y in range(1, M - N + 2):\n            if damage[x, y] >= K:\n                ans += 1\n    print(ans)\n\nsolve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

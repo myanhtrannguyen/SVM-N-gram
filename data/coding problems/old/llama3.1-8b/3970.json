@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3970",
+    "problem_id": "p02313",
+    "language": "Java",
+    "solution": "```java\nimport java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        double c1x = scanner.nextDouble();\n        double c1y = scanner.nextDouble();\n        double c1r = scanner.nextDouble();\n        double c2x = scanner.nextDouble();\n        double c2y = scanner.nextDouble();\n        double c2r = scanner.nextDouble();\n\n        double d = Math.sqrt(Math.pow(c1x - c2x, 2) + Math.pow(c1y - c2y, 2));\n        double a = (Math.pow(c1r, 2) * Math.log(1 + (Math.pow(d, 2) / (4 * Math.pow(c1r, 2) - Math.pow(d, 2)))));\n        double b = (Math.pow(c2r, 2) * Math.log(1 + (Math.pow(d, 2) / (4 * Math.pow(c2r, 2) - Math.pow(d, 2)))));\n        double c = (c1r * c2r * Math.sqrt(Math.pow(c1r + c2r, 2) - Math.pow(d, 2)));\n        double area = a + b - c;\n\n        if (d > c1r + c2r) {\n            System.out.println(0);\n        } else if (d < Math.abs(c1r - c2r)) {\n            System.out.println(Math.PI * Math.pow(Math.min(c1r, c2r), 2));\n        } else {\n            System.out.printf(\"%.10f%n\", area);\n        }\n    }\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

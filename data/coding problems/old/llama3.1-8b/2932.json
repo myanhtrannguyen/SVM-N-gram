@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2932",
+    "problem_id": "p03728",
+    "language": "Python",
+    "solution": "```python\nimport sys\n\ndef solve():\n    n = int(input())\n    p = list(map(int, input().split()))\n    ans = 0\n    while True:\n        max_idx = -1\n        max_val = 0\n        for i in range(n):\n            if p[i] > max_val and p[i] <= i + 1:\n                max_val = p[i]\n                max_idx = i\n        if max_idx == -1:\n            break\n        for i in range(max_idx + 1):\n            p[i] = 0\n        for i in range(n):\n            if p[i] != 0:\n                p[i - max_idx - 1] = p[i]\n                p[i] = 0\n        ans += 1\n    print(ans)\n\nt = 1\nfor _ in range(t):\n    solve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

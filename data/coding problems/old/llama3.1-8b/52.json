@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-52",
+    "problem_id": "p00013",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int car;\n    int queue[100];\n    int front = 0, rear = 0;\n\n    while (scanf(\"%d\", &car) == 1) {\n        if (car == 0) {\n            printf(\"%d\\n\", queue[front]);\n            front = (front + 1) % 100;\n        } else {\n            queue[rear] = car;\n            rear = (rear + 1) % 100;\n        }\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

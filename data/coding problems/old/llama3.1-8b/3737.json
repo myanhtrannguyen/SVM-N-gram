@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3737",
+    "problem_id": "p02255",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n\nvoid insertionSort(std::vector<int>& A) {\n    for (int i = 1; i < A.size(); i++) {\n        int key = A[i];\n        int j = i - 1;\n        std::cout << \"Intermediate sequence: \";\n        for (int k = 0; k < A.size(); k++) {\n            if (k == i) {\n                std::cout << \"...\";\n            } else {\n                std::cout << A[k] << \" \";\n            }\n        }\n        std::cout << std::endl;\n        while (j >= 0 && A[j] > key) {\n            A[j + 1] = A[j];\n            j--;\n        }\n        A[j + 1] = key;\n        std::cout << \"Sorted sequence: \";\n        for (int k = 0; k < A.size(); k++) {\n            std::cout << A[k] << \" \";\n        }\n        std::cout << std::endl;\n    }\n}\n\nint main() {\n    int N;\n    std::cin >> N;\n    std::vector<int> A(N);\n    for (int i = 0; i < N; i++) {\n        std::cin >> A[i];\n    }\n    insertionSort(A);\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3867",
+    "problem_id": "p02287",
+    "language": "Python",
+    "solution": "```python\ndef print_binary_heap_properties(heap_size, heap_values):\n    for i in range(1, heap_size + 1):\n        parent_key = heap_values[0] if i == 1 else heap_values[(i - 1) // 2]\n        left_child_key = heap_values[2 * i - 1] if 2 * i - 1 <= heap_size else None\n        right_child_key = heap_values[2 * i] if 2 * i <= heap_size else None\n        print(f\"node {i}: key = {heap_values[i - 1]}, parent key = {parent_key}, left key = {left_child_key}, right key = {right_child_key}, \")\n\nheap_size = int(input())\nheap_values = list(map(int, input().split()))\nprint_binary_heap_properties(heap_size, heap_values)\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

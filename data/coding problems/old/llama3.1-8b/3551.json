@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3551",
+    "problem_id": "p02068",
+    "language": "Python",
+    "solution": "```python\nimport math\n\ndef gcd(a, b):\n    while b:\n        a, b = b, a % b\n    return a\n\ndef find_gcd(arr):\n    result = arr[0]\n    for num in arr[1:]:\n        result = gcd(result, num)\n    return result\n\ndef is_multiple(num, k):\n    return num % k == 0\n\ndef find_max_sum(arr):\n    n = len(arr)\n    gcd_val = find_gcd(arr)\n    max_sum = 0\n    for i in range(n):\n        if is_multiple(arr[i], gcd_val):\n            max_sum += arr[i]\n    return max_sum\n\ndef main():\n    n = int(input())\n    arr = []\n    for _ in range(n):\n        num = int(input())\n        arr.append(num)\n    print(find_max_sum(arr))\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

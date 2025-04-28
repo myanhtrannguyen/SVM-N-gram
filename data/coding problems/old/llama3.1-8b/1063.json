@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1063",
+    "problem_id": "p00802",
+    "language": "Python",
+    "solution": "```python\nimport math\n\ndef max_polygon_area(n, m, points):\n    points = [math.radians(p) for p in points]\n    max_area = 0\n\n    for i in range(n - m + 1):\n        area = 0\n        for j in range(m):\n            area += math.sin(points[(i + j) % n] - points[i])\n        max_area = max(max_area, area / 2)\n\n    return round(max_area, 6)\n\nwhile True:\n    try:\n        n, m = map(int, input().split())\n        points = input().split()\n        print(max_polygon_area(n, m, points))\n    except ValueError:\n        break\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

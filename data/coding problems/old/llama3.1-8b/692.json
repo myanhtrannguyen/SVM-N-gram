@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-692",
+    "problem_id": "p00710",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n\nint main() {\n    int n, r, p, c, i, j, top;\n    int cards[100];\n\n    while (scanf(\"%d %d\", &n, &r) == 2) {\n        for (i = 0; i < n; i++) {\n            cards[i] = i + 1;\n        }\n\n        for (i = 0; i < r; i++) {\n            scanf(\"%d %d\", &p, &c);\n            p--;\n\n            for (j = 0; j < c; j++) {\n                top = (p + j) % n;\n                int temp = cards[top];\n                cards[top] = cards[(p + c - 1 - j) % n];\n                cards[(p + c - 1 - j) % n] = temp;\n            }\n        }\n\n        printf(\"%d\\n\", cards[0]);\n        while (scanf(\"%d %d\", &n, &r) == 2) {\n            if (n == 0 && r == 0) break;\n        }\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

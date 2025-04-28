@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3302",
+    "problem_id": "p01829",
+    "language": "Java",
+    "solution": "```java\nimport java.util.Arrays;\nimport java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        String s = scanner.next();\n        int[] a = new int[s.length()];\n        for (int i = 0; i < s.length(); i++) {\n            a[i] = s.charAt(i) - '0';\n        }\n        Arrays.sort(a);\n        int[] b = new int[s.length()];\n        int j = 0;\n        for (int i = s.length() - 1; i >= 0; i--) {\n            if (j < s.length() && a[j] != a[i]) {\n                b[s.length() - 1 - j] = a[i];\n                j++;\n            }\n        }\n        for (int i = s.length() - 1; i >= 0; i--) {\n            if (j < s.length() && a[j] != b[i]) {\n                b[i] = a[j];\n                j++;\n            }\n        }\n        for (int i = 0; i < s.length(); i++) {\n            System.out.print(b[i]);\n        }\n    }\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

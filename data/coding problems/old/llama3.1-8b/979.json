@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-979",
+    "problem_id": "p00781",
+    "language": "Python",
+    "solution": "```python\nimport itertools\n\ndef rotate(board):\n    return ''.join(''.join(x[i] for x in board) for i in range(5)[::-1])\n\ndef flip(board):\n    return ''.join(x[::-1] for x in board)\n\ndef count_configurations(boards):\n    # Remove duplicates by converting to set\n    boards = set(''.join(boards[i:i+5]) for i in range(0, 10, 5))\n    \n    # Count configurations\n    count = 0\n    for v in itertools.combinations(boards, 5):\n        h = tuple(x for x in boards if x not in v)\n        for _ in range(4):\n            for _ in range(4):\n                if len(v) == 5 and len(h) == 5:\n                    count += 1\n                v = rotate(v)\n                h = rotate(h)\n            v = flip(v)\n            h = flip(h)\n    return count\n\ndef main():\n    while True:\n        line = input()\n        if line == \"END\":\n            break\n        boards = line.split()\n        print(count_configurations(boards))\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

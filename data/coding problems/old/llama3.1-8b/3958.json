@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3958",
+    "problem_id": "p02310",
+    "language": "Java",
+    "solution": "```java\nimport java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        double px = scanner.nextDouble();\n        double py = scanner.nextDouble();\n        double cx = scanner.nextDouble();\n        double cy = scanner.nextDouble();\n        double r = scanner.nextDouble();\n\n        double dx = cx - px;\n        double dy = cy - py;\n        double d = Math.sqrt(dx * dx + dy * dy);\n        double a = (r * r - d * d + dy * dy) / (2 * dy);\n        double h = Math.sqrt(r * r - a * a);\n        double ux = cx + a * dx / d;\n        double uy = cy + a * dy / d;\n        double vx = ux + h * dy / d;\n        double vy = uy - h * dx / d;\n\n        if (vx - cx < 0) {\n            System.out.printf(\"%.10f %.10f%n\", vx, vy);\n            System.out.printf(\"%.10f %.10f%n\", 2 * cx - vx, 2 * cy - vy);\n        } else {\n            System.out.printf(\"%.10f %.10f%n\", 2 * cx - vx, 2 * cy - vy);\n            System.out.printf(\"%.10f %.10f%n\", vx, vy);\n        }\n    }\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

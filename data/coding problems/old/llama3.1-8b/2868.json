@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2868",
+    "problem_id": "p03712",
+    "language": "Python",
+    "solution": "```python\nh, w = map(int, input().split())\nimage = [input() for _ in range(h)]\n\nresult = []\nfor i in range(h + 2):\n    row = []\n    for j in range(w + 2):\n        if i == 0 or i == h + 1 or j == 0 or j == w + 1:\n            row.append('#')\n        else:\n            row.append(image[i - 1][j - 1])\n    result.append(''.join(row))\n\nfor row in result:\n    print(row)\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

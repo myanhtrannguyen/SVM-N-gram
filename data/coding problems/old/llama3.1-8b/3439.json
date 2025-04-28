@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3439",
+    "problem_id": "p01958",
+    "language": "Python",
+    "solution": "```python\nimport math\n\ndef is_prime(n):\n    if n <= 1:\n        return False\n    if n <= 3:\n        return True\n    if n % 2 == 0 or n % 3 == 0:\n        return False\n    i = 5\n    while i * i <= n:\n        if n % i == 0 or n % (i + 2) == 0:\n            return False\n        i += 6\n    return True\n\ndef prime_factors(n):\n    factors = set()\n    for i in range(2, int(math.sqrt(n)) + 1):\n        while n % i == 0:\n            factors.add(i)\n            n //= i\n    if n > 1:\n        factors.add(n)\n    return factors\n\ndef count_prime_factor_primes(l, r):\n    count = 0\n    for i in range(l, r + 1):\n        factors = prime_factors(i)\n        if is_prime(len(factors)):\n            count += 1\n    return count\n\nl, r = map(int, input().split())\nprint(count_prime_factor_primes(l, r))\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

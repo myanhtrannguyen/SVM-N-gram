@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1517",
+    "problem_id": "p02787",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\ntypedef struct {\n    int a;\n    int b;\n} Spell;\n\nint compare(const void *a, const void *b) {\n    Spell *x = (Spell *)a;\n    Spell *y = (Spell *)b;\n    return (y->a - x->a);\n}\n\nint main() {\n    int H, N;\n    scanf(\"%d %d\", &H, &N);\n    Spell *spells = (Spell *)malloc(N * sizeof(Spell));\n    for (int i = 0; i < N; i++) {\n        scanf(\"%d %d\", &spells[i].a, &spells[i].b);\n    }\n    qsort(spells, N, sizeof(Spell), compare);\n    int i = 0;\n    int total = 0;\n    while (H > 0) {\n        int min = spells[i].a;\n        int min_index = i;\n        for (int j = i; j < N; j++) {\n            if (spells[j].a <= min) {\n                min = spells[j].a;\n                min_index = j;\n            }\n        }\n        int count = H / min;\n        total += count * spells[min_index].b;\n        H -= count * min;\n        i = min_index;\n    }\n    printf(\"%d\\n\", total);\n    free(spells);\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

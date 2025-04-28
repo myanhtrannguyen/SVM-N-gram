@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-219",
+    "problem_id": "p00365",
+    "language": "Python",
+    "solution": "```python\nfrom datetime import datetime, timedelta\n\ndef is_leap_year(year):\n    return year % 4 == 0 and (year % 100 != 0 or year % 400 == 0)\n\ndef max_age_diff(birthday1, birthday2):\n    max_diff = 0\n    year = 1\n    while True:\n        try:\n            date1 = datetime(year, birthday1[1], birthday1[2])\n            date2 = datetime(year, birthday2[1], birthday2[2])\n            diff = abs((date1 - date2).days)\n            max_diff = max(max_diff, diff)\n            year += 1\n        except ValueError:\n            break\n    return max_diff\n\nbirthday1 = list(map(int, input().split()))\nbirthday2 = list(map(int, input().split()))\n\nprint(max_age_diff(birthday1, birthday2))\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

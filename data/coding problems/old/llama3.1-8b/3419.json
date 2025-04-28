@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3419",
+    "problem_id": "p01953",
+    "language": "Python",
+    "solution": "```python\nimport sys\n\ndef solve():\n    n, c = map(int, input().split())\n    pos = [0] * (n + 1)\n    for i in range(1, n + 1):\n        x, w = map(int, input().split())\n        pos[x] = i\n    dp = [0] * (n + 1)\n    for i in range(n, 0, -1):\n        j = pos[i]\n        if j == n:\n            dp[i] = 0\n        else:\n            dp[i] = dp[j + 1] + c * (j + 1 - i) * (pos[i] - j)\n            for k in range(j + 1, n + 1):\n                if pos[k] < i:\n                    dp[i] = min(dp[i], dp[k + 1] + c * (k - j) * (pos[i] - k) + c * (j + 1 - i) * (pos[i] - j))\n    print(dp[1])\n\nif __name__ == \"__main__\":\n    solve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

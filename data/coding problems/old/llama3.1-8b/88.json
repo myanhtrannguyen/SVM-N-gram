@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-88",
+    "problem_id": "p00022",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n\nint max(int a, int b) {\n    return (a > b) ? a : b;\n}\n\nint max_sum(int n, int a[]) {\n    int max_sum = a[0];\n    int current_sum = a[0];\n\n    for (int i = 1; i < n; i++) {\n        current_sum = max(a[i], current_sum + a[i]);\n        max_sum = max(max_sum, current_sum);\n    }\n\n    return max_sum;\n}\n\nint main() {\n    int n, a[5000];\n\n    while (scanf(\"%d\", &n) == 1) {\n        if (n == 0) break;\n\n        for (int i = 0; i < n; i++) {\n            scanf(\"%d\", &a[i]);\n        }\n\n        printf(\"%d\\n\", max_sum(n, a));\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3900",
+    "problem_id": "p02296",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int q;\n    scanf(\"%d\", &q);\n\n    while (q--) {\n        int x1, y1, x2, y2, x3, y3, x4, y4;\n        scanf(\"%d %d %d %d %d %d %d %d\", &x1, &y1, &x2, &y2, &x3, &y3, &x4, &y4);\n\n        double dx = (x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1);\n        double dy = (x4 - x3) * (x4 - x3) + (y4 - y3) * (y4 - y3);\n\n        double distance = sqrt(dx + dy);\n\n        printf(\"%.10lf\\n\", distance);\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

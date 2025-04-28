@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-701",
+    "problem_id": "p00712",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n#include <cmath>\n\nusing namespace std;\n\nconst int MAXN = 800 + 1;\nconst int MAXA = 12000 + 1;\nconst int MAXN2 = 7 + 1;\n\nint gcd(int a, int b) {\n    if (b == 0) return a;\n    return gcd(b, a % b);\n}\n\nvoid dfs(int p, int q, int a, int n, int cur, int prod, vector<int>& path, int& res) {\n    if (path.size() > n) return;\n    if (prod > a) return;\n    if (p == 0) {\n        res++;\n        return;\n    }\n    for (int i = 1; i <= q; i++) {\n        if (gcd(p, i) == 1) {\n            path.push_back(i);\n            dfs(p / i, q, a, n, cur + 1, prod * i, path, res);\n            path.pop_back();\n        }\n    }\n}\n\nint main() {\n    int p, q, a, n;\n    while (cin >> p >> q >> a >> n) {\n        if (p == 0 && q == 0 && a == 0 && n == 0) break;\n        int res = 0;\n        vector<int> path;\n        dfs(p, q, a, n, 0, 1, path, res);\n        cout << res << endl;\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

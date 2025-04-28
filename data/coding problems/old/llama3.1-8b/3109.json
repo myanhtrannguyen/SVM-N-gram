@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3109",
+    "problem_id": "p01705",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <cmath>\n\nusing namespace std;\n\ndouble solve(int n, vector<int>& x, vector<int>& r) {\n    double ans = 0;\n    for (int i = 0; i < n; i++) {\n        double d = x[i] + r[i];\n        if (i == 0) {\n            ans = d;\n        } else {\n            double d2 = x[i] - x[i - 1] - r[i - 1];\n            if (d2 > 0) {\n                d = min(d, d2);\n            }\n        }\n        ans = min(ans, d);\n    }\n    return 2 * ans;\n}\n\nint main() {\n    int n;\n    while (cin >> n) {\n        if (n == 0) break;\n        vector<int> x(n), r(n);\n        for (int i = 0; i < n; i++) {\n            cin >> x[i] >> r[i];\n        }\n        cout << fixed << setprecision(10) << solve(n, x, r) << endl;\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

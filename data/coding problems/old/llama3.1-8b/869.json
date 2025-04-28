@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-869",
+    "problem_id": "p00754",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <stack>\n#include <string>\n\nbool isBalanced(const std::string& str) {\n    std::stack<char> stack;\n    for (char c : str) {\n        if (c == '(' || c == '[') {\n            stack.push(c);\n        } else if (c == ')' || c == ']') {\n            if (stack.empty()) return false;\n            char top = stack.top();\n            stack.pop();\n            if ((c == ')' && top != '(') || (c == ']' && top != '[')) return false;\n        }\n    }\n    return stack.empty();\n}\n\nint main() {\n    std::string line;\n    while (std::getline(std::cin, line)) {\n        if (line == \".\") break;\n        if (isBalanced(line)) std::cout << \"yes\" << std::endl;\n        else std::cout << \"no\" << std::endl;\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

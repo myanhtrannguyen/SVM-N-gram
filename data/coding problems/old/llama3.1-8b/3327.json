@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3327",
+    "problem_id": "p01835",
+    "language": "Python",
+    "solution": "```python\nimport sys\ninput = sys.stdin.readline\n\nN, K = map(int, input().split())\nT = int(input())\n\ntasks = []\nfor _ in range(T):\n    l, r, x = map(int, input().split())\n    tasks.append((l, r, x))\n\ntasks.sort(key=lambda x: x[2])\n\nlast = 0\ncnt = 0\nmax_cnt = 0\nfor l, r, x in tasks:\n    if l > last:\n        max_cnt = max(max_cnt, cnt)\n        cnt = 0\n    cnt += r - l + 1\n    last = r\n\nmax_cnt = max(max_cnt, cnt)\nprint(N - max_cnt)\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

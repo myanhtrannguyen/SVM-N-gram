@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2111",
+    "problem_id": "p03400",
+    "language": "Java",
+    "solution": "```java\nimport java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        int n = scanner.nextInt();\n        int d = scanner.nextInt();\n        int x = scanner.nextInt();\n        int[] a = new int[n];\n        for (int i = 0; i < n; i++) {\n            a[i] = scanner.nextInt();\n        }\n\n        int[] days = new int[2 * n + 1];\n        for (int i = 0; i < n; i++) {\n            int day = 1;\n            for (int j = 0; j < 100; j++) {\n                if (day > d) {\n                    break;\n                }\n                days[day] += 1;\n                day = 2 * a[i] + day;\n            }\n        }\n\n        int ans = 0;\n        for (int i = 1; i <= d; i++) {\n            if (days[i] == 0) {\n                continue;\n            }\n            int day = i;\n            while (day <= d) {\n                if (days[day] == 0) {\n                    break;\n                }\n                day += i;\n            }\n            ans += (day - i) / i;\n        }\n        ans += x;\n        System.out.println(ans);\n    }\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

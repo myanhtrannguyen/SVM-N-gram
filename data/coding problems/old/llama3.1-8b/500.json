@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-500",
+    "problem_id": "p00639",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    double D, px, py, vx, vy, t, x, y, dist;\n    int i;\n\n    while (scanf(\"%lf\", &D) == 1) {\n        if (D == 0) break;\n\n        scanf(\"%lf%lf%lf%lf\", &px, &py, &vx, &vy);\n\n        dist = 0;\n        x = px;\n        y = py;\n\n        for (i = 0; i < 1000; i++) {\n            t = (D - dist) / sqrt(vx * vx + vy * vy);\n            x = px + vx * t;\n            y = py + vy * t;\n\n            if (x * x + y * y <= 1) break;\n\n            dist += sqrt((x - px) * (x - px) + (y - py) * (y - py));\n        }\n\n        if (x * x + y * y <= 1) {\n            printf(\"%.6f\\n\", dist);\n        } else {\n            printf(\"impossible\\n\");\n        }\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

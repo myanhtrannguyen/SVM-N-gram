@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-693",
+    "problem_id": "p00710",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n\nint hanafudaShuffle(int n, int r, std::vector<std::pair<int, int>> operations) {\n    int topCard = 1;\n    for (int i = 0; i < r; i++) {\n        int p = operations[i].first;\n        int c = operations[i].second;\n        topCard = (topCard + p - 1) % n + 1;\n        n -= c;\n    }\n    return topCard;\n}\n\nint main() {\n    int n, r;\n    while (std::cin >> n >> r) {\n        if (n == 0 && r == 0) break;\n        std::vector<std::pair<int, int>> operations;\n        for (int i = 0; i < r; i++) {\n            int p, c;\n            std::cin >> p >> c;\n            operations.push_back(std::make_pair(p, c));\n        }\n        std::cout << hanafudaShuffle(n, r, operations) << std::endl;\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3885",
+    "problem_id": "p02292",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <cmath>\n\nusing namespace std;\n\nint main() {\n    int x0, y0, x1, y1, q;\n    cin >> x0 >> y0 >> x1 >> y1 >> q;\n\n    while (q--) {\n        int x2, y2;\n        cin >> x2 >> y2;\n\n        int cross_product = (x1 - x0) * (y2 - y0) - (x2 - x0) * (y1 - y0);\n\n        if (cross_product > 0) {\n            cout << \"COUNTER_CLOCKWISE\" << endl;\n        } else if (cross_product < 0) {\n            cout << \"CLOCKWISE\" << endl;\n        } else {\n            if ((x2 - x0) * (x2 - x0) + (y2 - y0) * (y2 - y0) < 1e-9 &&\n                (x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1) < 1e-9) {\n                cout << \"ON_SEGMENT\" << endl;\n            } else if ((x2 - x0) * (y1 - y0) - (y2 - y0) * (x1 - x0) > -1e-9 &&\n                       (x2 - x0) * (y1 - y0) - (y2 - y0) * (x1 - x0) < 1e-9) {\n                cout << \"ONLINE_BACK\" << endl;\n            } else {\n                cout << \"ONLINE_FRONT\" << endl;\n            }\n        }\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

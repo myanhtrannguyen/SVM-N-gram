@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1195",
+    "problem_id": "p00835",
+    "language": "Python",
+    "solution": "```python\nimport math\n\ndef calculate_surface_area(points):\n    n = len(points)\n    area = 0\n    for i in range(n):\n        x1, y1 = points[i]\n        x2, y2 = points[(i+1)%n]\n        area += abs((x1*y2 - x2*y1))\n    return area / 2\n\ndef main():\n    while True:\n        n = int(input())\n        points = []\n        for _ in range(n):\n            x, y = map(int, input().split())\n            points.append((x, y))\n        points.append(points[0])\n        area = calculate_surface_area(points)\n        print(f\"{area:.4f}\")\n        if n == 0:\n            break\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2352",
+    "problem_id": "p03583",
+    "language": "Python",
+    "solution": "```python\nimport math\n\nn = int(input())\n\nh = math.ceil(n / 2)\nn = math.ceil(n / 2)\nw = n\n\nwhile True:\n    if 4 / n == 1 / h + 1 / n + 1 / w:\n        break\n    else:\n        n += 1\n        w = n\n\nprint(h, n, w)\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

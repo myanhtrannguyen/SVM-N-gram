@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-316",
+    "problem_id": "p00390",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint min(int a, int b) {\n    return (a < b) ? a : b;\n}\n\nint max(int a, int b) {\n    return (a > b) ? a : b;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n\n    int a[n], w[n];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &a[i]);\n    }\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &w[i]);\n    }\n\n    int dp[n][n];\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            dp[i][j] = 0;\n        }\n    }\n\n    for (int i = 0; i < n; i++) {\n        dp[i][i] = w[i];\n    }\n\n    for (int len = 2; len <= n; len++) {\n        for (int i = 0; i < n - len + 1; i++) {\n            int j = i + len - 1;\n            for (int k = i; k < j; k++) {\n                int left = (a[i] == 0 && a[k] == 1) || (a[i] == 1 && a[k] == 0);\n                int right = (a[k] == 0 && a[j] == 1) || (a[k] == 1 && a[j] == 0);\n                dp[i][j] = max(dp[i][j], min(dp[i][k], dp[k + 1][j]) + (left || right ? w[i] : 0));\n            }\n        }\n    }\n\n    printf(\"%d\\n\", dp[0][n - 1]);\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-271",
+    "problem_id": "p00378",
+    "language": "Python",
+    "solution": "```python\nimport math\n\na, b, x = map(int, input().split())\n\nmin_price = float('inf')\n\nfor i in range(x // 5 + 1):\n    j = (x - i * 5) // 1\n    if j >= 0:\n        price = i * b + j * a\n        min_price = min(min_price, price)\n\nfor i in range(x // 1 + 1):\n    j = (x - i) // 0.5\n    if j >= 0:\n        price = i * a + j * b\n        min_price = min(min_price, price)\n\nprint(min_price)\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

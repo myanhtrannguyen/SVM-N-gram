@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3343",
+    "problem_id": "p01880",
+    "language": "Python",
+    "solution": "```python\nimport itertools\n\ndef is_consecutive(s):\n    return ''.join(sorted(s)) == s\n\ndef largest_product(nums):\n    max_product = -1\n    for a, b in itertools.combinations(nums, 2):\n        product = a * b\n        str_product = str(a * b)\n        if is_consecutive(str_product):\n            max_product = max(max_product, product)\n    return max_product\n\nn = int(input())\nnums = list(map(int, input().split()))\nprint(largest_product(nums))\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3661",
+    "problem_id": "p02236",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n#include <cmath>\n\nusing namespace std;\n\nconst int MAXN = 505;\n\nint n;\ndouble p[MAXN], q[MAXN];\ndouble dp[MAXN][MAXN];\ndouble f[MAXN][MAXN];\n\nvoid solve() {\n    cin >> n;\n    for (int i = 1; i <= n; i++) {\n        cin >> p[i];\n    }\n    for (int i = 0; i <= n; i++) {\n        cin >> q[i];\n    }\n\n    for (int i = 0; i <= n; i++) {\n        for (int j = 0; j <= n; j++) {\n            dp[i][j] = 1e9;\n        }\n    }\n\n    for (int i = 0; i <= n; i++) {\n        dp[i][i] = 0;\n    }\n\n    for (int len = 1; len <= n; len++) {\n        for (int l = 0; l <= n - len; l++) {\n            int r = l + len - 1;\n            for (int k = l; k <= r; k++) {\n                dp[l][r] = min(dp[l][r], dp[l][k] + dp[k + 1][r] + p[l] * (k - l + 1) + q[r + 1] * (r - k + 1));\n            }\n        }\n    }\n\n    cout << fixed << setprecision(4) << dp[0][n] << endl;\n}\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(0);\n    solve();\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

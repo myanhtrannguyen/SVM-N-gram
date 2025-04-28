@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-563",
+    "problem_id": "p00654",
+    "language": "Python",
+    "solution": "```python\nimport math\n\ndef find_sequence(n, b):\n    a = [2]\n    for i in range(n):\n        a.append(2 * math.ceil(math.sqrt(b[i])) + 1)\n    return a\n\ndef main():\n    while True:\n        n = int(input())\n        if n == 0:\n            break\n        b = list(map(int, input().split()))\n        a = find_sequence(n, b)\n        print(a[0])\n        print(*a[1:])\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

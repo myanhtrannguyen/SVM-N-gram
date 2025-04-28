@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2297",
+    "problem_id": "p03570",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n#define MAXLEN 200005\n\nint main() {\n    char s[MAXLEN];\n    scanf(\"%s\", s);\n\n    int n = strlen(s);\n    int cnt[26] = {0};\n    for (int i = 0; i < n; i++) {\n        cnt[s[i] - 'a']++;\n    }\n\n    int ans = 0;\n    for (int i = 0; i < 26; i++) {\n        if (cnt[i] % 2 == 1) {\n            ans++;\n        }\n        if (cnt[i] > 0) {\n            ans++;\n        }\n    }\n\n    printf(\"%d\\n\", ans);\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

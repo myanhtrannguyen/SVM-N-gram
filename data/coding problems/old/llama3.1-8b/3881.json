@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3881",
+    "problem_id": "p02291",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <cmath>\n\nusing namespace std;\n\nint main() {\n    int p1x, p1y, p2x, p2y;\n    cin >> p1x >> p1y >> p2x >> p2y;\n\n    int q;\n    cin >> q;\n\n    while (q--) {\n        int px, py;\n        cin >> px >> py;\n\n        double a = p2y - p1y;\n        double b = p1x - p2x;\n        double c = p1x * p2y - p2x * p1y;\n\n        double x = ((a * px + b * py + c) * 2) / (a * a + b * b);\n        double y = ((a * py - b * px + a * p1y + b * p1x) / (a * a + b * b));\n\n        cout << fixed << setprecision(10) << x << \" \" << y << endl;\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

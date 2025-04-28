@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2617",
+    "problem_id": "p03650",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n#define MAXN 200005\n\nint n;\nint p[MAXN];\nint in[MAXN];\nint out[MAXN];\nint deg[MAXN];\nint vis[MAXN];\nint color[MAXN];\n\nvoid dfs(int u) {\n    vis[u] = 1;\n    for (int v = out[u]; v; v = out[v]) {\n        if (!vis[p[v]]) {\n            dfs(p[v]);\n        }\n    }\n    for (int v = in[u]; v; v = in[v]) {\n        if (color[p[v]] == color[u]) {\n            printf(\"IMPOSSIBLE\\n\");\n            exit(0);\n        }\n    }\n    color[u] = 1;\n    for (int v = out[u]; v; v = out[v]) {\n        if (color[p[v]] == 0) {\n            color[p[v]] = color[u] ^ 1;\n        }\n    }\n}\n\nint main() {\n    scanf(\"%d\", &n);\n    for (int i = 1; i <= n; i++) {\n        scanf(\"%d\", &p[i]);\n        in[p[i]] = i;\n        out[i] = p[i];\n        deg[p[i]]++;\n    }\n    for (int i = 1; i <= n; i++) {\n        if (!vis[i]) {\n            dfs(i);\n        }\n    }\n    printf(\"POSSIBLE\\n\");\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

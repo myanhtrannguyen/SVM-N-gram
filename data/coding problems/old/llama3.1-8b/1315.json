@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1315",
+    "problem_id": "p00865",
+    "language": "Python",
+    "solution": "```python\nimport sys\n\ndef calculate_expected_value(n, m, k):\n    total_outcomes = m ** n\n    expected_value = 0.0\n\n    for i in range(k + 1, total_outcomes + 1):\n        probability = 1.0 / total_outcomes\n        outcomes_with_i = 0\n\n        for j in range(n):\n            outcomes_with_i += min(i - (n - j - 1), m)\n\n        expected_value += probability * outcomes_with_i\n\n    return expected_value\n\nfor line in sys.stdin:\n    n, m, k = map(int, line.split())\n\n    if n == 0 and m == 0 and k == 0:\n        break\n\n    expected_value = calculate_expected_value(n, m, k)\n    print(f\"{expected_value:.12f}\")\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

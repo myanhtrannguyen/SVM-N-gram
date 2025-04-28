@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-107",
+    "problem_id": "p00026",
+    "language": "Python",
+    "solution": "```python\ndef drop_ink():\n    grid = [[0 for _ in range(10)] for _ in range(10)]\n    max_density = 0\n    num_zero_density = 0\n\n    for _ in range(int(input())):\n        x, y, size = map(int, input().split())\n        x, y = x - 1, y - 1  # adjust to 0-based indexing\n\n        for i in range(max(0, x - size), min(10, x + size + 1)):\n            for j in range(max(0, y - size), min(10, y + size + 1)):\n                grid[i][j] += 1\n                max_density = max(max_density, grid[i][j])\n\n    for row in grid:\n        num_zero_density += row.count(0)\n\n    print(num_zero_density)\n    print(max_density)\n\ndrop_ink()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

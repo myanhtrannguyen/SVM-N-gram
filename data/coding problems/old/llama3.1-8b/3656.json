@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3656",
+    "problem_id": "p02235",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <string.h>\n\n#define MAXLEN 1000\n\nint lcs(int m, int n, char *x, char *y) {\n    int i, j;\n    int dp[MAXLEN + 1][MAXLEN + 1];\n\n    for (i = 0; i <= m; i++) {\n        for (j = 0; j <= n; j++) {\n            if (i == 0 || j == 0)\n                dp[i][j] = 0;\n            else if (x[i - 1] == y[j - 1])\n                dp[i][j] = dp[i - 1][j - 1] + 1;\n            else\n                dp[i][j] = (dp[i - 1][j] > dp[i][j - 1]) ? dp[i - 1][j] : dp[i][j - 1];\n        }\n    }\n\n    return dp[m][n];\n}\n\nint main() {\n    int q;\n    scanf(\"%d\", &q);\n\n    while (q--) {\n        char x[MAXLEN + 1], y[MAXLEN + 1];\n        scanf(\"%s %s\", x, y);\n        int m = strlen(x);\n        int n = strlen(y);\n        printf(\"%d\\n\", lcs(m, n, x, y));\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

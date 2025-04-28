@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1612",
+    "problem_id": "p02942",
+    "language": "Python",
+    "solution": "```python\nimport sys\n\nn, m = map(int, input().split())\na = [list(map(int, input().split())) for _ in range(n)]\n\nb = [[0] * m for _ in range(n)]\nc = [[0] * m for _ in range(n)]\n\nfor i in range(n):\n    for j in range(m):\n        b[i][j] = (i + j) * n + a[i][j]\n\nfor i in range(n):\n    b[i].sort()\n\nfor j in range(m):\n    for i in range(n):\n        c[i][j] = b[i][j % n]\n\nfor i in range(n):\n    for j in range(m):\n        c[i][j] = a[c[i][j] % n][j]\n\nfor i in range(n):\n    print(' '.join(map(str, b[i])))\n    print(' '.join(map(str, c[i])))\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

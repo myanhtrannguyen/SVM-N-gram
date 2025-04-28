@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3572",
+    "problem_id": "p02074",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n#define MAXN 100005\n\nint n, m;\nlong long a[MAXN], b[MAXN];\nlong long d[MAXN];\n\nint main() {\n    scanf(\"%d %d\", &n, &m);\n    for (int i = 1; i <= n; i++) {\n        scanf(\"%lld\", &a[i]);\n    }\n    for (int i = 1; i <= m; i++) {\n        scanf(\"%lld\", &b[i]);\n    }\n    long long q;\n    scanf(\"%lld\", &q);\n    for (int i = 1; i <= q; i++) {\n        scanf(\"%lld\", &d[i]);\n    }\n    for (int i = 1; i <= n; i++) {\n        for (int j = 1; j <= m; j++) {\n            a[i] = a[i] * b[j];\n        }\n    }\n    for (int i = 1; i <= n; i++) {\n        for (int j = 1; j <= m; j++) {\n            int k = i + (j - 1) * n;\n            int len = 0;\n            long long x = a[k];\n            while (x > 0) {\n                x /= 10;\n                len++;\n            }\n            if (d[i] <= len) {\n                printf(\"%lld\", (a[k] / (long long)pow(10, d[i] - 1)) % 10);\n            } else {\n                printf(\"x\");\n            }\n        }\n        printf(\"\\n\");\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

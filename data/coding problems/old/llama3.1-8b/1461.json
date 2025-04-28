@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1461",
+    "problem_id": "p02773",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n#define MAX 200005\n#define MAXS 11\n\ntypedef struct {\n    char str[MAXS];\n    int count;\n} Vote;\n\nint compare(const void *a, const void *b) {\n    Vote *x = (Vote *)a;\n    Vote *y = (Vote *)b;\n    return strcmp(x->str, y->str);\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    Vote *votes = (Vote *)malloc(n * sizeof(Vote));\n    for (int i = 0; i < n; i++) {\n        scanf(\"%s\", votes[i].str);\n        votes[i].count = 1;\n    }\n    qsort(votes, n, sizeof(Vote), compare);\n    int max = 0;\n    for (int i = 0; i < n; i++) {\n        if (i == n - 1 || strcmp(votes[i].str, votes[i + 1].str) != 0) {\n            if (votes[i].count > max) {\n                max = votes[i].count;\n                printf(\"%s\\n\", votes[i].str);\n            }\n        } else {\n            votes[i + 1].count += votes[i].count;\n        }\n    }\n    free(votes);\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-415",
+    "problem_id": "p00596",
+    "language": "Python",
+    "solution": "```python\nfrom collections import defaultdict\n\ndef can_arrange(dominoes):\n    graph = defaultdict(list)\n    for domino in dominoes:\n        graph[domino[0]].append(domino[1])\n        graph[domino[1]].append(domino[0])\n\n    visited = set()\n    for domino in dominoes:\n        if domino[0] not in visited:\n            if not dfs(graph, domino[0], visited):\n                return False\n    return True\n\ndef dfs(graph, node, visited):\n    visited.add(node)\n    for neighbor in graph[node]:\n        if neighbor not in visited:\n            if not dfs(graph, neighbor, visited):\n                return False\n    return True\n\ndef main():\n    for _ in range(int(input())):\n        n = int(input())\n        dominoes = list(map(int, input().split()))\n        if can_arrange(dominoes):\n            print(\"Yes\")\n        else:\n            print(\"No\")\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

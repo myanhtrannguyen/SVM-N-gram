@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-438",
+    "problem_id": "p00602",
+    "language": "Java",
+    "solution": "```java\nimport java.util.*;\nimport java.io.*;\n\npublic class Main {\n    static final int N = 1001;\n    static int[] fib = new int[1001];\n\n    public static void main(String[] args) throws IOException {\n        Scanner sc = new Scanner(System.in);\n        PrintWriter pw = new PrintWriter(System.out);\n\n        fib[0] = 1;\n        for (int i = 1; i < 1001; i++) {\n            fib[i] = (fib[i - 1] + fib[i - 2]) % N;\n        }\n\n        int t = 1;\n        while (t-- > 0) {\n            int v = sc.nextInt();\n            int d = sc.nextInt();\n            boolean[] vis = new boolean[v + 1];\n            int cnt = 0;\n            for (int i = 1; i <= v; i++) {\n                if (!vis[i]) {\n                    cnt++;\n                    vis[i] = true;\n                    for (int j = i + 1; j <= v; j++) {\n                        if (Math.abs(fib[i] - fib[j]) < d) {\n                            vis[j] = true;\n                        }\n                    }\n                }\n            }\n            pw.println(cnt);\n        }\n\n        pw.close();\n    }\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

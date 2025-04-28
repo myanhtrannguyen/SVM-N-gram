@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3018",
+    "problem_id": "p01668",
+    "language": "Java",
+    "solution": "```java\nimport java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        long a = scanner.nextLong();\n        long b = scanner.nextLong();\n        long c = scanner.nextLong();\n        long mod = 1000000007;\n\n        long count = 0;\n        for (long i = a; i <= b; i++) {\n            String str = String.valueOf(i);\n            long occurrences = countOccurrences(str, String.valueOf(c));\n            count = (count + occurrences) % mod;\n        }\n\n        System.out.println(count);\n    }\n\n    public static long countOccurrences(String str, String substr) {\n        int count = 0;\n        int index = str.indexOf(substr);\n        while (index != -1) {\n            count++;\n            index = str.indexOf(substr, index + 1);\n        }\n        return count;\n    }\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

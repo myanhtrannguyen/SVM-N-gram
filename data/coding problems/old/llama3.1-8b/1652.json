@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1652",
+    "problem_id": "p02952",
+    "language": "Python",
+    "solution": "```python\nn = int(input())\n\ncount = 0\nfor i in range(1, n + 1):\n    if i >= 10 and i < 100:\n        count += 1\n    elif i >= 100 and i < 1000:\n        count += 3\n    elif i >= 1000 and i < 10000:\n        count += 7\n    elif i >= 10000 and i < 100000:\n        count += 15\n    elif i >= 100000 and i < 1000000:\n        count += 31\n    elif i >= 1000000 and i < 10000000:\n        count += 63\n    elif i >= 10000000 and i < 100000000:\n        count += 127\n    elif i >= 100000000:\n        count += 255\n\nprint(count)\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

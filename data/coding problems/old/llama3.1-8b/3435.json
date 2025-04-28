@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3435",
+    "problem_id": "p01957",
+    "language": "Python",
+    "solution": "```python\nimport re\n\ndef dfs(node, graph, visited, wins):\n    if node in visited:\n        return 0\n    visited.add(node)\n    for child in graph[node]:\n        wins[node] += dfs(child, graph, visited, wins)\n    return 1\n\ndef solve():\n    s = input()\n    graph = {}\n    for i in range(26):\n        graph[chr(ord('a') + i)] = []\n    for match in re.findall(r'\\[([a-z]+)-([a-z]+)\\]', s):\n        graph[match[0]].append(match[1])\n        graph[match[1]].append(match[0])\n    wins = {}\n    for _ in range(int(input())):\n        name, count = input().split()\n        wins[name] = int(count)\n    for node in graph:\n        if dfs(node, graph, set(), wins) != wins[node]:\n            print('No')\n            return\n    print('Yes')\n\nsolve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

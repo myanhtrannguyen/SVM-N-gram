@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3784",
+    "problem_id": "p02267",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int n, q;\n    scanf(\"%d\", &n);\n    int* S = (int*)malloc(n * sizeof(int));\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &S[i]);\n    }\n    scanf(\"%d\", &q);\n    int* T = (int*)malloc(q * sizeof(int));\n    for (int i = 0; i < q; i++) {\n        scanf(\"%d\", &T[i]);\n    }\n    int C = 0;\n    for (int i = 0; i < q; i++) {\n        int found = 0;\n        for (int j = 0; j < n; j++) {\n            if (S[j] == T[i]) {\n                found = 1;\n                break;\n            }\n        }\n        if (found) {\n            C++;\n        }\n    }\n    printf(\"%d\\n\", C);\n    free(S);\n    free(T);\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

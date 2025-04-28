@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3484",
+    "problem_id": "p01970",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n#define MOD 1000000007\n\ntypedef struct {\n    int num;\n    int cnt;\n} Node;\n\nint cmp(const void *a, const void *b) {\n    Node *x = (Node *)a;\n    Node *y = (Node *)b;\n    if (x->num != y->num) return x->num - y->num;\n    return x->cnt - y->cnt;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    Node a[n];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &a[i].num);\n        a[i].cnt = 1;\n    }\n    qsort(a, n, sizeof(Node), cmp);\n    long long ans = 1;\n    for (int i = 1; i < n; i++) {\n        if (a[i].num == a[i - 1].num) {\n            a[i].cnt += a[i - 1].cnt;\n            ans = (ans * a[i].cnt) % MOD;\n        } else {\n            ans = (ans * a[i].cnt) % MOD;\n        }\n    }\n    if (a[0].cnt == 1) ans = 0;\n    printf(\"%lld\\n\", ans);\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1072",
+    "problem_id": "p00805",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int n;\n    double a[31], b[31], c[31], d[31];\n\n    while (scanf(\"%d\", &n) == 1) {\n        if (n == 0) break;\n\n        for (int i = 0; i < n; i++) {\n            scanf(\"%lf\", &a[i]);\n        }\n        for (int i = 0; i < n; i++) {\n            scanf(\"%lf\", &b[i]);\n        }\n        for (int i = 0; i < n; i++) {\n            scanf(\"%lf\", &c[i]);\n        }\n        for (int i = 0; i < n; i++) {\n            scanf(\"%lf\", &d[i]);\n        }\n\n        double max = 0.0;\n        for (int i = 0; i < n; i++) {\n            double x1 = a[i];\n            double x2 = b[i];\n            double y1 = c[i];\n            double y2 = d[i];\n\n            double dx = x2 - x1;\n            double dy = y2 - y1;\n\n            double dist = sqrt(dx * dx + dy * dy);\n\n            double mesh1 = (x2 - x1) / n;\n            double mesh2 = (y2 - y1) / n;\n\n            double mesh = (mesh1 < mesh2) ? mesh1 : mesh2;\n\n            max = (max > mesh) ? max : mesh;\n        }\n\n        printf(\"%.6lf\\n\", max);\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

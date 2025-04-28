@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3379",
+    "problem_id": "p01889",
+    "language": "Python",
+    "solution": "```python\nMOD = 10**9 + 7\n\ndef eval(s):\n    stack = []\n    for i, c in enumerate(s):\n        if c.isdigit():\n            num = 0\n            while i < len(s) and s[i].isdigit():\n                num = num * 10 + int(s[i])\n                i += 1\n            stack.append(num)\n        elif c in '+-':\n            num2 = stack.pop()\n            num1 = stack.pop()\n            if c == '+':\n                stack.append(num1 + num2)\n            else:\n                stack.append(num1 - num2)\n        else:\n            num2 = stack.pop()\n            stack.append(stack.pop() * num2)\n    return stack[0]\n\ndef solve():\n    n = int(input())\n    ans = 0\n    for _ in range(n):\n        r, s = input().split()\n        r = int(r)\n        ans = (ans + eval(s * int(r))) % MOD\n    print(ans)\n\nsolve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

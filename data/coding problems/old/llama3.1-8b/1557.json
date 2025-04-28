@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1557",
+    "problem_id": "p02929",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <string.h>\n\n#define MOD 1000000007\n#define N 200005\n\nlong long dp[N][2];\nchar s[N];\nint n;\n\nlong long power(long long a, int b) {\n    long long res = 1;\n    while (b) {\n        if (b & 1) res = res * a % MOD;\n        a = a * a % MOD;\n        b >>= 1;\n    }\n    return res;\n}\n\nint main() {\n    scanf(\"%d %s\", &n, s);\n    n *= 2;\n    dp[0][0] = 1;\n    for (int i = 1; i <= n; i++) {\n        if (s[i] == 'B') {\n            dp[i][0] = (dp[i - 1][0] + dp[i - 1][1]) % MOD;\n            dp[i][1] = (dp[i - 1][0] + dp[i - 1][1]) % MOD;\n        } else {\n            dp[i][0] = (dp[i - 1][0] + dp[i - 1][1]) % MOD;\n            dp[i][1] = (dp[i - 1][0] + dp[i - 1][1]) % MOD;\n        }\n        if (i >= 2 && s[i] == s[i - 1] && s[i] == 'B') {\n            dp[i][0] = (dp[i][0] + dp[i - 2][0]) % MOD;\n            dp[i][1] = (dp[i][1] + dp[i - 2][1]) % MOD;\n        }\n    }\n    printf(\"%lld\\n\", (dp[n][0] + dp[n][1]) % MOD);\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

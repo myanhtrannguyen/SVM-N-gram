@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2778",
+    "problem_id": "p03690",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nint main() {\n    int n;\n    std::cin >> n;\n\n    std::vector<int> a(n), b(n);\n    for (int i = 0; i < n; ++i) {\n        std::cin >> a[i];\n    }\n    for (int i = 0; i < n; ++i) {\n        std::cin >> b[i];\n    }\n\n    int xor_a = 0;\n    for (int i = 0; i < n; ++i) {\n        xor_a ^= a[i];\n    }\n\n    int xor_b = 0;\n    for (int i = 0; i < n; ++i) {\n        xor_b ^= b[i];\n    }\n\n    if (xor_a != xor_b) {\n        std::cout << -1 << std::endl;\n        return 0;\n    }\n\n    int ans = 0;\n    for (int i = 0; i < n; ++i) {\n        if (a[i] != b[i]) {\n            ans += 1;\n            a[i] = xor_a;\n            int xor_c = 0;\n            for (int j = 0; j < n; ++j) {\n                xor_c ^= a[j];\n            }\n            if (xor_c != xor_b) {\n                ans = -1;\n                break;\n            }\n        }\n    }\n\n    std::cout << ans << std::endl;\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

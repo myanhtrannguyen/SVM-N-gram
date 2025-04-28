@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1787",
+    "problem_id": "p03126",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int n, m;\n    scanf(\"%d %d\", &n, &m);\n\n    int** likes = (int**)malloc(n * sizeof(int*));\n    for (int i = 0; i < n; i++) {\n        int k;\n        scanf(\"%d\", &k);\n        likes[i] = (int*)malloc((k + 1) * sizeof(int));\n        likes[i][0] = k;\n        for (int j = 1; j <= k; j++) {\n            scanf(\"%d\", &likes[i][j]);\n        }\n    }\n\n    int* count = (int*)malloc((m + 1) * sizeof(int));\n    for (int i = 1; i <= m; i++) {\n        count[i] = 1;\n    }\n\n    for (int i = 0; i < n; i++) {\n        for (int j = 1; j <= likes[i][0]; j++) {\n            count[likes[i][j]] = 0;\n        }\n    }\n\n    int result = 0;\n    for (int i = 1; i <= m; i++) {\n        if (count[i] == 1) {\n            result++;\n        }\n    }\n\n    printf(\"%d\\n\", result);\n\n    for (int i = 0; i < n; i++) {\n        free(likes[i]);\n    }\n    free(likes);\n    free(count);\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

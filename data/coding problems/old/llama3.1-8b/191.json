@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-191",
+    "problem_id": "p00358",
+    "language": "Python",
+    "solution": "```python\ndef max_cargo_capacity(H, N, inhibited_partitions):\n    # Create a 2D grid to represent the cargo space\n    cargo_space = [[0 for _ in range(H)] for _ in range(4)]\n\n    # Mark the inhibited partitions\n    for x, y in inhibited_partitions:\n        cargo_space[x][y] = -1\n\n    # Initialize the count of cargo pieces\n    cargo_count = 0\n\n    # Iterate over the cargo space\n    for x in range(4):\n        for y in range(H):\n            # Check if the current position is not inhibited and is not adjacent to an inhibited position\n            if cargo_space[x][y] == 0 and (x == 0 or cargo_space[x-1][y] != -1) and (y == 0 or cargo_space[x][y-1] != -1):\n                # Place a cargo piece at the current position\n                cargo_space[x][y] = 1\n                cargo_count += 1\n\n    return cargo_count\n\n# Read the input\nH, N = map(int, input().split())\ninhibited_partitions = []\nfor _ in range(N):\n    x, y = map(int, input().split())\n    inhibited_partitions.append((x, y))\n\n# Print the result\nprint(max_cargo_capacity(H, N, inhibited_partitions))\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1904",
+    "problem_id": "p03155",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\nusing namespace std;\n\nint main() {\n    int n, h, w;\n    cin >> n >> h >> w;\n\n    long long ans = 1;\n    for (int i = 1; i <= h; i++) {\n        ans *= (n - i + 1);\n    }\n    for (int i = 1; i <= w; i++) {\n        ans /= (h - i + 1);\n    }\n    cout << ans << endl;\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

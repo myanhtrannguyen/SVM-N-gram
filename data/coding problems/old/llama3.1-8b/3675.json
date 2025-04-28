@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3675",
+    "problem_id": "p02239",
+    "language": "Python",
+    "solution": "```python\nfrom collections import deque\n\ndef bfs(graph):\n    n = len(graph)\n    visited = [False] * n\n    distance = [float('inf')] * n\n    distance[0] = 0\n    queue = deque([0])\n\n    while queue:\n        u = queue.popleft()\n        visited[u] = True\n        for v in graph[u]:\n            if not visited[v]:\n                distance[v] = distance[u] + 1\n                queue.append(v)\n\n    return distance\n\ndef main():\n    n = int(input())\n    graph = [[] for _ in range(n)]\n    for _ in range(n):\n        u, k, *v = map(int, input().split())\n        graph[u-1] = v\n\n    distance = bfs(graph)\n    for i in range(n):\n        print(f\"{i+1} {distance[i]}\")\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

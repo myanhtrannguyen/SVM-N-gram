@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-870",
+    "problem_id": "p00754",
+    "language": "Java",
+    "solution": "```java\nimport java.util.Stack;\nimport java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        while (scanner.hasNextLine()) {\n            String line = scanner.nextLine();\n            if (line.equals(\".\")) {\n                break;\n            }\n            System.out.println(isBalanced(line) ? \"yes\" : \"no\");\n        }\n        scanner.close();\n    }\n\n    public static boolean isBalanced(String s) {\n        Stack<Character> stack = new Stack<>();\n        for (int i = 0; i < s.length(); i++) {\n            char c = s.charAt(i);\n            if (c == '(' || c == '[') {\n                stack.push(c);\n            } else if (c == ')' || c == ']') {\n                if (stack.isEmpty()) {\n                    return false;\n                }\n                char top = stack.pop();\n                if ((c == ')' && top != '(') || (c == ']' && top != '[')) {\n                    return false;\n                }\n            }\n        }\n        return stack.isEmpty();\n    }\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2520",
+    "problem_id": "p03625",
+    "language": "Python",
+    "solution": "```python\nimport sys\nimport math\n\ndef solve():\n    n = int(input())\n    a = list(map(int, input().split()))\n    a.sort()\n\n    max_area = 0\n    for i in range(n - 3):\n        for j in range(i + 1, n - 2):\n            for k in range(j + 1, n - 1):\n                for l in range(k + 1, n):\n                    area = a[i] * a[j] * a[k] * a[l]\n                    max_area = max(max_area, area)\n\n    print(max_area)\n\nif __name__ == \"__main__\":\n    solve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

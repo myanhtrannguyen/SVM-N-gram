@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3724",
+    "problem_id": "p02252",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n#define MAX_N 100000\n\ntypedef struct {\n    double value;\n    double weight;\n    double ratio;\n} Item;\n\nint compare_items(const void *a, const void *b) {\n    Item *item_a = (Item *)a;\n    Item *item_b = (Item *)b;\n    return (item_b->ratio - item_a->ratio) > 0 ? 1 : -1;\n}\n\nint main() {\n    int N, W;\n    scanf(\"%d %d\", &N, &W);\n\n    Item *items = (Item *)malloc(N * sizeof(Item));\n    for (int i = 0; i < N; i++) {\n        scanf(\"%lf %lf\", &items[i].value, &items[i].weight);\n        items[i].ratio = items[i].value / items[i].weight;\n    }\n\n    qsort(items, N, sizeof(Item), compare_items);\n\n    double total_value = 0.0;\n    for (int i = 0; i < N; i++) {\n        if (W >= items[i].weight) {\n            W -= items[i].weight;\n            total_value += items[i].value;\n        } else {\n            double fraction = (double)W / items[i].weight;\n            total_value += items[i].value * fraction;\n            break;\n        }\n    }\n\n    printf(\"%.9lf\\n\", total_value);\n\n    free(items);\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

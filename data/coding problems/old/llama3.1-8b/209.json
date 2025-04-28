@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-209",
+    "problem_id": "p00363",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <string>\n\nint main() {\n    int w, h;\n    char c;\n    std::cin >> w >> h >> c;\n\n    for (int i = 0; i < h; i++) {\n        for (int j = 0; j < w; j++) {\n            if (i == 0 || i == h - 1) {\n                if (j == 0 || j == w - 1) {\n                    std::cout << \"+\";\n                } else {\n                    std::cout << \"-\";\n                }\n            } else if (j == 0 || j == w - 1) {\n                std::cout << \"|\";\n            } else if (i == (h + 1) / 2 && j == (w + 1) / 2) {\n                std::cout << c;\n            } else {\n                std::cout << \".\";\n            }\n        }\n        std::cout << std::endl;\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

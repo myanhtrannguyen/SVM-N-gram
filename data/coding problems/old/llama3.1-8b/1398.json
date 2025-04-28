@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1398",
+    "problem_id": "p02757",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <string>\n#include <algorithm>\n\nusing namespace std;\n\nconst int MAXN = 2e5 + 5;\nconst int MAXP = 1e4 + 5;\n\nint n, p;\nstring s;\nint dp[MAXN][MAXP];\n\nint main() {\n    cin >> n >> p >> s;\n    for (int i = 0; i < n; i++) {\n        int val = 0;\n        for (int j = i; j < n; j++) {\n            val = val * 10 + (s[j] - '0');\n            dp[j + 1][val % p]++;\n        }\n    }\n    long long ans = 0;\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < p; j++) {\n            ans += dp[i + 1][j];\n        }\n    }\n    cout << ans << endl;\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

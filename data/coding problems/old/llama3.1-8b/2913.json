@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2913",
+    "problem_id": "p03724",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n#define N 100005\n#define M 100005\n\nint n, m;\nint a[M], b[M];\nint fa[N], sz[N];\nint vis[N];\nint ans;\n\nint find(int x) {\n    if (fa[x] == x) return x;\n    return fa[x] = find(fa[x]);\n}\n\nvoid merge(int x, int y) {\n    x = find(x);\n    y = find(y);\n    if (x == y) return;\n    if (sz[x] < sz[y]) {\n        int temp = x;\n        x = y;\n        y = temp;\n    }\n    fa[y] = x;\n    sz[x] += sz[y];\n    vis[x] += vis[y];\n}\n\nint main() {\n    scanf(\"%d%d\", &n, &m);\n    for (int i = 1; i <= n; i++) {\n        fa[i] = i;\n        sz[i] = 1;\n    }\n    for (int i = 1; i <= m; i++) {\n        scanf(\"%d%d\", &a[i], &b[i]);\n        merge(a[i], b[i]);\n    }\n    for (int i = 1; i <= n; i++) {\n        if (vis[i] & 1) {\n            ans = 1;\n            break;\n        }\n    }\n    if (ans) printf(\"NO\\n\");\n    else printf(\"YES\\n\");\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

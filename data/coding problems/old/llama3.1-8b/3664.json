@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3664",
+    "problem_id": "p02237",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\n#define MAX_VERTICES 100\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n\n    int** adj_list = (int**)malloc(n * sizeof(int*));\n    for (int i = 0; i < n; i++) {\n        adj_list[i] = (int*)malloc(2 + 2 * MAX_VERTICES * sizeof(int));\n    }\n\n    int** adj_matrix = (int**)malloc(n * sizeof(int*));\n    for (int i = 0; i < n; i++) {\n        adj_matrix[i] = (int*)malloc(n * sizeof(int));\n    }\n\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d %d\", &adj_list[i][0], &adj_list[i][1]);\n        for (int j = 2; j < 2 + 2 * adj_list[i][1]; j += 2) {\n            adj_list[i][j] = j / 2 - 1;\n            adj_matrix[i][adj_list[i][j]] = 1;\n        }\n    }\n\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            printf(\"%d \", adj_matrix[i][j]);\n        }\n        printf(\"\\n\");\n    }\n\n    for (int i = 0; i < n; i++) {\n        free(adj_list[i]);\n        free(adj_matrix[i]);\n    }\n    free(adj_list);\n    free(adj_matrix);\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

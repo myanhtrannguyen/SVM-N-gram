@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-30",
+    "problem_id": "p00007",
+    "language": "Java",
+    "solution": "```java\nimport java.util.Scanner;\n\npublic class DebtHell {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        int n = scanner.nextInt();\n        double debt = 100000;\n        for (int i = 0; i < n; i++) {\n            debt = Math.round(debt * 1.05) / 1;\n        }\n        System.out.println((int) debt);\n    }\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

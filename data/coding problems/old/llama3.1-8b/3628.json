@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3628",
+    "problem_id": "p02225",
+    "language": "C",
+    "solution": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n#define MAX 100\n\ntypedef struct {\n    char name[MAX];\n    int age;\n    char gender[MAX];\n} Student;\n\nvoid printStudent(Student s) {\n    printf(\"Name: %s\\n\", s.name);\n    printf(\"Age: %d\\n\", s.age);\n    printf(\"Gender: %s\\n\", s.gender);\n}\n\nint main() {\n    Student students[3] = {\n        {\"John\", 20, \"Male\"},\n        {\"Alice\", 22, \"Female\"},\n        {\"Bob\", 21, \"Male\"}\n    };\n\n    for (int i = 0; i < 3; i++) {\n        printStudent(students[i]);\n        printf(\"\\n\");\n    }\n\n    return 0;\n}",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

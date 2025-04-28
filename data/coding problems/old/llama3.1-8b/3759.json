@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3759",
+    "problem_id": "p02260",
+    "language": "Python",
+    "solution": "```python\ndef selection_sort(A):\n    n = len(A)\n    swap_count = 0\n    for i in range(n):\n        mini = i\n        for j in range(i+1, n):\n            if A[j] < A[mini]:\n                mini = j\n        if i != mini:\n            A[i], A[mini] = A[mini], A[i]\n            swap_count += 1\n    return A, swap_count\n\nn = int(input())\nA = list(map(int, input().split()))\nsorted_A, swap_count = selection_sort(A)\nprint(' '.join(map(str, sorted_A)))\nprint(swap_count)\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

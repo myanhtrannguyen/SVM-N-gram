@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3239",
+    "problem_id": "p01796",
+    "language": "Python",
+    "solution": "```python\nfrom collections import defaultdict\nimport sys\n\ndef solve():\n    n, k = map(int, input().split())\n    graph = defaultdict(list)\n    for i in range(n):\n        s = input()\n        for j in range(k):\n            graph[s[j]].append(i)\n\n    order = [''] * n\n    for i in range(k):\n        for j in range(n):\n            if graph[j].count(i) == 0:\n                graph[j].append(i)\n                order[i] = chr(ord('A') + j)\n                break\n\n    for i in range(k):\n        for j in range(n):\n            if graph[j].count(i) == 0:\n                print('Invalid order')\n                return\n\n    print(''.join(order))\n\nif __name__ == '__main__':\n    solve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

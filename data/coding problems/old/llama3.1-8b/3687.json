@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3687",
+    "problem_id": "p02242",
+    "language": "Python",
+    "solution": "```python\nimport sys\nimport heapq\n\ndef dijkstra(n, edges):\n    graph = [[] for _ in range(n)]\n    for u, k, *rest in edges:\n        for i in range(0, len(rest), 2):\n            v, c = rest[i], rest[i+1]\n            graph[u].append((v, c))\n\n    distances = [sys.maxsize] * n\n    distances[0] = 0\n    pq = [(0, 0)]\n\n    while pq:\n        d, u = heapq.heappop(pq)\n        if d > distances[u]:\n            continue\n        for v, c in graph[u]:\n            if distances[v] > distances[u] + c:\n                distances[v] = distances[u] + c\n                heapq.heappush(pq, (distances[v], v))\n\n    return distances\n\ndef main():\n    n = int(input())\n    edges = []\n    for _ in range(n):\n        u, k, *rest = map(int, input().split())\n        edges.append((u, k, *rest))\n\n    distances = dijkstra(n, edges)\n    for i in range(n):\n        print(i, distances[i])\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

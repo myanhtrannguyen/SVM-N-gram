@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2016",
+    "problem_id": "p03376",
+    "language": "Python",
+    "solution": "```python\nimport sys\ninput = sys.stdin.readline\n\nN, X, D = map(int, input().split())\nm = [0] + list(map(int, input().split()))\np = [0] + [0] * N\nfor i in range(2, N + 1):\n    p[i], m[i] = map(int, input().split())\n\ndp = [0] * (N + 1)\nfor i in range(1, N + 1):\n    dp[i] = X // m[i]\n    for j in range(1, i):\n        if p[i] == j:\n            dp[i] = max(dp[i], dp[j] + (dp[i] - dp[j]) // (D + 1) * (D + 1))\n\nprint(max(dp))\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

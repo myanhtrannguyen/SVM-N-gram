@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1995",
+    "problem_id": "p03178",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <string.h>\n#include <stdlib.h>\n\n#define MOD 1000000007\n#define N 100000\n\nint dp[N + 1][101];\nint sum[N + 1];\n\nint main() {\n    int k, d;\n    scanf(\"%d %d\", &k, &d);\n\n    for (int i = 1; i <= k; i++) {\n        int len = 0;\n        int num = i;\n        while (num) {\n            sum[++len] = num % 10;\n            num /= 10;\n        }\n\n        for (int j = 0; j <= d; j++) {\n            dp[i][j] = 0;\n        }\n\n        for (int j = 1; j <= len; j++) {\n            for (int l = 0; l <= d; l++) {\n                if (l % d == 0 && (sum[j] + l / d) % d == 0) {\n                    dp[i][l] = (dp[i][l] + dp[i - 1][l - (sum[j] + l / d)]) % MOD;\n                }\n            }\n        }\n\n        for (int j = 0; j <= d; j++) {\n            dp[i][j] = (dp[i][j] + dp[i - 1][j]) % MOD;\n        }\n    }\n\n    printf(\"%d\\n\", dp[k][0]);\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

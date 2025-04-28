@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3087",
+    "problem_id": "p01685",
+    "language": "Python",
+    "solution": "```python\nimport sys\nimport math\n\ndef read_input():\n    h, w = map(int, input().split())\n    initial = [input() for _ in range(h)]\n    desired = [input() for _ in range(h)]\n    return h, w, initial, desired\n\ndef calculate_expected_value(h, w, initial, desired):\n    dp = [[0.0 for _ in range(w + 1)] for _ in range(h + 1)]\n    for i in range(h, 0, -1):\n        for j in range(w, 0, -1):\n            if initial[i - 1][j - 1] == 'B':\n                dp[i][j] = 1 + dp[i][j + 1] + dp[i + 1][j] - dp[i + 1][j + 1]\n            else:\n                dp[i][j] = dp[i][j + 1] + dp[i + 1][j] - dp[i + 1][j + 1]\n    return dp[1][1] * (h * w)\n\ndef main():\n    while True:\n        h, w, initial, desired = read_input()\n        if h == 0 and w == 0:\n            break\n        print(calculate_expected_value(h, w, initial, desired))\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

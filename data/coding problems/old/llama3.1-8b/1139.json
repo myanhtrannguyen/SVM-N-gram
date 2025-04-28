@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1139",
+    "problem_id": "p00821",
+    "language": "Python",
+    "solution": "```python\ndef polygon_area():\n    with open('input.txt', 'r') as f:\n        lines = f.readlines()\n\n    areas = []\n    i = 0\n    while i < len(lines):\n        m = int(lines[i].strip())\n        i += 1\n        points = []\n        for _ in range(m):\n            x, y = map(int, lines[i].strip().split())\n            points.append((x, y))\n            i += 1\n        area = 0\n        for j in range(m):\n            x1, y1 = points[j]\n            x2, y2 = points[(j + 1) % m]\n            area += (x2 - x1) * (y2 + y1)\n        area = abs(area) // 2\n        areas.append(area)\n\n    with open('output.txt', 'w') as f:\n        for area in areas:\n            f.write(str(area) + '\\n')\n\npolygon_area()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1918",
+    "problem_id": "p03158",
+    "language": "Python",
+    "solution": "```python\nimport sys\ninput = sys.stdin.readline\n\nN, Q = map(int, input().split())\nA = list(map(int, input().split()))\nX = [int(input()) for _ in range(Q)]\n\nA.sort(reverse=True)\nans = [0] * Q\n\nfor i in range(Q):\n    x = X[i]\n    l, r = 0, N - 1\n    while l < r:\n        m = (l + r) // 2\n        if A[m] >= x:\n            r = m\n        else:\n            l = m + 1\n    l2, r2 = l, l\n    while l2 >= 0 and A[l2] >= x:\n        l2 -= 1\n    while r2 < N and A[r2] >= x:\n        r2 += 1\n    if l2 == -1:\n        l2 = 0\n    if r2 == N:\n        r2 -= 1\n    ans[i] = sum(A[:l2]) + sum(A[r2+1:N])\n\nfor a in ans:\n    print(a)\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

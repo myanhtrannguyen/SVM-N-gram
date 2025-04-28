@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3783",
+    "problem_id": "p02266",
+    "language": "Python",
+    "solution": "```python\ndef flood_damage(s):\n    n = len(s)\n    water_level = 0\n    floods = []\n    total_area = 0\n    i = 0\n    while i < n:\n        if s[i] == '/':\n            water_level += 1\n        elif s[i] == '\\\\':\n            water_level -= 1\n            if water_level < 0:\n                floods.append(-water_level)\n                total_area += -water_level\n                water_level = 0\n        elif s[i] == '_':\n            if water_level > 0:\n                floods.append(water_level)\n                total_area += water_level\n                water_level = 0\n        i += 1\n    print(total_area)\n    print(len(floods), end=' ')\n    for area in floods:\n        print(area, end=' ')\n    print()\n\nflood_damage(\"\\\\//\")\nflood_damage(\"\\\\///\\\\/_/\\\\\\\\/_/\\\\///__\\\\\\\\_\\\\\\\\/_/\\\\/_/\")\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

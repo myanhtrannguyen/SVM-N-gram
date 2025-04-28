@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-501",
+    "problem_id": "p00639",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <cmath>\n\ndouble distance(double x1, double y1, double x2, double y2) {\n    return std::sqrt(std::pow(x2 - x1, 2) + std::pow(y2 - y1, 2));\n}\n\ndouble time_of_flight(double D, double vx, double vy) {\n    return D / distance(vx, vy, 0, 0);\n}\n\ndouble distance_traveled(double vx, double vy, double t) {\n    return distance(vx, vy, vx * t, vy * t);\n}\n\nint main() {\n    double D;\n    while (std::cin >> D) {\n        if (D == 0) break;\n        double px, py, vx, vy;\n        std::cin >> px >> py >> vx >> vy;\n        double t = time_of_flight(D, vx, vy);\n        if (t < 0) {\n            std::cout << \"impossible\" << std::endl;\n        } else {\n            double x = distance_traveled(vx, vy, t);\n            std::cout << x << std::endl;\n        }\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-503",
+    "problem_id": "p00639",
+    "language": "Python",
+    "solution": "```python\nimport math\n\ndef distance(x1, y1, x2, y2):\n    return math.sqrt((x2 - x1)**2 + (y2 - y1)**2)\n\ndef collision(x, y, vx, vy, r):\n    return x**2 + y**2 - r**2\n\ndef reflect(x, y, vx, vy):\n    angle = math.atan2(vy, vx)\n    return -vx * math.cos(2 * angle) - vy * math.sin(2 * angle), -vx * math.sin(2 * angle) + vy * math.cos(2 * angle)\n\ndef simulate(px, py, vx, vy, d):\n    x, y = px, py\n    dist = 0\n    while True:\n        if collision(x, y, 0, 0, 1) <= 0:\n            return dist\n        dist += math.sqrt(vx**2 + vy**2) * 1e-6\n        x += vx * 1e-6\n        y += vy * 1e-6\n        vx, vy = reflect(x, y, vx, vy)\n\ndef main():\n    while True:\n        d = float(input())\n        if d == 0:\n            break\n        px, py, vx, vy = map(float, input().split())\n        dist = simulate(px, py, vx, vy, d)\n        if dist > d:\n            print(\"impossible\")\n        else:\n            print(f\"{dist:.10f}\")\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

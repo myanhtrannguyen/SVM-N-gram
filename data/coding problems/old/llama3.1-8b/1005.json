@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1005",
+    "problem_id": "p00788",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <cmath>\n\nint gcd(int a, int b) {\n    if (b == 0) return a;\n    return gcd(b, a % b);\n}\n\nint main() {\n    int p, n;\n    while (std::cin >> p >> n) {\n        if (p == 0 && n == 0) break;\n\n        int x = 1, y = 1;\n        int u = 1, v = 1;\n\n        for (int i = 1; i <= n; i++) {\n            for (int j = 1; j <= n; j++) {\n                if (i * i * j > p * n * n) break;\n                if (i * i * j == p * n * n) {\n                    x = i * n;\n                    y = i;\n                    break;\n                }\n                if (i * i * j > p * (j - 1) * (j - 1)) {\n                    u = i * j;\n                    v = i;\n                }\n            }\n        }\n\n        int g = gcd(x, y);\n        x /= g;\n        y /= g;\n        g = gcd(u, v);\n        u /= g;\n        v /= g;\n\n        std::cout << x << \"/\" << y << \" \" << u << \"/\" << v << std::endl;\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

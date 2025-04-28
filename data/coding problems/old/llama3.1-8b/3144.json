@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3144",
+    "problem_id": "p01733",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n\ntypedef struct {\n    int x, y, w;\n} Point;\n\nint gcd(int a, int b) {\n    if (b == 0) return a;\n    return gcd(b, a % b);\n}\n\nint main() {\n    int N;\n    scanf(\"%d\", &N);\n\n    Point *points = (Point *)malloc(N * sizeof(Point));\n    for (int i = 0; i < N; i++) {\n        scanf(\"%d %d %d\", &points[i].x, &points[i].y, &points[i].w);\n    }\n\n    int max_value = 0;\n    for (int i = 0; i < N; i++) {\n        for (int j = i + 1; j < N; j++) {\n            int dx = abs(points[i].x - points[j].x);\n            int dy = abs(points[i].y - points[j].y);\n            if (dx == 0 || dy == 0) continue;\n            int value = points[i].w * points[j].w / (dx * dy);\n            if (value > max_value) max_value = value;\n        }\n    }\n\n    int g = gcd(max_value, dx * dy);\n    printf(\"%d / %d\\n\", max_value / g, (dx * dy) / g);\n\n    free(points);\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

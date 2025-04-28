@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3104",
+    "problem_id": "p01704",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n\n#define N 100000\n\ntypedef struct {\n    double vw, pf, vf, th;\n} flower;\n\nint main() {\n    int n, pw;\n    flower f[N];\n    double cost, w, x, y, z;\n\n    while (scanf(\"%d\", &n) == 1 && n != 0) {\n        scanf(\"%d\", &pw);\n        for (int i = 0; i < n; i++) {\n            scanf(\"%lf %lf %lf %lf\", &f[i].vw, &f[i].pf, &f[i].vf, &f[i].th);\n        }\n        cost = 1e100;\n        for (int i = 0; i < n; i++) {\n            w = (f[i].th - f[i].vw * 1e4) / (f[i].vf * 1e4);\n            if (w < 0) w = 0;\n            x = f[i].pf * w;\n            y = f[i].pf * w * w;\n            z = f[i].pf * w * w * w;\n            cost = fmin(cost, 1e4 * pw * w + x + y + z);\n        }\n        printf(\"%.1f\\n\", cost);\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

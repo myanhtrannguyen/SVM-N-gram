@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1963",
+    "problem_id": "p03170",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n\nint main() {\n    int N, K;\n    scanf(\"%d %d\", &N, &K);\n    int a[N];\n    for (int i = 0; i < N; i++) {\n        scanf(\"%d\", &a[i]);\n    }\n\n    int sum = 0;\n    for (int i = 0; i < N; i++) {\n        sum += a[i];\n    }\n\n    if (sum > K) {\n        printf(\"Second\\n\");\n    } else if (sum == K) {\n        printf(\"First\\n\");\n    } else {\n        int turn = 0;\n        int stones = K;\n        while (1) {\n            if (turn % 2 == 0) {\n                if (stones >= a[0]) {\n                    stones -= a[0];\n                } else {\n                    printf(\"First\\n\");\n                    return 0;\n                }\n            } else {\n                int i;\n                for (i = 0; i < N; i++) {\n                    if (stones >= a[i]) {\n                        stones -= a[i];\n                        break;\n                    }\n                }\n                if (i == N) {\n                    printf(\"Second\\n\");\n                    return 0;\n                }\n            }\n            turn++;\n        }\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

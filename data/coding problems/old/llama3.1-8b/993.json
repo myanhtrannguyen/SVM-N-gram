@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-993",
+    "problem_id": "p00785",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n#include <iomanip>\n\nstruct Point {\n    int x, y;\n};\n\nstruct Line {\n    int x1, y1, x2, y2;\n};\n\nbool cmpX(const Point& a, const Point& b) {\n    return a.x < b.x;\n}\n\nbool cmpY(const Point& a, const Point& b) {\n    return a.y < b.y;\n}\n\nint main() {\n    int t;\n    std::cin >> t;\n    while (t--) {\n        int n;\n        std::cin >> n;\n        if (n == 0) break;\n        std::vector<Point> points(n);\n        for (int i = 0; i < n; i++) {\n            std::cin >> points[i].x >> points[i].y;\n        }\n        std::sort(points.begin(), points.end(), cmpX);\n        std::sort(points.begin(), points.end(), cmpY);\n        double qx = (points[0].x + points[n / 3].x + points[2 * n / 3].x) / 3.0;\n        double qy = (points[0].y + points[n / 3].y + points[2 * n / 3].y) / 3.0;\n        std::cout << std::fixed << std::setprecision(4) << qx << \" \" << qy << std::endl;\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

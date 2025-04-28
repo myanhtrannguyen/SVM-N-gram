@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3093",
+    "problem_id": "p01701",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <string>\n#include <algorithm>\n\nint main() {\n    std::string dir;\n    while (std::getline(std::cin, dir)) {\n        if (dir == \"#\") break;\n        int n = 0, w = 0;\n        for (char c : dir) {\n            if (c == 'n') n++;\n            else if (c == 'w') w++;\n        }\n        int a = 0;\n        for (int i = 0; i < dir.size(); i++) {\n            if (dir[i] == 'n') a += 0;\n            else if (dir[i] == 'w') a += 90;\n            else {\n                int p = dir[i] - '0';\n                a += 90 / pow(2, p);\n            }\n        }\n        a -= 90 * (n - 1) / (n + w);\n        if (a % 1 == 0) std::cout << a << std::endl;\n        else std::cout << a << \"/\" << 90 / (n + w) << std::endl;\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2281",
+    "problem_id": "p03566",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int N;\n    scanf(\"%d\", &N);\n\n    int t[N], v[N];\n    for (int i = 0; i < N; i++) {\n        scanf(\"%d\", &t[i]);\n    }\n    for (int i = 0; i < N; i++) {\n        scanf(\"%d\", &v[i]);\n    }\n\n    double total_distance = 0;\n    for (int i = 0; i < N; i++) {\n        double a = 1;\n        double s = 0.5 * a * t[i] * t[i];\n        double v_max = a * t[i];\n        double d = v_max * t[i] - 0.5 * a * t[i] * t[i];\n        total_distance += d;\n        if (i < N - 1) {\n            double t_next = t[i + 1];\n            double v_next = v[i + 1];\n            double t_decel = (v_next - v_max) / a;\n            if (t_decel > 0 && t_decel < t_next) {\n                double d_decel = 0.5 * a * t_decel * t_decel;\n                total_distance += d_decel;\n                t_next -= t_decel;\n                v_max = v_next;\n            }\n            double t_const = t_next - t_decel;\n            total_distance += v_max * t_const;\n        }\n    }\n\n    printf(\"%.6lf\\n\", total_distance);\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

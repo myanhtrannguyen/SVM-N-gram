@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-627",
+    "problem_id": "p00693",
+    "language": "Python",
+    "solution": "```python\nimport re\n\ndef parse_rule(rule):\n    keyword, source, destination = rule.split(' ', 2)\n    source = re.compile('^' + source.replace('?', '.') + '$')\n    destination = re.compile('^' + destination.replace('?', '.') + '$')\n    return keyword, source, destination\n\ndef is_allowed(packet, rules):\n    for keyword, source, destination in rules:\n        if source.match(packet[0]) and destination.match(packet[1]):\n            return keyword == 'permit'\n    return False\n\ndef main():\n    while True:\n        n, m = map(int, input().split())\n        if n == 0 and m == 0:\n            break\n        rules = []\n        for _ in range(n):\n            rules.append(parse_rule(input()))\n        packets = []\n        for _ in range(m):\n            packets.append(input().split())\n        allowed_packets = [packet for packet in packets if is_allowed(packet, rules)]\n        print(len(allowed_packets))\n        for packet in allowed_packets:\n            print(' '.join(packet))\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

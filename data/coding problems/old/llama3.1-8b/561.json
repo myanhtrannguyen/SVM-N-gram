@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-561",
+    "problem_id": "p00654",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <cmath>\n#include <algorithm>\n\nint main() {\n    int t;\n    std::cin >> t;\n    while (t--) {\n        int n;\n        std::cin >> n;\n        std::vector<long long> b(n * 2);\n        for (int i = 0; i < n; i++) {\n            std::cin >> b[i];\n        }\n        for (int i = n; i < n * 2; i++) {\n            std::cin >> b[i];\n        }\n\n        std::vector<long long> a;\n        a.push_back(2);\n        for (int i = 0; i < n; i++) {\n            long long x = b[i];\n            long long y = b[n + i];\n            long long z = std::sqrt(x * 1LL * y);\n            while (z * z < x * 1LL * y) {\n                z++;\n            }\n            while (z * z > x * 1LL * y) {\n                z--;\n            }\n            a.push_back(z);\n        }\n\n        std::sort(a.begin(), a.end());\n        std::cout << a[0] << std::endl;\n        for (int i = 1; i < a.size(); i++) {\n            std::cout << a[i] << \" \";\n        }\n        std::cout << std::endl;\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

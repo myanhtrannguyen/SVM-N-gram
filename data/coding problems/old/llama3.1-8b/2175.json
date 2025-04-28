@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2175",
+    "problem_id": "p03539",
+    "language": "Java",
+    "solution": "```java\nimport java.io.*;\nimport java.util.*;\n\npublic class Main {\n    static final int MOD = 1000000007;\n    static final int MAXN = 105;\n\n    public static void main(String[] args) throws IOException {\n        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));\n        PrintWriter pw = new PrintWriter(System.out);\n        StringTokenizer st = new StringTokenizer(br.readLine());\n\n        int n = Integer.parseInt(st.nextToken());\n        int k = Integer.parseInt(st.nextToken());\n\n        long[][] dp = new long[n + 1][k + 1];\n        for (int i = 1; i <= n; i++) {\n            for (int j = 1; j <= k; j++) {\n                if (j >= i) {\n                    dp[i][j] = (dp[i][j - 1] + j) % MOD;\n                }\n                for (int x = 1; x < i; x++) {\n                    dp[i][j] = (dp[i][j] + dp[x][j - 1] * (j - x) % MOD) % MOD;\n                }\n            }\n        }\n\n        long ans = 0;\n        for (int i = 1; i <= k; i++) {\n            ans = (ans + dp[n][i]) % MOD;\n        }\n\n        pw.println(ans);\n        pw.close();\n    }\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

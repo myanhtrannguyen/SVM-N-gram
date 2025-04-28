@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3667",
+    "problem_id": "p02237",
+    "language": "Python",
+    "solution": "```python\nn = int(input())\n\nadj_list = {}\nfor i in range(1, n + 1):\n    line = input().split()\n    u = int(line[0])\n    adj_list[u] = [int(x) for x in line[2:]]\n\nadj_matrix = [[0 for _ in range(n + 1)] for _ in range(n + 1)]\n\nfor u in adj_list:\n    for v in adj_list[u]:\n        adj_matrix[u][v] = 1\n\nfor row in adj_matrix[1:]:\n    print(' '.join(map(str, row)))\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

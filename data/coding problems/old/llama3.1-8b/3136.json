@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3136",
+    "problem_id": "p01731",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n#define MAX_POSTS 1000\n#define MAX_MESSAGE 50\n\ntypedef struct Post {\n    int parent;\n    char message[MAX_MESSAGE + 1];\n} Post;\n\nvoid print_post(Post post, int depth) {\n    for (int i = 0; i < depth; i++) {\n        printf(\".\");\n    }\n    printf(\"%s\\n\", post.message);\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n\n    Post posts[MAX_POSTS];\n    for (int i = 0; i < n; i++) {\n        int parent;\n        scanf(\"%d\", &parent);\n        scanf(\"%s\", posts[i].message);\n        posts[i].parent = parent;\n    }\n\n    for (int i = 0; i < n; i++) {\n        if (posts[i].parent == 0) {\n            print_post(posts[i], 0);\n        }\n    }\n\n    for (int i = 0; i < n; i++) {\n        if (posts[i].parent != 0) {\n            print_post(posts[i], 1 + posts[posts[i].parent].message[0] == '.' ? 1 : 0);\n        }\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

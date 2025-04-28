@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1506",
+    "problem_id": "p02784",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nusing namespace std;\n\nint main() {\n    int H, N;\n    cin >> H >> N;\n\n    vector<int> A(N);\n    for (int i = 0; i < N; i++) {\n        cin >> A[i];\n    }\n\n    sort(A.begin(), A.end());\n\n    int sum = 0;\n    for (int i = 0; i < N; i++) {\n        if (H <= sum + A[i]) {\n            cout << \"Yes\" << endl;\n            return 0;\n        }\n        sum += A[i];\n    }\n\n    cout << \"No\" << endl;\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

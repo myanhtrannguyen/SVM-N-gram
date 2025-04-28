@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3307",
+    "problem_id": "p01830",
+    "language": "Python",
+    "solution": "```python\nimport sys\n\nN = int(input())\nfiles = []\nfor _ in range(N):\n    d, l = input().split()\n    files.append((d, int(l)))\n\nfiles.sort(key=lambda x: x[1])\ndp = [0] * N\nfor i in range(N):\n    if files[i][0] == 'y':\n        dp[i] = 1 + (i > 0 and dp[i-1])\n    else:\n        dp[i] = dp[i-1] if i > 0 else 0\n\nprint(dp[-1])\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

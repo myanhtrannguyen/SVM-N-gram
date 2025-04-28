@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-280",
+    "problem_id": "p00381",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <string.h>\n\n#define N 100000\n#define MOD 1000000007\n\nint n, m, cnt, dp[N], vis[N];\nchar s[N], t[N];\n\nint dfs(int u) {\n    if (u == n) return 1;\n    if (vis[u]) return dp[u];\n    vis[u] = 1;\n    int res = 0;\n    for (int i = u + 1; i <= n; i++) {\n        if (s[u] == t[i] && dfs(i)) {\n            res++;\n            vis[u] = 0;\n            break;\n        }\n    }\n    dp[u] = res;\n    return res;\n}\n\nint main() {\n    scanf(\"%d\", &n);\n    scanf(\"%s\", s);\n    scanf(\"%s\", t);\n    cnt = dfs(1);\n    printf(\"%d\\n\", cnt % MOD);\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2081",
+    "problem_id": "p03393",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char s[27];\n    scanf(\"%s\", s);\n    int n = strlen(s);\n    int i;\n    for (i = 0; i < n; i++) {\n        if (s[i] == 'z') {\n            s[i] = 'a';\n        } else {\n            s[i]++;\n            break;\n        }\n    }\n    for (i = n - 1; i >= 0; i--) {\n        if (s[i] != 'a') {\n            break;\n        }\n        s[i] = 'z';\n    }\n    int flag = 1;\n    for (i = 0; i < n - 1; i++) {\n        if (s[i] == s[i + 1]) {\n            flag = 0;\n            break;\n        }\n    }\n    if (flag) {\n        printf(\"%s\\n\", s);\n    } else {\n        printf(\"-1\\n\");\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

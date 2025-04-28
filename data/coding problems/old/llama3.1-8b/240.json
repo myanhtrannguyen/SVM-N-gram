@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-240",
+    "problem_id": "p00371",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n#define MAX_N 100000\n#define MAX_M 100000\n#define MAX_T 1000\n#define MAX_Q 100000\n\nint main() {\n    int N, M, T, Q;\n    int a[MAX_N + 1];\n    int A[MAX_Q + 1], B[MAX_Q + 1];\n    int i, j;\n\n    scanf(\"%d %d %d\", &N, &M, &T);\n    for (i = 1; i <= N; i++) {\n        scanf(\"%d\", &a[i]);\n    }\n    scanf(\"%d\", &Q);\n    for (i = 1; i <= Q; i++) {\n        scanf(\"%d %d\", &A[i], &B[i]);\n    }\n\n    for (i = 1; i <= Q; i++) {\n        int sum = 0;\n        for (j = 1; j <= M && j <= N; j++) {\n            sum += a[j];\n        }\n        int min_sum = (B[i] * T) + A[i];\n        if (sum >= min_sum) {\n            printf(\"yes\\n\");\n        } else {\n            int max_sum = (T - A[i]) * M * a[1];\n            for (j = 2; j <= N && max_sum < min_sum; j++) {\n                max_sum += M * a[j];\n            }\n            if (max_sum >= min_sum) {\n                printf(\"yes\\n\");\n            } else {\n                printf(\"no\\n\");\n            }\n        }\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

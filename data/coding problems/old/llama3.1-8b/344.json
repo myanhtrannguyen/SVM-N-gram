@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-344",
+    "problem_id": "p00397",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\n#define N 100000\n#define K 100000\n\nint main() {\n    int n, k, i, j, a[N + 1], b[N + 1], c[N + 1], x, y, z;\n\n    scanf(\"%d %d\", &n, &k);\n    for (i = 1; i <= n; i++) {\n        scanf(\"%d\", &a[i]);\n    }\n\n    for (i = 1; i <= n; i++) {\n        b[i] = a[i];\n    }\n\n    for (i = 2; i <= n; i++) {\n        for (j = 1; j < i; j++) {\n            b[i] ^= b[j];\n        }\n    }\n\n    x = 0;\n    y = 0;\n    for (i = 1; i <= n; i++) {\n        z = (n + 1) * i - i * (i + 1) / 2;\n        if (k <= z) {\n            x = i;\n            y = k;\n            break;\n        }\n    }\n\n    for (i = 1; i <= x; i++) {\n        c[i] = b[i];\n    }\n\n    for (i = x + 1; i <= n; i++) {\n        c[i] = c[i - x] ^ a[i];\n    }\n\n    for (i = x; i >= 1; i--) {\n        if (y <= i) {\n            break;\n        }\n        y -= i;\n        c[i] = c[i - 1] ^ c[i];\n    }\n\n    printf(\"%d\\n\", c[x] ^ c[x - 1]);\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

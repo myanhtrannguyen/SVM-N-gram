@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-469",
+    "problem_id": "p00610",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <string>\n#include <algorithm>\n\nusing namespace std;\n\nvoid solve() {\n    int n, k;\n    cin >> n >> k;\n\n    if (n == 0 && k == 0) {\n        return;\n    }\n\n    vector<string> ans(n);\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            if ((i + j) % 2 == 0) {\n                ans[i] += 'E';\n            } else {\n                ans[i] += '.';\n            }\n        }\n    }\n\n    sort(ans.begin(), ans.end());\n\n    int cnt = 0;\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            if (ans[i][j] == 'E') {\n                cnt++;\n            }\n        }\n    }\n\n    if (cnt == k) {\n        for (int i = 0; i < n; i++) {\n            cout << ans[i] << endl;\n        }\n        cout << endl;\n    } else {\n        cout << \"No\" << endl;\n    }\n}\n\nint main() {\n    int t = 1;\n    while (t--) {\n        solve();\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

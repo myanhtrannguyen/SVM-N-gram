@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1160",
+    "problem_id": "p00827",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n\nint main() {\n    int a, b, d, x, y, min_sum, min_mass;\n    while (scanf(\"%d %d %d\", &a, &b, &d) == 3) {\n        if (a == 0 && b == 0 && d == 0) break;\n        min_sum = 1000000;\n        min_mass = 100000000;\n        for (x = 0; x <= d / a; x++) {\n            y = (d - x * a) / b;\n            if (y >= 0 && x + y < min_sum && x * a + y * b < min_mass) {\n                min_sum = x + y;\n                min_mass = x * a + y * b;\n            }\n        }\n        printf(\"%d %d\\n\", x, y);\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

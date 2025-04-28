@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2289",
+    "problem_id": "p03568",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nlong long int modexp(long long int a, long long int b, long long int m) {\n    long long int res = 1;\n    while (b > 0) {\n        if (b & 1) res = (res * a) % m;\n        a = (a * a) % m;\n        b >>= 1;\n    }\n    return res;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[n];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &a[i]);\n    }\n    long long int ans = 1;\n    for (int i = 0; i < n; i++) {\n        if (a[i] % 2 == 0) {\n            ans *= 2;\n        } else {\n            ans *= 2 * (a[i] + 1);\n        }\n    }\n    if (ans % 2 == 0) {\n        ans = (ans + 1) / 2;\n    } else {\n        ans = (ans + 1) / 2;\n        for (int i = 0; i < n; i++) {\n            if (a[i] % 2 == 0) {\n                ans *= 2;\n            } else {\n                ans *= 2 * (a[i] + 1);\n            }\n        }\n    }\n    printf(\"%lld\\n\", ans);\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

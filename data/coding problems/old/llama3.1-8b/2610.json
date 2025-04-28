@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2610",
+    "problem_id": "p03648",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nusing namespace std;\n\nint main() {\n    long long k;\n    cin >> k;\n\n    long long n = 2;\n    while (n * (n - 1) / 2 + n <= k) {\n        n++;\n    }\n\n    vector<long long> a(n);\n    for (int i = 0; i < n; i++) {\n        a[i] = n - 1;\n    }\n\n    long long sum = 0;\n    for (int i = 0; i < n; i++) {\n        sum += a[i];\n    }\n\n    long long diff = k - sum;\n    for (int i = 0; i < n; i++) {\n        if (diff >= a[i]) {\n            a[i] += diff / n;\n            diff = diff % n;\n        }\n    }\n\n    cout << n << endl;\n    for (int i = 0; i < n; i++) {\n        cout << a[i] << \" \";\n    }\n    cout << endl;\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

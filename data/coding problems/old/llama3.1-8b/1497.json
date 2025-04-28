@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1497",
+    "problem_id": "p02782",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\n#define MOD 1000000007\n\nlong long factorial(int n) {\n    long long result = 1;\n    for (int i = 1; i <= n; i++) {\n        result = (result * i) % MOD;\n    }\n    return result;\n}\n\nlong long combination(int n, int k) {\n    return (factorial(n) * pow_mod(factorial(k), MOD - 2, MOD) % MOD * pow_mod(factorial(n - k), MOD - 2, MOD) % MOD) % MOD;\n}\n\nlong long pow_mod(long long base, int exponent, int mod) {\n    long long result = 1;\n    while (exponent > 0) {\n        if (exponent % 2 == 1) {\n            result = (result * base) % mod;\n        }\n        base = (base * base) % mod;\n        exponent /= 2;\n    }\n    return result;\n}\n\nint main() {\n    int r1, c1, r2, c2;\n    scanf(\"%d %d %d %d\", &r1, &c1, &r2, &c2);\n\n    long long sum = 0;\n    for (int i = r1; i <= r2; i++) {\n        for (int j = c1; j <= c2; j++) {\n            sum = (sum + combination(i + j, i)) % MOD;\n        }\n    }\n\n    printf(\"%lld\\n\", sum);\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

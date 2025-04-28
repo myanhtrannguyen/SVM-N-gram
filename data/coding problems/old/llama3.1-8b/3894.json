@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3894",
+    "problem_id": "p02294",
+    "language": "Java",
+    "solution": "```java\nimport java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        int q = scanner.nextInt();\n        while (q-- > 0) {\n            int x1 = scanner.nextInt();\n            int y1 = scanner.nextInt();\n            int x2 = scanner.nextInt();\n            int y2 = scanner.nextInt();\n            int x3 = scanner.nextInt();\n            int y3 = scanner.nextInt();\n            int x4 = scanner.nextInt();\n            int y4 = scanner.nextInt();\n\n            int xMin = Math.min(x1, x2);\n            int xMax = Math.max(x1, x2);\n            int yMin = Math.min(y1, y2);\n            int yMax = Math.max(y1, y2);\n\n            int xMin2 = Math.min(x3, x4);\n            int xMax2 = Math.max(x3, x4);\n            int yMin2 = Math.min(y3, y4);\n            int yMax2 = Math.max(y3, y4);\n\n            if (xMin2 < xMax && xMin < xMax2 && yMin2 < yMax && yMin < yMax2) {\n                System.out.println(\"1\");\n            } else {\n                System.out.println(\"0\");\n            }\n        }\n    }\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

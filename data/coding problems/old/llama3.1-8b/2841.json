@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2841",
+    "problem_id": "p03706",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\n#define MAXN 100005\n\nint main() {\n    char s[MAXN];\n    int n, i, j, k, l, sum = 0;\n    int up[MAXN], down[MAXN];\n\n    scanf(\"%s\", s);\n    n = strlen(s);\n\n    for (i = 0; i < n; i++) {\n        if (s[i] == 'U') {\n            up[i] = 1;\n            down[i] = 0;\n        } else {\n            up[i] = 0;\n            down[i] = 1;\n        }\n    }\n\n    for (i = 1; i < n; i++) {\n        if (up[i]) {\n            up[i] += up[i - 1];\n        } else {\n            up[i] = up[i - 1];\n        }\n    }\n\n    for (i = n - 2; i >= 0; i--) {\n        if (down[i]) {\n            down[i] += down[i + 1];\n        } else {\n            down[i] = down[i + 1];\n        }\n    }\n\n    for (i = 0; i < n; i++) {\n        for (j = 0; j < n; j++) {\n            k = abs(i - j);\n            l = k;\n            if (i < j) {\n                l += up[j - 1] - up[i - 1];\n            } else {\n                l += down[j - 1] - down[i - 1];\n            }\n            sum += l;\n        }\n    }\n\n    printf(\"%d\\n\", sum);\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

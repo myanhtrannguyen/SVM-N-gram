@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-653",
+    "problem_id": "p00700",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <cmath>\n#include <vector>\n#include <algorithm>\n\nstruct Point {\n    int x, y;\n};\n\nbool comparePoints(const Point& a, const Point& b) {\n    double distanceA = std::sqrt(a.x * a.x + a.y * a.y);\n    double distanceB = std::sqrt(b.x * b.x + b.y * b.y);\n    if (distanceA == distanceB) {\n        return a.x > b.x;\n    }\n    return distanceA > distanceB;\n}\n\nint main() {\n    int n;\n    std::cin >> n;\n\n    std::vector<Point> points;\n    for (int i = 0; i < n; ++i) {\n        int dx, dy;\n        std::cin >> dx >> dy;\n        while (dx != 0 || dy != 0) {\n            points.push_back({points.back().x + dx, points.back().y + dy});\n            std::cin >> dx >> dy;\n        }\n    }\n\n    for (int i = 0; i < n; ++i) {\n        std::sort(points.begin() + i * 2, points.begin() + (i + 1) * 2, comparePoints);\n        std::cout << points[i * 2 + 1].x << \" \" << points[i * 2 + 1].y << std::endl;\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

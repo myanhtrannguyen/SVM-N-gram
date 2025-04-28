@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-233",
+    "problem_id": "p00369",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <string>\n#include <vector>\n#include <algorithm>\n\nint minYears(const std::string& s) {\n    int n = s.size();\n    int minDiff = n;\n\n    for (int i = 1; i < n; ++i) {\n        std::vector<int> nums;\n        for (int j = 0; j < n; j += i) {\n            int num = 0;\n            for (int k = j; k < j + i && k < n; ++k) {\n                num = num * 10 + (s[k] - '0');\n            }\n            nums.push_back(num);\n        }\n\n        int maxNum = *std::max_element(nums.begin(), nums.end());\n        int minNum = *std::min_element(nums.begin(), nums.end());\n        int diff = maxNum - minNum;\n        minDiff = std::min(minDiff, diff);\n    }\n\n    return minDiff;\n}\n\nint main() {\n    std::string s;\n    std::cin >> s;\n    std::cout << minYears(s) << std::endl;\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

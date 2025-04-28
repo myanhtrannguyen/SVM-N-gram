@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3753",
+    "problem_id": "p02259",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n\nvoid bubbleSort(std::vector<int>& A) {\n    int n = A.size();\n    int swaps = 0;\n\n    for (int i = 0; i < n - 1; i++) {\n        for (int j = n - 1; j > i; j--) {\n            if (A[j] < A[j - 1]) {\n                std::swap(A[j], A[j - 1]);\n                swaps++;\n            }\n        }\n    }\n\n    for (int i = 0; i < n; i++) {\n        std::cout << A[i] << \" \";\n    }\n    std::cout << std::endl;\n\n    std::cout << swaps << std::endl;\n}\n\nint main() {\n    int n;\n    std::cin >> n;\n\n    std::vector<int> A(n);\n    for (int i = 0; i < n; i++) {\n        std::cin >> A[i];\n    }\n\n    bubbleSort(A);\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

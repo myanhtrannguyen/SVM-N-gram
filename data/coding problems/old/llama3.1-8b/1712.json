@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1712",
+    "problem_id": "p02967",
+    "language": "Python",
+    "solution": "```python\nfrom collections import defaultdict\n\ndef longest_subsequence(s):\n    n = len(s)\n    freq = defaultdict(int)\n    for c in s:\n        freq[c] += 1\n\n    if len(freq) == 1:\n        return \"\"\n\n    max_len = 0\n    max_subseq = \"\"\n    for i in range(n):\n        count = [0, 0, 0]\n        for j in range(i, n):\n            c = s[j]\n            count[ord(c) - ord('A')] += 1\n            if all(x == y for x, y in zip(count, [freq['A'], freq['B'], freq['C']])):\n                if j - i + 1 > max_len:\n                    max_len = j - i + 1\n                    max_subseq = s[i:j+1]\n\n    return max_subseq\n\ns = input()\nprint(longest_subsequence(s))\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

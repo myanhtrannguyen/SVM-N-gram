@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2022",
+    "problem_id": "p03378",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nint main() {\n    int N, M, X;\n    std::cin >> N >> M >> X;\n\n    std::vector<int> A(M);\n    for (int i = 0; i < M; ++i) {\n        std::cin >> A[i];\n    }\n\n    int cost = 0;\n    for (int i = 0; i < M; ++i) {\n        if (A[i] < X && A[i] < N - X) {\n            cost += 1;\n        }\n    }\n\n    for (int i = 0; i < M; ++i) {\n        if (A[i] > X && A[i] < N) {\n            cost += std::max(0, A[i] - X - 1);\n        }\n    }\n\n    std::cout << cost << std::endl;\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

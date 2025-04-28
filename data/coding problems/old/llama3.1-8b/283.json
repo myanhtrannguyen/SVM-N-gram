@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-283",
+    "problem_id": "p00381",
+    "language": "Python",
+    "solution": "```python\nMOD = 1000000007\n\ndef dfs(i, s, t, dp, vis, s_str, t_str):\n    if vis[i]:\n        return 0\n    if i == len(s_str) - 1:\n        return 1\n    if dp[i][t[i]] != -1:\n        return dp[i][t[i]]\n    vis[i] = 1\n    ans = 0\n    for j in range(i + 1, len(s_str)):\n        if s_str[j] == t_str[i]:\n            ans += dfs(j, s, t, dp, vis, s_str, t_str)\n            ans %= MOD\n    dp[i][t[i]] = ans\n    vis[i] = 0\n    return ans\n\ndef solve():\n    n = int(input())\n    s = input()\n    t = input()\n    dp = [[-1] * 26 for _ in range(n)]\n    vis = [0] * n\n    print(dfs(0, s, t, dp, vis, s, t))\n\nsolve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

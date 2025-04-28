@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1777",
+    "problem_id": "p03123",
+    "language": "Java",
+    "solution": "```java\nimport java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        int R = scanner.nextInt();\n        int B = scanner.nextInt();\n        int K = 0;\n\n        if (R == B) {\n            K = 1 + Math.min(R, B);\n        } else {\n            K = 1 + Math.min(R, B);\n            int diff = Math.abs(R - B);\n            int min = Math.min(R, B);\n            while (diff > 0) {\n                K++;\n                diff--;\n                min--;\n            }\n        }\n\n        System.out.println(K);\n    }\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

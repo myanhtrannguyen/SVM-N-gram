@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1163",
+    "problem_id": "p00827",
+    "language": "Python",
+    "solution": "```python\nimport sys\n\ndef solve(a, b, d):\n    if a > d:\n        return 0, d // b\n    if b > d:\n        return d // a, 0\n\n    x = 0\n    y = d // b\n    while (a * x + b * y) > d:\n        y -= 1\n        if (a * x + b * y) < d:\n            x += 1\n    return x, y\n\ndef main():\n    for line in sys.stdin:\n        a, b, d = map(int, line.split())\n        if a == 0 and b == 0 and d == 0:\n            break\n        x, y = solve(a, b, d)\n        print(x, y)\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3599",
+    "problem_id": "p02090",
+    "language": "Python",
+    "solution": "```python\nimport sys\n\ndef solve():\n    n, m = map(int, input().split())\n    intervals = []\n    for _ in range(n):\n        l, r = map(int, input().split())\n        intervals.append((l, r))\n\n    intervals.sort(key=lambda x: x[0])\n\n    ans = 0\n    i = 0\n    while i < n:\n        if intervals[i][0] <= m:\n            if intervals[i][1] <= m:\n                ans += intervals[i][1] - intervals[i][0]\n                i += 1\n            else:\n                ans += 2 * m - intervals[i][0]\n                i += 1\n        else:\n            if intervals[i][1] <= m:\n                ans += 2 * (m - intervals[i][0])\n                i += 1\n            else:\n                ans += 2 * (intervals[i][1] - m)\n                i += 1\n\n    for i in range(n - 1, -1, -1):\n        if intervals[i][1] <= m:\n            break\n        else:\n            ans += 2 * (intervals[i][1] - m)\n\n    print(ans)\n\nif __name__ == \"__main__\":\n    solve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

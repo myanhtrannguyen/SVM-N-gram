@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1505",
+    "problem_id": "p02784",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int H, N;\n    scanf(\"%d %d\", &H, &N);\n    int* A = (int*)malloc(N * sizeof(int));\n    for (int i = 0; i < N; i++) {\n        scanf(\"%d\", &A[i]);\n    }\n    qsort(A, N, sizeof(int), compare);\n    int i = 0;\n    while (H > 0 && i < N) {\n        if (H >= A[i]) {\n            H -= A[i];\n            i++;\n        } else {\n            break;\n        }\n    }\n    if (H <= 0) {\n        printf(\"Yes\\n\");\n    } else {\n        printf(\"No\\n\");\n    }\n    free(A);\n    return 0;\n}\n\nint compare(const void* a, const void* b) {\n    return (*(int*)a - *(int*)b);\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3653",
+    "problem_id": "p02234",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nusing namespace std;\n\nint minMultiplications(vector<vector<int>>& dimensions, int n) {\n    vector<vector<int>> m(n, vector<int>(n, 0));\n    for (int i = 1; i < n; i++) {\n        m[i][i] = 0;\n    }\n\n    for (int L = 2; L < n; L++) {\n        for (int i = 1; i < n - L + 1; i++) {\n            int j = i + L - 1;\n            m[i][j] = INT_MAX;\n            for (int k = i; k < j; k++) {\n                int q = m[i][k] + m[k + 1][j] + dimensions[i - 1][0] * dimensions[k][1] * dimensions[j][1];\n                m[i][j] = min(m[i][j], q);\n            }\n        }\n    }\n\n    return m[1][n - 1];\n}\n\nint main() {\n    int n;\n    cin >> n;\n    vector<vector<int>> dimensions(n, vector<int>(2));\n    for (int i = 0; i < n; i++) {\n        cin >> dimensions[i][0] >> dimensions[i][1];\n    }\n\n    cout << minMultiplications(dimensions, n) << endl;\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3040",
+    "problem_id": "p01674",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    double cx1, cy1, cz1, vx11, vy11, vz11, vx12, vy12, vz12;\n    double cx2, cy2, cz2, vx21, vy21, vz21, vx22, vy22, vz22;\n\n    scanf(\"%lf %lf %lf\", &cx1, &cy1, &cz1);\n    scanf(\"%lf %lf %lf %lf %lf %lf\", &vx11, &vy11, &vz11, &vx12, &vy12, &vz12);\n    scanf(\"%lf %lf %lf\", &cx2, &cy2, &cz2);\n    scanf(\"%lf %lf %lf %lf %lf %lf\", &vx21, &vy21, &vz21, &vx22, &vy22, &vz22);\n\n    double dot1 = vx11 * vx12 + vy11 * vy12 + vz11 * vz12;\n    double dot2 = vx21 * vx22 + vy21 * vy22 + vz21 * vz22;\n    double dot3 = (vx11 * vx21 + vy11 * vy21 + vz11 * vz21) * (vx12 * vx22 + vy12 * vy22 + vz12 * vz22) - (vx11 * vx22 + vy11 * vy22 + vz11 * vz22) * (vx12 * vx21 + vy12 * vy21 + vz12 * vz21);\n\n    if (dot1 == 1 && dot2 == 1 && dot3 == 0) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

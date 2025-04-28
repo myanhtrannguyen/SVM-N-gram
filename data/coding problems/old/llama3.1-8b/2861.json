@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2861",
+    "problem_id": "p03711",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n\nint main() {\n    int x, y;\n    scanf(\"%d %d\", &x, &y);\n\n    if ((x == 1 && y == 2) || (x == 2 && y == 1) || (x == 1 && y == 12) || (x == 12 && y == 1)) {\n        printf(\"Yes\\n\");\n    } else if ((x == 3 && y == 4) || (x == 4 && y == 3) || (x == 3 && y == 12) || (x == 12 && y == 3)) {\n        printf(\"Yes\\n\");\n    } else if ((x == 5 && y == 6) || (x == 6 && y == 5) || (x == 5 && y == 12) || (x == 12 && y == 5)) {\n        printf(\"Yes\\n\");\n    } else if ((x == 7 && y == 8) || (x == 8 && y == 7) || (x == 7 && y == 12) || (x == 12 && y == 7)) {\n        printf(\"Yes\\n\");\n    } else if ((x == 9 && y == 10) || (x == 10 && y == 9) || (x == 9 && y == 12) || (x == 12 && y == 9)) {\n        printf(\"Yes\\n\");\n    } else if ((x == 11 && y == 12) || (x == 12 && y == 11)) {\n        printf(\"Yes\\n\");\n    } else {\n        printf(\"No\\n\");\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

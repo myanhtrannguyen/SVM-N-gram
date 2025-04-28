@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2341",
+    "problem_id": "p03581",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n\n#define MOD 1000000007\n\nlong long nCr(long long n, long long r) {\n    long long res = 1;\n    for (long long i = 1; i <= r; i++) {\n        res = (res * (n - i + 1)) % MOD;\n        res = (res * pow(i, MOD - 2, MOD)) % MOD;\n    }\n    return res;\n}\n\nint main() {\n    long long A, B;\n    scanf(\"%lld %lld\", &A, &B);\n    long long n = A + B;\n    long long ans = 0;\n    for (long long i = 0; i <= n - 1; i++) {\n        long long j = n - 1 - i;\n        long long a = (i + 1) * (i + j + 1) / 2;\n        long long b = (j + 1) * (i + j + 1) / 2;\n        long long c = nCr(n, i) * nCr(n - i, j) % MOD;\n        ans = (ans + c * nCr(a + b - 1, a - 1)) % MOD;\n    }\n    printf(\"%lld\\n\", ans);\n    return 0;\n}\n\nlong long pow(long long a, long long b, long long mod) {\n    long long res = 1;\n    while (b > 0) {\n        if (b & 1) res = (res * a) % mod;\n        a = (a * a) % mod;\n        b >>= 1;\n    }\n    return res;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

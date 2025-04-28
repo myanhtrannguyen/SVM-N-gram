@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1394",
+    "problem_id": "p02756",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <string>\n#include <vector>\n\nint main() {\n    std::string s;\n    std::cin >> s;\n\n    int q;\n    std::cin >> q;\n\n    std::vector<std::string> queries(q);\n    for (int i = 0; i < q; ++i) {\n        std::cin >> queries[i];\n    }\n\n    for (const auto& query : queries) {\n        if (query == \"1\") {\n            std::reverse(s.begin(), s.end());\n        } else {\n            int f;\n            char c;\n            std::cin >> f >> c;\n            if (f == 1) {\n                s = c + s;\n            } else {\n                s += c;\n            }\n        }\n    }\n\n    std::cout << s << std::endl;\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

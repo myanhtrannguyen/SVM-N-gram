@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-486",
+    "problem_id": "p00614",
+    "language": "Java",
+    "solution": "```java\nimport java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        while (scanner.hasNextInt()) {\n            int P = scanner.nextInt();\n            if (P == 0) {\n                break;\n            }\n            int[] coins = new int[7];\n            for (int i = 1; i <= 6; i++) {\n                coins[i] = scanner.nextInt();\n            }\n            int[] values = {1, 5, 10, 50, 100, 500};\n            int[] counts = new int[7];\n            int total = 0;\n            for (int i = 6; i >= 1; i--) {\n                counts[i] = Math.min(coins[i], P / values[i]);\n                total += counts[i];\n                P -= counts[i] * values[i];\n            }\n            System.out.println(total + P);\n        }\n        scanner.close();\n    }\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

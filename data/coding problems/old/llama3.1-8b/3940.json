@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3940",
+    "problem_id": "p02306",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <math.h>\n\ntypedef struct {\n    double x, y;\n} Point;\n\ntypedef struct {\n    double cx, cy, r;\n} Incircle;\n\nIncircle incircle(Point p1, Point p2, Point p3) {\n    double a = sqrt(pow(p2.x - p1.x, 2) + pow(p2.y - p1.y, 2));\n    double b = sqrt(pow(p3.x - p2.x, 2) + pow(p3.y - p2.y, 2));\n    double c = sqrt(pow(p1.x - p3.x, 2) + pow(p1.y - p3.y, 2));\n    double s = (a + b + c) / 2;\n    double area = sqrt(s * (s - a) * (s - b) * (s - c));\n    double cx = ((a * p1.x) + (b * p2.x) + (c * p3.x)) / (2 * area);\n    double cy = ((a * p1.y) + (b * p2.y) + (c * p3.y)) / (2 * area);\n    double r = area / s;\n    return (Incircle) {cx, cy, r};\n}\n\nint main() {\n    Point p1, p2, p3;\n    scanf(\"%lf %lf\", &p1.x, &p1.y);\n    scanf(\"%lf %lf\", &p2.x, &p2.y);\n    scanf(\"%lf %lf\", &p3.x, &p3.y);\n    Incircle inc = incircle(p1, p2, p3);\n    printf(\"%.10f %.10f %.10f\\n\", inc.cx, inc.cy, inc.r);\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

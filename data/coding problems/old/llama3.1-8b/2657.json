@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2657",
+    "problem_id": "p03660",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\n#define MAXN 100005\n\nint n;\nint a[MAXN], b[MAXN];\nint adj[MAXN];\nint color[MAXN];\n\nvoid dfs(int u, int p) {\n    for (int v : adj[u]) {\n        if (v == p) continue;\n        if (color[v] == -1) {\n            color[v] = 1 - color[u];\n            dfs(v, u);\n        }\n    }\n}\n\nint main() {\n    scanf(\"%d\", &n);\n    for (int i = 1; i < n; i++) {\n        scanf(\"%d %d\", &a[i], &b[i]);\n        adj[a[i]].push_back(b[i]);\n        adj[b[i]].push_back(a[i]);\n    }\n    color[1] = 0;\n    dfs(1, 1);\n    if (color[n] == 0) printf(\"Fennec\\n\");\n    else printf(\"Snuke\\n\");\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

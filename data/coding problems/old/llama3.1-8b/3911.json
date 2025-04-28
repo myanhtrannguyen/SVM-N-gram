@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3911",
+    "problem_id": "p02298",
+    "language": "Python",
+    "solution": "```python\nimport math\n\ndef is_convex(n, points):\n    for i in range(n):\n        x1, y1 = points[i]\n        x2, y2 = points[(i+1)%n]\n        x3, y3 = points[(i+2)%n]\n        cross_product = (x2 - x1) * (y3 - y1) - (x3 - x1) * (y2 - y1)\n        if cross_product != 0:\n            return False\n    return True\n\nn = int(input())\npoints = []\nfor _ in range(n):\n    x, y = map(int, input().split())\n    points.append((x, y))\n\nif is_convex(n, points):\n    print(\"1\")\nelse:\n    print(\"0\")\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

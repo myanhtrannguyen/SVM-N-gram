@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3781",
+    "problem_id": "p02266",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <string>\n#include <algorithm>\n\nint main() {\n    std::string s;\n    std::cin >> s;\n\n    std::vector<int> areas;\n    int area = 0;\n    int left = 0;\n    for (int i = 0; i < s.size(); ++i) {\n        if (s[i] == '/') {\n            area += i - left;\n            areas.push_back(area);\n            left = i + 1;\n        }\n    }\n    areas.push_back(s.size() - left);\n\n    int totalArea = 0;\n    for (int area : areas) {\n        totalArea += area;\n    }\n\n    std::cout << totalArea << std::endl;\n    std::cout << areas.size() << \" \";\n    for (int area : areas) {\n        std::cout << area << \" \";\n    }\n    std::cout << std::endl;\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

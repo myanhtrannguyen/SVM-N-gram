@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2572",
+    "problem_id": "p03638",
+    "language": "Python",
+    "solution": "```python\nimport sys\n\ndef solve():\n    H, W = map(int, input().split())\n    N = int(input().split()[0])\n    a = list(map(int, input().split()))\n\n    grid = [[0] * W for _ in range(H)]\n    color = 1\n    for i in range(H):\n        for j in range(W):\n            for k in range(a[color - 1]):\n                grid[i][j] = color\n                if k < a[color - 1] - 1:\n                    i += 1\n                    if i == H:\n                        i -= 1\n                        j += 1\n                        if j == W:\n                            j -= 1\n            color += 1\n            if color > N:\n                color = 1\n\n    for row in grid:\n        print(' '.join(map(str, row)))\n\nif __name__ == '__main__':\n    solve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

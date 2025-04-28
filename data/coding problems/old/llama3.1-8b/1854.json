@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1854",
+    "problem_id": "p03142",
+    "language": "Python",
+    "solution": "```python\nfrom collections import defaultdict, deque\n\ndef solve():\n    n, m = map(int, input().split())\n    graph = defaultdict(list)\n    rev_graph = defaultdict(list)\n    for _ in range(n + m - 1):\n        u, v = map(int, input().split())\n        graph[u].append(v)\n        rev_graph[v].append(u)\n\n    parent = [-1] * (n + 1)\n    queue = deque([i for i in range(1, n + 1) if len(rev_graph[i]) == 0])\n    while queue:\n        node = queue.popleft()\n        for child in graph[node]:\n            parent[child] = node\n            rev_graph[child].remove(node)\n            if not rev_graph[child]:\n                queue.append(child)\n\n    for i in range(1, n + 1):\n        print(parent[i])\n\nsolve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

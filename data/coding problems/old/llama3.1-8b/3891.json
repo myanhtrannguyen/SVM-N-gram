@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3891",
+    "problem_id": "p02293",
+    "language": "Python",
+    "solution": "```python\nimport math\n\ndef get_slope(x1, y1, x2, y2):\n    if x2 - x1 == 0:\n        return float('inf')\n    return (y2 - y1) / (x2 - x1)\n\ndef are_parallel(slope1, slope2):\n    return math.isinf(slope1) and math.isinf(slope2) or slope1 == slope2\n\ndef are_orthogonal(slope1, slope2):\n    return math.isinf(slope1) != math.isinf(slope2)\n\ndef main():\n    q = int(input())\n    for _ in range(q):\n        p0, p1, p2, p3 = map(int, input().split())\n        slope1 = get_slope(p0, p1, p2, p3)\n        slope2 = get_slope(p0, p1, p2, p3)\n        if are_parallel(slope1, slope2):\n            print(\"2\")\n        elif are_orthogonal(slope1, slope2):\n            print(\"1\")\n        else:\n            print(\"0\")\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

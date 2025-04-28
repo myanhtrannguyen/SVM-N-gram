@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3116",
+    "problem_id": "p01707",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n\n#define MOD 1000000007\n\nlong long gcd(long long a, long long b) {\n    if (b == 0) return a;\n    return gcd(b, a % b);\n}\n\nlong long lcm(long long a, long long b) {\n    return a / gcd(a, b) * b;\n}\n\nint main() {\n    int n, d, x;\n    long long N, D, X;\n    int i, j;\n    long long ans = 0;\n    long long ways[2001];\n\n    while (scanf(\"%lld %lld %lld\", &N, &D, &X) == 3) {\n        if (N == 0 && D == 0 && X == 0) break;\n\n        ways[0] = 1;\n        for (i = 1; i <= X; i++) ways[i] = 0;\n\n        for (i = 1; i <= N; i++) {\n            for (j = X; j >= 1; j--) {\n                ways[j] = (ways[j] + ways[j - 1]) % MOD;\n            }\n        }\n\n        ans = 0;\n        for (i = 1; i <= X; i++) {\n            long long temp = N / i;\n            long long temp2 = lcm(D, i);\n            long long temp3 = N / temp2;\n            ans = (ans + ways[i] * temp3) % MOD;\n        }\n\n        printf(\"%lld\\n\", ans);\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-745",
+    "problem_id": "p00723",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <string>\n#include <unordered_map>\n\nusing namespace std;\n\nconst int MAXN = 26;\nconst int MAXM = 72;\n\nunordered_map<string, int> memo;\n\nint dfs(const string& s, int i, int j) {\n    if (i >= j) return 1;\n    string key = s.substr(i, j - i);\n    if (memo.find(key) != memo.end()) return memo[key];\n    int res = 0;\n    for (int k = i; k < j; ++k) {\n        res += dfs(s, i, k) * dfs(s, k + 1, j);\n    }\n    memo[key] = res;\n    return res;\n}\n\nint main() {\n    int m;\n    cin >> m;\n    while (m--) {\n        string s;\n        cin >> s;\n        int n = s.size();\n        int res = 0;\n        for (int i = 1; i < n; ++i) {\n            res += dfs(s, 0, i) * dfs(s, i, n);\n        }\n        cout << res << endl;\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

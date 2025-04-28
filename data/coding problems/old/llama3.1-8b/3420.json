@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3420",
+    "problem_id": "p01954",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n#define MAXN 45\n\nint n, m, k, q;\nint o[MAXN], x[MAXN];\n\nint main() {\n    scanf(\"%d %d %d %d\", &n, &m, &k, &q);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &o[i]);\n    }\n    for (int i = 0; i < q; i++) {\n        scanf(\"%d\", &x[i]);\n    }\n    for (int i = 0; i < q; i++) {\n        int l = 0, r = n - 1;\n        while (l < r) {\n            int mid = (l + r) / 2;\n            if (o[mid] > x[i]) {\n                r = mid;\n            } else {\n                l = mid + 1;\n            }\n        }\n        if (o[l] == x[i]) {\n            printf(\"%d\", l + 1);\n            for (int j = l + 1; j < n; j++) {\n                printf(\" %d\", j + 1);\n            }\n            printf(\"\\n\");\n        } else {\n            printf(\"-1\\n\");\n        }\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

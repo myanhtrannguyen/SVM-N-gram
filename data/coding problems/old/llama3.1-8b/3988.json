@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3988",
+    "problem_id": "p02318",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <string.h>\n\nint min(int a, int b, int c) {\n    return (a < b) ? (a < c ? a : c) : (b < c ? b : c);\n}\n\nint edit_distance(char *s1, char *s2) {\n    int m = strlen(s1);\n    int n = strlen(s2);\n    int d[m + 1][n + 1];\n\n    for (int i = 0; i <= m; i++) {\n        for (int j = 0; j <= n; j++) {\n            if (i == 0)\n                d[i][j] = j;\n            else if (j == 0)\n                d[i][j] = i;\n            else if (s1[i - 1] == s2[j - 1])\n                d[i][j] = d[i - 1][j - 1];\n            else\n                d[i][j] = 1 + min(d[i - 1][j], d[i][j - 1], d[i - 1][j - 1]);\n        }\n    }\n\n    return d[m][n];\n}\n\nint main() {\n    char s1[1001], s2[1001];\n\n    scanf(\"%s\", s1);\n    scanf(\"%s\", s2);\n\n    printf(\"%d\\n\", edit_distance(s1, s2));\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

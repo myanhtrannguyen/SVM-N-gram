@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2936",
+    "problem_id": "p03729",
+    "language": "Python",
+    "solution": "```python\na, b, c = input().split()\n\nif a[-1] == b[0] and b[-1] == c[0]:\n    print(\"YES\")\nelse:\n    print(\"NO\")\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

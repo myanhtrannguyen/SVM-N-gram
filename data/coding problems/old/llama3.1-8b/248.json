@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-248",
+    "problem_id": "p00373",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <string.h>\n\n#define MAX_WIDTH 1000\n#define MAX_HEIGHT 1000\n\nint main() {\n    int aw, ah, bw, bh;\n    char a[MAX_HEIGHT][MAX_WIDTH], b[MAX_HEIGHT][MAX_WIDTH];\n\n    scanf(\"%d %d %d %d\", &aw, &ah, &bw, &bh);\n\n    for (int i = 0; i < ah; i++) {\n        scanf(\"%s\", a[i]);\n    }\n\n    for (int i = 0; i < bh; i++) {\n        scanf(\"%s\", b[i]);\n    }\n\n    int count = 0;\n\n    for (int x = 0; x <= aw - bw; x++) {\n        for (int y = 0; y <= ah - bh; y++) {\n            int match = 1;\n\n            for (int i = 0; i < bh; i++) {\n                for (int j = 0; j < bw; j++) {\n                    if (a[y + i][x + j] != b[i][j] && a[y + i][x + j] != '?') {\n                        match = 0;\n                        break;\n                    }\n                }\n                if (!match) break;\n            }\n\n            if (match) count++;\n        }\n    }\n\n    printf(\"%d\\n\", count);\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

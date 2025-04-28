@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-887",
+    "problem_id": "p00758",
+    "language": "Python",
+    "solution": "```python\nimport math\n\ndef calculate_fence_length(len, x1, y1, x2, y2):\n    # Calculate the distance from the peg to the building\n    distance_to_building = math.sqrt((x1 - 0) ** 2 + (y1 - 0) ** 2)\n\n    # Calculate the distance from the peg to the edge of the building\n    distance_to_edge = min(math.sqrt((x2 - 0) ** 2 + (y2 - 0) ** 2), math.sqrt((x1 - 0) ** 2 + (y1 - 0) ** 2))\n\n    # Calculate the length of the fence\n    fence_length = 2 * math.asin(len / (2 * distance_to_edge)) * distance_to_building + 2 * math.asin(len / (2 * distance_to_building)) * distance_to_edge\n\n    return fence_length\n\ndef main():\n    while True:\n        line = input().split()\n        if line[0] == '0':\n            break\n        len = float(line[0])\n        x1 = float(line[1])\n        y1 = float(line[2])\n        x2 = float(line[3])\n        y2 = float(line[4])\n        fence_length = calculate_fence_length(len, x1, y1, x2, y2)\n        print(f\"{fence_length:.10f}\")\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

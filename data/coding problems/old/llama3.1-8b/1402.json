@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1402",
+    "problem_id": "p02758",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n#include <utility>\n\nusing namespace std;\n\nconst int MOD = 998244353;\n\nstruct Robot {\n    int x, d;\n};\n\nbool cmp(Robot a, Robot b) {\n    return a.x < b.x;\n}\n\nint main() {\n    int n;\n    cin >> n;\n\n    vector<Robot> robots(n);\n    for (int i = 0; i < n; i++) {\n        cin >> robots[i].x >> robots[i].d;\n    }\n\n    sort(robots.begin(), robots.end(), cmp);\n\n    vector<int> dp(n + 1);\n    dp[0] = 1;\n\n    for (int i = 0; i < n; i++) {\n        int j = i;\n        while (j < n && robots[j].x < robots[i].x + robots[i].d) {\n            j++;\n        }\n\n        int k = i + 1;\n        while (k < j && robots[k].x < robots[i].x + robots[i].d) {\n            k++;\n        }\n\n        dp[j] = (dp[j] + dp[i]) % MOD;\n        if (k < j) {\n            dp[j] = (dp[j] + dp[k]) % MOD;\n        }\n    }\n\n    int ans = 0;\n    for (int i = 0; i <= n; i++) {\n        ans = (ans + dp[i]) % MOD;\n    }\n\n    cout << ans << endl;\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

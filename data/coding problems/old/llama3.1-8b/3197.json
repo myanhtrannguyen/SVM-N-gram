@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3197",
+    "problem_id": "p01786",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n#include <numeric>\n\nusing namespace std;\n\nint main() {\n    int N, M;\n    cin >> N >> M;\n\n    vector<int> S(M);\n    for (int i = 0; i < M; i++) {\n        cin >> S[i];\n    }\n\n    vector<int> S2(M);\n    for (int i = 0; i < M; i++) {\n        S2[i] = S[i] + 1;\n    }\n\n    sort(S2.begin(), S2.end());\n\n    int sum = 0;\n    for (int i = 0; i < M; i++) {\n        sum += S2[i];\n    }\n\n    if (sum > N) {\n        cout << \"impossible\" << endl;\n        return 0;\n    }\n\n    vector<int> min(M), max(M);\n    for (int i = 0; i < M; i++) {\n        min[i] = S[i] * (S2[i] + 1) / (sum - S2[i]);\n        max[i] = S[i] * (S2[M - 1] + 1) / (sum - S2[M - 1]);\n    }\n\n    for (int i = 0; i < M; i++) {\n        if (min[i] > N) {\n            cout << \"impossible\" << endl;\n            return 0;\n        }\n        if (max[i] > N) {\n            max[i] = N;\n        }\n        cout << min[i] << \" \" << max[i] << endl;\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

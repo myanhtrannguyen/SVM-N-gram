@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-581",
+    "problem_id": "p00682",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <cmath>\n\nusing namespace std;\n\ndouble calculateArea(vector<pair<int, int>> points) {\n    int n = points.size();\n    double area = 0.0;\n    for (int i = 0; i < n; i++) {\n        int x1 = points[i].first;\n        int y1 = points[i].second;\n        int x2 = points[(i + 1) % n].first;\n        int y2 = points[(i + 1) % n].second;\n        area += (x1 * y2 - x2 * y1);\n    }\n    return abs(area) / 2.0;\n}\n\nint main() {\n    int t;\n    cin >> t;\n    int count = 1;\n    while (t--) {\n        int n;\n        cin >> n;\n        if (n == 0) break;\n        vector<pair<int, int>> points(n);\n        for (int i = 0; i < n; i++) {\n            cin >> points[i].first >> points[i].second;\n        }\n        double area = calculateArea(points);\n        cout << count << \" \" << fixed << setprecision(1) << area << endl;\n        count++;\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

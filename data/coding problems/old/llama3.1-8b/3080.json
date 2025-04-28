@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3080",
+    "problem_id": "p01684",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <math.h>\n\n#define PI 3.14159265358979323846\n\nint main() {\n    int u_w, u_h, a, b, ab;\n    double x1, y1, r1, x2, y2, r2;\n\n    while (scanf(\"%d %d %d %d %d\", &u_w, &u_h, &a, &b, &ab) == 5) {\n        if (u_w == 0 && u_h == 0 && a == 0 && b == 0 && ab == 0) break;\n\n        x1 = (double) (u_w - a + b - ab) / 2;\n        y1 = (double) (u_h - a + b - ab) / 2;\n        r1 = sqrt((double) (a * a - ab * ab) / PI);\n\n        x2 = (double) (u_w + a - b + ab) / 2;\n        y2 = (double) (u_h + a - b + ab) / 2;\n        r2 = sqrt((double) (b * b - ab * ab) / PI);\n\n        if (r1 < 0.0001 || r2 < 0.0001 || x1 - r1 < -0.0001 || x1 + r1 > u_w + 0.0001 || y1 - r1 < -0.0001 || y1 + r1 > u_h + 0.0001 ||\n            x2 - r2 < -0.0001 || x2 + r2 > u_w + 0.0001 || y2 - r2 < -0.0001 || y2 + r2 > u_h + 0.0001) {\n            printf(\"impossible\\n\");\n        } else {\n            printf(\"%.6f %.6f %.6f %.6f %.6f %.6f\\n\", x1, y1, r1, x2, y2, r2);\n        }\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3499",
+    "problem_id": "p01973",
+    "language": "Python",
+    "solution": "```python\nimport sys\n\ndef solve():\n    S = input()\n    N = int(input())\n    P = [input() for _ in range(N)]\n    n = len(S)\n    dp = [[0] * (n + 1) for _ in range(n + 1)]\n    for i in range(n - 1, -1, -1):\n        for j in range(i, n):\n            dp[i][j] = n\n            for k in range(i, j):\n                dp[i][j] = min(dp[i][j], dp[i][k] + dp[k + 1][j])\n            for p in P:\n                if p == S[i:j + 1]:\n                    dp[i][j] = min(dp[i][j], dp[i][j] - 1)\n    print(dp[0][n - 1])\n\nif __name__ == \"__main__\":\n    solve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

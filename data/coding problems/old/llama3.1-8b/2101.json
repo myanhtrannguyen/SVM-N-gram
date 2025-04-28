@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2101",
+    "problem_id": "p03398",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <string.h>\n\n#define MOD 1000000007\n\nlong long pow(long long a, long long b) {\n    long long res = 1;\n    while (b) {\n        if (b & 1) res = res * a % MOD;\n        a = a * a % MOD;\n        b >>= 1;\n    }\n    return res;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    long long ans = 1;\n    for (int i = 1; i <= n; i++) {\n        ans = (ans * (pow(2, i) - 1) % MOD * pow(i, MOD - 2) % MOD) % MOD;\n    }\n    printf(\"%lld\\n\", ans);\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

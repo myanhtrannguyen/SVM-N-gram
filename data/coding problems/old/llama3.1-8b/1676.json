@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1676",
+    "problem_id": "p02958",
+    "language": "Python",
+    "solution": "```python\nn = int(input())\np = list(map(int, input().split()))\n\nfor i in range(n):\n    if p[i] != i + 1:\n        break\nelse:\n    print(\"YES\")\n    exit()\n\nfor i in range(n):\n    if p[i] != i + 1:\n        for j in range(i + 1, n):\n            if p[j] == i + 1:\n                p[i], p[j] = p[j], p[i]\n                break\n        else:\n            print(\"NO\")\n            exit()\n        for j in range(i + 1, n):\n            if p[j] != j + 1:\n                break\n        else:\n            print(\"YES\")\n            exit()\n\nprint(\"NO\")\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

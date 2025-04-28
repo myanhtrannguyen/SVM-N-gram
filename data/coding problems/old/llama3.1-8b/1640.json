@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1640",
+    "problem_id": "p02949",
+    "language": "Python",
+    "solution": "```python\nfrom collections import deque\nimport sys\n\nN, M, P = map(int, input().split())\ngraph = [[] for _ in range(N + 1)]\nfor _ in range(M):\n    u, v, c = map(int, input().split())\n    graph[u].append((v, c))\n\ndef bfs():\n    dist = [float('inf')] * (N + 1)\n    dist[1] = 0\n    q = deque([1])\n    while q:\n        u = q.popleft()\n        for v, c in graph[u]:\n            if dist[v] == float('inf'):\n                dist[v] = dist[u] + 1\n                q.append(v)\n    return dist\n\ndist = bfs()\ndp = [[-1] * (P + 1) for _ in range(N + 1)]\ndp[1][0] = 0\n\nfor u in range(1, N + 1):\n    for t in range(P + 1):\n        if dp[u][t] == -1:\n            continue\n        for v, c in graph[u]:\n            if dist[v] == dist[u] + 1:\n                dp[v][t] = max(dp[v][t], dp[u][t] + c)\n\nans = 0\nfor t in range(P + 1):\n    ans = max(ans, dp[N][t] - t * P if dp[N][t] >= t * P else dp[N][t])\n\nif ans == -1:\n    print(-1)\nelse:\n    print(ans)\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

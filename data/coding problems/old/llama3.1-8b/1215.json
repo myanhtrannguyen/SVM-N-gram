@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1215",
+    "problem_id": "p00840",
+    "language": "Python",
+    "solution": "```python\nimport math\n\ndef mobile(r, s, w):\n    if s == 1:\n        return w[0]\n    max_width = 0\n    for i in range(s):\n        for j in range(i+1, s):\n            if w[i] * (s - i - j) == w[j] * j:\n                width = mobile(r, s-1, [x for k, x in enumerate(w) if k not in (i, j)]) + 2\n                if width < r and width > max_width:\n                    max_width = width\n    return max_width if max_width > 0 else -1\n\nfor _ in range(int(input())):\n    r = float(input())\n    s = int(input())\n    w = list(map(int, input().split()))\n    print(mobile(r, s, w))\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

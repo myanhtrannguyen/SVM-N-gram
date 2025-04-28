@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1618",
+    "problem_id": "p02944",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nusing namespace std;\n\nconst int N = 2e5 + 5;\n\nint n, L, dp[N][N], a[N];\n\nint main() {\n    ios_base::sync_with_stdio(false);\n    cin.tie(nullptr);\n\n    cin >> n >> L;\n    for (int i = 1; i <= n; i++) {\n        cin >> a[i];\n    }\n\n    for (int i = 1; i <= n; i++) {\n        for (int j = 1; j <= L; j++) {\n            if (i == 1) {\n                dp[i][j] = (a[i] == j);\n            } else {\n                dp[i][j] = dp[i - 1][j];\n                for (int k = 1; k <= min(i - 1, L - 1); k++) {\n                    dp[i][j] += dp[i - k - 1][j - 1];\n                }\n            }\n        }\n    }\n\n    long long ans = 0;\n    for (int i = 1; i <= n; i++) {\n        for (int j = i; j <= n; j++) {\n            for (int k = 1; k <= L; k++) {\n                ans += dp[j][k];\n            }\n        }\n    }\n\n    cout << ans << '\\n';\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

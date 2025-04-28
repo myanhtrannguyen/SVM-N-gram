@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3208",
+    "problem_id": "p01789",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n\nint main() {\n    int n, a, b;\n    scanf(\"%d %d %d\", &n, &a, &b);\n\n    int sum = 0;\n    for (int i = 0; i < n; i++) {\n        int x;\n        scanf(\"%d\", &x);\n        sum += x;\n    }\n\n    if (sum % 2 == 0) {\n        if (a <= b) {\n            printf(\"Jiro\\n\");\n        } else {\n            printf(\"Hanako\\n\");\n        }\n    } else {\n        if (a >= b) {\n            printf(\"Hanako\\n\");\n        } else {\n            printf(\"Jiro\\n\");\n        }\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

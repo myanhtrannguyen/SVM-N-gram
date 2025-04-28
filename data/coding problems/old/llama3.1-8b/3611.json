@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3611",
+    "problem_id": "p02093",
+    "language": "Python",
+    "solution": "```python\nMOD = 998244353\n\ndef inv(x):\n    return pow(x, MOD - 2, MOD)\n\ndef main():\n    N = int(input())\n    p = list(map(int, input().split()))\n    p = [x - 1 for x in p]\n\n    ans = 1\n    for i in range(N):\n        if p[i] > i:\n            ans = (ans * (i + 1)) % MOD\n        else:\n            ans = (ans * (i - p[i])) % MOD\n\n    print(ans)\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

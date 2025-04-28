@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3035",
+    "problem_id": "p01672",
+    "language": "Python",
+    "solution": "```python\nimport math\nimport sys\n\ndef calculate_distance(x1, y1, x2, y2):\n    return math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2)\n\ndef main():\n    N = int(input())\n    grid = []\n    for _ in range(N):\n        grid.append(list(map(int, input().split())))\n\n    total_distance = 0\n    total_pairs = 0\n    distances = {}\n    for i in range(N):\n        for j in range(N):\n            for k in range(i, N):\n                for col in range(j, N):\n                    if i == k and j == col:\n                        continue\n                    distance = int(calculate_distance(i, j, k, col) * 10000)\n                    total_distance += distance\n                    total_pairs += 1\n                    distances[distance] = distances.get(distance, 0) + 1\n\n    average_distance = total_distance / total_pairs\n    print(f\"{average_distance:.10f}\")\n    for distance, count in sorted(distances.items()):\n        print(f\"{distance / 10000:.10f} {count}\")\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

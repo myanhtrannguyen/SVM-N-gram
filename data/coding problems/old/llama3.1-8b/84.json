@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-84",
+    "problem_id": "p00021",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n\n    while (n--) {\n        double x1, y1, x2, y2, x3, y3, x4, y4;\n        scanf(\"%lf %lf %lf %lf %lf %lf %lf %lf\", &x1, &y1, &x2, &y2, &x3, &y3, &x4, &y4);\n\n        double m1 = (y2 - y1) / (x2 - x1);\n        double m2 = (y4 - y3) / (x4 - x3);\n\n        if (m1 == m2) {\n            printf(\"YES\\n\");\n        } else {\n            printf(\"NO\\n\");\n        }\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

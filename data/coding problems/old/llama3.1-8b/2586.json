@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2586",
+    "problem_id": "p03642",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n#include <cmath>\n\nusing namespace std;\n\nint main() {\n    int N;\n    cin >> N;\n    vector<int> A(N);\n    for (int i = 0; i < N; i++) {\n        cin >> A[i];\n    }\n\n    int ans = 0;\n    for (int p = 3; p <= 10000000; p++) {\n        if (p % 2 == 0) continue;\n        if (p == 3) {\n            for (int i = 0; i < N; i++) {\n                if (A[i] % p == 0) {\n                    ans++;\n                    break;\n                }\n            }\n        } else {\n            int cnt = 0;\n            for (int i = 0; i < N; i++) {\n                if (A[i] % p == 0) {\n                    cnt++;\n                } else {\n                    break;\n                }\n            }\n            if (cnt > 0) {\n                ans += (cnt + p - 1) / p;\n            }\n        }\n    }\n\n    cout << ans << endl;\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

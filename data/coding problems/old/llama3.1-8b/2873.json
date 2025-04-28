@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2873",
+    "problem_id": "p03714",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n\n    int a[3 * n];\n    for (int i = 0; i < 3 * n; i++) {\n        scanf(\"%d\", &a[i]);\n    }\n\n    int max_score = -1e9;\n    for (int i = 0; i < n; i++) {\n        int sum1 = 0, sum2 = 0;\n        for (int j = 0; j < 2 * n; j++) {\n            if (j < i) {\n                sum1 += a[j];\n            } else if (j >= i && j < 2 * n - i - 1) {\n                sum2 += a[j];\n            }\n        }\n        max_score = (sum1 > sum2) ? max_score < sum1 - sum2 ? sum1 - sum2 : max_score : max_score;\n    }\n\n    printf(\"%d\\n\", max_score);\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

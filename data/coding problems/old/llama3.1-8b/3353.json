@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3353",
+    "problem_id": "p01883",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <string>\n\nstd::string solve(int A) {\n    std::string res;\n    int n = A / 2;\n    int m = A - n;\n    for (int i = 0; i < n; i++) {\n        res += '(';\n    }\n    for (int i = 0; i < m; i++) {\n        res += ')';\n    }\n    for (int i = 0; i < n - 1; i++) {\n        res += '(';\n        res += ')';\n    }\n    return res;\n}\n\nint main() {\n    int A;\n    std::cin >> A;\n    std::cout << solve(A) << std::endl;\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

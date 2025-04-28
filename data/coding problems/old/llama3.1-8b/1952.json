@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1952",
+    "problem_id": "p03167",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <string>\n#include <algorithm>\n\nusing namespace std;\n\nconst int MOD = 1e9 + 7;\n\nint main() {\n    int H, W;\n    cin >> H >> W;\n\n    vector<string> grid(H);\n    for (int i = 0; i < H; i++) {\n        cin >> grid[i];\n    }\n\n    vector<vector<int>> dp(H, vector<int>(W));\n    dp[0][0] = 1;\n\n    for (int i = 0; i < H; i++) {\n        for (int j = 0; j < W; j++) {\n            if (grid[i][j] == '#') continue;\n\n            if (i > 0) {\n                dp[i][j] += dp[i - 1][j];\n                dp[i][j] %= MOD;\n            }\n\n            if (j > 0) {\n                dp[i][j] += dp[i][j - 1];\n                dp[i][j] %= MOD;\n            }\n        }\n    }\n\n    cout << dp[H - 1][W - 1] << endl;\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

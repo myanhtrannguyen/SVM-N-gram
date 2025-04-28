@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3511",
+    "problem_id": "p02006",
+    "language": "Python",
+    "solution": "```python\nimport sys\ninput = sys.stdin.readline\n\ndef solve():\n    C, N, M = map(int, input().split())\n    gifts = []\n    for _ in range(N):\n        s, p = map(int, input().split())\n        gifts.append((s, p))\n    gifts.sort(key=lambda x: x[1], reverse=True)\n\n    dp = [[0] * (C + 1) for _ in range(N + 1)]\n    for i in range(1, N + 1):\n        for j in range(C + 1):\n            if j >= gifts[i - 1][0]:\n                dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - gifts[i - 1][0]] + gifts[i - 1][1])\n            else:\n                dp[i][j] = dp[i - 1][j]\n\n    for k in range(1, M + 1):\n        ans = 0\n        for i in range(1, N + 1):\n            ans = max(ans, dp[i][C] * k // i)\n        print(ans)\n\nif __name__ == '__main__':\n    solve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

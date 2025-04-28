@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3815",
+    "problem_id": "p02274",
+    "language": "Python",
+    "solution": "```python\nimport sys\n\ndef merge_sort(arr):\n    if len(arr) <= 1:\n        return arr, 0\n\n    mid = len(arr) // 2\n    left, left_inv = merge_sort(arr[:mid])\n    right, right_inv = merge_sort(arr[mid:])\n\n    merged, merge_inv = merge(left, right)\n\n    return merged, left_inv + right_inv + merge_inv\n\n\ndef merge(left, right):\n    merged = []\n    inv_count = 0\n\n    i = j = 0\n\n    while i < len(left) and j < len(right):\n        if left[i] <= right[j]:\n            merged.append(left[i])\n            i += 1\n        else:\n            merged.append(right[j])\n            inv_count += len(left) - i\n            j += 1\n\n    merged += left[i:]\n    merged += right[j:]\n\n    return merged, inv_count\n\n\ndef main():\n    n = int(input())\n    arr = list(map(int, input().split()))\n\n    _, inv_count = merge_sort(arr)\n    print(inv_count)\n\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

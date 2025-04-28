@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1988",
+    "problem_id": "p03176",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n\n    vector<int> h(n), a(n);\n    for (int i = 0; i < n; i++) {\n        cin >> h[i];\n    }\n    for (int i = 0; i < n; i++) {\n        cin >> a[i];\n    }\n\n    vector<pair<int, int>> ha(n);\n    for (int i = 0; i < n; i++) {\n        ha[i] = {h[i], a[i]};\n    }\n\n    sort(ha.begin(), ha.end());\n\n    vector<int> dp(n + 1, 0);\n    for (int i = 0; i < n; i++) {\n        int j = lower_bound(ha.begin(), ha.end(), make_pair(ha[i].first, 0)) - ha.begin();\n        dp[i + 1] = max(dp[i + 1], dp[i] + ha[i].second);\n        if (j > 0) {\n            dp[i + 1] = max(dp[i + 1], dp[j - 1] + ha[i].second);\n        }\n    }\n\n    cout << dp[n] << endl;\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

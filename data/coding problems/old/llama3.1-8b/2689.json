@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2689",
+    "problem_id": "p03668",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\n#define N 100000\n\nint n;\nint e[N][2];\nint par[N];\nint sz[N];\n\nvoid dfs(int u, int p) {\n    par[u] = p;\n    sz[u] = 1;\n    for (int i = 0; i < 2; i++) {\n        int v = e[u][i];\n        if (v != p) {\n            dfs(v, u);\n            sz[u] += sz[v];\n        }\n    }\n}\n\nint main() {\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n - 1; i++) {\n        scanf(\"%d %d\", &e[i][0], &e[i][1]);\n        e[i][0]--;\n        e[i][1]--;\n    }\n    dfs(0, -1);\n    int root = 0;\n    for (int i = 0; i < n; i++) {\n        if (sz[i] > sz[root]) {\n            root = i;\n        }\n    }\n    int p = par[root];\n    int cnt = 0;\n    for (int i = 0; i < n - 1; i++) {\n        if (e[i][0] == p || e[i][1] == p) {\n            cnt++;\n        }\n    }\n    if (cnt & 1) {\n        printf(\"Alice\\n\");\n    } else {\n        printf(\"Bob\\n\");\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

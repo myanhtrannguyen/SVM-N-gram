@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3488",
+    "problem_id": "p01971",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\n#define N 100000\n#define Q 100000\n\nint n, q;\nint p[N + 1], c[N + 1];\nint cntG[N + 1];\nint cntW[N + 1];\nint ans[Q + 1];\n\nint find(int x) {\n    if (p[x] == x) return x;\n    return p[x] = find(p[x]);\n}\n\nvoid union_(int x, int y) {\n    x = find(x);\n    y = find(y);\n    if (x != y) p[y] = x;\n}\n\nint main() {\n    int i, j, v;\n\n    scanf(\"%d %d\", &n, &q);\n    for (i = 2; i <= n; i++) {\n        scanf(\"%d\", &p[i]);\n        union_(i, p[i]);\n    }\n    for (i = 1; i <= n; i++) {\n        char ch;\n        scanf(\" %c\", &ch);\n        if (ch == 'G') cntG[find(i)]++;\n        else cntW[find(i)]++;\n    }\n    for (i = 1; i <= q; i++) {\n        scanf(\"%d\", &v);\n        if (cntG[find(v)] > cntW[find(v)]) ans[i] = 1;\n        else ans[i] = 0;\n    }\n    for (i = 1; i <= q; i++) {\n        if (ans[i]) printf(\"broccoli\\n\");\n        else printf(\"cauliflower\\n\");\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

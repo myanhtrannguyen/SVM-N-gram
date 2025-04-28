@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3767",
+    "problem_id": "p02262",
+    "language": "Python",
+    "solution": "```python\nimport math\n\ndef insertionSort(A, n, g):\n    cnt = 0\n    for i in range(g, n):\n        v = A[i]\n        j = i - g\n        while j >= 0 and A[j] > v:\n            A[j+g] = A[j]\n            j -= g\n            cnt += 1\n        A[j+g] = v\n    return cnt\n\ndef shellSort(A, n):\n    m = math.ceil(n ** 1.5)\n    G = [int(n / (2 ** i)) for i in range(m)]\n    cnt = 0\n    for g in G:\n        cnt += insertionSort(A, n, g)\n    return m, G, cnt\n\ndef main():\n    n = int(input())\n    A = [int(input()) for _ in range(n)]\n    m, G, cnt = shellSort(A, n)\n    print(m)\n    print(*G)\n    print(cnt)\n    for num in A:\n        print(num)\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3137",
+    "problem_id": "p01731",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <string>\n\nstruct Post {\n    int parent;\n    std::string message;\n};\n\nint main() {\n    int n;\n    std::cin >> n;\n\n    std::vector<Post> posts(n);\n    for (int i = 0; i < n; ++i) {\n        std::cin >> posts[i].parent;\n        std::cin.ignore();\n        std::getline(std::cin, posts[i].message);\n    }\n\n    std::vector<std::string> result;\n    for (int i = 0; i < n; ++i) {\n        int dots = 0;\n        while (i != posts[i].parent) {\n            dots++;\n            i = posts[i].parent;\n        }\n        result.push_back(std::string(dots, '.') + posts[i].message);\n    }\n\n    for (const auto& post : result) {\n        std::cout << post << std::endl;\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-41",
+    "problem_id": "p00010",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <cmath>\n\nstruct Point {\n    double x, y;\n};\n\ndouble calculateDistance(const Point& p1, const Point& p2) {\n    return std::sqrt(std::pow(p2.x - p1.x, 2) + std::pow(p2.y - p1.y, 2));\n}\n\nPoint calculateCentroid(const Point& p1, const Point& p2, const Point& p3) {\n    return { (p1.x + p2.x + p3.x) / 3, (p1.y + p2.y + p3.y) / 3 };\n}\n\ndouble calculateRadius(const Point& p1, const Point& p2, const Point& p3) {\n    Point centroid = calculateCentroid(p1, p2, p3);\n    return calculateDistance(p1, centroid);\n}\n\nint main() {\n    int n;\n    std::cin >> n;\n\n    for (int i = 0; i < n; i++) {\n        Point p1, p2, p3;\n        std::cin >> p1.x >> p1.y >> p2.x >> p2.y >> p3.x >> p3.y;\n\n        Point centroid = calculateCentroid(p1, p2, p3);\n        double radius = calculateRadius(p1, p2, p3);\n\n        std::cout << std::fixed << std::setprecision(3) << centroid.x << \" \" << centroid.y << \" \" << radius << std::endl;\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-110",
+    "problem_id": "p00027",
+    "language": "Java",
+    "solution": "```java\nimport java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        while (scanner.hasNextInt()) {\n            int month = scanner.nextInt();\n            int day = scanner.nextInt();\n            if (month == 0 && day == 0) {\n                break;\n            }\n            System.out.println(getDay(month, day));\n        }\n        scanner.close();\n    }\n\n    public static String getDay(int month, int day) {\n        int[] days = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};\n        String[] daysOfWeek = {\"Sunday\", \"Monday\", \"Tuesday\", \"Wednesday\", \"Thursday\", \"Friday\", \"Saturday\"};\n        int totalDays = 0;\n        for (int i = 0; i < month - 1; i++) {\n            totalDays += days[i];\n        }\n        totalDays += day - 1;\n        return daysOfWeek[totalDays % 7];\n    }\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3147",
+    "problem_id": "p01733",
+    "language": "Python",
+    "solution": "```python\nimport math\nfrom functools import reduce\nfrom operator import mul\n\ndef gcd(a, b):\n    while b:\n        a, b = b, a % b\n    return a\n\ndef lcm(a, b):\n    return a * b // gcd(a, b)\n\ndef main():\n    N = int(input())\n    points = []\n    for _ in range(N):\n        x, y, w = map(int, input().split())\n        points.append((x, y, w))\n\n    max_value = 0\n    for i in range(N):\n        for j in range(i + 1, N):\n            x1, y1, w1 = points[i]\n            x2, y2, w2 = points[j]\n            if x1 == x2 or y1 == y2:\n                continue\n            dx = abs(x2 - x1)\n            dy = abs(y2 - y1)\n            value = w1 * w2 // lcm(dx, dy)\n            max_value = max(max_value, value)\n\n    if max_value == 0:\n        print(\"0 / 1\")\n    else:\n        g = reduce(gcd, [max_value] + [p[2] for p in points])\n        print(f\"{max_value // g} / {g}\")\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

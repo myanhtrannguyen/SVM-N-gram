@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1926",
+    "problem_id": "p03160",
+    "language": "Python",
+    "solution": "```python\nn = int(input())\nh = list(map(int, input().split()))\n\ndp = [[0] * n for _ in range(n)]\nfor i in range(n - 1, 0, -1):\n    dp[i][i] = abs(h[i] - h[i - 1])\n    for j in range(i + 1, n):\n        dp[i][j] = min(dp[i][k] + dp[k + 1][j] for k in range(i, j))\n\nprint(dp[1][n - 1])\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

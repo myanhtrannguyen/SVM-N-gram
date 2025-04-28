@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1500",
+    "problem_id": "p02782",
+    "language": "Python",
+    "solution": "```python\nMOD = 10**9 + 7\n\ndef modpow(a, n):\n    res = 1\n    while n:\n        if n & 1:\n            res = res * a % MOD\n        a = a * a % MOD\n        n >>= 1\n    return res\n\ndef solve():\n    r1, c1, r2, c2 = map(int, input().split())\n    ans = 0\n    for r in range(r1, r2 + 1):\n        for c in range(c1, c2 + 1):\n            ans += modpow(r + c + 2, r + c)\n            ans %= MOD\n    print(ans)\n\nif __name__ == \"__main__\":\n    solve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

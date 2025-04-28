@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-393",
+    "problem_id": "p00591",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nint main() {\n    int n;\n    while (std::cin >> n && n != 0) {\n        std::vector<std::vector<int>> matrix(n, std::vector<int>(n));\n        for (int i = 0; i < n; ++i) {\n            for (int j = 0; j < n; ++j) {\n                std::cin >> matrix[i][j];\n            }\n        }\n\n        int minRow = INT_MAX, maxCol = INT_MIN;\n        for (int i = 0; i < n; ++i) {\n            minRow = std::min(minRow, matrix[i][0]);\n            maxCol = std::max(maxCol, matrix[0][i]);\n        }\n\n        bool found = false;\n        for (int i = 0; i < n; ++i) {\n            for (int j = 0; j < n; ++j) {\n                if (matrix[i][j] == minRow && matrix[i][j] == maxCol) {\n                    std::cout << matrix[i][j] << std::endl;\n                    found = true;\n                    break;\n                }\n            }\n            if (found) break;\n        }\n\n        if (!found) {\n            std::cout << 0 << std::endl;\n        }\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

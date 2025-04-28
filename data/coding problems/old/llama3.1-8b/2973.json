@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2973",
+    "problem_id": "p01646",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <string>\n#include <algorithm>\n\nint main() {\n    int n;\n    while (std::cin >> n) {\n        if (n == 0) break;\n        std::vector<std::string> words(n);\n        for (int i = 0; i < n; ++i) {\n            std::cin >> words[i];\n        }\n\n        bool isLexicographicallySorted = true;\n        for (int i = 1; i < n; ++i) {\n            if (words[i - 1].size() > words[i].size() || (words[i - 1].size() == words[i].size() && words[i - 1] > words[i])) {\n                isLexicographicallySorted = false;\n                break;\n            }\n        }\n\n        std::cout << (isLexicographicallySorted ? \"yes\" : \"no\") << std::endl;\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

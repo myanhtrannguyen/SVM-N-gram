@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-71",
+    "problem_id": "p00017",
+    "language": "Python",
+    "solution": "```python\ndef caesar_decipher(text):\n    for shift in range(26):\n        decoded_text = \"\"\n        for char in text:\n            if char.isalpha():\n                ascii_offset = 97 if char.islower() else 65\n                decoded_text += chr((ord(char) - ascii_offset - shift) % 26 + ascii_offset)\n            else:\n                decoded_text += char\n        if any(word in decoded_text for word in [\"the\", \"this\", \"that\"]):\n            return decoded_text\n\ndef main():\n    while True:\n        text = input()\n        if not text:\n            break\n        print(caesar_decipher(text))\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

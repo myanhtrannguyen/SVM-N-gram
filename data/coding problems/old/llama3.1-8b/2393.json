@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2393",
+    "problem_id": "p03594",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <string.h>\n\n#define MAX_H 500\n#define MAX_W 500\n#define MAX_D (MAX_H + MAX_W - 2)\n\nint main() {\n    int H, W, D;\n    char grid[MAX_H][MAX_W];\n\n    scanf(\"%d %d %d\", &H, &W, &D);\n\n    for (int i = 0; i < H; i++) {\n        for (int j = 0; j < W; j++) {\n            int color = (i + j) % 4;\n            if (i > 0 && j > 0 && (i - 1 + j - 1) % D == 0) {\n                color = (color + 1) % 4;\n            }\n            if (i > 0 && j < W - 1 && (i - 1 + j + 1) % D == 0) {\n                color = (color + 2) % 4;\n            }\n            if (i < H - 1 && j > 0 && (i + 1 + j - 1) % D == 0) {\n                color = (color + 3) % 4;\n            }\n            if (i < H - 1 && j < W - 1 && (i + 1 + j + 1) % D == 0) {\n                color = (color + 4) % 4;\n            }\n            grid[i][j] = \"RGBY\"[color];\n        }\n    }\n\n    for (int i = 0; i < H; i++) {\n        for (int j = 0; j < W; j++) {\n            printf(\"%c\", grid[i][j]);\n        }\n        printf(\"\\n\");\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

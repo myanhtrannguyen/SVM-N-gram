@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1263",
+    "problem_id": "p00852",
+    "language": "Python",
+    "solution": "```python\nfrom collections import deque\n\ndef dfs(node, visited, graph, length, rules):\n    if length == 0:\n        return [node]\n    visited.add(node)\n    result = []\n    for neighbor in graph[node]:\n        if neighbor not in visited:\n            for path in dfs(neighbor, visited, graph, length - 1, rules):\n                result.append(node + path)\n    visited.remove(node)\n    return result\n\ndef find_name(n, l, rules):\n    graph = {chr(i): [] for i in range(ord('A'), ord('Z')+1)}\n    for rule in rules:\n        left, right = rule.split('=')\n        graph[ord(left[0])].append(right)\n    visited = set()\n    result = set()\n    for node in graph:\n        for path in dfs(node, visited, graph, l, rules):\n            if all(c.islower() for c in path):\n                result.add(path)\n    return min(result, key=lambda x: x) if result else '-'\n\ndef main():\n    while True:\n        n, l = map(int, input().split())\n        if n == 0 and l == 0:\n            break\n        rules = [input().strip() for _ in range(n)]\n        print(find_name(n, l, rules))\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

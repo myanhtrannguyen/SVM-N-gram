@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-349",
+    "problem_id": "p00398",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nusing namespace std;\n\nstruct City {\n    int x, y;\n};\n\nbool compareCities(const City& a, const City& b) {\n    return a.x < b.x;\n}\n\nint main() {\n    int n;\n    cin >> n;\n\n    vector<City> cities(n);\n    for (int i = 0; i < n; i++) {\n        cin >> cities[i].x >> cities[i].y;\n    }\n\n    sort(cities.begin(), cities.end(), compareCities);\n\n    vector<int> maxDist(n);\n    maxDist[0] = abs(cities[0].x - cities[1].x) > abs(cities[0].y - cities[1].y) ? abs(cities[0].x - cities[1].x) : abs(cities[0].y - cities[1].y);\n    for (int i = 1; i < n - 1; i++) {\n        maxDist[i] = max(abs(cities[i].x - cities[i + 1].x), abs(cities[i].y - cities[i + 1].y));\n    }\n    maxDist[n - 1] = abs(cities[n - 1].x - cities[n - 2].x) > abs(cities[n - 1].y - cities[n - 2].y) ? abs(cities[n - 1].x - cities[n - 2].x) : abs(cities[n - 1].y - cities[n - 2].y);\n\n    int totalCost = 0;\n    for (int i = 0; i < n - 1; i++) {\n        totalCost += maxDist[i];\n    }\n\n    cout << totalCost << endl;\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

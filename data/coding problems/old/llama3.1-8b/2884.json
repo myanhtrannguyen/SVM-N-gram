@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2884",
+    "problem_id": "p03716",
+    "language": "Python",
+    "solution": "```python\nimport sys\n\nN = int(sys.stdin.readline())\na = list(map(int, sys.stdin.readline().split()))\n\nprefix_sum = [0] * (3 * N + 1)\nfor i in range(3 * N):\n    prefix_sum[i + 1] = prefix_sum[i] + a[i]\n\nmax_score = float('-inf')\nfor i in range(N):\n    score = prefix_sum[2 * i + 1] - prefix_sum[2 * N - i]\n    max_score = max(max_score, score)\n\nprint(max_score)\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

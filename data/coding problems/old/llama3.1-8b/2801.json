@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2801",
+    "problem_id": "p03696",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    int n;\n    char s[105];\n    scanf(\"%d %s\", &n, s);\n\n    int cnt = 0;\n    for (int i = 0; i < n; i++) {\n        if (s[i] == '(') cnt++;\n        else cnt--;\n        if (cnt < 0) {\n            cnt++;\n            s[i] = '(';\n        }\n    }\n\n    int i = 0;\n    while (i < n && s[i] == '(') i++;\n    int j = n - 1;\n    while (j >= 0 && s[j] == ')') j--;\n\n    if (i > j) {\n        for (int k = 0; k < n; k++) {\n            s[k] = '(';\n        }\n        s[n] = ')';\n    } else {\n        for (int k = 0; k < i; k++) {\n            s[k] = '(';\n        }\n        for (int k = j + 1; k < n; k++) {\n            s[k] = ')';\n        }\n        for (int k = i; k <= j; k++) {\n            s[k] = '(';\n        }\n    }\n\n    s[n] = '\\0';\n    printf(\"%s\\n\", s);\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

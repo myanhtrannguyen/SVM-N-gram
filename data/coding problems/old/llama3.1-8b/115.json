@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-115",
+    "problem_id": "p00028",
+    "language": "Python",
+    "solution": "```python\nfrom collections import Counter\n\ndef find_mode(nums):\n    count = Counter(nums)\n    max_count = max(count.values())\n    mode_values = [num for num, freq in count.items() if freq == max_count]\n    return sorted(mode_values)\n\nnums = [int(input()) for _ in range(int(input()))]\nprint(*find_mode(nums))\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

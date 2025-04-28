@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2911",
+    "problem_id": "p03723",
+    "language": "Java",
+    "solution": "```java\nimport java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        long a = scanner.nextLong();\n        long b = scanner.nextLong();\n        long c = scanner.nextLong();\n\n        long steps = 0;\n        while (true) {\n            if (a % 2 == 1 || b % 2 == 1 || c % 2 == 1) {\n                System.out.println(steps);\n                return;\n            }\n            a = (a + 1) / 2;\n            b = (b + 1) / 2;\n            c = (c + 1) / 2;\n            steps++;\n        }\n    }\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

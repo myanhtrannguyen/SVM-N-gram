@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1974",
+    "problem_id": "p03172",
+    "language": "Python",
+    "solution": "```python\nimport sys\ninput = sys.stdin.readline\n\nmod = 10**9 + 7\n\ndef comb(n, k):\n    if k > n: return 0\n    if k == 0 or k == n: return 1\n    return comb(n-1, k-1) + comb(n-1, k)\n\ndef solve():\n    n, k = map(int, input().split())\n    a = list(map(int, input().split()))\n    a.sort()\n    ans = 1\n    for i in range(n):\n        if a[i] > k: return 0\n        if a[i] == 0: continue\n        ans = (ans * comb(k-a[i], n-i-1)) % mod\n    return ans\n\nprint(solve())\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

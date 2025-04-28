@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3981",
+    "problem_id": "p02316",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nusing namespace std;\n\nint knapsack(int n, int w, vector<pair<int, int>>& items) {\n    vector<vector<int>> dp(n + 1, vector<int>(w + 1, 0));\n\n    for (int i = 1; i <= n; i++) {\n        for (int j = 1; j <= w; j++) {\n            if (items[i - 1].second > j) {\n                dp[i][j] = dp[i - 1][j];\n            } else {\n                dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - items[i - 1].second] + items[i - 1].first);\n            }\n        }\n    }\n\n    return dp[n][w];\n}\n\nint main() {\n    int n, w;\n    cin >> n >> w;\n\n    vector<pair<int, int>> items(n);\n    for (int i = 0; i < n; i++) {\n        cin >> items[i].first >> items[i].second;\n    }\n\n    sort(items.begin(), items.end(), [](const pair<int, int>& a, const pair<int, int>& b) {\n        return a.second < b.second;\n    });\n\n    cout << knapsack(n, w, items) << endl;\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

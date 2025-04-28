@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3715",
+    "problem_id": "p02249",
+    "language": "Python",
+    "solution": "```python\ndef pattern_search(H, W, region, R, C, pattern):\n    for i in range(H - R + 1):\n        for j in range(W - C + 1):\n            match = True\n            for r in range(R):\n                for c in range(C):\n                    if region[i + r][j + c] != pattern[r][c]:\n                        match = False\n                        break\n                if not match:\n                    break\n            if match:\n                print(f\"{i} {j}\")\n\nH, W = map(int, input().split())\nregion = [list(input()) for _ in range(H)]\nR, C = map(int, input().split())\npattern = [list(input()) for _ in range(R)]\npattern_search(H, W, region, R, C, pattern)\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1716",
+    "problem_id": "p02968",
+    "language": "Python",
+    "solution": "```python\nimport sys\ninput = sys.stdin.readline\n\ndef read_int():\n    return int(input())\n\ndef read_ints():\n    return map(int, input().split())\n\ndef read_int_list():\n    return list(map(int, input().split()))\n\ndef read_string():\n    return input().strip()\n\ndef read_string_list():\n    return input().strip().split()\n\ndef solve():\n    N, M = read_ints()\n    if N == 1:\n        print(1)\n        return\n    dp = [[0] * (N * 2 + 1) for _ in range(N * 2 + 1)]\n    dp[0][0] = 1\n    for i in range(N * 2):\n        for j in range(N * 2):\n            if dp[i][j]:\n                for k in range(N * 2):\n                    if i + k < N * 2 and j + k < N * 2:\n                        dp[i + k][j + k] = (dp[i + k][j + k] + dp[i][j]) % M\n    ans = 0\n    for i in range(N * 2):\n        for j in range(N * 2):\n            if i + j < N * 2:\n                ans = (ans + dp[i][j] * dp[i + j][N * 2 - 1]) % M\n    print(ans)\n\nif __name__ == '__main__':\n    T = 1\n    for _ in range(T):\n        solve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

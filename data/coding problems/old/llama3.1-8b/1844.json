@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1844",
+    "problem_id": "p03140",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <string>\n#include <vector>\n#include <algorithm>\n\nusing namespace std;\n\nint min_operations(const string& a, const string& b, const string& c) {\n    int n = a.size();\n    vector<vector<vector<int>>> dp(n + 1, vector<vector<int>>(n + 1, vector<int>(n + 1, 0)));\n\n    for (int i = 1; i <= n; ++i) {\n        for (int j = 1; j <= n; ++j) {\n            for (int k = 1; k <= n; ++k) {\n                if (a[i - 1] == b[j - 1] && b[j - 1] == c[k - 1]) {\n                    dp[i][j][k] = dp[i - 1][j - 1][k - 1];\n                } else {\n                    dp[i][j][k] = 1 + min({dp[i - 1][j][k], dp[i][j - 1][k], dp[i][j][k - 1]});\n                }\n            }\n        }\n    }\n\n    return dp[n][n][n];\n}\n\nint main() {\n    int n;\n    string a, b, c;\n    cin >> n >> a >> b >> c;\n    cout << min_operations(a, b, c) << endl;\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-10",
+    "problem_id": "p00002",
+    "language": "Java",
+    "solution": "```java\nimport java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        while (scanner.hasNext()) {\n            int a = scanner.nextInt();\n            int b = scanner.nextInt();\n            System.out.println(digitNumber(a + b));\n        }\n        scanner.close();\n    }\n\n    public static int digitNumber(int n) {\n        if (n == 0) return 1;\n        return (int) (Math.log10(n) + 1);\n    }\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

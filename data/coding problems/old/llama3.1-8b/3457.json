@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3457",
+    "problem_id": "p01963",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <string>\n#include <algorithm>\n#include <unordered_map>\n\nusing namespace std;\n\nconst int MOD = 1e9 + 7;\n\nint main() {\n    int N;\n    cin >> N;\n\n    vector<string> S(N);\n    for (int i = 0; i < N; i++) {\n        cin >> S[i];\n    }\n\n    string T;\n    cin >> T;\n\n    unordered_map<string, int> dp;\n    dp[\"\"] = 1;\n\n    for (int i = 0; i < T.size(); i++) {\n        unordered_map<string, int> next;\n        for (auto& it : dp) {\n            string s = it.first;\n            int val = it.second;\n\n            for (int j = 0; j < N; j++) {\n                if (S[j].size() > T.size() - i) continue;\n                if (T.substr(i, S[j].size()) == S[j]) {\n                    string t = s + S[j];\n                    next[t] = (next[t] + val) % MOD;\n                }\n            }\n        }\n        dp = next;\n    }\n\n    int ans = 0;\n    for (auto& it : dp) {\n        ans = (ans + it.second) % MOD;\n    }\n\n    cout << ans << endl;\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

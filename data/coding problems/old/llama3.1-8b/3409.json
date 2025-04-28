@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3409",
+    "problem_id": "p01951",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nusing namespace std;\n\nconst int N = 12, M = 12, K = 6, S = 1000001;\n\nint n, m, k, s;\nint a[N][M];\nint dp[N][1 << M];\n\nvoid solve() {\n    cin >> n >> m >> k >> s;\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < m; j++) {\n            cin >> a[i][j];\n        }\n    }\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < (1 << m); j++) {\n            dp[i][j] = S;\n        }\n    }\n    dp[0][0] = 0;\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < (1 << m); j++) {\n            for (int x = 0; x < m; x++) {\n                if (j & (1 << x)) {\n                    dp[i + 1][j ^ (1 << x)] = min(dp[i + 1][j ^ (1 << x)], dp[i][j] + a[i][x]);\n                }\n            }\n        }\n    }\n    for (int i = 0; i < (1 << m); i++) {\n        if (dp[n][i] <= s) {\n            cout << \"Yes\" << endl;\n            return;\n        }\n    }\n    cout << \"No\" << endl;\n}\n\nint main() {\n    ios_base::sync_with_stdio(false);\n    cin.tie(nullptr);\n    solve();\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

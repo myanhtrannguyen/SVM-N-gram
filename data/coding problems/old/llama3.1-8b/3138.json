@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3138",
+    "problem_id": "p01731",
+    "language": "Java",
+    "solution": "```java\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        int n = scanner.nextInt();\n        Map<Integer, String> posts = new HashMap<>();\n        Map<Integer, Integer> parent = new HashMap<>();\n        for (int i = 0; i < n; i++) {\n            int k = scanner.nextInt();\n            String m = scanner.next();\n            posts.put(i, m);\n            parent.put(i, k);\n        }\n        printTree(posts, parent, 0, 0);\n    }\n\n    public static void printTree(Map<Integer, String> posts, Map<Integer, Integer> parent, int depth, int index) {\n        if (index >= posts.size()) return;\n        System.out.println(repeat(\".\", depth) + posts.get(index));\n        printTree(posts, parent, depth + 1, parent.get(index));\n        printTree(posts, parent, depth + 1, index + 1);\n    }\n\n    public static String repeat(String str, int count) {\n        StringBuilder sb = new StringBuilder();\n        for (int i = 0; i < count; i++) {\n            sb.append(str);\n        }\n        return sb.toString();\n    }\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

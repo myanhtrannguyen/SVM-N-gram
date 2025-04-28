@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1127",
+    "problem_id": "p00818",
+    "language": "Python",
+    "solution": "```python\nimport math\n\ndef is_visible(confetti, n):\n    for i in range(n-1, -1, -1):\n        for j in range(i-1, -1, -1):\n            if math.sqrt((confetti[i][0] - confetti[j][0])**2 + (confetti[i][1] - confetti[j][1])**2) < confetti[i][2] + confetti[j][2]:\n                return False\n    return True\n\ndef main():\n    while True:\n        n = int(input())\n        if n == 0:\n            break\n        confetti = []\n        for _ in range(n):\n            x, y, r = map(float, input().split())\n            confetti.append((x, y, r))\n        print(sum(1 for i in range(n) if is_visible(confetti, n)))\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

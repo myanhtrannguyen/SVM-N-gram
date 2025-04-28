@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-387",
+    "problem_id": "p00589",
+    "language": "Python",
+    "solution": "```python\ndef convert_input(input_str):\n    mapping = {\n        1: ['(', ')', '(', ')'],\n        2: ['a', 'b', 'c', 'A', 'B', 'C'],\n        3: ['d', 'D', 'e', 'E', 'f', 'F'],\n        4: ['g', 'G', 'h', 'H', 'i', 'I'],\n        5: ['j', 'J', 'k', 'K', 'l', 'L'],\n        6: ['m', 'M', 'n', 'N', 'o', 'O'],\n        7: ['p', 'P', 'q', 'Q', 'r', 'R', 's', 'S'],\n        8: ['t', 'T', 'u', 'U', 'v', 'V'],\n        9: ['w', 'W', 'x', 'X', 'y', 'Y', 'z', 'Z'],\n        0: [' ', ' ']\n    }\n\n    result = ''\n    count = 1\n    for i in range(len(input_str)):\n        if i + 1 < len(input_str) and input_str[i] == input_str[i + 1]:\n            count += 1\n        else:\n            digit = int(input_str[i])\n            result += mapping[digit][count - 1]\n            count = 1\n\n    return result\n\nif __name__ == \"__main__\":\n    for line in open(0):\n        print(convert_input(line.strip()))\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

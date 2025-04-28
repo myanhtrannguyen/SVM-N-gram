@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3149",
+    "problem_id": "p01734",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nint main() {\n    int n;\n    std::cin >> n;\n\n    std::vector<int> xLower(n * 2);\n    std::vector<int> xUpper(n * 2);\n\n    for (int i = 0; i < n; ++i) {\n        int xLower1, xLower2, xUpper1, xUpper2;\n        std::cin >> xLower1 >> xLower2 >> xUpper1 >> xUpper2;\n        xLower[2 * i] = xLower1;\n        xLower[2 * i + 1] = xLower2;\n        xUpper[2 * i] = xUpper1;\n        xUpper[2 * i + 1] = xUpper2;\n    }\n\n    std::sort(xLower.begin(), xLower.end());\n    std::sort(xUpper.begin(), xUpper.end());\n\n    int count = 0;\n    int i = 0;\n    int j = 0;\n\n    while (i < n * 2 && j < n * 2) {\n        if (xLower[i] <= xUpper[j]) {\n            ++count;\n            ++i;\n        } else {\n            ++j;\n        }\n    }\n\n    std::cout << count << std::endl;\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

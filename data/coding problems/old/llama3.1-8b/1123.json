@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1123",
+    "problem_id": "p00817",
+    "language": "Python",
+    "solution": "```python\nfrom collections import defaultdict\n\ndef true_liars():\n    while True:\n        n, p1, p2 = map(int, input().split())\n        if n == 0 and p1 == 0 and p2 == 0:\n            break\n\n        graph = defaultdict(list)\n        for _ in range(n):\n            x, y, a = input().split()\n            x, y = int(x), int(y)\n            if a == 'yes':\n                graph[x].append(y)\n                graph[y].append(x)\n\n        visited = set()\n        divine = set()\n        stack = [1]\n        while stack:\n            node = stack.pop()\n            if node not in visited:\n                visited.add(node)\n                if node <= p1:\n                    divine.add(node)\n                for neighbor in graph[node]:\n                    if neighbor not in visited:\n                        stack.append(neighbor)\n\n        if len(divine) == p1:\n            for num in sorted(divine):\n                print(num)\n            print('end')\n        else:\n            print('no')\n\ntrue_liars()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-603",
+    "problem_id": "p00687",
+    "language": "Python",
+    "solution": "```python\ndef gcd(a, b):\n    while b:\n        a, b = b, a % b\n    return a\n\ndef count_unrepresentable(n, a, b):\n    g = gcd(a, b)\n    a //= g\n    b //= g\n    return n - (a * (b + 1) // 2)\n\ndef main():\n    while True:\n        n, a, b = map(int, input().split())\n        if n == 0 and a == 0 and b == 0:\n            break\n        print(count_unrepresentable(n, a, b))\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

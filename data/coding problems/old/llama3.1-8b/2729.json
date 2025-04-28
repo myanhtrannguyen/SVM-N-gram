@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2729",
+    "problem_id": "p03678",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <string.h>\n\n#define N 200005\n#define M 26\n\nchar s[N];\nint n, l, r, len, cnt[M], ans[M];\n\nvoid add(int *cnt, int c, int x) {\n    cnt[c] += x;\n    if (cnt[c] >= len) {\n        cnt[c] = len;\n    }\n}\n\nint main() {\n    scanf(\"%s\", s);\n    n = strlen(s);\n    len = n;\n    while (len % 2 == 0) {\n        len /= 2;\n    }\n    for (int i = 0; i < n; i++) {\n        add(cnt, s[i] - 'a', 1);\n    }\n    for (int i = 0; i < 26; i++) {\n        ans[i] = cnt[i];\n    }\n    while (l > len) {\n        l -= len;\n        r -= len;\n        for (int i = 0; i < 26; i++) {\n            add(cnt, i, ans[i]);\n        }\n        for (int i = 0; i < n; i++) {\n            add(cnt, s[i] - 'a', -1);\n        }\n        for (int i = 0; i < 26; i++) {\n            ans[i] = cnt[i];\n        }\n    }\n    for (int i = 0; i < 26; i++) {\n        printf(\"%d \", ans[i]);\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

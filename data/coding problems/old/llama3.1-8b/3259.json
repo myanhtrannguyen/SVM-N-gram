@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3259",
+    "problem_id": "p01801",
+    "language": "Python",
+    "solution": "```python\ndef check_win(board):\n    h, w = len(board), len(board[0])\n    for i in range(h):\n        for j in range(w):\n            if board[i][j] == '.':\n                for di in [-1, 0, 1]:\n                    for dj in [-1, 0, 1]:\n                        if di == 0 and dj == 0:\n                            continue\n                        x, y = i, j\n                        while 0 <= x < h and 0 <= y < w:\n                            board[x][y] = '#'\n                            x += di\n                            y += dj\n                if '#' not in board[i][j]:\n                    return 'First'\n    return 'Second'\n\nh, w = map(int, input().split())\nboard = [list(input()) for _ in range(h)]\nprint(check_win(board))\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

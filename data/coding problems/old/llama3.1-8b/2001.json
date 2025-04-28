@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2001",
+    "problem_id": "p03373",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n\nint main() {\n    int A, B, C, X, Y;\n    scanf(\"%d %d %d %d %d\", &A, &B, &C, &X, &Y);\n\n    int min = (X + Y) * C - C;\n    int a = (X + Y) / 2;\n    int b = (X + Y) / 2;\n\n    if ((X + Y) % 2 != 0) {\n        a++;\n    }\n\n    min = (a * A) + (b * B);\n\n    printf(\"%d\\n\", min);\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

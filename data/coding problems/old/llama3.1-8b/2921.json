@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2921",
+    "problem_id": "p03726",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\n#define MAXN 100005\n\nint n, cnt, ans;\nint head[MAXN], to[MAXN << 1], nxt[MAXN << 1], vis[MAXN], col[MAXN];\nint a[MAXN], b[MAXN];\n\nvoid add(int x, int y) {\n    to[cnt] = y;\n    nxt[cnt] = head[x];\n    head[x] = cnt++;\n}\n\nvoid dfs(int u, int fa) {\n    for (int i = head[u]; i != -1; i = nxt[i]) {\n        int v = to[i];\n        if (v == fa) continue;\n        dfs(v, u);\n        col[v] = 1 - col[u];\n    }\n    if (col[u] == 1) {\n        for (int i = head[u]; i != -1; i = nxt[i]) {\n            int v = to[i];\n            if (v != fa && col[v] == 0) {\n                ans = 1;\n                return;\n            }\n        }\n    }\n}\n\nint main() {\n    scanf(\"%d\", &n);\n    for (int i = 1; i < n; i++) {\n        scanf(\"%d %d\", &a[i], &b[i]);\n        add(a[i], b[i]);\n        add(b[i], a[i]);\n    }\n    for (int i = 1; i <= n; i++) {\n        if (!vis[i]) {\n            dfs(i, 0);\n            if (ans) break;\n        }\n    }\n    if (ans) printf(\"First\\n\");\n    else printf(\"Second\\n\");\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

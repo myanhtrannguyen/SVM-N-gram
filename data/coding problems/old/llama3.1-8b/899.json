@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-899",
+    "problem_id": "p00761",
+    "language": "Python",
+    "solution": "```python\ndef rearrange_digits(a, L):\n    digits = [int(d) for d in str(a).zfill(L)]\n    digits.sort()\n    largest = int(''.join(map(str, digits)))\n    digits.sort(reverse=True)\n    smallest = int(''.join(map(str, digits)))\n    return largest - smallest\n\ndef find_recurring_index(a, L):\n    sequence = [a]\n    while True:\n        a = rearrange_digits(a, L)\n        if a in sequence:\n            return sequence.index(a), a, len(sequence) - sequence.index(a)\n        sequence.append(a)\n\ndef main():\n    while True:\n        a, L = map(int, input().split())\n        if a == 0 and L == 0:\n            break\n        j, ai, i_minus_j = find_recurring_index(a, L)\n        print(j, ai, i_minus_j)\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

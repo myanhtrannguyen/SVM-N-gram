@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3467",
+    "problem_id": "p01965",
+    "language": "Python",
+    "solution": "```python\nimport sys\n\ndef farm_village():\n    n = int(input())\n    d = list(map(int, input().split()))\n    g = list(map(int, input().split()))\n\n    prefix_sum_d = [0] * (n + 1)\n    for i in range(n - 1):\n        prefix_sum_d[i + 1] = prefix_sum_d[i] + d[i]\n\n    suffix_sum_g = [0] * (n + 1)\n    for i in range(n - 1, -1, -1):\n        suffix_sum_g[i] = suffix_sum_g[i + 1] + g[i]\n\n    min_cost = sys.maxsize\n    for i in range(n):\n        cost = prefix_sum_d[i] + suffix_sum_g[i + 1] + g[i]\n        min_cost = min(min_cost, cost)\n\n    print(min_cost)\n\nfarm_village()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

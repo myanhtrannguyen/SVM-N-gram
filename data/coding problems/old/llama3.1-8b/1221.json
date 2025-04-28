@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1221",
+    "problem_id": "p00842",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nusing namespace std;\n\nconst int MAXN = 55;\n\nint n;\nvector<vector<int>> dist;\nvector<int> parent;\nvector<int> degree;\n\nvoid dfs(int u) {\n    for (int v = 0; v < n; v++) {\n        if (v != u && dist[u][v] == 1) {\n            parent[v] = u;\n            degree[u]++;\n            dfs(v);\n        }\n    }\n}\n\nint main() {\n    int t;\n    cin >> t;\n    while (t--) {\n        cin >> n;\n        dist.resize(n);\n        for (int i = 0; i < n; i++) {\n            dist[i].resize(n);\n            for (int j = 0; j < n; j++) {\n                cin >> dist[i][j];\n            }\n        }\n        parent.resize(n);\n        degree.resize(n);\n        for (int i = 0; i < n; i++) {\n            if (parent[i] == 0) {\n                dfs(i);\n            }\n        }\n        sort(degree.begin(), degree.end());\n        for (int i = 0; i < n; i++) {\n            if (degree[i] != 0) {\n                cout << degree[i] << \" \";\n            }\n        }\n        cout << endl;\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

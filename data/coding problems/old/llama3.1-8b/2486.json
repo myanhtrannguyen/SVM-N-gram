@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2486",
+    "problem_id": "p03617",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <algorithm>\n\nint main() {\n    long long q, h, s, d, n;\n    std::cin >> q >> h >> s >> d >> n;\n\n    long long ans = 1e18;\n    for (long long i = 0; i <= n / 2; i++) {\n        long long j = n - i * 2;\n        long long cost = i * q + j * h + (n - i - j) * s + (i > 0 ? (n - i - j) / 2 * d : 0);\n        ans = std::min(ans, cost);\n    }\n\n    std::cout << ans << std::endl;\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

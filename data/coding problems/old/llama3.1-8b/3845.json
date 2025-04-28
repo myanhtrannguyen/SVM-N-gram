@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3845",
+    "problem_id": "p02282",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n\nint main() {\n    int n;\n    std::cin >> n;\n\n    std::vector<int> preorder(n);\n    std::vector<int> inorder(n);\n\n    for (int i = 0; i < n; ++i) {\n        std::cin >> preorder[i];\n    }\n\n    for (int i = 0; i < n; ++i) {\n        std::cin >> inorder[i];\n    }\n\n    std::vector<int> postorder(n);\n    std::vector<int> index(n);\n\n    for (int i = 0; i < n; ++i) {\n        index[inorder[i] - 1] = i;\n    }\n\n    int root = preorder[0];\n    int i = 0;\n    int j = 0;\n\n    while (i < n) {\n        if (inorder[index[i]] == preorder[j]) {\n            postorder[n - 1 - j] = preorder[j];\n            j++;\n            i++;\n        } else {\n            postorder[n - 1 - j] = preorder[i];\n            i++;\n        }\n    }\n\n    for (int i = 0; i < n; ++i) {\n        std::cout << postorder[i] << \" \";\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3153",
+    "problem_id": "p01735",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nusing namespace std;\n\nconst int MAXN = 105;\n\nint n, p[MAXN], k[MAXN], t[MAXN][6], cnt, ans1, ans2;\n\nvoid dfs(int u, int alpha, int beta, bool flag) {\n    if (k[u] == 0) {\n        cnt++;\n        return;\n    }\n    int tmp = cnt;\n    for (int i = 0; i < k[u]; i++) {\n        dfs(t[u][i], -beta, -alpha, flag);\n        if (flag && cnt - tmp == 1) {\n            ans1++;\n        }\n        if (!flag && cnt - tmp == 1) {\n            ans2++;\n        }\n        if (flag && cnt - tmp > 1) {\n            ans1 += cnt - tmp;\n        }\n        if (!flag && cnt - tmp > 1) {\n            ans2 += cnt - tmp;\n        }\n    }\n}\n\nint main() {\n    cin >> n;\n    for (int i = 1; i <= n; i++) {\n        cin >> p[i];\n    }\n    for (int i = 1; i <= n; i++) {\n        cin >> k[i];\n        for (int j = 0; j < k[i]; j++) {\n            cin >> t[i][j];\n        }\n    }\n    dfs(1, -100000, 100000, true);\n    dfs(1, -100000, 100000, false);\n    cout << ans1 << \" \" << ans2 << endl;\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3417",
+    "problem_id": "p01953",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nusing namespace std;\n\nconst int N = 1e5 + 5;\nconst int M = 100 + 5;\n\nint n, c;\nint a[N], w[N], pos[N];\nlong long ans;\n\nint main() {\n    cin >> n >> c;\n    for (int i = 1; i <= n; i++) {\n        cin >> a[i] >> w[i];\n        pos[a[i]] = i;\n    }\n    for (int i = 1; i <= n; i++) {\n        int l = i, r = n;\n        while (l <= r) {\n            int mid = (l + r) >> 1;\n            if (pos[a[i]] < mid) l = mid + 1;\n            else r = mid - 1;\n        }\n        if (pos[a[i]] < l) {\n            ans += (l - pos[a[i]] - 1) * w[a[i]] + c * w[a[i]] * (l - i);\n            pos[a[i]] = l;\n        }\n    }\n    cout << ans << endl;\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-192",
+    "problem_id": "p00359",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\n#define MAX 105\n\nint main() {\n    int w, h, n, x, y, i, j, k, cost, min_cost;\n    int enemy[MAX][MAX];\n\n    scanf(\"%d %d %d\", &w, &h, &n);\n    for (i = 0; i < n; i++) {\n        scanf(\"%d %d\", &x, &y);\n        enemy[x][y] = 1;\n    }\n\n    min_cost = 0;\n    for (i = 0; i < w; i++) {\n        for (j = 0; j < h; j++) {\n            if (enemy[i][j] == 1) {\n                cost = 0;\n                for (k = 0; k < w; k++) {\n                    if (enemy[k][j] == 1) {\n                        cost++;\n                    }\n                }\n                for (k = 0; k < h; k++) {\n                    if (enemy[i][k] == 1) {\n                        cost++;\n                    }\n                }\n                min_cost += cost - 1;\n            }\n        }\n    }\n\n    printf(\"%d\\n\", min_cost);\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

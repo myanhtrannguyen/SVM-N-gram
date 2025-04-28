@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-133",
+    "problem_id": "p00103",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <string>\n\nint simulateInning(const std::vector<std::string>& events) {\n    int score = 0;\n    int outs = 0;\n    int runners[3] = {0, 0, 0};\n\n    for (const auto& event : events) {\n        if (event == \"HIT\") {\n            runners[0]++;\n        } else if (event == \"HOMERUN\") {\n            score += runners[0] + 1;\n            runners[0] = 0;\n        } else if (event == \"OUT\") {\n            outs++;\n            if (outs == 3) {\n                break;\n            }\n        }\n    }\n\n    return score;\n}\n\nint main() {\n    int n;\n    std::cin >> n;\n\n    for (int i = 0; i < n; i++) {\n        int score = 0;\n        int outs = 0;\n        int runners[3] = {0, 0, 0};\n        std::vector<std::string> events;\n\n        int numEvents;\n        std::cin >> numEvents;\n        for (int j = 0; j < numEvents; j++) {\n            std::string event;\n            std::cin >> event;\n            events.push_back(event);\n        }\n\n        score = simulateInning(events);\n\n        std::cout << score << std::endl;\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

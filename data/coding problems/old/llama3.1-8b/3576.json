@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3576",
+    "problem_id": "p02075",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n\ntypedef struct {\n    double x, v;\n} human;\n\nint compare(const void *a, const void *b) {\n    human *h1 = (human *)a;\n    human *h2 = (human *)b;\n    return (h1->x - h2->x) * (h1->v > 0 ? 1 : -1) - (h2->x - h1->x) * (h2->v > 0 ? 1 : -1);\n}\n\nint main() {\n    int N;\n    scanf(\"%d\", &N);\n    human zombie;\n    scanf(\"%lf %lf\", &zombie.x, &zombie.v);\n    human humans[N];\n    for (int i = 0; i < N; i++) {\n        scanf(\"%lf %lf\", &humans[i].x, &humans[i].v);\n    }\n    qsort(humans, N, sizeof(human), compare);\n    for (int i = 0; i < N; i++) {\n        human *h = &humans[i];\n        if (h->v * zombie.v >= 0) {\n            printf(\"-1\\n\");\n            continue;\n        }\n        double t = (h->x - zombie.x) / (zombie.v - h->v);\n        if (t <= 0) {\n            printf(\"%f\\n\", h->x / h->v);\n        } else {\n            printf(\"%f\\n\", t);\n        }\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

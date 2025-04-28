@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2171",
+    "problem_id": "p03538",
+    "language": "Java",
+    "solution": "```java\npublic class Main {\n    public static void main(String[] args) {\n        int N = 1000;\n        int K = 1;\n\n        System.out.println(N + \" \" + K);\n\n        for (int i = 1; i <= N; i++) {\n            StringBuilder sb = new StringBuilder();\n            for (int j = 1; j <= K; j++) {\n                int num = (i + j - 1) % N + 1;\n                sb.append(num).append(\" \");\n            }\n            System.out.println(sb.toString().trim());\n        }\n    }\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

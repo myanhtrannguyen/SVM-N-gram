@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1870",
+    "problem_id": "p03146",
+    "language": "Python",
+    "solution": "```python\ndef collatz_sequence(n, memo):\n    if n in memo:\n        return memo[n]\n    if n % 2 == 0:\n        result = n // 2\n    else:\n        result = 3 * n + 1\n    memo[n] = result\n    return collatz_sequence(result, memo)\n\ndef find_min_m(s):\n    memo = {}\n    sequence = [s]\n    while True:\n        s = collatz_sequence(s, memo)\n        if s in sequence:\n            return sequence.index(s) + 1\n        sequence.append(s)\n\ns = int(input())\nprint(find_min_m(s))\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1983",
+    "problem_id": "p03175",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\n#define MOD 1000000007\n\ntypedef struct {\n    int num;\n    int* adj;\n} Graph;\n\nvoid dfs(Graph* g, int u, int p, int* dp) {\n    for (int v : g->adj[u]) {\n        if (v != p) {\n            dfs(g, v, u, dp);\n            dp[u] = (1LL * (dp[u] + dp[v] + 1) % MOD) * 2 % MOD;\n        }\n    }\n}\n\nint main() {\n    int N;\n    scanf(\"%d\", &N);\n\n    Graph* g = (Graph*)malloc(sizeof(Graph));\n    g->num = N;\n    g->adj = (int*)malloc(N * sizeof(int));\n\n    for (int i = 0; i < N - 1; i++) {\n        int u, v;\n        scanf(\"%d %d\", &u, &v);\n        u--; v--;\n        g->adj[u] = (int)realloc(g->adj[u], sizeof(int) * (g->adj[u] ? g->adj[u][0] + 1 : 1));\n        g->adj[u][g->adj[u][0]] = v;\n        g->adj[v] = (int)realloc(g->adj[v], sizeof(int) * (g->adj[v][0] + 1));\n        g->adj[v][g->adj[v][0]] = u;\n    }\n\n    int* dp = (int*)malloc(N * sizeof(int));\n    for (int i = 0; i < N; i++) {\n        dp[i] = 2;\n    }\n\n    dfs(g, 0, -1, dp);\n\n    printf(\"%d\\n\", dp[0]);\n\n    free(g->adj);\n    free(g);\n    free(dp);\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

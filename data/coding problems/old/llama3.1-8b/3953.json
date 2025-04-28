@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3953",
+    "problem_id": "p02309",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <cmath>\n\nint main() {\n    double x1, y1, r1, x2, y2, r2;\n    std::cin >> x1 >> y1 >> r1 >> x2 >> y2 >> r2;\n\n    double d = sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2));\n    double a = (pow(r1, 2) - pow(r2, 2) + pow(d, 2)) / (2 * d);\n    double h = sqrt(pow(r1, 2) - pow(a, 2));\n    double xm = x1 + a * (x2 - x1) / d;\n    double ym = y1 + a * (y2 - y1) / d;\n    double xs1 = xm + h * (y2 - y1) / d;\n    double xs2 = xm - h * (y2 - y1) / d;\n    double ys1 = ym - h * (x2 - x1) / d;\n    double ys2 = ym + h * (x2 - x1) / d;\n\n    if (std::abs(xs1 - xs2) < 0.000001) {\n        std::cout << xs1 << \" \" << ys1 << \" \" << xs1 << \" \" << ys1 << std::endl;\n    } else {\n        std::cout << std::fixed << std::setprecision(10) << xs1 << \" \" << ys1 << \" \" << xs2 << \" \" << ys2 << std::endl;\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

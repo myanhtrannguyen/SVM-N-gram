@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2415",
+    "problem_id": "p03599",
+    "language": "Java",
+    "solution": "```java\nimport java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        int A = scanner.nextInt();\n        int B = scanner.nextInt();\n        int C = scanner.nextInt();\n        int D = scanner.nextInt();\n        int E = scanner.nextInt();\n        int F = scanner.nextInt();\n\n        int max = 0;\n        int maxSugar = 0;\n\n        for (int i = 0; i <= F / (A + E); i++) {\n            for (int j = 0; j <= F / (B + E); j++) {\n                int water = Math.min(i * A, j * B);\n                int sugar = Math.min(i * E, j * E);\n                int total = water + sugar;\n\n                if (total <= F && water + C <= F && water + D <= F) {\n                    int density = (int) Math.round((100.0 * sugar / (water + sugar)) * 100) / 100;\n                    if (density > max) {\n                        max = density;\n                        maxSugar = sugar;\n                    }\n                }\n            }\n        }\n\n        System.out.println((max * A + maxSugar) + \" \" + maxSugar);\n    }\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

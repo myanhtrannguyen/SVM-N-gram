@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1604",
+    "problem_id": "p02940",
+    "language": "Python",
+    "solution": "```python\nimport sys\ninput = sys.stdin.readline\n\nmod = 998244353\n\ndef comb(n, r):\n    if n < r: return 0\n    if r == 0: return 1\n    if n == r: return 1\n    return (comb(n-1, r-1) + comb(n-1, r)) % mod\n\ndef solve():\n    n = int(input())\n    s = input().strip()\n    cnt = [0] * 3\n    for c in s:\n        cnt[ord(c) - ord('R')] += 1\n    if cnt[0] != cnt[1] or cnt[1] != cnt[2]:\n        print(0)\n        return\n    n = cnt[0]\n    ans = 1\n    for i in range(n):\n        ans = (ans * (3 * i + 1)) % mod\n    for i in range(n):\n        ans = (ans * comb(3 * n - 3 * i - 3, n - i)) % mod\n    print(ans)\n\nt = 1\nfor _ in range(t):\n    solve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

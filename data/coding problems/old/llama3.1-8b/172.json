@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-172",
+    "problem_id": "p00354",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n\nint main() {\n    int day, year = 2017, month = 8; // September is the 9th month, so we set month to 8\n    scanf(\"%d\", &day);\n\n    int t = (14 - month) / 12;\n    int y = year - t;\n    int m = month + 12 * t - 2;\n    int d = (day + y + y/4 - y/100 + y/400 + (31*m)/12) % 7;\n\n    switch (d) {\n        case 0: printf(\"sun\\n\"); break;\n        case 1: printf(\"mon\\n\"); break;\n        case 2: printf(\"tue\\n\"); break;\n        case 3: printf(\"wed\\n\"); break;\n        case 4: printf(\"thu\\n\"); break;\n        case 5: printf(\"fri\\n\"); break;\n        case 6: printf(\"sat\\n\"); break;\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

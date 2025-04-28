@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3962",
+    "problem_id": "p02311",
+    "language": "Java",
+    "solution": "```java\nimport java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        double c1x = scanner.nextDouble();\n        double c1y = scanner.nextDouble();\n        double c1r = scanner.nextDouble();\n        double c2x = scanner.nextDouble();\n        double c2y = scanner.nextDouble();\n        double c2r = scanner.nextDouble();\n\n        double dx = c2x - c1x;\n        double dy = c2y - c1y;\n        double d = Math.sqrt(dx * dx + dy * dy);\n        double a = (c1r * c1r - c2r * c2r + d * d) / (2 * d);\n        double h = Math.sqrt(c1r * c1r - a * a);\n        double xm = c1x + a * dx / d;\n        double ym = c1y + a * dy / d;\n        double xs1 = xm + h * dy / d;\n        double xs2 = xm - h * dy / d;\n        double ys1 = ym - h * dx / d;\n        double ys2 = ym + h * dx / d;\n\n        System.out.printf(\"%.5f %.5f%n\", xs1, ys1);\n        System.out.printf(\"%.5f %.5f%n\", xs2, ys2);\n        if (c1r * c1r == c2r * c2r + d * d) {\n            System.out.printf(\"%.5f %.5f%n\", c2x, c2y);\n        }\n    }\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

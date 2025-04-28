@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1396",
+    "problem_id": "p02756",
+    "language": "Python",
+    "solution": "```python\ns = input()\nq = int(input())\n\nfor _ in range(q):\n    query = input().split()\n    if query[0] == '1':\n        s = s[::-1]\n    else:\n        f, c = query[1], query[2]\n        if f == '1':\n            s = c + s\n        else:\n            s = s + c\n\nprint(s)\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

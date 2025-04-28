@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3887",
+    "problem_id": "p02292",
+    "language": "Python",
+    "solution": "```python\ndef orientation(p, q, r):\n    val = (q[1] - p[1]) * (r[0] - q[0]) - (q[0] - p[0]) * (r[1] - q[1])\n    if val == 0:\n        return 0\n    elif val > 0:\n        return 1\n    else:\n        return 2\n\ndef on_segment(p, q, r):\n    if (q[0] <= max(p[0], r[0]) and q[0] >= min(p[0], r[0]) and\n        q[1] <= max(p[1], r[1]) and q[1] >= min(p[1], r[1])):\n        return True\n    return False\n\ndef distance(p, q):\n    return ((q[0] - p[0]) ** 2 + (q[1] - p[1]) ** 2) ** 0.5\n\ndef solve():\n    p0 = list(map(int, input().split()))\n    p1 = list(map(int, input().split()))\n    q = int(input())\n    for _ in range(q):\n        p2 = list(map(int, input().split()))\n        o = orientation(p0, p1, p2)\n        if o == 0:\n            if on_segment(p0, p1, p2):\n                print(\"ON_SEGMENT\")\n            else:\n                print(\"ONLINE_BACK\")\n        elif o == 1:\n            print(\"COUNTER_CLOCKWISE\")\n        else:\n            print(\"CLOCKWISE\")\n\nsolve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

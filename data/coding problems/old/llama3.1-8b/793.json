@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-793",
+    "problem_id": "p00735",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nbool isMondaySaturdayPrime(int n) {\n    if (n % 7 != 1 && n % 7 != 6) return false;\n    for (int i = 2; i * i <= n; i++) {\n        if (n % i == 0 && (i % 7 != 1 && i % 7 != 6)) return false;\n    }\n    return true;\n}\n\nstd::vector<int> getMondaySaturdayPrimeFactors(int n) {\n    std::vector<int> factors;\n    for (int i = 2; i * i <= n; i++) {\n        if (n % i == 0 && (i % 7 != 1 && i % 7 != 6)) {\n            while (n % i == 0) {\n                n /= i;\n            }\n            factors.push_back(i);\n        }\n    }\n    if (n > 1 && (n % 7 != 1 && n % 7 != 6)) {\n        factors.push_back(n);\n    }\n    return factors;\n}\n\nint main() {\n    int n;\n    while (std::cin >> n) {\n        if (n == 1) break;\n        std::vector<int> factors = getMondaySaturdayPrimeFactors(n);\n        std::sort(factors.begin(), factors.end());\n        for (int i = 0; i < factors.size(); i++) {\n            std::cout << factors[i];\n            if (i < factors.size() - 1) std::cout << \" \";\n        }\n        std::cout << std::endl;\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

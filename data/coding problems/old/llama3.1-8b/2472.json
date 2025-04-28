@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2472",
+    "problem_id": "p03613",
+    "language": "Python",
+    "solution": "```python\nfrom collections import defaultdict\n\ndef solve():\n    n = int(input())\n    a = list(map(int, input().split()))\n    freq = defaultdict(int)\n    for num in a:\n        freq[num] += 1\n\n    max_freq = 0\n    for num in freq:\n        freq[num] += (num - 1) * 2\n        freq[num + 1] -= (num - 1) * 2\n        freq[num + 2] += (num - 1) * 2\n        freq[num + 3] -= (num - 1) * 2\n        max_freq = max(max_freq, freq[num])\n\n    print(max_freq)\n\nif __name__ == \"__main__\":\n    solve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

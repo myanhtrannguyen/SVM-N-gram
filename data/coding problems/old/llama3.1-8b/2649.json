@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2649",
+    "problem_id": "p03658",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n\nint main() {\n    int n, k;\n    scanf(\"%d %d\", &n, &k);\n    int l[n];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &l[i]);\n    }\n    int max_len = 0;\n    for (int i = 0; i < n; i++) {\n        for (int j = i + 1; j < n; j++) {\n            int sum = l[i] + l[j];\n            for (int m = j + 1; m < n; m++) {\n                int temp_sum = sum + l[m];\n                if (temp_sum > max_len && k > 3) {\n                    max_len = temp_sum;\n                }\n                if (k == 3 && temp_sum > max_len) {\n                    max_len = temp_sum;\n                }\n                if (k > 3 && m + 1 == n) {\n                    break;\n                }\n            }\n        }\n    }\n    printf(\"%d\\n\", max_len);\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

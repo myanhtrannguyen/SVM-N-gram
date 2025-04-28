@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2609",
+    "problem_id": "p03648",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    long long k;\n    scanf(\"%lld\", &k);\n\n    int n = 2;\n    while (n * (n - 1) / 2 < k) n++;\n\n    long long *a = (long long *)malloc(n * sizeof(long long));\n    for (int i = 0; i < n; i++) {\n        a[i] = (long long)(n - 1) - i;\n    }\n\n    long long t = k - (n - 1) * n / 2;\n    for (int i = 0; i < n; i++) {\n        a[i] += t / (n - i);\n        t %= (n - i);\n    }\n\n    printf(\"%d\\n\", n);\n    for (int i = 0; i < n; i++) {\n        printf(\"%lld \", a[i]);\n    }\n    printf(\"\\n\");\n\n    free(a);\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

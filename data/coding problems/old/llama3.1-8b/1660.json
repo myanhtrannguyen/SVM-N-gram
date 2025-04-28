@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1660",
+    "problem_id": "p02954",
+    "language": "Python",
+    "solution": "```python\ndef solve():\n    s = input()\n    n = len(s)\n    ans = [0] * n\n    left = 0\n    right = n - 1\n    for i in range(n):\n        if s[i] == 'R':\n            ans[i] = right - i + 1\n            if i < left:\n                left = i\n        else:\n            ans[i] = i - left + 1\n            if i > right:\n                right = i\n    print(*ans)\n\nt = 1\nfor _ in range(t):\n    solve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

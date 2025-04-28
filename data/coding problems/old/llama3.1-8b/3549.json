@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3549",
+    "problem_id": "p02068",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nusing namespace std;\n\nint gcd(int a, int b) {\n    if (b == 0)\n        return a;\n    return gcd(b, a % b);\n}\n\nint main() {\n    int n;\n    cin >> n;\n    vector<int> a(n);\n    for (int i = 0; i < n; i++)\n        cin >> a[i];\n\n    int g = a[0];\n    for (int i = 1; i < n; i++)\n        g = gcd(g, a[i]);\n\n    long long sum = 0;\n    for (int i = 0; i < n; i++)\n        if (a[i] % g == 0)\n            sum += a[i];\n\n    cout << sum << endl;\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

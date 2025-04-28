@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1967",
+    "problem_id": "p03171",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[n];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &a[i]);\n    }\n    int sum = 0;\n    for (int i = 0; i < n; i++) {\n        int max = a[i];\n        int max_index = i;\n        for (int j = i + 1; j < n; j++) {\n            if (a[j] > max) {\n                max = a[j];\n                max_index = j;\n            }\n        }\n        int temp = a[i];\n        a[i] = a[max_index];\n        a[max_index] = temp;\n        int max2 = a[i];\n        int max2_index = i;\n        for (int j = i + 1; j < n; j++) {\n            if (a[j] > max2) {\n                max2 = a[j];\n                max2_index = j;\n            }\n        }\n        int temp2 = a[i];\n        a[i] = a[max2_index];\n        a[max2_index] = temp2;\n        sum += a[i];\n    }\n    printf(\"%d\\n\", sum);\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

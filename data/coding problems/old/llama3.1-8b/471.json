@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-471",
+    "problem_id": "p00610",
+    "language": "Python",
+    "solution": "```python\nimport sys\n\ndef solve(n, k):\n    if n == 0 or k == 0:\n        return\n\n    ans = []\n    for i in range(n):\n        row = []\n        for j in range(n):\n            if (i + j) % 2 == 0:\n                row.append('E')\n            else:\n                row.append('.')\n        ans.append(''.join(row))\n\n    if k == 1:\n        print('\\n'.join(ans))\n    else:\n        print(\"No\")\n\nt = 1\nfor _ in range(t):\n    n, k = map(int, input().split())\n    solve(n, k)\n    print()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

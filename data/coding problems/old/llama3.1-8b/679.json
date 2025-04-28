@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-679",
+    "problem_id": "p00706",
+    "language": "Python",
+    "solution": "```python\ndef get_max_persimmon_trees():\n    while True:\n        try:\n            n = int(input())\n            w, h = map(int, input().split())\n            trees = []\n            for _ in range(n):\n                x, y = map(int, input().split())\n                trees.append((x, y))\n            s, t = map(int, input().split())\n\n            max_trees = 0\n            for i in range(w - s + 1):\n                for j in range(h - t + 1):\n                    count = 0\n                    for x, y in trees:\n                        if i <= x - 1 < i + s and j <= y - 1 < j + t:\n                            count += 1\n                    max_trees = max(max_trees, count)\n\n            print(max_trees)\n        except ValueError:\n            break\n\nget_max_persimmon_trees()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

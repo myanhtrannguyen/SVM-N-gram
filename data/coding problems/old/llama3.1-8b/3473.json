@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3473",
+    "problem_id": "p01967",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <string>\n#include <sstream>\n\nint main() {\n    int N;\n    std::cin >> N;\n\n    std::vector<int> c(N);\n    for (int i = 0; i < N; i++) {\n        std::cin >> c[i];\n    }\n\n    int Q;\n    std::cin >> Q;\n\n    std::vector<std::vector<int>> instructions(Q, std::vector<int>(3));\n    for (int i = 0; i < Q; i++) {\n        std::cin >> instructions[i][0] >> instructions[i][1] >> instructions[i][2];\n    }\n\n    for (int i = 0; i < Q; i++) {\n        int t = instructions[i][0];\n        int x = instructions[i][1] - 1;\n        int d = instructions[i][2];\n\n        if (t == 1) {\n            if (c[x] < d) {\n                std::cout << x + 1 << std::endl;\n                return 0;\n            }\n            c[x] += d;\n        } else {\n            if (c[x] < d) {\n                std::cout << x + 1 << std::endl;\n                return 0;\n            }\n            c[x] -= d;\n        }\n    }\n\n    std::cout << 0 << std::endl;\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

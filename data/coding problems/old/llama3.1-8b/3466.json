@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3466",
+    "problem_id": "p01965",
+    "language": "Java",
+    "solution": "```java\nimport java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n\n        int n = scanner.nextInt();\n        long[] d = new long[n - 1];\n        long[] g = new long[n];\n\n        for (int i = 0; i < n - 1; i++) {\n            d[i] = scanner.nextLong();\n        }\n\n        for (int i = 0; i < n; i++) {\n            g[i] = scanner.nextLong();\n        }\n\n        long[] dp = new long[n];\n        dp[0] = g[0];\n        for (int i = 1; i < n; i++) {\n            dp[i] = Math.min(dp[i - 1] + d[i - 1], g[i]);\n        }\n\n        long result = Long.MAX_VALUE;\n        for (int i = 0; i < n; i++) {\n            result = Math.min(result, dp[i] + g[i] + sum(d, i));\n        }\n\n        System.out.println(result);\n    }\n\n    private static long sum(long[] d, int i) {\n        long sum = 0;\n        for (int j = i; j < d.length; j++) {\n            sum += d[j];\n        }\n        return sum;\n    }\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1529",
+    "problem_id": "p02790",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n\n    char str1[100], str2[100];\n    memset(str1, 0, sizeof(str1));\n    memset(str2, 0, sizeof(str2));\n\n    for (int i = 0; i < b; i++) {\n        sprintf(str1 + i, \"%d\", a);\n    }\n\n    for (int i = 0; i < a; i++) {\n        sprintf(str2 + i, \"%d\", b);\n    }\n\n    if (strcmp(str1, str2) < 0) {\n        printf(\"%s\\n\", str1);\n    } else {\n        printf(\"%s\\n\", str2);\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

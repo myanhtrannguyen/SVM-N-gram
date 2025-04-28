@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2658",
+    "problem_id": "p03660",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <queue>\n#include <algorithm>\n\nusing namespace std;\n\nconst int MAX_N = 1e5 + 5;\n\nvector<int> adj[MAX_N];\nint n, color[MAX_N];\n\nvoid dfs(int u, int c) {\n    color[u] = c;\n    for (int v : adj[u]) {\n        if (color[v] == c) continue;\n        dfs(v, 3 - c);\n    }\n}\n\nint main() {\n    ios_base::sync_with_stdio(false);\n    cin.tie(nullptr);\n\n    cin >> n;\n    for (int i = 1; i < n; i++) {\n        int u, v;\n        cin >> u >> v;\n        adj[u].push_back(v);\n        adj[v].push_back(u);\n    }\n\n    dfs(1, 0);\n    dfs(n, 1);\n\n    if (color[n] == 0) cout << \"Fennec\";\n    else cout << \"Snuke\";\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

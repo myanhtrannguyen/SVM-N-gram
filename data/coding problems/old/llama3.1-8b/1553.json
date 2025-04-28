@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1553",
+    "problem_id": "p02928",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\n#define MOD 1000000007\n#define MAXN 2000\n\nint cmp(const void *a, const void *b) {\n    return (*(int*)a - *(int*)b);\n}\n\nint main() {\n    int N, K;\n    scanf(\"%d%d\", &N, &K);\n    int A[MAXN];\n    for (int i = 0; i < N; i++) {\n        scanf(\"%d\", &A[i]);\n    }\n    qsort(A, N, sizeof(int), cmp);\n    int inv = 0;\n    for (int i = 0; i < N; i++) {\n        for (int j = 0; j < i; j++) {\n            inv = (inv + (long long)K * (K - 1) / 2 + (long long)K * (K - 1) / 2 * (i - j) + (long long)K * (K - 1) / 2 * (N - i) * (N - j)) % MOD;\n        }\n        int cnt = 0;\n        for (int j = 0; j < N; j++) {\n            if (A[i] > A[j]) {\n                cnt++;\n            }\n        }\n        inv = (inv + (long long)cnt * K) % MOD;\n    }\n    printf(\"%d\\n\", inv);\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

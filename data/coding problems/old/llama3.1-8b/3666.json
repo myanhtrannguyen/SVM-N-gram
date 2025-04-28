@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3666",
+    "problem_id": "p02237",
+    "language": "Java",
+    "solution": "```java\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        int n = scanner.nextInt();\n        int[][] adjacencyMatrix = new int[n][n];\n        int[] degree = new int[n];\n\n        for (int i = 0; i < n; i++) {\n            int u = scanner.nextInt();\n            int k = scanner.nextInt();\n            for (int j = 0; j < k; j++) {\n                int v = scanner.nextInt();\n                degree[v - 1]++;\n                adjacencyMatrix[u - 1][v - 1] = 1;\n            }\n        }\n\n        for (int i = 0; i < n; i++) {\n            for (int j = 0; j < n; j++) {\n                System.out.print(adjacencyMatrix[i][j] + \" \");\n            }\n            System.out.println();\n        }\n    }\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

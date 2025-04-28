@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1808",
+    "problem_id": "p03131",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <cmath>\n\nint main() {\n    long long k, a, b;\n    std::cin >> k >> a >> b;\n\n    long long x = std::ceil((std::sqrt(1 + 4 * a * b) - 1) / (2 * a));\n    long long y = k - x;\n    long long z = y % b;\n    long long w = y / b;\n\n    std::cout << x + (w + 1) * a + z << std::endl;\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

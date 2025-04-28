@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-491",
+    "problem_id": "p00615",
+    "language": "Python",
+    "solution": "```python\nimport sys\n\ndef max_interval(n, m, tl, tr):\n    if n == 0 or m == 0:\n        return 0\n    i, j = 0, 0\n    max_interval = 0\n    while i < n and j < m:\n        if tl[i] < tr[j]:\n            max_interval = max(max_interval, tr[j] - tl[i])\n            i += 1\n        else:\n            max_interval = max(max_interval, tr[j] - tl[i])\n            j += 1\n    return max_interval\n\ndef main():\n    for line in sys.stdin:\n        line = line.strip()\n        if line == '0 0':\n            break\n        n, m = map(int, line.split())\n        tl = list(map(int, input().split()))\n        tr = list(map(int, input().split()))\n        print(max_interval(n, m, tl, tr))\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1301",
+    "problem_id": "p00862",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <cmath>\n#include <algorithm>\n\nstruct Point {\n    double x, y;\n};\n\ndouble distance(const Point& p1, const Point& p2) {\n    return std::sqrt(std::pow(p2.x - p1.x, 2) + std::pow(p2.y - p1.y, 2));\n}\n\ndouble maxDistance(const std::vector<Point>& points) {\n    double maxDist = 0;\n    for (int i = 0; i < points.size(); ++i) {\n        double dist = 0;\n        for (int j = 0; j < points.size(); ++j) {\n            if (i != j) {\n                dist = std::max(dist, distance(points[i], points[j]));\n            }\n        }\n        maxDist = std::max(maxDist, dist);\n    }\n    return maxDist;\n}\n\nint main() {\n    int n;\n    while (std::cin >> n && n != 0) {\n        std::vector<Point> points(n);\n        for (int i = 0; i < n; ++i) {\n            std::cin >> points[i].x >> points[i].y;\n        }\n        std::cout << std::fixed << std::setprecision(10) << maxDistance(points) << std::endl;\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

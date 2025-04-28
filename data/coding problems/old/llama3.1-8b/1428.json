@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1428",
+    "problem_id": "p02764",
+    "language": "Python",
+    "solution": "```python\nimport sys\nimport math\n\ndef dist(x1, y1, x2, y2):\n    return math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2)\n\ndef solve():\n    n, k = map(int, input().split())\n    points = []\n    for _ in range(n):\n        x, y, c = map(int, input().split())\n        points.append((x, y, c))\n\n    min_time = float('inf')\n    for i in range(n):\n        for j in range(i + 1, n):\n            x1, y1, c1 = points[i]\n            x2, y2, c2 = points[j]\n            time = 0\n            for x, y, c in points:\n                time += c * dist(x, y, (x1 + x2) / 2, (y1 + y2) / 2)\n            if time < min_time:\n                min_time = time\n\n    print(f\"{min_time:.6f}\")\n\nif __name__ == \"__main__\":\n    solve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

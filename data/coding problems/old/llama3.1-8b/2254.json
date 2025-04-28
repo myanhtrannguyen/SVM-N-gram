@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2254",
+    "problem_id": "p03559",
+    "language": "C++",
+    "solution": "```cpp\n#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    vector<int> a(n), b(n), c(n);\n    for (int i = 0; i < n; i++) cin >> a[i];\n    for (int i = 0; i < n; i++) cin >> b[i];\n    for (int i = 0; i < n; i++) cin >> c[i];\n\n    sort(a.begin(), a.end());\n    sort(b.begin(), b.end());\n    sort(c.begin(), c.end());\n\n    long long ans = 0;\n    for (int i = 0; i < n; i++) {\n        int j = upper_bound(b.begin(), b.end(), a[i]) - b.begin();\n        int k = upper_bound(c.begin(), c.end(), b[i]) - c.begin();\n        ans += max(0, j - i) * max(0, k - i);\n    }\n\n    cout << ans << endl;\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

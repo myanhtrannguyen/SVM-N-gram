@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1356",
+    "problem_id": "p00876",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\ntypedef struct {\n    int pace;\n    int laps;\n    int time;\n    int end_time;\n} Swimmer;\n\nint compare(const void *a, const void *b) {\n    Swimmer *swimmer_a = (Swimmer *)a;\n    Swimmer *swimmer_b = (Swimmer *)b;\n    return (swimmer_b->pace - swimmer_a->pace);\n}\n\nint main() {\n    int n;\n    while (scanf(\"%d\", &n) == 1) {\n        if (n == 0) break;\n        Swimmer *swimmers = (Swimmer *)malloc(n * sizeof(Swimmer));\n        for (int i = 0; i < n; i++) {\n            scanf(\"%d %d\", &swimmers[i].pace, &swimmers[i].laps);\n            swimmers[i].time = swimmers[i].pace * (swimmers[i].laps * 2);\n            swimmers[i].end_time = swimmers[i].time;\n        }\n        qsort(swimmers, n, sizeof(Swimmer), compare);\n        int time = 0;\n        for (int i = 0; i < n; i++) {\n            if (swimmers[i].end_time > time) {\n                time = swimmers[i].end_time;\n            }\n        }\n        printf(\"%d\\n\", time);\n        free(swimmers);\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

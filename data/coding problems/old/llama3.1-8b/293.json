@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-293",
+    "problem_id": "p00384",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <queue>\n#include <algorithm>\n\nusing namespace std;\n\nconst int N = 1e5 + 5;\n\nint n, p[N], d[N], f[N], g[N];\nvector<int> e[N];\n\nvoid dfs(int u, int fa) {\n    d[u] = d[fa] + 1;\n    for (int v : e[u]) {\n        if (v == fa) continue;\n        dfs(v, u);\n    }\n}\n\nint main() {\n    cin >> n;\n    for (int i = 1; i <= n; i++) {\n        cin >> p[i];\n    }\n    for (int i = 1; i < n; i++) {\n        int u, v;\n        cin >> u >> v;\n        e[u].push_back(v);\n        e[v].push_back(u);\n    }\n    dfs(1, 0);\n    for (int i = 1; i <= n; i++) {\n        f[i] = p[i] + f[i - 1];\n        g[i] = max(g[i - 1], f[i]);\n    }\n    int ans = 0;\n    for (int i = 1; i <= n; i++) {\n        for (int j : e[i]) {\n            if (d[i] > d[j]) {\n                ans = max(ans, g[i - 1] + p[i] + p[j] + (n - d[i]) * 2 - 1);\n            }\n        }\n    }\n    cout << ans << endl;\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

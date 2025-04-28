@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-351",
+    "problem_id": "p00398",
+    "language": "Python",
+    "solution": "```python\nimport sys\nimport math\n\ndef read_ints():\n    return list(map(int, sys.stdin.readline().split()))\n\ndef main():\n    n = int(sys.stdin.readline())\n    cities = [read_ints() for _ in range(n)]\n\n    max_diffs = [0, 0]\n    for i in range(n):\n        for j in range(i + 1, n):\n            diff = max(abs(cities[i][0] - cities[j][0]), abs(cities[i][1] - cities[j][1]))\n            max_diffs[0] = max(max_diffs[0], diff)\n            max_diffs[1] = max(max_diffs[1], diff)\n\n    print(sum(max_diffs))\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

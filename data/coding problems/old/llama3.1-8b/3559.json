@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3559",
+    "problem_id": "p02070",
+    "language": "Python",
+    "solution": "```python\nimport sys\nfrom collections import deque\n\ndef solve():\n    n = int(input())\n    p = list(map(int, input().split()))\n    q = list(map(int, input().split()))\n\n    pos = [[] for _ in range(n + 1)]\n    for i in range(n):\n        pos[p[i]].append(i)\n\n    d = 0\n    for i in range(1, n + 1):\n        if pos[i]:\n            q_pos = pos[i].index(min(pos[i]))\n            if q_pos != 0:\n                d = max(d, q_pos)\n\n    if d == 0:\n        print(0)\n        return\n\n    q_deq = deque()\n    for i in range(n):\n        if p[i] != q[i]:\n            q_deq.append(i)\n\n    while q_deq:\n        i = q_deq.popleft()\n        if p[i] != q[i]:\n            j = pos[p[i]].index(i)\n            pos[p[i]].pop(j)\n            pos[q[i]].append(i)\n            while pos[q[i]]:\n                k = pos[q[i]].index(min(pos[q[i]]))\n                if q[k] != q[i]:\n                    q_deq.append(pos[q[i]].pop(k))\n            d += 1\n\n    if d == 0:\n        print(-1)\n    else:\n        print(d)\n\nif __name__ == \"__main__\":\n    solve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

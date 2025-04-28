@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-124",
+    "problem_id": "p00101",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n\n    for (int i = 0; i < n; i++) {\n        char str[1001];\n        scanf(\"%s\", str);\n\n        char *pos = strstr(str, \"Hoshino\");\n        while (pos != NULL) {\n            strcpy(pos, \"Hoshina\");\n            pos = strstr(pos + 1, \"Hoshino\");\n        }\n\n        printf(\"%s\\n\", str);\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

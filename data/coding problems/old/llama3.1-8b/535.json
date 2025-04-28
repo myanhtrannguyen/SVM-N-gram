@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-535",
+    "problem_id": "p00647",
+    "language": "Python",
+    "solution": "```python\nimport re\nimport sys\n\ndef calculate_ratio(checks):\n    ok_checks = 0\n    total_checks = 0\n    for check in checks:\n        time, minute = check.split()\n        hour = int(time[:2])\n        minute = int(minute)\n        if 11 <= hour < 14 or 18 <= hour < 21 or 21 <= hour < 2:\n            total_checks += 1\n            if minute <= 8:\n                ok_checks += 1\n    if total_checks == 0:\n        return \"no guest\"\n    return f\"{int((ok_checks / total_checks) * 100)}\"\n\ndef main():\n    for _ in range(int(input())):\n        n = int(input())\n        checks = []\n        for _ in range(n):\n            checks.append(input())\n        lunch = calculate_ratio([check for check in checks if 11 <= int(check.split()[0][:2]) < 14])\n        dinner = calculate_ratio([check for check in checks if 18 <= int(check.split()[0][:2]) < 21])\n        midnight = calculate_ratio([check for check in checks if 21 <= int(check.split()[0][:2]) < 2])\n        print(f'lunch {lunch}')\n        print(f'dinner {dinner}')\n        print(f'midnight {midnight}')\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

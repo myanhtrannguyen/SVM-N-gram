@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-741",
+    "problem_id": "p00722",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <cmath>\n\nbool isPrime(int num) {\n    if (num <= 1) return false;\n    for (int i = 2; i <= std::sqrt(num); i++) {\n        if (num % i == 0) return false;\n    }\n    return true;\n}\n\nint nthPrime(int a, int d, int n) {\n    int count = 0;\n    int num = a;\n    while (true) {\n        if (isPrime(num)) count++;\n        if (count == n) return num;\n        num += d;\n    }\n}\n\nint main() {\n    int a, d, n;\n    while (std::cin >> a >> d >> n) {\n        if (a == 0 && d == 0 && n == 0) break;\n        std::cout << nthPrime(a, d, n) << std::endl;\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

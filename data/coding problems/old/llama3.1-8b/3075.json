@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3075",
+    "problem_id": "p01682",
+    "language": "Python",
+    "solution": "```python\nimport re\nimport math\n\ndef S(x):\n    return pow(x, 2, 1000000007)\n\ndef eval_expr(expr):\n    while '>>' in expr:\n        match = re.search(r'(\\d+) \\|\\|\\> (\\d+)', expr)\n        if match:\n            num, shift = map(int, match.groups())\n            expr = expr.replace(f'{num} >> {shift}', str(math.floor(num / 2 ** shift)))\n        else:\n            match = re.search(r'S < (\\d+) >', expr)\n            if match:\n                num = int(match.group(1))\n                expr = expr.replace(f'S < {num} >', str(S(num)))\n    return expr\n\ndef main():\n    while True:\n        expr = input()\n        if expr == '#':\n            break\n        print(eval_expr(expr))\n\nif __name__ == '__main__':\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

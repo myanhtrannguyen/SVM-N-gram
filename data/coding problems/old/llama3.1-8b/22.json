@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-22",
+    "problem_id": "p00005",
+    "language": "Java",
+    "solution": "```java\nimport java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        while (scanner.hasNextLine()) {\n            String[] input = scanner.nextLine().split(\" \");\n            if (input.length == 2) {\n                int a = Integer.parseInt(input[0]);\n                int b = Integer.parseInt(input[1]);\n                int gcd = gcd(a, b);\n                int lcm = (int) ((long) a * b / gcd);\n                System.out.println(gcd + \" \" + lcm);\n            }\n        }\n        scanner.close();\n    }\n\n    public static int gcd(int a, int b) {\n        if (b == 0) {\n            return a;\n        }\n        return gcd(b, a % b);\n    }\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

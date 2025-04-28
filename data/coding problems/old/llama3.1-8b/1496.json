@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1496",
+    "problem_id": "p02781",
+    "language": "Python",
+    "solution": "```python\nimport sys\n\ndef count_numbers(n, k):\n    if k == 1:\n        return sum(1 for i in range(1, n+1) if len(str(i)) == 1)\n    elif k == 2:\n        return sum(1 for i in range(1, n+1) if len(str(i)) == 2 and '0' not in str(i))\n    elif k == 3:\n        return sum(1 for i in range(1, n+1) if len(str(i)) == 3 and '0' not in str(i))\n\ndef main():\n    n, k = map(int, input().split())\n    print(count_numbers(n, k))\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

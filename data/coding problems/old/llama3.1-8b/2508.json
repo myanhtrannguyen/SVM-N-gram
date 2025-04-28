@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2508",
+    "problem_id": "p03622",
+    "language": "Python",
+    "solution": "```python\nimport sys\ninput = sys.stdin.readline\n\ndef qpow(a, b, p):\n    res = 1\n    while b:\n        if b & 1:\n            res = res * a % p\n        a = a * a % p\n        b >>= 1\n    return res\n\ndef inv(a, p):\n    return qpow(a, p - 2, p)\n\ndef main():\n    n, m = map(int, input().split())\n    p = 998244353\n    N = n + m\n    ans = (n * (n + m) + m * (m - 1) * (2 * n + m - 1)) % p\n    den = n * m % p\n    inv_den = inv(den, p)\n    print((ans * inv_den) % p)\n\nmain()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

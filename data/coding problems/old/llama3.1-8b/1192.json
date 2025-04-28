@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1192",
+    "problem_id": "p00835",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <math.h>\n\n#define PI 3.14159265358979323846\n\ndouble calculate_area(double x1, double y1, double x2, double y2) {\n    return 0.5 * abs(x1 * y2 - x2 * y1);\n}\n\ndouble calculate_surface_area(double n, double points[n][2]) {\n    double total_area = 0;\n    for (int i = 0; i < n; i++) {\n        double x1 = points[i][0];\n        double y1 = points[i][1];\n        double x2 = points[(i + 1) % n][0];\n        double y2 = points[(i + 1) % n][1];\n        total_area += calculate_area(x1, y1, x2, y2);\n    }\n    return total_area;\n}\n\nint main() {\n    int n;\n    while (scanf(\"%d\", &n) == 1) {\n        if (n == 0) break;\n        double points[n][2];\n        for (int i = 0; i < n; i++) {\n            scanf(\"%lf %lf\", &points[i][0], &points[i][1]);\n        }\n        printf(\"%.5lf\\n\", calculate_surface_area(n, points));\n        for (int i = 0; i < n; i++) {\n            scanf(\"%lf %lf\", &points[i][0], &points[i][1]);\n        }\n        printf(\"%.5lf\\n\", calculate_surface_area(n, points));\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

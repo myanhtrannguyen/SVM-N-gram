@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3188",
+    "problem_id": "p01784",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n#define MAXN 105\n\nint n;\nchar str[MAXN][MAXN];\nint cnt[3];\n\nint main() {\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%s\", str[i]);\n        int len = strlen(str[i]);\n        for (int j = 0; j < len; j++) {\n            if (str[i][j] == '(') cnt[0]++;\n            else cnt[1]++;\n        }\n        if (cnt[0] != cnt[1]) {\n            printf(\"No\\n\");\n            return 0;\n        }\n        cnt[2] += cnt[0] - cnt[1];\n    }\n    if (cnt[2] % 2 == 0) printf(\"Yes\\n\");\n    else printf(\"No\\n\");\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

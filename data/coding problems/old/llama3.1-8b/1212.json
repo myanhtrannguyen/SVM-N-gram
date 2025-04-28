@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1212",
+    "problem_id": "p00840",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n\n#define MAX_STONES 6\n\ndouble max(double a, double b) {\n    return (a > b) ? a : b;\n}\n\ndouble min(double a, double b) {\n    return (a < b) ? a : b;\n}\n\ndouble mobile(double r, int s, int w[], int i, int j) {\n    if (i > j) return 0;\n    if (i == j) return w[i] * (i + 1);\n    double a = mobile(r, s, w, i, j - 1);\n    double b = mobile(r, s, w, i + 1, j);\n    if (a == 0 || b == 0) return max(a, b);\n    double c = (w[i] * (j - i) * a) / b;\n    return c + b;\n}\n\nint main() {\n    int t;\n    scanf(\"%d\", &t);\n    while (t--) {\n        double r;\n        int s;\n        int w[MAX_STONES];\n        scanf(\"%lf %d\", &r, &s);\n        for (int i = 0; i < s; i++) {\n            scanf(\"%d\", &w[i]);\n        }\n        double result = mobile(r, s, w, 0, s - 1);\n        if (result >= r) result = -1;\n        printf(\"%.10lf\\n\", result);\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-845",
+    "problem_id": "p00748",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nusing namespace std;\n\nint countTetrahedral(int n, bool oddOnly = false) {\n    int count = 0;\n    for (int i = 1; i <= n; i++) {\n        int tetrahedral = i * (i + 1) * (i + 2) / 6;\n        if (tetrahedral > n) break;\n        if (oddOnly && tetrahedral % 2 == 0) continue;\n        count++;\n        n -= tetrahedral;\n    }\n    return count;\n}\n\nint main() {\n    int n;\n    while (cin >> n) {\n        if (n == 0) break;\n        cout << countTetrahedral(n) << \" \" << countTetrahedral(n, true) << endl;\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

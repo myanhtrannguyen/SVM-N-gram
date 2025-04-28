@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-952",
+    "problem_id": "p00775",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <math.h>\n\ntypedef struct {\n    int x1, x2, h;\n} Silhouette;\n\nint compareSilhouettes(const void *a, const void *b) {\n    Silhouette *sil1 = (Silhouette *)a;\n    Silhouette *sil2 = (Silhouette *)b;\n    return (sil1->x2 - sil2->x2);\n}\n\nint main() {\n    int r, n, i, j;\n    double t, t1, t2, t3, t4;\n    Silhouette silhouettes[100];\n\n    while (scanf(\"%d %d\", &r, &n) == 2) {\n        if (n == 0) break;\n\n        for (i = 0; i < n; i++) {\n            scanf(\"%d %d %d\", &silhouettes[i].x1, &silhouettes[i].x2, &silhouettes[i].h);\n        }\n\n        qsort(silhouettes, n, sizeof(Silhouette), compareSilhouettes);\n\n        t = 0;\n        for (i = 0; i < n; i++) {\n            t1 = (silhouettes[i].x1 + silhouettes[i].x2) / 2.0;\n            t2 = (silhouettes[i].x2 - silhouettes[i].x1) / 2.0;\n            t3 = (silhouettes[i].h + r) / 1.0;\n            t4 = (silhouettes[i].h - r) / 1.0;\n\n            if (t3 > t4) {\n                t = max(t, t3);\n            } else {\n                t = max(t, t4);\n            }\n        }\n\n        printf(\"%.4lf\\n\", t);\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3292",
+    "problem_id": "p01827",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n#define MAXN 100005\n\nint n, m;\nint c[MAXN];\nint p[MAXN];\nint g[MAXN][MAXN];\nint in[MAXN];\nint out[MAXN];\nint cnt;\nint ans;\n\nvoid dfs(int u) {\n    in[u] = 1;\n    for (int v = 0; v < n; v++) {\n        if (g[u][v] && !in[v]) {\n            dfs(v);\n        }\n    }\n    out[u] = 1;\n    cnt++;\n}\n\nint main() {\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &c[i]);\n        p[i] = c[i];\n    }\n    scanf(\"%d\", &m);\n    for (int i = 0; i < m; i++) {\n        int u, v;\n        scanf(\"%d %d\", &u, &v);\n        u--; v--;\n        g[u][v] = g[v][u] = 1;\n    }\n    for (int i = 0; i < n; i++) {\n        if (!in[i]) {\n            dfs(i);\n        }\n    }\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            if (g[i][j] && c[i] > c[j]) {\n                p[j] = p[i] + 1;\n            }\n        }\n    }\n    for (int i = 0; i < n; i++) {\n        ans += p[i];\n    }\n    printf(\"%d\\n\", ans);\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

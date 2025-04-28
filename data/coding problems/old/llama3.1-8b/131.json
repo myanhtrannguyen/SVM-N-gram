@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-131",
+    "problem_id": "p00102",
+    "language": "Python",
+    "solution": "```python\nimport sys\n\ndef print_table(table):\n    max_width = max(len(str(x)) for row in table for x in row)\n    for row in table:\n        for i, x in enumerate(row):\n            print(f\"{x:>{max_width}}\", end=\"\")\n            if i < len(row) - 1:\n                print(\" \", end=\"\")\n        print(\" \", end=\"\")\n        for i, x in enumerate([sum(row)]):\n            print(f\"{x:>{max_width}}\", end=\"\")\n            if i < len(row) - 1:\n                print(\" \", end=\"\")\n        print()\n    print()\n\ndef main():\n    for line in sys.stdin:\n        line = line.strip()\n        if line == \"0\":\n            break\n        n = int(line)\n        table = []\n        for _ in range(n):\n            row = list(map(int, input().split()))\n            table.append(row)\n        table.append([sum(row) for row in table])\n        table.append([sum(col) for col in zip(*table)])\n        print_table(table)\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

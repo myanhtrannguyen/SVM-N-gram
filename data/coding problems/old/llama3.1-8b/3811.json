@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3811",
+    "problem_id": "p02273",
+    "language": "Python",
+    "solution": "```python\nimport math\n\ndef koch_curve(p1, p2, n):\n    if n == 0:\n        return [p1, p2]\n    else:\n        x1, y1 = p1\n        x2, y2 = p2\n        dx = x2 - x1\n        dy = y2 - y1\n        angle = math.atan2(dy, dx)\n        s = (x1 + x2) / 2, (y1 + y2) / 2\n        u = s[0] + dx / 3, s[1] + dy / 3\n        t = s[0] + 2 * dx / 3, s[1] + 2 * dy / 3\n        return koch_curve(p1, s, n-1) + \\\n               [(s[0] + math.cos(angle + 2 * math.pi / 3) * dx / 3,\n                 s[1] + math.sin(angle + 2 * math.pi / 3) * dy / 3),\n                (s[0] + math.cos(angle + 4 * math.pi / 3) * dx / 3,\n                 s[1] + math.sin(angle + 4 * math.pi / 3) * dy / 3)] + \\\n               koch_curve(u, t, n-1) + \\\n               koch_curve(t, p2, n-1)\n\ndef print_koch_curve(n):\n    p1 = (0, 0)\n    p2 = (100, 0)\n    points = koch_curve(p1, p2, n)\n    for i in range(len(points) - 1):\n        x1, y1 = points[i]\n        x2, y2 = points[i + 1]\n        print(f\"{x1:.10f} {y1:.10f}\")\n\nn = int(input())\nprint_koch_curve(n)\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

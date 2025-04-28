@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3264",
+    "problem_id": "p01820",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n#define MAXN 3000\n#define MAXD 4\n\nint n;\nint x[MAXN], y[MAXN];\nchar d[MAXN][MAXD];\nint dp[MAXN][MAXD];\n\nint dfs(int i, int j) {\n    if (dp[i][j] != -1) return dp[i][j];\n    int max = 0;\n    for (int k = 0; k < n; k++) {\n        if (k == i) continue;\n        int dx = x[k] - x[i];\n        int dy = y[k] - y[i];\n        int dir = 0;\n        if (dx > 0) dir = 0;\n        else if (dx < 0) dir = 2;\n        else if (dy > 0) dir = 1;\n        else dir = 3;\n        if (d[k][dir] == d[i][j]) {\n            max = max > dfs(k, dir) ? max : dfs(k, dir);\n        }\n    }\n    return dp[i][j] = max + 1;\n}\n\nint main() {\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d %d %s\", &x[i], &y[i], d[i]);\n        for (int j = 0; j < MAXD; j++) dp[i][j] = -1;\n    }\n    int max = 0;\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < MAXD; j++) {\n            max = max > dfs(i, j) ? max : dfs(i, j);\n        }\n    }\n    printf(\"%d\\n\", max);\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

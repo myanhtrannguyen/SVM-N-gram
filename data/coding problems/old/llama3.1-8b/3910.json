@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3910",
+    "problem_id": "p02298",
+    "language": "Java",
+    "solution": "```java\nimport java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        int n = scanner.nextInt();\n        int[] x = new int[n];\n        int[] y = new int[n];\n        for (int i = 0; i < n; i++) {\n            x[i] = scanner.nextInt();\n            y[i] = scanner.nextInt();\n        }\n        boolean isConvex = isConvexPolygon(x, y, n);\n        System.out.println(isConvex ? 1 : 0);\n    }\n\n    public static boolean isConvexPolygon(int[] x, int[] y, int n) {\n        for (int i = 0; i < n; i++) {\n            int j = (i + 1) % n;\n            int k = (i + 2) % n;\n            if (orientation(x[i], y[i], x[j], y[j], x[k], y[k]) > 0) {\n                return false;\n            }\n        }\n        return true;\n    }\n\n    public static int orientation(int x1, int y1, int x2, int y2, int x3, int y3) {\n        int val = (x2 - x1) * (y3 - y1) - (x3 - x1) * (y2 - y1);\n        if (val == 0) {\n            return 0;\n        } else if (val > 0) {\n            return 1;\n        } else {\n            return -1;\n        }\n    }\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

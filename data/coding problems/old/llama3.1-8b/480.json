@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-480",
+    "problem_id": "p00613",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int k, i, j, sum = 0;\n    int *arr, *temp;\n\n    while (scanf(\"%d\", &k) == 1) {\n        if (k == 0) {\n            break;\n        }\n\n        arr = (int *)malloc(k * sizeof(int));\n        temp = (int *)malloc(k * sizeof(int));\n\n        for (i = 0; i < k * (k - 1) / 2; i++) {\n            scanf(\"%d\", &arr[i]);\n        }\n\n        for (i = 0; i < k * (k - 1) / 2; i++) {\n            temp[i] = arr[i];\n        }\n\n        for (i = 0; i < k * (k - 1) / 2; i++) {\n            for (j = i + 1; j < k * (k - 1) / 2; j++) {\n                if (temp[i] > temp[j]) {\n                    int t = temp[i];\n                    temp[i] = temp[j];\n                    temp[j] = t;\n                }\n            }\n        }\n\n        for (i = 0; i < k * (k - 1) / 2; i++) {\n            sum += temp[i];\n        }\n\n        printf(\"%d\\n\", sum);\n\n        free(arr);\n        free(temp);\n        sum = 0;\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

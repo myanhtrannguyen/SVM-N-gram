@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2690",
+    "problem_id": "p03668",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nusing namespace std;\n\nconst int N = 1e5 + 5;\n\nint n;\nvector<int> g[N];\nint par[N], sz[N];\n\nvoid dfs(int u, int p) {\n    par[u] = p;\n    sz[u] = 1;\n    for (int v : g[u]) {\n        if (v != p) {\n            dfs(v, u);\n            sz[u] += sz[v];\n        }\n    }\n}\n\nint main() {\n    ios_base::sync_with_stdio(false);\n    cin.tie(nullptr);\n\n    cin >> n;\n    for (int i = 1; i < n; i++) {\n        int u, v;\n        cin >> u >> v;\n        g[u].push_back(v);\n        g[v].push_back(u);\n    }\n\n    dfs(1, 0);\n\n    int ans = 0;\n    for (int i = 1; i <= n; i++) {\n        if (g[i].size() == 1 && g[i][0] == 1) {\n            ans = 1;\n            break;\n        }\n    }\n\n    if (ans) {\n        cout << \"Alice\\n\";\n    } else {\n        int cnt = 0;\n        for (int i = 1; i <= n; i++) {\n            if (g[i].size() == 1 && g[i][0] == 1) continue;\n            if (sz[i] % 2 == 0) cnt++;\n        }\n        if (cnt % 2 == 0) cout << \"Bob\\n\";\n        else cout << \"Alice\\n\";\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1425",
+    "problem_id": "p02764",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <math.h>\n\ntypedef struct {\n    int x, y, c;\n} Meat;\n\nint compare(const void *a, const void *b) {\n    Meat *m1 = (Meat *)a;\n    Meat *m2 = (Meat *)b;\n    return (m1->c * sqrt(pow(m1->x, 2) + pow(m1->y, 2))) - (m2->c * sqrt(pow(m2->x, 2) + pow(m2->y, 2)));\n}\n\nint main() {\n    int N, K;\n    scanf(\"%d %d\", &N, &K);\n    Meat meats[N];\n    for (int i = 0; i < N; i++) {\n        scanf(\"%d %d %d\", &meats[i].x, &meats[i].y, &meats[i].c);\n    }\n    qsort(meats, N, sizeof(Meat), compare);\n    double min_time = 1e9;\n    for (int i = 0; i < N; i++) {\n        double x = meats[i].x;\n        double y = meats[i].y;\n        double time = 0;\n        for (int j = 0; j < N; j++) {\n            time += meats[j].c * sqrt(pow(x - meats[j].x, 2) + pow(y - meats[j].y, 2));\n        }\n        if (i + 1 >= K) {\n            min_time = fmin(min_time, time);\n        }\n    }\n    printf(\"%.6lf\\n\", min_time);\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

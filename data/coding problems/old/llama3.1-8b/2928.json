@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2928",
+    "problem_id": "p03727",
+    "language": "Python",
+    "solution": "```python\nfrom collections import defaultdict\n\ndef dfs(u, p, g, c):\n    for v in g[u]:\n        if v != p:\n            dfs(v, u, g, c)\n            c[u].add(c[v].pop())\n\ndef solve():\n    n = int(input())\n    g = defaultdict(list)\n    c = defaultdict(set)\n    for _ in range(n - 1):\n        u, v = map(int, input().split())\n        g[u].append(v)\n        g[v].append(u)\n    for u, v in (map(int, input().split()) for _ in range(n - 1)):\n        c[u].add(v)\n        c[v].add(u)\n    dfs(1, 1, g, c)\n    for u, v in (map(int, input().split()) for _ in range(n - 1)):\n        if u not in c[v] or v not in c[u]:\n            print(\"NO\")\n            return\n    print(\"YES\")\n\nif __name__ == \"__main__\":\n    solve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

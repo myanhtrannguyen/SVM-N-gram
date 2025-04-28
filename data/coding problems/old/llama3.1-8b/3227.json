@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3227",
+    "problem_id": "p01793",
+    "language": "Python",
+    "solution": "```python\nimport sys\nfrom collections import deque\n\ndef dfs(node, parent, dist, size, adj, visited):\n    max_dist = 0\n    max_size = 0\n    for child in adj[node]:\n        if child != parent:\n            max_dist_child, max_size_child = dfs(child, node, dist, size, adj, visited)\n            max_dist = max(max_dist, max_dist_child)\n            max_size = max(max_size, max_size_child)\n    max_dist = max(max_dist, dist)\n    max_size = max(max_size, size)\n    visited[node] = (max_dist, max_size)\n    return max_dist, max_size\n\ndef main():\n    input = sys.stdin.readline\n    n, m = map(int, input().split())\n    adj = [[] for _ in range(n + 1)]\n    for _ in range(n - 1):\n        a, b, c = map(int, input().split())\n        adj[a].append(b)\n        adj[b].append(a)\n    size = list(map(int, input().split()))\n    visited = [-1] * (n + 1)\n    max_dist, max_size = dfs(1, -1, 0, 0, adj, visited)\n    max_cost = 0\n    for i in range(1, n + 1):\n        if visited[i][0] == max_dist:\n            max_cost = max(max_cost, visited[i][1] * m)\n    print(max_cost)\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

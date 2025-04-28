@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-703",
+    "problem_id": "p00712",
+    "language": "Python",
+    "solution": "```python\nimport math\nfrom functools import lru_cache\n\ndef count_partitions(p, q, a, n):\n    @lru_cache(maxsize=None)\n    def dfs(i, prod, count):\n        if count == n:\n            return 1 if prod <= a else 0\n        result = 0\n        for d in range(i, q + 1):\n            if p * d <= q * a:\n                result += dfs(d, prod * d, count + 1)\n        return result\n\n    return dfs(1, q, 0)\n\nwith open(0, 'r') as f:\n    for line in f:\n        p, q, a, n = map(int, line.split())\n        if p == 0 and q == 0 and a == 0 and n == 0:\n            break\n        print(count_partitions(p, q, a, n))\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

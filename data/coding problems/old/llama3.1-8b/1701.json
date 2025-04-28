@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1701",
+    "problem_id": "p02965",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n#include <math.h>\n\n#define MOD 998244353\n#define N 1000005\n\ntypedef long long ll;\n\nll n, m, f[N][N], g[N][N];\n\nint main() {\n    scanf(\"%lld %lld\", &n, &m);\n    memset(f, 0, sizeof(f));\n    memset(g, 0, sizeof(g));\n    f[0][0] = 1;\n    for (ll i = 0; i <= m; i++) {\n        for (ll j = 0; j <= n; j++) {\n            if (i > 0) {\n                g[j][0] = (g[j][0] + f[j][i - 1]) % MOD;\n            }\n            if (j > 0) {\n                g[j][1] = (g[j][1] + f[j - 1][i]) % MOD;\n            }\n            if (i > 0 && j > 0) {\n                g[j][2] = (g[j][2] + f[j - 1][i - 1] * j) % MOD;\n            }\n        }\n        memcpy(f, g, sizeof(g));\n        memset(g, 0, sizeof(g));\n    }\n    ll ans = 0;\n    for (ll i = 0; i <= n; i++) {\n        ans = (ans + f[i][m]) % MOD;\n    }\n    printf(\"%lld\\n\", ans);\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

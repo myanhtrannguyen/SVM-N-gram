@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3951",
+    "problem_id": "p02308",
+    "language": "Python",
+    "solution": "```python\nimport math\n\ndef get_cross_points(cx, cy, r, x1, y1, x2, y2):\n    denominator = (x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1)\n    if denominator == 0:\n        return None\n\n    t = ((x1 - cx) * (x2 - x1) + (y1 - cy) * (y2 - y1)) / denominator\n    if t < 0 or t > 1:\n        return None\n\n    cross_x = x1 + t * (x2 - x1)\n    cross_y = y1 + t * (y2 - y1)\n\n    distance = math.sqrt((cross_x - cx) ** 2 + (cross_y - cy) ** 2)\n    if distance > r:\n        return None\n\n    return (round(cross_x, 7), round(cross_y, 7))\n\ndef main():\n    cx, cy, r = map(int, input().split())\n    q = int(input())\n    for _ in range(q):\n        x1, y1, x2, y2 = map(int, input().split())\n        cross_points = get_cross_points(cx, cy, r, x1, y1, x2, y2)\n        if cross_points is not None:\n            if cross_points[0] == cross_points[1]:\n                print(f\"{cross_points[0]} {cross_points[1]}\")\n            else:\n                print(f\"{cross_points[0]} {cross_points[1]}\")\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

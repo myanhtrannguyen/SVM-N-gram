@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2238",
+    "problem_id": "p03555",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <string>\n#include <algorithm>\n\nint main() {\n    std::string grid[2];\n    for (int i = 0; i < 2; i++) {\n        std::cin >> grid[i];\n    }\n\n    std::string rotatedGrid[2];\n    for (int i = 0; i < 2; i++) {\n        for (int j = 2; j >= 0; j--) {\n            rotatedGrid[i] += grid[1 - i][j];\n        }\n    }\n\n    std::string originalGrid;\n    for (int i = 0; i < 2; i++) {\n        for (int j = 0; j < 3; j++) {\n            originalGrid += grid[i][j];\n        }\n    }\n\n    std::string rotatedGridStr;\n    for (int i = 0; i < 2; i++) {\n        rotatedGridStr += rotatedGrid[i];\n    }\n\n    if (originalGrid == rotatedGridStr) {\n        std::cout << \"YES\" << std::endl;\n    } else {\n        std::cout << \"NO\" << std::endl;\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

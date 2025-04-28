@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2041",
+    "problem_id": "p03383",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    int H, W;\n    char s[13][13];\n    scanf(\"%d %d\", &H, &W);\n    for (int i = 0; i < H; i++) {\n        scanf(\"%s\", s[i]);\n    }\n\n    for (int i = 0; i < H; i++) {\n        for (int j = 0; j < W; j++) {\n            if (s[i][j] != s[H - 1 - i][W - 1 - j]) {\n                if (s[i][j] != s[H - 1 - i][j] || s[i][j] != s[i][W - 1 - j]) {\n                    printf(\"NO\\n\");\n                    return 0;\n                }\n            }\n        }\n    }\n\n    printf(\"YES\\n\");\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

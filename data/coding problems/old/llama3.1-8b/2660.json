@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2660",
+    "problem_id": "p03660",
+    "language": "Python",
+    "solution": "```python\nfrom collections import deque\n\ndef solve():\n    n = int(input())\n    graph = [[] for _ in range(n + 1)]\n    for _ in range(n - 1):\n        u, v = map(int, input().split())\n        graph[u].append(v)\n        graph[v].append(u)\n\n    color = [0] * (n + 1)\n    color[1] = 1\n    color[n] = 2\n\n    queue = deque([1])\n    while queue:\n        u = queue.popleft()\n        for v in graph[u]:\n            if color[v] == 0:\n                if color[u] == 1:\n                    color[v] = 2\n                else:\n                    color[v] = 1\n                queue.append(v)\n\n    if color[n] == 1:\n        print(\"Fennec\")\n    else:\n        print(\"Snuke\")\n\nif __name__ == \"__main__\":\n    solve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

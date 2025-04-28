@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3797",
+    "problem_id": "p02270",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nint main() {\n    int n, k;\n    std::cin >> n >> k;\n\n    std::vector<int> w(n);\n    for (int i = 0; i < n; ++i) {\n        std::cin >> w[i];\n    }\n\n    std::sort(w.begin(), w.end());\n\n    int l = 0, r = 0;\n    for (int i = 0; i < n; ++i) {\n        r += w[i];\n    }\n\n    while (l < r) {\n        int mid = (l + r) / 2;\n        int sum = 0, cnt = 0;\n        for (int i = 0; i < n; ++i) {\n            sum += w[i];\n            if (sum > mid) {\n                cnt += 1;\n                sum = w[i];\n            }\n        }\n        cnt += 1;\n\n        if (cnt > k) {\n            l = mid + 1;\n        } else {\n            r = mid;\n        }\n    }\n\n    std::cout << l << std::endl;\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

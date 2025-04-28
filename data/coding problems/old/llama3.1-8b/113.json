@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-113",
+    "problem_id": "p00028",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <map>\n#include <vector>\n#include <algorithm>\n\nint main() {\n    std::map<int, int> freq;\n    int num;\n\n    while (std::cin >> num) {\n        if (freq.find(num) != freq.end()) {\n            freq[num]++;\n        } else {\n            freq[num] = 1;\n        }\n    }\n\n    int maxFreq = 0;\n    for (const auto& pair : freq) {\n        if (pair.second > maxFreq) {\n            maxFreq = pair.second;\n        }\n    }\n\n    std::vector<int> modeValues;\n    for (const auto& pair : freq) {\n        if (pair.second == maxFreq) {\n            modeValues.push_back(pair.first);\n        }\n    }\n\n    std::sort(modeValues.begin(), modeValues.end());\n\n    for (const auto& value : modeValues) {\n        std::cout << value << \" \";\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

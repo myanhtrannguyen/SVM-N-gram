@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-7",
+    "problem_id": "p00001",
+    "language": "Python",
+    "solution": "```python\nmountains = []\nfor _ in range(10):\n    height = int(input(\"Height of mountain {}: \".format(len(mountains) + 1)))\n    mountains.append(height)\n\ntop_three = sorted(mountains, reverse=True)[:3]\nfor i, height in enumerate(top_three, start=1):\n    print(\"Height of the {}st mountain: {}\".format(i, height))\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

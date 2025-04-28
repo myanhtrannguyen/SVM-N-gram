@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3591",
+    "problem_id": "p02088",
+    "language": "Python",
+    "solution": "```python\nimport sys\n\ndef union_ball(n, a):\n    even = sum(1 for x in a if x % 2 == 0)\n    odd = n - even\n    if even == 0 or odd == 0:\n        return 0\n    if even == 1 or odd == 1:\n        return 1\n    if even == 2 or odd == 2:\n        return 1\n    return even + odd - 1\n\nn = int(input())\na = list(map(int, input().split()))\nprint(union_ball(n, a))\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

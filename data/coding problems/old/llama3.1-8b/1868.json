@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1868",
+    "problem_id": "p03146",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <unordered_map>\n#include <vector>\n\nusing namespace std;\n\nint main() {\n    int s;\n    cin >> s;\n    unordered_map<int, int> a;\n    int m = 1;\n    int n = s;\n    a[s] = m;\n    while (true) {\n        if (a.find(n) != a.end()) {\n            cout << m - a[n] + 1 << endl;\n            return 0;\n        }\n        n = (n % 2 == 0) ? n / 2 : 3 * n + 1;\n        a[n] = m;\n        m++;\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

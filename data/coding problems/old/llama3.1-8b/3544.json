@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3544",
+    "problem_id": "p02067",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <string.h>\n\nint max(int a, int b) {\n    return (a > b) ? a : b;\n}\n\nint count(char *s) {\n    int count = 0;\n    int i;\n    for (i = 0; s[i] != '\\0'; i++) {\n        if (s[i] == 'B') {\n            count++;\n        }\n    }\n    return count;\n}\n\nint main() {\n    int L;\n    char s[101];\n    int max_capture = 0;\n\n    scanf(\"%d %s\", &L, s);\n\n    for (int i = 0; i < L; i++) {\n        if (s[i] == '.') {\n            int capture = 0;\n            int j;\n            for (j = i - 1; j >= 0; j--) {\n                if (s[j] == 'W') {\n                    break;\n                }\n                if (s[j] == 'B') {\n                    capture++;\n                }\n            }\n            for (j = i + 1; j < L; j++) {\n                if (s[j] == 'W') {\n                    break;\n                }\n                if (s[j] == 'B') {\n                    capture++;\n                }\n            }\n            max_capture = max(max_capture, capture);\n        }\n    }\n\n    printf(\"%d\\n\", max_capture);\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

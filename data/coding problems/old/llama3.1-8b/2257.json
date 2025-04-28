@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2257",
+    "problem_id": "p03560",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n\nint min_sum(int k) {\n    int min_sum = 0;\n    int i = 1;\n    while (1) {\n        int num = k * i;\n        int sum = 0;\n        int temp = num;\n        while (temp > 0) {\n            sum += temp % 10;\n            temp /= 10;\n        }\n        if (sum < min_sum || min_sum == 0) {\n            min_sum = sum;\n        }\n        if (i > 100000) {\n            break;\n        }\n        i++;\n    }\n    return min_sum;\n}\n\nint main() {\n    int k;\n    scanf(\"%d\", &k);\n    printf(\"%d\\n\", min_sum(k));\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

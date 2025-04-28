@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-321",
+    "problem_id": "p00391",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <string>\n#include <sstream>\n\nint main() {\n    int w, h;\n    std::cin >> w >> h;\n\n    std::vector<int> a(w);\n    std::vector<int> b(h);\n\n    for (int i = 0; i < w; ++i) {\n        std::cin >> a[i];\n    }\n\n    for (int i = 0; i < h; ++i) {\n        std::cin >> b[i];\n    }\n\n    int sumA = 0;\n    int sumB = 0;\n\n    for (int i = 0; i < w; ++i) {\n        sumA += a[i];\n    }\n\n    for (int i = 0; i < h; ++i) {\n        sumB += b[i];\n    }\n\n    if (sumA == w && sumB == h) {\n        std::cout << \"1\";\n    } else {\n        std::cout << \"0\";\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

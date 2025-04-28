@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2320",
+    "problem_id": "p03575",
+    "language": "Python",
+    "solution": "```python\nfrom sys import stdin, stdout\n\ndef dfs(v, p, g, low, disc, vis, bridges):\n    vis[v] = True\n    disc[v] = low[v] = len(g) + 1\n    cnt = 0\n    for u in g[v]:\n        if u == p:\n            continue\n        if not vis[u]:\n            cnt += 1\n            dfs(u, v, g, low, disc, vis, bridges)\n            low[v] = min(low[v], low[u])\n            if low[u] > disc[v]:\n                bridges[v].append(u)\n                bridges[u].append(v)\n        else:\n            low[v] = min(low[v], disc[u])\n\ndef main():\n    n, m = map(int, stdin.readline().split())\n    g = [[] for _ in range(n)]\n    bridges = [[] for _ in range(n)]\n    for _ in range(m):\n        u, v = map(int, stdin.readline().split())\n        u -= 1\n        v -= 1\n        g[u].append(v)\n        g[v].append(u)\n    vis = [False] * n\n    disc = [0] * n\n    low = [0] * n\n    dfs(0, -1, g, low, disc, vis, bridges)\n    ans = 0\n    for i in range(n):\n        if len(bridges[i]) == 0:\n            ans += 1\n    stdout.write(str(ans) + '\\n')\n\nif __name__ == '__main__':\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-247",
+    "problem_id": "p00372",
+    "language": "Python",
+    "solution": "```python\nfrom collections import deque\n\ndef party(N, M, friendships):\n    graph = [[] for _ in range(N)]\n    for s, t in friendships:\n        graph[s].append(t)\n        graph[t].append(s)\n\n    visited = [False] * N\n    companions = [False] * N\n    queue = deque()\n\n    for i in range(N):\n        if not visited[i]:\n            queue.append(i)\n            visited[i] = True\n            companions[i] = True\n\n            while queue:\n                node = queue.popleft()\n                for neighbor in graph[node]:\n                    if not visited[neighbor]:\n                        queue.append(neighbor)\n                        visited[neighbor] = True\n                        companions[neighbor] = companions[node]\n\n    return sum(1 for c in companions if c)\n\nN, M = map(int, input().split())\nfriendships = []\nfor _ in range(M):\n    s, t = map(int, input().split())\n    friendships.append((s, t))\n\nprint(party(N, M, friendships))\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

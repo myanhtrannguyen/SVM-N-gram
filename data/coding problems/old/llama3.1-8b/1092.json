@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1092",
+    "problem_id": "p00810",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int n;\n    while (scanf(\"%d\", &n) == 1) {\n        if (n == 0) break;\n        double x[n], y[n], z[n];\n        for (int i = 0; i < n; i++) {\n            scanf(\"%lf %lf %lf\", &x[i], &y[i], &z[i]);\n        }\n        double minx = x[0], miny = y[0], minz = z[0];\n        double maxx = x[0], maxy = y[0], maxz = z[0];\n        for (int i = 1; i < n; i++) {\n            if (x[i] < minx) minx = x[i];\n            if (y[i] < miny) miny = y[i];\n            if (z[i] < minz) minz = z[i];\n            if (x[i] > maxx) maxx = x[i];\n            if (y[i] > maxy) maxy = y[i];\n            if (z[i] > maxz) maxz = z[i];\n        }\n        double r = sqrt(pow(maxx - minx, 2) + pow(maxy - miny, 2) + pow(maxz - minz, 2));\n        printf(\"%.5f\\n\", r);\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

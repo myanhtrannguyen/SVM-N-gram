@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2892",
+    "problem_id": "p03718",
+    "language": "Python",
+    "solution": "```python\nfrom collections import deque\n\ndef bfs(s, t, grid):\n    rows, cols = len(grid), len(grid[0])\n    visited = [[False]*cols for _ in range(rows)]\n    queue = deque([(s, 0)])\n    visited[s[0]][s[1]] = True\n    while queue:\n        (x, y), dist = queue.popleft()\n        if (x, y) == t:\n            return dist\n        for dx, dy in [(-1, 0), (1, 0), (0, -1), (0, 1)]:\n            nx, ny = x + dx, y + dy\n            if 0 <= nx < rows and 0 <= ny < cols and grid[nx][ny] != 'o' and not visited[nx][ny]:\n                queue.append(((nx, ny), dist + 1))\n                visited[nx][ny] = True\n    return -1\n\ndef solve():\n    rows, cols = map(int, input().split())\n    grid = [list(input()) for _ in range(rows)]\n    s, t = None, None\n    for i in range(rows):\n        for j in range(cols):\n            if grid[i][j] == 'S':\n                s = (i, j)\n            elif grid[i][j] == 'T':\n                t = (i, j)\n    if s[0] == t[0] or s[1] == t[1]:\n        print(1)\n        return\n    dist = bfs(s, t, grid)\n    if dist == -1:\n        print(-1)\n    else:\n        print(rows * cols - 1 - dist)\n\nsolve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1860",
+    "problem_id": "p03144",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n#include <string>\n#include <sstream>\n\nusing namespace std;\n\nint main() {\n    int N, K;\n    cin >> N >> K;\n\n    vector<int> C(N);\n    vector<int> V(N);\n    for (int i = 0; i < N; i++) {\n        cin >> C[i] >> V[i];\n    }\n\n    vector<int> count(K + 1, 0);\n    for (int i = 0; i < N; i++) {\n        count[C[i]]++;\n    }\n\n    vector<int> sum(K + 1, 0);\n    for (int i = 0; i < N; i++) {\n        sum[C[i]] += V[i];\n    }\n\n    vector<int> dp(N + 1, 0);\n    for (int i = 1; i <= N; i++) {\n        if (count[i] >= 2) {\n            dp[i] = max(dp[i], sum[i] + dp[i - 2]);\n        }\n        for (int j = 1; j <= K; j++) {\n            if (i - j >= 0 && count[j] >= 2) {\n                dp[i] = max(dp[i], sum[j] + dp[i - j - 2]);\n            }\n        }\n    }\n\n    for (int i = 1; i <= N; i++) {\n        cout << (dp[i] == 0 ? -1 : dp[i]) << endl;\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

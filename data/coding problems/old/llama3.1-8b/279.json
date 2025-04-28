@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-279",
+    "problem_id": "p00380",
+    "language": "Python",
+    "solution": "```python\nimport sys\n\nn = int(input())\na = list(map(int, input().split()))\nq = int(input())\n\nfor i in range(q):\n    x, y = map(int, input().split())\n    a[x-1], a[y-1] = a[y-1], a[x-1]\n\n    sorted_a = sorted(a)\n    if a == sorted_a:\n        print(i+1)\n        sys.exit()\n\nprint(-1)\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

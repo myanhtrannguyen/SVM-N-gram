@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2738",
+    "problem_id": "p03680",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <queue>\n#include <unordered_map>\n\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    vector<int> a(n);\n    for (int i = 0; i < n; i++) {\n        cin >> a[i];\n    }\n\n    vector<int> count(n + 1, 0);\n    count[1] = 1;\n    for (int i = 0; i < n; i++) {\n        count[a[i]]++;\n    }\n\n    queue<int> q;\n    q.push(1);\n    int step = 0;\n    while (!q.empty()) {\n        int size = q.size();\n        for (int i = 0; i < size; i++) {\n            int x = q.front();\n            q.pop();\n            if (x == 2) {\n                cout << step - count[2] + 1 << endl;\n                return 0;\n            }\n            if (count[x] > 0) {\n                count[x]--;\n                q.push(a[x - 1]);\n            }\n        }\n        step++;\n    }\n\n    cout << -1 << endl;\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

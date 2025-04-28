@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3739",
+    "problem_id": "p02255",
+    "language": "Python",
+    "solution": "```python\ndef insertion_sort(A):\n    for i in range(1, len(A)):\n        key = A[i]\n        j = i - 1\n        while j >= 0 and A[j] > key:\n            A[j+1] = A[j]\n            j -= 1\n        A[j+1] = key\n        print(' '.join(map(str, A)))\n\nN = int(input())\nA = list(map(int, input().split()))\nprint(' '.join(map(str, A)))\ninsertion_sort(A)\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

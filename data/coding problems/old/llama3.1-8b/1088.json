@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1088",
+    "problem_id": "p00809",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n\nint main() {\n    int n, S, i, j, k, flag;\n    while (scanf(\"%d %d\", &n, &S) == 2) {\n        int M[2 * n];\n        for (i = 0; i < 2 * n; i++) {\n            scanf(\"%d\", &M[i]);\n        }\n        flag = 1;\n        for (i = 0; i < n; i++) {\n            if ((S - M[i] - M[i + n]) % (1 + M[i + n]) != 0) {\n                flag = 0;\n                break;\n            }\n            S -= M[i] + M[i + n];\n        }\n        printf(\"%d\\n\", flag);\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

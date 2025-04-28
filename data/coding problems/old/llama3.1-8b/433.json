@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-433",
+    "problem_id": "p00601",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nusing namespace std;\n\nconst int MAX_N = 30;\n\nbool visited[MAX_N];\nvector<int> adj[MAX_N];\n\nvoid dfs(int node) {\n    visited[node] = true;\n    for (int neighbor : adj[node]) {\n        if (!visited[neighbor]) {\n            dfs(neighbor);\n        }\n    }\n}\n\nint minDominatingSet(int n, int m) {\n    for (int i = 0; i < n; i++) {\n        visited[i] = false;\n    }\n\n    int dominatingSetSize = 0;\n    for (int i = 0; i < n; i++) {\n        if (!visited[i]) {\n            dfs(i);\n            dominatingSetSize++;\n        }\n    }\n\n    return dominatingSetSize;\n}\n\nint main() {\n    int n, m;\n    while (cin >> n >> m) {\n        if (n == 0 && m == 0) {\n            break;\n        }\n\n        for (int i = 0; i < n; i++) {\n            adj[i].clear();\n        }\n\n        for (int i = 0; i < m; i++) {\n            int u, v;\n            cin >> u >> v;\n            adj[u].push_back(v);\n            adj[v].push_back(u);\n        }\n\n        cout << minDominatingSet(n, m) << endl;\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

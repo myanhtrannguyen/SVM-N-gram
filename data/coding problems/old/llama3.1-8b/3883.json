@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3883",
+    "problem_id": "p02291",
+    "language": "Python",
+    "solution": "```python\nimport math\n\ndef calculate_distance(x1, y1, x2, y2):\n    return math.sqrt((x2 - x1)**2 + (y2 - y1)**2)\n\ndef calculate_reflection_point(xp, yp, xp1, yp1, xp2, yp2):\n    d = calculate_distance(xp1, yp1, xp2, yp2)\n    x = 2 * ((xp1 * xp2 + yp1 * yp2) / d**2 * (xp - xp1) + (xp2 - xp1) / d) - xp\n    y = 2 * ((xp1 * xp2 + yp1 * yp2) / d**2 * (yp - yp1) + (yp2 - yp1) / d) - yp\n    return x, y\n\ndef main():\n    p1, p2 = map(int, input().split())\n    q = int(input())\n    for _ in range(q):\n        xp, yp = map(int, input().split())\n        xp1, yp1 = p1, p2\n        xp2, yp2 = map(int, input().split())\n        x, y = calculate_reflection_point(xp, yp, xp1, yp1, xp2, yp2)\n        print(f\"{x:.10f} {y:.10f}\")\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

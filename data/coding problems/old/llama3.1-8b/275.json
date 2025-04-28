@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-275",
+    "problem_id": "p00379",
+    "language": "Python",
+    "solution": "```python\nimport math\n\ndef sum_of_digits(x):\n    return sum(int(digit) for digit in str(x))\n\ndef is_dudeney(x, a, n):\n    y = sum_of_digits(x)\n    return x == (y + a) ** n\n\ndef solve(a, n, m):\n    count = 0\n    for x in range(1, m + 1):\n        if is_dudeney(x, a, n):\n            count += 1\n    return count\n\na, n, m = map(int, input().split())\nprint(solve(a, n, m))\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

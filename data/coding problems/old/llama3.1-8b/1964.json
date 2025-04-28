@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1964",
+    "problem_id": "p03170",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nusing namespace std;\n\nint main() {\n    int N, K;\n    cin >> N >> K;\n\n    vector<int> A(N);\n    for (int i = 0; i < N; i++) {\n        cin >> A[i];\n    }\n\n    int turn = 0;\n    int stones = K;\n    while (true) {\n        int minStone = stones;\n        for (int i = 0; i < N; i++) {\n            if (A[i] <= minStone) {\n                minStone = A[i];\n            }\n        }\n\n        if (minStone > stones) {\n            cout << \"Second\" << endl;\n            return 0;\n        }\n\n        if (turn % 2 == 0) {\n            stones -= minStone;\n            if (minStone == 1) {\n                cout << \"First\" << endl;\n                return 0;\n            }\n        } else {\n            stones += minStone;\n        }\n\n        turn++;\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

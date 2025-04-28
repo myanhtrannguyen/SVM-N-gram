@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2548",
+    "problem_id": "p03632",
+    "language": "Python",
+    "solution": "```python\na, b, c, d = map(int, input().split())\n\nalice_start = 0\nalice_end = b\n\nbob_start = c\nbob_end = d\n\noverlap_start = max(alice_start, bob_start)\noverlap_end = min(alice_end, bob_end)\n\nif overlap_start < overlap_end:\n    print(overlap_end - overlap_start)\nelse:\n    print(0)\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

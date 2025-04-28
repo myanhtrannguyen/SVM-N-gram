@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3679",
+    "problem_id": "p02240",
+    "language": "Python",
+    "solution": "```python\nfrom collections import defaultdict\n\ndef dfs(node, parent, graph, visited):\n    visited[node] = True\n    for neighbor in graph[node]:\n        if not visited[neighbor]:\n            dfs(neighbor, node, graph, visited)\n\ndef connected_components(n, m, relations, queries):\n    graph = defaultdict(list)\n    for u, v in relations:\n        graph[u].append(v)\n        graph[v].append(u)\n\n    visited = [False] * n\n    for i in range(n):\n        if not visited[i]:\n            dfs(i, -1, graph, visited)\n\n    results = []\n    for s, t in queries:\n        if visited[s] and visited[t] and s != t:\n            results.append(\"yes\")\n        else:\n            results.append(\"no\")\n\n    return results\n\nn, m = map(int, input().split())\nrelations = [tuple(map(int, input().split())) for _ in range(m)]\nq = int(input())\nqueries = [tuple(map(int, input().split())) for _ in range(q)]\n\nresults = connected_components(n, m, relations, queries)\nfor result in results:\n    print(result)\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

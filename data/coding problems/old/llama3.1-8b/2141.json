@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2141",
+    "problem_id": "p03408",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <string.h>\n\n#define MAXN 110\n#define MAXM 10\n\nint n, m;\nchar s[MAXN][MAXM], t[MAXN][MAXM];\nint cnts[MAXN], cntt[MAXN];\n\nint main() {\n    int i, j, k, l, ans = 0;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) {\n        scanf(\"%s\", s[i]);\n        for (j = 0; j < n; j++) {\n            if (strcmp(s[i], s[j]) == 0 && i != j) {\n                cnts[i]++;\n            }\n        }\n    }\n    scanf(\"%d\", &m);\n    for (i = 0; i < m; i++) {\n        scanf(\"%s\", t[i]);\n        for (j = 0; j < m; j++) {\n            if (strcmp(t[i], t[j]) == 0 && i != j) {\n                cntt[i]++;\n            }\n        }\n    }\n    for (i = 0; i < n; i++) {\n        ans = ans + cnts[i] - cntt[i];\n        if (ans < 0) {\n            break;\n        }\n    }\n    printf(\"%d\\n\", ans);\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

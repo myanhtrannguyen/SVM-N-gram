@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2044",
+    "problem_id": "p03383",
+    "language": "Python",
+    "solution": "```python\nimport sys\n\ndef solve():\n    h, w = map(int, sys.stdin.readline().split())\n    grid = [list(sys.stdin.readline().rstrip()) for _ in range(h)]\n\n    for i in range(h):\n        for j in range(w):\n            if grid[i][j] != grid[h - i - 1][w - j - 1]:\n                print(\"NO\")\n                return\n\n    print(\"YES\")\n\nt = 1\nfor _ in range(t):\n    solve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

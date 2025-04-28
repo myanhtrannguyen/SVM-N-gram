@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-916",
+    "problem_id": "p00766",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\n#define MAX_H 100\n#define MAX_W 100\n\nint dfs(int h, int w, char grid[MAX_H][MAX_W], int visited[MAX_H][MAX_W]) {\n    if (h < 0 || h >= MAX_H || w < 0 || w >= MAX_W || grid[h][w] == '.' || visited[h][w]) {\n        return 0;\n    }\n    visited[h][w] = 1;\n    return 1 + dfs(h - 1, w, grid, visited) + dfs(h + 1, w, grid, visited) + dfs(h, w - 1, grid, visited) + dfs(h, w + 1, grid, visited);\n}\n\nint main() {\n    int h, w;\n    while (scanf(\"%d %d\", &h, &w) == 2) {\n        if (h == 0 && w == 0) {\n            break;\n        }\n        char grid[MAX_H][MAX_W];\n        int visited[MAX_H][MAX_W];\n        for (int i = 0; i < h; i++) {\n            scanf(\"%s\", grid[i]);\n        }\n        int count = 0;\n        for (int i = 0; i < h; i++) {\n            for (int j = 0; j < w; j++) {\n                if (grid[i][j] == '#' && !visited[i][j]) {\n                    count += dfs(i, j, grid, visited);\n                }\n            }\n        }\n        printf(\"%d\\n\", count);\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

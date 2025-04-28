@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-251",
+    "problem_id": "p00373",
+    "language": "Python",
+    "solution": "```python\ndef count_candidates(AW, AH, BW, BH, A, B):\n    candidates = 0\n    for i in range(AH - BH + 1):\n        for j in range(AW - BW + 1):\n            match = True\n            for k in range(BH):\n                for l in range(BW):\n                    if A[i + k][j + l] != B[k][l] and A[i + k][j + l] != '?':\n                        match = False\n                        break\n                if not match:\n                    break\n            if match:\n                candidates += 1\n    return candidates\n\nAW, AH = map(int, input().split())\nBW, BH = map(int, input().split())\nA = [input() for _ in range(AH)]\nB = [input() for _ in range(BH)]\nprint(count_candidates(AW, AH, BW, BH, A, B))\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-18",
+    "problem_id": "p00004",
+    "language": "Java",
+    "solution": "```java\nimport java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n\n        while (scanner.hasNext()) {\n            String[] input = scanner.nextLine().split(\" \");\n            double a = Double.parseDouble(input[0]);\n            double b = Double.parseDouble(input[1]);\n            double c = Double.parseDouble(input[2]);\n            double d = Double.parseDouble(input[3]);\n            double e = Double.parseDouble(input[4]);\n            double f = Double.parseDouble(input[5]);\n\n            double determinant = a * e - b * d;\n            double x = (c * e - b * f) / determinant;\n            double y = (a * f - c * d) / determinant;\n\n            System.out.printf(\"%.3f %.3f%n\", x, y);\n        }\n\n        scanner.close();\n    }\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

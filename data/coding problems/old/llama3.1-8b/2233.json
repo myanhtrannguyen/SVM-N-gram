@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2233",
+    "problem_id": "p03554",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n#define N 200000\n#define Q 200000\n\nint n, q;\nint b[N + 1];\nint l[Q + 1], r[Q + 1];\nint cnt[N + 1];\n\nint main() {\n    scanf(\"%d\", &n);\n    for (int i = 1; i <= n; i++) {\n        scanf(\"%d\", &b[i]);\n    }\n    scanf(\"%d\", &q);\n    for (int i = 1; i <= q; i++) {\n        scanf(\"%d %d\", &l[i], &r[i]);\n    }\n\n    int ans = 0;\n    for (int i = 1; i <= n; i++) {\n        cnt[i] = cnt[i - 1] + (b[i] == 0);\n    }\n\n    for (int i = 1; i <= q; i++) {\n        int x = lower_bound(l[i], r[i] + 1, cnt);\n        ans += (n - x + 1) - (r[i] - l[i] + 1);\n    }\n\n    printf(\"%d\\n\", n - ans);\n\n    return 0;\n}\n\nint lower_bound(int x, int y, int *cnt) {\n    int l = 0, r = y;\n    while (l < r) {\n        int mid = (l + r) / 2;\n        if (cnt[mid] < x) {\n            l = mid + 1;\n        } else {\n            r = mid;\n        }\n    }\n    return l;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

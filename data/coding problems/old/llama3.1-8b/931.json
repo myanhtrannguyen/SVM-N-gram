@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-931",
+    "problem_id": "p00769",
+    "language": "Python",
+    "solution": "```python\nimport sys\n\ndef min_votes(s):\n    stack = []\n    for c in s:\n        if c == '[':\n            stack.append([])\n        elif c == ']':\n            subdistricts = stack.pop()\n            max_votes = 0\n            for subdistrict in subdistricts:\n                max_votes = max(max_votes, int(subdistrict))\n            stack[-1].append(str(max_votes))\n        else:\n            stack[-1].append(c)\n    return sum(int(d) for d in stack[0])\n\nfor line in sys.stdin:\n    print(min_votes(line.strip()))\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

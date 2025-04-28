@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3588",
+    "problem_id": "p02088",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint max(int a, int b) {\n    return (a > b) ? a : b;\n}\n\nint min(int a, int b) {\n    return (a < b) ? a : b;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n\n    int* a = (int*)malloc(n * sizeof(int));\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &a[i]);\n    }\n\n    int even = 0, odd = 0;\n    for (int i = 0; i < n; i++) {\n        if (a[i] % 2 == 0) {\n            even++;\n        } else {\n            odd++;\n        }\n    }\n\n    if (even == 0 || odd == 0) {\n        printf(\"0\\n\");\n    } else {\n        int ans = 0;\n        while (even > 1 && odd > 1) {\n            ans++;\n            int sum = a[even - 2] + a[odd - 2];\n            if (sum % 2 == 0) {\n                even++;\n            } else {\n                odd++;\n            }\n            a[even - 2] = sum;\n            even--;\n            odd--;\n        }\n        printf(\"%d\\n\", ans);\n    }\n\n    free(a);\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

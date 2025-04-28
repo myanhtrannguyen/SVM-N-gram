@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1271",
+    "problem_id": "p00854",
+    "language": "Python",
+    "solution": "```python\ndef stone_removal_game(n, k, m):\n    stones = list(range(1, n + 1))\n    current_index = stones.index(m)\n    while len(stones) > 1:\n        stones.pop(current_index)\n        current_index = (current_index + k - 1) % len(stones)\n    return stones[0]\n\ndef main():\n    while True:\n        n, k, m = map(int, input().split())\n        if n == 0 and k == 0 and m == 0:\n            break\n        print(stone_removal_game(n, k, m))\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

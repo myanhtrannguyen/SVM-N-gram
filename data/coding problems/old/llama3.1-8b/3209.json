@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3209",
+    "problem_id": "p01789",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nusing namespace std;\n\nint main() {\n    int n, a, b;\n    cin >> n >> a >> b;\n\n    vector<int> s(n);\n    for (int i = 0; i < n; i++) {\n        cin >> s[i];\n    }\n\n    int sum = 0;\n    for (int i = 0; i < n; i++) {\n        sum += s[i];\n    }\n\n    if (sum % 2 == 0 && a <= sum / 2 && b <= sum / 2) {\n        cout << \"Jiro\" << endl;\n    } else {\n        cout << \"Hanako\" << endl;\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

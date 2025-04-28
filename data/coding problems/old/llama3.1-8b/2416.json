@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2416",
+    "problem_id": "p03599",
+    "language": "Python",
+    "solution": "```python\nimport math\n\nA, B, C, D, E, F = map(int, input().split())\n\nfor a in range(A, B + 1):\n    for b in range(C, D + 1):\n        if 100 * a + b > F:\n            continue\n        if (100 * b) % (a + b) != 0:\n            continue\n        e = (100 * b) // (a + b)\n        if e > E:\n            continue\n        if 100 * a + b <= F and 100 * a + b <= 100 * E:\n            ans = 100 * a + b\n            sugar = 100 * b // (a + b) * (100 * a + b) // 100\n            break\n    else:\n        continue\n    break\n\nprint(ans, sugar)\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

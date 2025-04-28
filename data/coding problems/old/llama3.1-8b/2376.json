@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2376",
+    "problem_id": "p03589",
+    "language": "Python",
+    "solution": "```python\nimport math\n\ndef solve(N):\n    h = math.floor(math.sqrt(N))\n    while True:\n        n = math.floor(N / (h - 1))\n        w = N / (1 / h + 1 / n)\n        if w == math.floor(w) and w <= 3500:\n            return h, n, math.floor(w)\n        h -= 1\n\nN = int(input())\nh, n, w = solve(N)\nprint(h, n, w)\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

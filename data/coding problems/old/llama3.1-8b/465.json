@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-465",
+    "problem_id": "p00609",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nusing namespace std;\n\nint countPoints(int x, int y, int R, vector<pair<int, int>> &points) {\n    int count = 0;\n    for (auto &point : points) {\n        int dx = abs(x - point.first);\n        int dy = abs(y - point.second);\n        if (dx * dx + dy * dy <= 4 * R * R) {\n            count++;\n        }\n    }\n    return count;\n}\n\nint main() {\n    int T;\n    cin >> T;\n    while (T--) {\n        int N, M, R;\n        cin >> N >> M >> R;\n        vector<pair<int, int>> points1(N), points2(M);\n        for (int i = 0; i < N; i++) {\n            cin >> points1[i].first >> points1[i].second;\n        }\n        for (int i = 0; i < M; i++) {\n            cin >> points2[i].first >> points2[i].second;\n        }\n        int total = 0;\n        for (auto &point : points1) {\n            total += countPoints(point.first, point.second, R, points2);\n        }\n        cout << total << endl;\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

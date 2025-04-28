@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-189",
+    "problem_id": "p00358",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n\nint main() {\n    int H, N;\n    std::cin >> H >> N;\n\n    std::vector<std::vector<int>> grid(H, std::vector<int>(4, 0));\n    for (int i = 0; i < N; ++i) {\n        int x, y;\n        std::cin >> x >> y;\n        grid[y][x] = 1;\n    }\n\n    int count = 0;\n    for (int i = 0; i < H; ++i) {\n        for (int j = 0; j < 4; ++j) {\n            if (grid[i][j] == 0) {\n                int left = j;\n                while (left > 0 && grid[i][left - 1] == 0) {\n                    --left;\n                }\n                int right = j;\n                while (right < 3 && grid[i][right + 1] == 0) {\n                    ++right;\n                }\n                if (right - left + 1 > 0) {\n                    count += (right - left + 1) / 2;\n                }\n            }\n        }\n    }\n\n    std::cout << count << std::endl;\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

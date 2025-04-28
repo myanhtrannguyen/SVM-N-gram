@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3337",
+    "problem_id": "p01838",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n#include <climits>\n\nusing namespace std;\n\nint n, k;\nvector<int> a;\nvector<int> dp(1 << 18, INT_MAX);\n\nint solve(int mask) {\n    if (dp[mask] != INT_MAX) return dp[mask];\n    if (mask == 0) return 0;\n    int res = INT_MAX;\n    for (int i = 0; i < n; i++) {\n        if ((mask >> i) & 1) {\n            int left = mask ^ (1 << i);\n            res = min(res, solve(left) + a[i] - a[lower_bound(a.begin(), a.end(), a[i]) - a.begin()]);\n        }\n    }\n    return dp[mask] = res;\n}\n\nint main() {\n    cin >> n >> k;\n    a.resize(n);\n    for (int i = 0; i < n; i++) cin >> a[i];\n    sort(a.begin(), a.end());\n    cout << solve((1 << n) - 1) << endl;\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

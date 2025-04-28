@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-977",
+    "problem_id": "p00781",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <string>\n#include <vector>\n#include <algorithm>\n\nusing namespace std;\n\nconst int N = 10;\nconst int M = 5;\n\nint countConfig(const string& boards[N]) {\n    int config = 0;\n    for (int i = 0; i < (1 << M); ++i) {\n        int count[2] = {0, 0};\n        for (int j = 0; j < N; ++j) {\n            int k = 0;\n            for (int l = 0; l < M; ++l) {\n                if (boards[j][l] == '1' && (i & (1 << l))) {\n                    ++count[0];\n                } else if (boards[j][l] == '0' && (i & (1 << l))) {\n                    ++count[1];\n                }\n            }\n        }\n        if (count[0] == count[1]) {\n            ++config;\n        }\n    }\n    return config;\n}\n\nint main() {\n    string boards[N];\n    string line;\n    while (getline(cin, line)) {\n        if (line == \"END\") {\n            break;\n        }\n        int i = 0;\n        for (const auto& c : line) {\n            if (c == ' ') {\n                ++i;\n            } else {\n                boards[i] += c;\n            }\n        }\n        cout << countConfig(boards) << endl;\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

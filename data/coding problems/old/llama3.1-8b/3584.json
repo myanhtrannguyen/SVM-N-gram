@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3584",
+    "problem_id": "p02077",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n#define MAX_N 505\n#define MAX_L 200005\n\nint n, m, k, l;\nchar bomb[MAX_N][MAX_N];\nchar move[MAX_L];\nint x, y;\nint cnt[MAX_N][MAX_N];\nint ans;\n\nint main() {\n    scanf(\"%d %d %d %d\", &n, &m, &k, &l);\n    for (int i = 1; i <= n; i++) {\n        scanf(\"%s\", bomb[i] + 1);\n    }\n    scanf(\"%s\", move + 1);\n    for (int i = 1; i <= l; i++) {\n        cnt[x][y]++;\n        int dx[] = {0, 0, -1, 1};\n        int dy[] = {-1, 1, 0, 0};\n        int dir = move[i] - 'L';\n        x += dx[dir];\n        y += dy[dir];\n        if (x < 1 || x > m - n + 1 || y < 1 || y > m - n + 1) {\n            x -= dx[dir];\n            y -= dy[dir];\n            continue;\n        }\n        for (int j = 1; j <= n; j++) {\n            if (bomb[j][x - j + 1] == 'X') {\n                cnt[x][y]++;\n            }\n        }\n    }\n    for (int i = 1; i <= m - n + 1; i++) {\n        for (int j = 1; j <= m - n + 1; j++) {\n            if (cnt[i][j] >= k) {\n                ans++;\n            }\n        }\n    }\n    printf(\"%d\\n\", ans);\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

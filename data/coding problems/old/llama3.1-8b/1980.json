@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1980",
+    "problem_id": "p03174",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nusing namespace std;\n\nconst int MOD = 1e9 + 7;\n\nint main() {\n    int n;\n    cin >> n;\n\n    vector<vector<int>> a(n, vector<int>(n));\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            cin >> a[i][j];\n        }\n    }\n\n    vector<vector<int>> dp(n, vector<int>(1 << n));\n    for (int i = 0; i < n; i++) {\n        dp[i][1 << i] = 1;\n    }\n\n    for (int mask = 0; mask < (1 << n); mask++) {\n        for (int i = 0; i < n; i++) {\n            if (dp[i][mask] == 0) {\n                continue;\n            }\n            for (int j = 0; j < n; j++) {\n                if (a[i][j] == 0) {\n                    continue;\n                }\n                int newMask = mask | (1 << j);\n                if (newMask == ((1 << n) - 1)) {\n                    cout << (dp[i][mask] + dp[i][mask]) % MOD << endl;\n                    return 0;\n                }\n                dp[j][newMask] = (dp[j][newMask] + dp[i][mask]) % MOD;\n            }\n        }\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1892",
+    "problem_id": "p03152",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n#include <numeric>\n\nusing namespace std;\n\nconst int MOD = 1e9 + 7;\n\nint main() {\n    int n, m;\n    cin >> n >> m;\n\n    vector<int> a(n);\n    for (int i = 0; i < n; i++) {\n        cin >> a[i];\n    }\n\n    vector<int> b(m);\n    for (int i = 0; i < m; i++) {\n        cin >> b[i];\n    }\n\n    sort(a.rbegin(), a.rend());\n    sort(b.rbegin(), b.rend());\n\n    vector<vector<int>> dp(n + 1, vector<int>(m + 1));\n    dp[0][0] = 1;\n\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < m; j++) {\n            for (int k = 0; k <= i; k++) {\n                for (int l = 0; l <= j; l++) {\n                    if (a[i] > b[j] || a[i] > a[k] || b[j] > b[l]) {\n                        continue;\n                    }\n                    dp[i + 1][j + 1] = (dp[i + 1][j + 1] + dp[k][l]) % MOD;\n                }\n            }\n        }\n    }\n\n    int ans = 0;\n    for (int i = 0; i <= n; i++) {\n        for (int j = 0; j <= m; j++) {\n            ans = (ans + dp[i][j]) % MOD;\n        }\n    }\n\n    cout << ans << endl;\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

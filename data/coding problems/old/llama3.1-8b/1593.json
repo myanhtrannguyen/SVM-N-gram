@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1593",
+    "problem_id": "p02938",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n\n#define MOD 1000000007\n\ntypedef long long ll;\n\nll pow_mod(ll a, ll b) {\n    ll res = 1;\n    while (b) {\n        if (b & 1) res = res * a % MOD;\n        a = a * a % MOD;\n        b >>= 1;\n    }\n    return res;\n}\n\nint main() {\n    ll L, R;\n    scanf(\"%lld %lld\", &L, &R);\n    ll ans = 0;\n    for (ll i = 1; i <= R; i++) {\n        ll x = i;\n        ll y = R;\n        ll cnt = 0;\n        while (x <= y) {\n            ll t = y / x;\n            cnt = (cnt + pow_mod(t + 1, MOD - 2) * (y - x + 1) % MOD) % MOD;\n            x = (y / x + 1) * x;\n            y = R;\n        }\n        ans = (ans + cnt * (R / i + 1) % MOD) % MOD;\n    }\n    printf(\"%lld\\n\", (ans + R - L + 1) % MOD);\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

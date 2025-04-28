@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1253",
+    "problem_id": "p00850",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <cmath>\n\nint main() {\n    int n;\n    while (std::cin >> n) {\n        if (n == 0) break;\n        int result = 0;\n        int x = 1;\n        while (x < n) {\n            int k = std::ceil(std::log2(n / x));\n            result += 2 * k - 1;\n            x *= (1 << k);\n        }\n        if (n != 1) result--;\n        std::cout << result << std::endl;\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

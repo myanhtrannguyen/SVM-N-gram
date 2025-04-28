@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-605",
+    "problem_id": "p00688",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n#include <numeric>\n\nusing namespace std;\n\nvector<int> factorize(int a, int b, int c) {\n    for (int p = 1; p <= a; ++p) {\n        if (a % p == 0) {\n            int q = (b * p) / a;\n            int r = a / p;\n            int s = c / (a / p);\n            if (q * r == b && p > 0 && r > 0 && (p > r || p == r && q >= s)) {\n                return {p, q, r, s};\n            }\n        }\n    }\n    return {};\n}\n\nint main() {\n    int a, b, c;\n    while (cin >> a >> b >> c) {\n        if (a == 0) {\n            cout << \"Impossible\" << endl;\n        } else {\n            vector<int> factors = factorize(a, b, c);\n            if (factors.empty()) {\n                cout << \"Impossible\" << endl;\n            } else {\n                for (int factor : factors) {\n                    cout << factor << \" \";\n                }\n                cout << endl;\n            }\n        }\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

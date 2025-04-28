@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3771",
+    "problem_id": "p02263",
+    "language": "Python",
+    "solution": "```python\ndef calculate_reverse_polish(expression):\n    stack = []\n    operators = {\n        '+': lambda x, y: x + y,\n        '-': lambda x, y: x - y,\n        '*': lambda x, y: x * y\n    }\n\n    for token in expression.split():\n        if token in operators:\n            operand2 = stack.pop()\n            operand1 = stack.pop()\n            result = operators[token](operand1, operand2)\n            stack.append(result)\n        else:\n            stack.append(int(token))\n\n    return stack[0]\n\nexpression = input()\nresult = calculate_reverse_polish(expression)\nprint(result)\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

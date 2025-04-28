@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2202",
+    "problem_id": "p03546",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nusing namespace std;\n\nconst int INF = 1e9;\n\nint main() {\n    int H, W;\n    cin >> H >> W;\n\n    vector<vector<int>> c(10, vector<int>(10));\n    for (int i = 0; i < 10; i++) {\n        for (int j = 0; j < 10; j++) {\n            cin >> c[i][j];\n        }\n    }\n\n    vector<vector<int>> dp(H, vector<int>(10, INF));\n    for (int i = 0; i < 10; i++) {\n        dp[0][i] = 0;\n    }\n\n    for (int h = 0; h < H; h++) {\n        vector<int> a(W);\n        for (int w = 0; w < W; w++) {\n            cin >> a[w];\n        }\n\n        for (int w = 0; w < W; w++) {\n            if (a[w] != -1) {\n                for (int i = 0; i < 10; i++) {\n                    for (int j = 0; j < 10; j++) {\n                        dp[h][j] = min(dp[h][j], dp[h][i] + c[i][j]);\n                    }\n                }\n                dp[h][a[w]] = min(dp[h][a[w]], dp[h][a[w]] + c[a[w]][1]);\n            }\n        }\n    }\n\n    int ans = INF;\n    for (int i = 0; i < 10; i++) {\n        ans = min(ans, dp[H - 1][i]);\n    }\n\n    cout << ans << endl;\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

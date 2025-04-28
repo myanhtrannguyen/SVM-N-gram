@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2330",
+    "problem_id": "p03578",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n#include <unordered_map>\n\nusing namespace std;\n\nint main() {\n    int n, m;\n    cin >> n;\n    vector<int> d(n);\n    for (int i = 0; i < n; i++) {\n        cin >> d[i];\n    }\n    cin >> m;\n    vector<int> t(m);\n    for (int i = 0; i < m; i++) {\n        cin >> t[i];\n    }\n\n    sort(d.begin(), d.end());\n    sort(t.begin(), t.end());\n\n    unordered_map<int, int> count;\n    for (int i = 0; i < n; i++) {\n        count[d[i]]++;\n    }\n\n    int i = 0, j = 0;\n    while (i < m && j < n) {\n        if (t[i] == d[j]) {\n            i++;\n            count[d[j]]--;\n        } else if (t[i] < d[j]) {\n            cout << \"NO\" << endl;\n            return 0;\n        } else {\n            j++;\n        }\n    }\n\n    if (i < m) {\n        cout << \"NO\" << endl;\n    } else {\n        cout << \"YES\" << endl;\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

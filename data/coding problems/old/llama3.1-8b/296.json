@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-296",
+    "problem_id": "p00385",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\n#define N 100000\n\nint main() {\n    int k, n, q;\n    long long a[N + 1], b[N + 1], c[N + 1], d[N + 1], e[N + 1];\n    int l[N + 1], r[N + 1];\n\n    scanf(\"%d %d %d\", &k, &n, &q);\n    for (int i = 1; i <= n; i++) {\n        scanf(\"%lld\", &a[i]);\n        b[i] = a[i];\n    }\n    for (int i = 1; i <= q; i++) {\n        scanf(\"%d %d\", &l[i], &r[i]);\n        if (l[i] > r[i]) {\n            int temp = l[i];\n            l[i] = r[i];\n            r[i] = temp;\n        }\n        c[i] = b[l[i]];\n        d[i] = b[r[i]];\n        b[l[i]] = d[i];\n        b[r[i]] = c[i];\n    }\n    e[1] = b[1];\n    for (int i = 2; i <= n; i++) {\n        e[i] = (e[i - 1] + b[i]) % k;\n    }\n    for (int i = 1; i <= q; i++) {\n        int x = (e[r[i]] - e[l[i] - 1] + k) % k;\n        for (int j = l[i]; j < r[i]; j++) {\n            x = (x + b[j + 1]) % k;\n        }\n        printf(\"%lld\\n\", x);\n        for (int j = l[i]; j <= r[i]; j++) {\n            e[j] = (e[j - 1] + b[j]) % k;\n        }\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2944",
+    "problem_id": "p03731",
+    "language": "Python",
+    "solution": "```python\nimport sys\n\nn, t = map(int, sys.stdin.readline().split())\nt_list = list(map(int, sys.stdin.readline().split()))\n\nans = 0\nlast = 0\nfor i in range(n):\n    ans += max(0, min(t_list[i], last + t) - last)\n    last = max(last + t, t_list[i])\n\nprint(ans)\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

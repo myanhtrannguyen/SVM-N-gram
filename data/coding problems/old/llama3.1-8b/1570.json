@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1570",
+    "problem_id": "p02932",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n#include <numeric>\n\nusing namespace std;\n\nconst int MOD = 1e9 + 7;\n\nlong long power(long long a, long long b) {\n    long long res = 1;\n    while (b) {\n        if (b & 1) res = res * a % MOD;\n        a = a * a % MOD;\n        b >>= 1;\n    }\n    return res;\n}\n\nint main() {\n    int n, m, l, r;\n    cin >> n >> m >> l >> r;\n\n    long long ans = 0;\n    for (int i = m; i <= r - (n - m); i++) {\n        long long c = power(i, n - m);\n        long long d = power(i - m + 1, n - m - 1);\n        long long e = power(n - m, n - m);\n        long long f = power(n - m - 1, n - m - 1);\n        long long g = (r - i + 1) - (l - i);\n        long long h = (r - i + 1) - (l - i + 1);\n        ans = (ans + c * d % MOD * e % MOD * f % MOD * g % MOD * h % MOD) % MOD;\n    }\n\n    cout << ans << endl;\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

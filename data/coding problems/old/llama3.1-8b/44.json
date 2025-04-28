@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-44",
+    "problem_id": "p00011",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\n#define MAXN 30\n\nint main() {\n    int w, n, i, j, a, b, temp;\n    int arr[MAXN];\n\n    scanf(\"%d\", &w);\n    for (i = 0; i < w; i++) {\n        arr[i] = i + 1;\n    }\n\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) {\n        scanf(\"%d, %d\", &a, &b);\n        a--; b--;\n        temp = arr[a];\n        arr[a] = arr[b];\n        arr[b] = temp;\n    }\n\n    for (i = 0; i < w; i++) {\n        printf(\"%d\\n\", arr[i]);\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

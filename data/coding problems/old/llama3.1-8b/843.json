@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-843",
+    "problem_id": "p00747",
+    "language": "Python",
+    "solution": "```python\nfrom collections import deque\n\ndef bfs(maze):\n    rows, cols = len(maze), len(maze[0])\n    directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]\n    queue = deque([(0, 0, 0)])\n    visited = {(0, 0)}\n\n    while queue:\n        x, y, dist = queue.popleft()\n        if x == rows - 1 and y == cols - 1:\n            return dist\n        for dx, dy in directions:\n            nx, ny = x + dx, y + dy\n            if (0 <= nx < rows and 0 <= ny < cols and\n                    maze[nx][ny] == 0 and (nx, ny) not in visited):\n                queue.append((nx, ny, dist + 1))\n                visited.add((nx, ny))\n\n    return 0\n\ndef solve():\n    while True:\n        try:\n            w, h = map(int, input().split())\n            maze = []\n            for _ in range(h):\n                line = input().strip()\n                if line:\n                    maze.append([int(c) for c in line.split()])\n            print(bfs(maze))\n        except ValueError:\n            break\n\nsolve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

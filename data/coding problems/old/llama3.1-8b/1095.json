@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1095",
+    "problem_id": "p00810",
+    "language": "Python",
+    "solution": "```python\nimport math\n\ndef calculate_distance(point1, point2):\n    return math.sqrt((point1[0] - point2[0])**2 + (point1[1] - point2[1])**2 + (point1[2] - point2[2])**2)\n\ndef calculate_radius(points):\n    min_distance = float('inf')\n    for i in range(len(points)):\n        for j in range(i+1, len(points)):\n            distance = calculate_distance(points[i], points[j])\n            if distance < min_distance:\n                min_distance = distance\n    return min_distance / 2\n\ndef main():\n    while True:\n        n = int(input())\n        if n == 0:\n            break\n        points = []\n        for _ in range(n):\n            x, y, z = map(float, input().split())\n            points.append((x, y, z))\n        radius = calculate_radius(points)\n        print(f\"{radius:.5f}\")\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

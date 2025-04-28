@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1239",
+    "problem_id": "p00846",
+    "language": "Python",
+    "solution": "```python\nimport sys\n\ndef orientation(p, q, r):\n    val = (q[1] - p[1]) * (r[0] - q[0]) - (q[0] - p[0]) * (r[1] - q[1])\n    if val == 0:\n        return 0\n    return 1 if val > 0 else -1\n\ndef is_star_shaped(n, points):\n    for i in range(n):\n        p = points[i]\n        q = points[(i + 1) % n]\n        for j in range(n):\n            r = points[j]\n            if (orientation(p, q, r) == 0 or\n                orientation(p, q, r) != orientation(p, points[(j + 1) % n], r)):\n                return False\n    return True\n\ndef main():\n    while True:\n        n = int(sys.stdin.readline().strip())\n        if n == 0:\n            break\n        points = []\n        for _ in range(n):\n            x, y = map(int, sys.stdin.readline().strip().split())\n            points.append((x, y))\n        print(1 if is_star_shaped(n, points) else 0)\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

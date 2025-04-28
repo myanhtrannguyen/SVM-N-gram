@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3874",
+    "problem_id": "p02289",
+    "language": "Java",
+    "solution": "```java\nimport java.util.PriorityQueue;\nimport java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        PriorityQueue<Integer> pq = new PriorityQueue<>((a, b) -> b - a);\n        Scanner scanner = new Scanner(System.in);\n\n        while (true) {\n            String operation = scanner.next();\n\n            if (operation.equals(\"end\")) {\n                break;\n            } else if (operation.equals(\"insert\")) {\n                int k = scanner.nextInt();\n                pq.offer(k);\n            } else if (operation.equals(\"extract\")) {\n                if (!pq.isEmpty()) {\n                    System.out.println(pq.poll());\n                }\n            }\n        }\n\n        scanner.close();\n    }\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

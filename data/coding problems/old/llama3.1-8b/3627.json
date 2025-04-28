@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3627",
+    "problem_id": "p02097",
+    "language": "Python",
+    "solution": "```python\nimport sys\n\ndef solve(n):\n    if n % 2 == 0:\n        print(\"No\")\n        return\n\n    matrix = [[0] * n for _ in range(n)]\n    for i in range(n):\n        for j in range(n):\n            matrix[i][j] = (i + j + 1) % (2 * n - 1) + 1\n\n    print(\"Yes\")\n    for row in matrix:\n        print(*row)\n\nn = int(input())\nsolve(n)\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-277",
+    "problem_id": "p00380",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    vector<int> a(n);\n    for (int i = 0; i < n; i++) {\n        cin >> a[i];\n    }\n    int q;\n    cin >> q;\n    vector<pair<int, int>> queries(q);\n    for (int i = 0; i < q; i++) {\n        int x, y;\n        cin >> x >> y;\n        x--; y--;\n        queries[i] = {x, y};\n    }\n\n    int steps = 0;\n    for (int i = 0; i < q; i++) {\n        int x = queries[i].first;\n        int y = queries[i].second;\n        swap(a[x], a[y]);\n        steps++;\n        if (is_sorted(a.begin(), a.end())) {\n            cout << steps << endl;\n            return 0;\n        }\n    }\n    cout << -1 << endl;\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

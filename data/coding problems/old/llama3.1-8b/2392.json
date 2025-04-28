@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2392",
+    "problem_id": "p03593",
+    "language": "Python",
+    "solution": "```python\nfrom collections import Counter\n\ndef is_palindrome(s):\n    return s == s[::-1]\n\ndef check_matrix(h, w, matrix):\n    for i in range(h):\n        row = ''.join(matrix[i])\n        if not is_palindrome(row):\n            return False\n        counter = Counter(row)\n        for char in counter:\n            if counter[char] % 2 != 0:\n                return False\n\n    for j in range(w):\n        col = ''.join([matrix[i][j] for i in range(h)])\n        if not is_palindrome(col):\n            return False\n        counter = Counter(col)\n        for char in counter:\n            if counter[char] % 2 != 0:\n                return False\n\n    return True\n\nh, w = map(int, input().split())\nmatrix = [list(input()) for _ in range(h)]\nprint(\"Yes\" if check_matrix(h, w, matrix) else \"No\")\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

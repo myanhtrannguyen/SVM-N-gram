@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3281",
+    "problem_id": "p01824",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <set>\n#include <algorithm>\n\nusing namespace std;\n\nconst int MAXN = 1e5 + 5;\n\nint A, B, C, N;\nvector<int> x, y, z;\nset<pair<int, pair<int, int>>> vis;\n\nint get(int a, int b, int c) {\n    if (a == 0 || a == A - 1 || b == 0 || b == B - 1 || c == 0 || c == C - 1) return 1;\n    if (vis.find({a, {b, c}}) != vis.end()) return 0;\n    vis.insert({a, {b, c}});\n    return 1 + get(a + 1, b, c) + get(a - 1, b, c) + get(a, b + 1, c) + get(a, b - 1, c) + get(a, b, c + 1) + get(a, b, c - 1);\n}\n\nint main() {\n    cin >> A >> B >> C >> N;\n    for (int i = 0; i < N; i++) {\n        int a, b, c;\n        cin >> a >> b >> c;\n        x.push_back(a);\n        y.push_back(b);\n        z.push_back(c);\n    }\n    int ans = 2 * (A * B + A * C + B * C);\n    for (int i = 0; i < N; i++) {\n        vis.clear();\n        ans -= get(x[i], y[i], z[i]);\n    }\n    cout << ans << endl;\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3295",
+    "problem_id": "p01827",
+    "language": "Python",
+    "solution": "```python\nimport sys\nfrom collections import defaultdict, deque\n\ndef main():\n    input = sys.stdin.readline\n    N = int(input())\n    C = list(map(int, input().split()))\n    M = int(input())\n    G = defaultdict(list)\n    for _ in range(M):\n        u, v = map(int, input().split())\n        G[u].append(v)\n        G[v].append(u)\n\n    order = sorted(range(N), key=lambda x: C[x])\n    parent = [-1] * N\n    depth = [0] * N\n    for i in order:\n        for j in G[i]:\n            if parent[i] == -1:\n                parent[i] = j\n                depth[i] = depth[j] + 1\n            else:\n                parent[j] = i\n                depth[j] = depth[i] + 1\n\n    max_depth = max(depth)\n    max_depth_nodes = [[] for _ in range(max_depth + 1)]\n    for i in range(N):\n        max_depth_nodes[depth[i]].append(i)\n\n    ans = 0\n    for i in range(max_depth, 0, -1):\n        for j in max_depth_nodes[i]:\n            if parent[j] != -1:\n                ans += C[j] - C[parent[j]]\n    print(ans + max(C))\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

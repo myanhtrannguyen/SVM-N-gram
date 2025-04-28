@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2204",
+    "problem_id": "p03546",
+    "language": "Python",
+    "solution": "```python\nimport sys\ninput = sys.stdin.readline\n\ndef f(i, j):\n    if i == 0 and j == 0:\n        return 0\n    if dp[i][j] != -1:\n        return dp[i][j]\n    dp[i][j] = float('inf')\n    for k in range(10):\n        if k != 10:\n            dp[i][j] = min(dp[i][j], f(i-1, k) + c[i][j][k])\n        if i > 0:\n            dp[i][j] = min(dp[i][j], f(i-1, j) + c[i][j][k])\n    return dp[i][j]\n\nH, W = map(int, input().split())\nc = []\nfor _ in range(10):\n    c.append(list(map(int, input().split())))\nA = [list(map(int, input().split())) for _ in range(H)]\ndp = [[-1]*10 for _ in range(H+1)]\nans = 0\nfor i in range(H):\n    for j in range(W):\n        if A[i][j] != -1:\n            ans += f(i, A[i][j])\nprint(ans)\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

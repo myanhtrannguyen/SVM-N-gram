@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-980",
+    "problem_id": "p00782",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <math.h>\n\n#define MAX 100\n\nint main() {\n    int n, i, j, k, count = 0;\n    double x[MAX], y[MAX], r[MAX], area, x1, y1, x2, y2, x3, y3;\n\n    while (scanf(\"%d\", &n) == 1) {\n        if (n == 0) break;\n\n        area = 0;\n        for (i = 0; i < n; i++) {\n            scanf(\"%lf %lf %lf\", &x[i], &y[i], &r[i]);\n        }\n\n        for (i = 0; i < n; i++) {\n            x1 = x[i] - r[i];\n            y1 = y[i] - r[i];\n            x2 = x[i] + r[i];\n            y2 = y[i] + r[i];\n\n            for (j = 0; j < n; j++) {\n                if (i != j) {\n                    x3 = x[j] - r[j];\n                    y3 = y[j] - r[j];\n\n                    if (x1 < x3 && x3 < x2 && y1 < y3 && y3 < y2) {\n                        area += (x3 - x1) * (y3 - y1);\n                    }\n                }\n            }\n\n            area += (x2 - x1) * (y2 - y1);\n        }\n\n        printf(\"%d %.2f\\n\", ++count, area);\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

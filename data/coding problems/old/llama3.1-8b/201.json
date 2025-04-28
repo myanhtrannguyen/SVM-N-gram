@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-201",
+    "problem_id": "p00361",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <queue>\n#include <unordered_map>\n\nusing namespace std;\n\nconst int MAX_N = 1e5 + 5;\n\nint n, m;\nvector<int> g[MAX_N];\nint in[MAX_N];\nbool vis[MAX_N];\nint dist[MAX_N];\n\nvoid bfs(int s) {\n    queue<int> q;\n    q.push(s);\n    vis[s] = true;\n    dist[s] = 0;\n    while (!q.empty()) {\n        int u = q.front();\n        q.pop();\n        for (int v : g[u]) {\n            if (!vis[v]) {\n                vis[v] = true;\n                dist[v] = dist[u] + 1;\n                q.push(v);\n            }\n        }\n    }\n}\n\nint main() {\n    cin >> n >> m;\n    for (int i = 0; i < m; i++) {\n        int s, t;\n        cin >> s >> t;\n        g[s].push_back(t);\n        in[t]++;\n    }\n\n    int ans = 0;\n    for (int i = 0; i < n; i++) {\n        if (in[i] == 0) {\n            bfs(i);\n            for (int j = 0; j < n; j++) {\n                if (dist[j] % 2 == 1) {\n                    ans++;\n                }\n            }\n        }\n    }\n\n    cout << ans << endl;\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

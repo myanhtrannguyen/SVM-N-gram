@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2450",
+    "problem_id": "p03608",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n#include <limits>\n\nusing namespace std;\n\nconst int INF = numeric_limits<int>::max();\n\nint main() {\n    int N, M, R;\n    cin >> N >> M >> R;\n\n    vector<int> r(R);\n    for (int i = 0; i < R; i++) {\n        cin >> r[i];\n    }\n\n    vector<vector<int>> G(N);\n    for (int i = 0; i < M; i++) {\n        int a, b, c;\n        cin >> a >> b >> c;\n        a--; b--;\n        G[a].push_back({b, c});\n        G[b].push_back({a, c});\n    }\n\n    vector<int> dp(N, INF);\n    dp[0] = 0;\n\n    for (int i = 0; i < R; i++) {\n        int v = r[i] - 1;\n        vector<int> ndp(N, INF);\n        for (int j = 0; j < N; j++) {\n            for (auto& e : G[j]) {\n                int u = e.first;\n                int c = e.second;\n                ndp[u] = min(ndp[u], dp[j] + c);\n            }\n        }\n        swap(dp, ndp);\n    }\n\n    int ans = INF;\n    for (int i = 0; i < N; i++) {\n        ans = min(ans, dp[i] + dp[i]);\n    }\n\n    cout << ans << endl;\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

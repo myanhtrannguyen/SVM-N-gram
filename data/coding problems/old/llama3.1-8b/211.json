@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-211",
+    "problem_id": "p00363",
+    "language": "Python",
+    "solution": "```python\ndef draw_flag(w, h, c):\n    # Draw top border\n    print(\"+\", end=\"\")\n    for _ in range(w - 2):\n        print(\"-\", end=\"\")\n    print(\"+\")\n\n    # Draw middle rows\n    for _ in range(h - 2):\n        print(\"|\", end=\"\")\n        for _ in range(w - 2):\n            print(\".\", end=\"\")\n        print(\"|\")\n\n    # Draw bottom border\n    print(\"+\", end=\"\")\n    for _ in range(w - 2):\n        print(\"-\", end=\"\")\n    print(\"+\")\n\n    # Draw center character\n    print(\"|\", end=\"\")\n    for _ in range((w - 2) // 2):\n        print(\".\", end=\"\")\n    print(c, end=\"\")\n    for _ in range((w - 2) // 2):\n        print(\".\", end=\"\")\n    print(\"|\")\n\n# Get input from user\nw, h, c = input().split()\nw, h, c = int(w), int(h), c\n\n# Draw flag\ndraw_flag(w, h, c)\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

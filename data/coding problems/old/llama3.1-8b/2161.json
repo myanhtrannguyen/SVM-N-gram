@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2161",
+    "problem_id": "p03536",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n#define MAXN 5000\n#define INF 1000000000\n\ntypedef struct {\n    int h, p;\n} Participant;\n\nint compare(const void *a, const void *b) {\n    Participant *p1 = (Participant *)a;\n    Participant *p2 = (Participant *)b;\n    return p2->h - p1->h;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    Participant participants[MAXN];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d %d\", &participants[i].h, &participants[i].p);\n    }\n    qsort(participants, n, sizeof(Participant), compare);\n    int max = 0;\n    int sum = 0;\n    for (int i = 0; i < n; i++) {\n        if (sum + participants[i].p <= participants[i].h) {\n            sum += participants[i].p;\n            max++;\n        }\n    }\n    printf(\"%d\\n\", max);\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

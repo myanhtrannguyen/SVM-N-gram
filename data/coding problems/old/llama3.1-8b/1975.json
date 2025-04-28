@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1975",
+    "problem_id": "p03173",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\n#define MAX_N 405\n\nlong long dp[MAX_N][MAX_N];\nlong long a[MAX_N];\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    for (int i = 1; i <= n; i++) {\n        scanf(\"%lld\", &a[i]);\n    }\n    for (int i = 1; i <= n; i++) {\n        dp[i][i] = 0;\n        for (int j = i + 1; j <= n; j++) {\n            dp[i][j] = 1e18;\n            for (int k = i; k < j; k++) {\n                dp[i][j] = std::min(dp[i][j], dp[i][k] + dp[k + 1][j] + a[k + 1] + a[j]);\n            }\n        }\n    }\n    printf(\"%lld\\n\", dp[1][n]);\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

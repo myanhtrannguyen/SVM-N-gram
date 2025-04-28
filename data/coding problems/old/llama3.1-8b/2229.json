@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2229",
+    "problem_id": "p03553",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n\n#define MAX_N 100\n\nint main() {\n    int N;\n    scanf(\"%d\", &N);\n    int a[MAX_N + 1];\n    for (int i = 1; i <= N; i++) {\n        scanf(\"%d\", &a[i]);\n    }\n\n    int max = 0;\n    for (int i = 1; i <= N; i++) {\n        int sum = 0;\n        for (int j = 1; j <= N; j++) {\n            if (gcd(i, j) == 1) {\n                sum += a[j];\n            }\n        }\n        max = max > sum ? max : sum;\n    }\n\n    printf(\"%d\\n\", max);\n    return 0;\n}\n\nint gcd(int a, int b) {\n    if (b == 0) return a;\n    return gcd(b, a % b);\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2916",
+    "problem_id": "p03724",
+    "language": "Python",
+    "solution": "```python\nfrom collections import defaultdict\nimport sys\n\ninput = sys.stdin.readline\n\nN = int(input().split()[0])\nM = int(input().split()[0])\n\nadj = defaultdict(list)\nfor _ in range(M):\n    u, v = map(int, input().split())\n    adj[u].append(v)\n    adj[v].append(u)\n\npar = [i for i in range(N + 1)]\nsz = [1] * (N + 1)\n\ndef find(x):\n    if par[x] != x:\n        par[x] = find(par[x])\n    return par[x]\n\ndef union(x, y):\n    x = find(x)\n    y = find(y)\n    if x != y:\n        if sz[x] < sz[y]:\n            x, y = y, x\n        par[y] = x\n        sz[x] += sz[y]\n\nfor i in range(1, N + 1):\n    for j in adj[i]:\n        if j < i:\n            union(i, j)\n\nodd = set()\nfor i in range(1, N + 1):\n    if find(i) == i:\n        for j in adj[i]:\n            if find(j) == i:\n                if (j, i) in odd or (i, j) in odd:\n                    print(\"NO\")\n                    exit()\n                odd.add((i, j))\n\nprint(\"YES\")\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

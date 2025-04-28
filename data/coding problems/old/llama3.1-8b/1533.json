@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1533",
+    "problem_id": "p02791",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int p[n + 1];\n    for (int i = 1; i <= n; i++) {\n        scanf(\"%d\", &p[i]);\n    }\n    int ans = 0;\n    for (int i = 1; i <= n; i++) {\n        int cnt = 0;\n        for (int j = 1; j <= n; j++) {\n            if (p[j] <= p[i]) {\n                cnt++;\n            }\n        }\n        if (cnt == i) {\n            ans++;\n        }\n    }\n    printf(\"%d\\n\", ans);\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

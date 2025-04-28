@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-677",
+    "problem_id": "p00706",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nint countPersimmonTrees(const std::vector<std::pair<int, int>>& trees, int width, int height) {\n    int count = 0;\n    for (const auto& tree : trees) {\n        if (tree.first >= width || tree.second >= height) {\n            continue;\n        }\n        count++;\n    }\n    return count;\n}\n\nint main() {\n    int n, w, h, s, t;\n    while (std::cin >> n >> w >> h >> s >> t) {\n        std::vector<std::pair<int, int>> trees(n);\n        for (auto& tree : trees) {\n            std::cin >> tree.first >> tree.second;\n        }\n        int maxCount = 0;\n        for (int i = 0; i <= w - s; i++) {\n            for (int j = 0; j <= h - t; j++) {\n                int count = countPersimmonTrees(trees, i + s, j + t);\n                maxCount = std::max(maxCount, count);\n            }\n        }\n        std::cout << maxCount << std::endl;\n        if (std::cin.peek() == '\\n') {\n            std::cin.ignore();\n        }\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

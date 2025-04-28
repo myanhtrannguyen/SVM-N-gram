@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2029",
+    "problem_id": "p03380",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\ntypedef struct {\n    int value;\n    int index;\n} Pair;\n\nint comparePairs(const void *a, const void *b) {\n    Pair *pairA = (Pair *)a;\n    Pair *pairB = (Pair *)b;\n    return pairB->value - pairA->value;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    Pair *pairs = (Pair *)malloc(n * sizeof(Pair));\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &pairs[i].value);\n        pairs[i].index = i;\n    }\n    qsort(pairs, n, sizeof(Pair), comparePairs);\n    int maxComb = 0;\n    int maxIndex = -1;\n    int maxIndex2 = -1;\n    for (int i = 0; i < n - 1; i++) {\n        int comb = pairs[i].value;\n        for (int j = i + 1; j < n; j++) {\n            comb = (comb * (pairs[j].value - 1)) / (pairs[i].value);\n            if (comb > maxComb) {\n                maxComb = comb;\n                maxIndex = pairs[i].index;\n                maxIndex2 = pairs[j].index;\n            }\n        }\n    }\n    printf(\"%d %d\\n\", pairs[maxIndex].value, pairs[maxIndex2].value);\n    free(pairs);\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-320",
+    "problem_id": "p00391",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n\nint main() {\n    int w, h, i, j, a[1000], b[1000];\n\n    scanf(\"%d %d\", &w, &h);\n    for (i = 0; i < w; i++) scanf(\"%d\", &a[i]);\n    for (j = 0; j < h; j++) scanf(\"%d\", &b[j]);\n\n    int sum_a = 0, sum_b = 0;\n    for (i = 0; i < w; i++) sum_a += a[i];\n    for (j = 0; j < h; j++) sum_b += b[j];\n\n    if (sum_a == w && sum_b == h) printf(\"1\\n\");\n    else printf(\"0\\n\");\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

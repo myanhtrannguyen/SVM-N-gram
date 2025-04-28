@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-673",
+    "problem_id": "p00705",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <map>\n#include <algorithm>\n\nusing namespace std;\n\nint main() {\n    int n, q;\n    while (cin >> n >> q) {\n        map<int, int> dates;\n        for (int i = 0; i < n; ++i) {\n            int m;\n            cin >> m;\n            for (int j = 0; j < m; ++j) {\n                int date;\n                cin >> date;\n                dates[date]++;\n            }\n        }\n        int maxCount = 0;\n        int result = 0;\n        for (auto& pair : dates) {\n            if (pair.second >= q && pair.first < result || pair.second >= q && result == 0) {\n                maxCount = pair.second;\n                result = pair.first;\n            }\n        }\n        cout << (maxCount >= q ? result : 0) << endl;\n        while (cin.peek() == '\\n') {\n            cin.ignore();\n            cin >> n >> q;\n        }\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

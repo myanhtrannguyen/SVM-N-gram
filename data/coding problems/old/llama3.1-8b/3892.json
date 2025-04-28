@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3892",
+    "problem_id": "p02294",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n\nint main() {\n    int q;\n    scanf(\"%d\", &q);\n\n    while (q--) {\n        int x1, y1, x2, y2, x3, y3, x4, y4;\n        scanf(\"%d %d %d %d %d %d %d %d\", &x1, &y1, &x2, &y2, &x3, &y3, &x4, &y4);\n\n        int xMin = (x1 > x3) ? x3 : x1;\n        int xMax = (x2 > x4) ? x4 : x2;\n\n        int yMin = (y1 > y3) ? y3 : y1;\n        int yMax = (y2 > y4) ? y4 : y2;\n\n        if ((x1 < x4 && x2 > x3) || (x1 > x3 && x2 < x4) ||\n            (y1 < y4 && y2 > y3) || (y1 > y3 && y2 < y4)) {\n            printf(\"1\\n\");\n        } else if (xMin <= xMax && yMin <= yMax) {\n            printf(\"1\\n\");\n        } else {\n            printf(\"0\\n\");\n        }\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

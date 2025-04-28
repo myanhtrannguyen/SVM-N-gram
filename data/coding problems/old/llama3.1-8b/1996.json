@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1996",
+    "problem_id": "p03178",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <string>\n#include <algorithm>\n\nusing namespace std;\n\nconst int MOD = 1e9 + 7;\n\nint main() {\n    string k;\n    int d;\n    cin >> k >> d;\n\n    vector<int> dp(101, 0);\n    dp[0] = 1;\n\n    for (int i = 0; i < k.length(); i++) {\n        vector<int> ndp(101, 0);\n        for (int j = 0; j <= 100; j++) {\n            for (int k = 0; k <= k[i] - '0'; k++) {\n                if ((j + k) % d == 0) {\n                    ndp[j % d] = (ndp[j % d] + dp[j]) % MOD;\n                }\n            }\n        }\n        dp = ndp;\n    }\n\n    int ans = 0;\n    for (int i = 0; i <= 100; i++) {\n        ans = (ans + dp[i]) % MOD;\n    }\n\n    cout << ans << endl;\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

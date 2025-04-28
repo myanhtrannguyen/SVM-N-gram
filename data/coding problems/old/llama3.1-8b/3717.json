@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3717",
+    "problem_id": "p02250",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <string>\n#include <algorithm>\n\nint main() {\n    std::string text;\n    std::cin >> text;\n\n    int queries;\n    std::cin >> queries;\n\n    for (int i = 0; i < queries; i++) {\n        std::string pattern;\n        std::cin >> pattern;\n\n        int index = text.find(pattern);\n        if (index != std::string::npos) {\n            std::cout << 1 << std::endl;\n        } else {\n            std::cout << 0 << std::endl;\n        }\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

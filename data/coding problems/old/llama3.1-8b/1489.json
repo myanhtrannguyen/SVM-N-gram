@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1489",
+    "problem_id": "p02780",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n\n#define N 200000\n#define P 1000\n\ndouble dp[N + 1][P + 1];\n\nint main() {\n    int n, k;\n    int p[N];\n    int i, j, l, r;\n\n    scanf(\"%d %d\", &n, &k);\n    for (i = 0; i < n; i++) {\n        scanf(\"%d\", &p[i]);\n    }\n\n    for (i = 1; i <= n; i++) {\n        for (j = 1; j <= p[i - 1]; j++) {\n            dp[i][j] = (double)j / p[i - 1];\n        }\n    }\n\n    for (i = 1; i <= n; i++) {\n        for (j = 1; j <= p[i - 1]; j++) {\n            for (l = 1; l <= i; l++) {\n                for (r = 1; r <= p[i - l]; r++) {\n                    dp[i][j] = fmax(dp[i][j], dp[i - l][j - r] + (double)(j + r) / p[i - 1]);\n                }\n            }\n        }\n    }\n\n    printf(\"%.6lf\\n\", dp[n][k]);\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2621",
+    "problem_id": "p03651",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n#define MAXN 100005\n\nint n, k;\nint a[MAXN];\n\nint gcd(int a, int b) {\n    if (b == 0) return a;\n    return gcd(b, a % b);\n}\n\nint main() {\n    scanf(\"%d %d\", &n, &k);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &a[i]);\n    }\n\n    int g = a[0];\n    for (int i = 1; i < n; i++) {\n        g = gcd(g, a[i]);\n    }\n\n    int flag = 0;\n    for (int i = 0; i < n; i++) {\n        if ((a[i] - k) % g == 0) {\n            flag = 1;\n            break;\n        }\n    }\n\n    if (flag) printf(\"POSSIBLE\\n\");\n    else printf(\"IMPOSSIBLE\\n\");\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

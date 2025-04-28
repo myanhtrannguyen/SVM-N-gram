@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1951",
+    "problem_id": "p03167",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\n#define MOD 1000000007\n\nint main() {\n    int H, W;\n    scanf(\"%d %d\", &H, &W);\n\n    char grid[H + 1][W + 1];\n    for (int i = 1; i <= H; i++) {\n        for (int j = 1; j <= W; j++) {\n            scanf(\" %c\", &grid[i][j]);\n        }\n    }\n\n    long long dp[H + 1][W + 1];\n    dp[1][1] = 1;\n\n    for (int i = 1; i <= H; i++) {\n        for (int j = 1; j <= W; j++) {\n            if (grid[i][j] == '#') continue;\n            if (i == 1 && j == 1) continue;\n\n            if (i > 1) dp[i][j] = (dp[i][j] + dp[i - 1][j]) % MOD;\n            if (j > 1) dp[i][j] = (dp[i][j] + dp[i][j - 1]) % MOD;\n        }\n    }\n\n    printf(\"%lld\\n\", dp[H][W]);\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

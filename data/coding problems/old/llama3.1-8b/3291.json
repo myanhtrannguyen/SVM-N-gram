@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3291",
+    "problem_id": "p01826",
+    "language": "Python",
+    "solution": "```python\nimport sys\n\ndef solve():\n    N, T = map(int, input().split())\n    songs = []\n    for _ in range(N):\n        t, p, f = map(int, input().split())\n        songs.append((t, p, f))\n\n    dp = [[-1] * (T + 1) for _ in range(N + 1)]\n    dp[0][0] = 0\n\n    for i in range(1, N + 1):\n        for j in range(T + 1):\n            if dp[i - 1][j] == -1:\n                continue\n            for k in range(j + 1):\n                if k + songs[i - 1][0] <= T:\n                    new_val = dp[i - 1][j] + songs[i - 1][1] - (songs[i - 1][2] - songs[k - 1][2]) ** 2\n                    if dp[i][k + songs[i - 1][0]] == -1 or new_val > dp[i][k + songs[i - 1][0]]:\n                        dp[i][k + songs[i - 1][0]] = new_val\n\n    ans = -1\n    for i in range(T + 1):\n        if dp[N][i] != -1 and (ans == -1 or dp[N][i] > ans):\n            ans = dp[N][i]\n\n    print(ans)\n\nif __name__ == \"__main__\":\n    solve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

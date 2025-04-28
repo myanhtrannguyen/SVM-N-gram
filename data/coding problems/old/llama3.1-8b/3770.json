@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3770",
+    "problem_id": "p02263",
+    "language": "Java",
+    "solution": "```java\nimport java.util.Scanner;\nimport java.util.Stack;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        String[] tokens = scanner.nextLine().split(\" \");\n        Stack<Integer> stack = new Stack<>();\n\n        for (String token : tokens) {\n            if (token.equals(\"+\") || token.equals(\"-\") || token.equals(\"*\")) {\n                int operand2 = stack.pop();\n                int operand1 = stack.pop();\n                if (token.equals(\"+\")) {\n                    stack.push(operand1 + operand2);\n                } else if (token.equals(\"-\")) {\n                    stack.push(operand1 - operand2);\n                } else {\n                    stack.push(operand1 * operand2);\n                }\n            } else {\n                stack.push(Integer.parseInt(token));\n            }\n        }\n\n        System.out.println(stack.pop());\n    }\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

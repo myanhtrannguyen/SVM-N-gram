@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3150",
+    "problem_id": "p01734",
+    "language": "Java",
+    "solution": "```java\nimport java.util.Arrays;\nimport java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        int n = scanner.nextInt();\n        int[] xLower = new int[2 * n];\n        int[] xUpper = new int[2 * n];\n\n        for (int i = 0; i < n; i++) {\n            xLower[2 * i] = scanner.nextInt();\n            xLower[2 * i + 1] = scanner.nextInt();\n            xUpper[2 * i] = scanner.nextInt();\n            xUpper[2 * i + 1] = scanner.nextInt();\n        }\n\n        Arrays.sort(xLower);\n        Arrays.sort(xUpper);\n\n        int count = 0;\n        int i = 0;\n        int j = 0;\n\n        while (i < 2 * n && j < 2 * n) {\n            if (xLower[i] <= xUpper[j]) {\n                count++;\n                i++;\n            } else {\n                j++;\n            }\n        }\n\n        System.out.println(count);\n    }\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

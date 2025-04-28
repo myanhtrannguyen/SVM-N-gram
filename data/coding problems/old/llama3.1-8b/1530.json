@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1530",
+    "problem_id": "p02790",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <string>\n\nint main() {\n    int a, b;\n    std::cin >> a >> b;\n\n    std::string str1 = std::string(b, '0' + a);\n    std::string str2 = std::string(a, '0' + b);\n\n    if (str1 < str2) {\n        std::cout << str1 << std::endl;\n    } else {\n        std::cout << str2 << std::endl;\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

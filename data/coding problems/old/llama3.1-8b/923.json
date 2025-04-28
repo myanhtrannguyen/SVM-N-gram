@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-923",
+    "problem_id": "p00767",
+    "language": "Python",
+    "solution": "```python\nimport math\n\ndef find_smallest_rectangle(h, w):\n    # Calculate the diagonal of the given rectangle\n    diagonal = math.sqrt(h**2 + w**2)\n    \n    # Initialize the smallest rectangle\n    smallest_h = h + 1\n    smallest_w = w + 1\n    \n    # Find the smallest rectangle with the same diagonal\n    while True:\n        if math.sqrt(smallest_h**2 + smallest_w**2) > diagonal:\n            break\n        smallest_h += 1\n        if smallest_h > smallest_w:\n            smallest_w += 1\n    \n    return smallest_h, smallest_w\n\n# Read the input\nwhile True:\n    h, w = map(int, input().split())\n    if h == 0 and w == 0:\n        break\n    print(*find_smallest_rectangle(h, w))\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

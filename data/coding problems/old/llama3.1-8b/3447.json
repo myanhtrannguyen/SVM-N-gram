@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3447",
+    "problem_id": "p01960",
+    "language": "Python",
+    "solution": "```python\nimport sys\ninput = sys.stdin.readline\n\nN, K = map(int, input().split())\nG = [[] for _ in range(N + 1)]\nfor _ in range(N - 1):\n    u, v = map(int, input().split())\n    G[u].append(v)\n    G[v].append(u)\n\ndef dfs(u, p):\n    sz[u] = 1\n    for v in G[u]:\n        if v != p:\n            dfs(v, u)\n            sz[u] += sz[v]\n\ndfs(1, 0)\n\ndef dfs2(u, p, c):\n    global ans\n    c += 1\n    for v in G[u]:\n        if v != p:\n            dfs2(v, u, c)\n    if sz[u] >= K:\n        ans = max(ans, c)\n\ndfs2(1, 0, 0)\nprint(ans - 1)\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

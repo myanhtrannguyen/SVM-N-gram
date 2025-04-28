@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2095",
+    "problem_id": "p03396",
+    "language": "Java",
+    "solution": "```java\nimport java.io.*;\nimport java.util.*;\n\npublic class Main {\n    static final int N = 300000 + 10;\n    static long[] x = new long[N];\n    static long[] t = new long[N];\n    static long n, L;\n\n    public static void main(String[] args) throws IOException {\n        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));\n        PrintWriter pw = new PrintWriter(System.out);\n        StringTokenizer st = new StringTokenizer(br.readLine());\n        n = Long.parseLong(st.nextToken());\n        L = Long.parseLong(st.nextToken());\n        st = new StringTokenizer(br.readLine());\n        for (int i = 1; i <= n; i++) {\n            x[i] = Long.parseLong(st.nextToken());\n        }\n        st = new StringTokenizer(br.readLine());\n        for (int i = 1; i <= n; i++) {\n            t[i] = Long.parseLong(st.nextToken());\n        }\n        long ans = 0;\n        for (int i = 1; i <= n; i++) {\n            long pos = x[i] - (i - 1) * L;\n            long time = (pos - 1) / L * 2 * L + pos - 1;\n            ans += time + t[i];\n        }\n        ans += L;\n        pw.println(ans);\n        pw.close();\n    }\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

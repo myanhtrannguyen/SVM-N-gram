@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-31",
+    "problem_id": "p00007",
+    "language": "Python",
+    "solution": "```python\ndef debt_hell(n):\n    debt = 100000\n    for _ in range(n):\n        debt = round(debt * 1.05 / 1000) * 1000 + 50000\n    return debt\n\nn = int(input())\nprint(debt_hell(n))\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

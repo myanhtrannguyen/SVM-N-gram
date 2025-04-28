@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3879",
+    "problem_id": "p02290",
+    "language": "Python",
+    "solution": "```python\nimport math\n\ndef projection(x1, y1, x2, y2, q, queries):\n    # Calculate the slope and y-intercept of the line\n    if x2 - x1 == 0:\n        slope = float('inf')\n        intercept = x1\n    else:\n        slope = (y2 - y1) / (x2 - x1)\n        intercept = y1 - slope * x1\n\n    # Calculate the projection point for each query\n    for i in range(q):\n        x, y = queries[i]\n        if slope == float('inf'):\n            projection_x = x\n            projection_y = intercept\n        else:\n            projection_x = x - (y - intercept) / slope\n            projection_y = slope * x + intercept\n        print(f\"{projection_x:.10f} {projection_y:.10f}\")\n\n# Read the input\nx1, y1, x2, y2 = map(int, input().split())\nq = int(input())\nqueries = []\nfor _ in range(q):\n    x, y = map(int, input().split())\n    queries.append((x, y))\n\n# Calculate and print the projection points\nprojection(x1, y1, x2, y2, q, queries)\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

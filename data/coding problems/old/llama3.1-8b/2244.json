@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2244",
+    "problem_id": "p03556",
+    "language": "Python",
+    "solution": "```python\nimport math\n\nn = int(input())\n\ni = 1\nwhile True:\n    square = i * i\n    if square > n:\n        break\n    i += 1\n\nprint(i * i - 1)\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

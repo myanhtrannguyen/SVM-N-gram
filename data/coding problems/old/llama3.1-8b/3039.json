@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3039",
+    "problem_id": "p01673",
+    "language": "Python",
+    "solution": "```python\nimport sys\nimport heapq\n\ndef solve():\n    N, M, s, t, f = map(int, input().split())\n    adj = [[] for _ in range(N)]\n    for _ in range(M):\n        u, v, a, b, d = map(int, input().split())\n        if u == v:\n            print(\"Impossible\")\n            return\n        adj[u].append((v, a, b, d))\n    cost = [[float('inf')] * (f + 1) for _ in range(N)]\n    cost[s][0] = 0\n    pq = [(0, s, 0)]\n    while pq:\n        c, u, rem = heapq.heappop(pq)\n        if c > cost[u][rem]:\n            continue\n        for v, a, b, d in adj[u]:\n            if rem + d <= f:\n                new_cost = cost[u][rem] + a * d + b * (rem + d - d)\n            else:\n                new_cost = cost[u][rem] + a * (f - rem) + b * (f - rem)\n            if new_cost < cost[v][rem + d]:\n                cost[v][rem + d] = new_cost\n                heapq.heappush(pq, (new_cost, v, rem + d))\n    if cost[t][f] == float('inf'):\n        print(\"Impossible\")\n    else:\n        print(cost[t][f])\n\nif __name__ == \"__main__\":\n    solve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

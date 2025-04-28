@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3366",
+    "problem_id": "p01886",
+    "language": "Java",
+    "solution": "```java\nimport java.util.Arrays;\nimport java.util.Comparator;\nimport java.util.Scanner;\n\npublic class Main {\n    static class Point {\n        long x, y;\n\n        public Point(long x, long y) {\n            this.x = x;\n            this.y = y;\n        }\n    }\n\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        int n = scanner.nextInt();\n        Point[] points = new Point[n];\n        for (int i = 0; i < n; i++) {\n            points[i] = new Point(scanner.nextLong(), scanner.nextLong());\n        }\n        Arrays.sort(points, Comparator.comparingLong(p -> p.y));\n        long[] prefixSum = new long[n + 1];\n        for (int i = 0; i < n; i++) {\n            prefixSum[i + 1] = prefixSum[i] + points[i].x;\n        }\n        long min = Long.MAX_VALUE;\n        for (int i = 0; i <= n; i++) {\n            long left = prefixSum[i];\n            long right = prefixSum[n] - prefixSum[i];\n            long area = Math.abs(left) + Math.abs(right);\n            min = Math.min(min, area);\n        }\n        System.out.println(Math.round(min));\n    }\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

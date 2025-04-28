@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1255",
+    "problem_id": "p00850",
+    "language": "Python",
+    "solution": "```python\ndef min_operations(n):\n    if n == 1:\n        return 0\n    if n % 2 == 0:\n        return 1 + min_operations(n // 2)\n    else:\n        return 1 + min_operations(n // 2) + min_operations(n // 2 + 1)\n\ndef main():\n    while True:\n        n = int(input())\n        if n == 0:\n            break\n        print(min_operations(n))\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

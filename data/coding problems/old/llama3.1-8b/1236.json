@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1236",
+    "problem_id": "p00846",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\ntypedef struct Point {\n    int x, y;\n} Point;\n\nint orientation(Point p, Point q, Point r) {\n    int val = (q.y - p.y) * (r.x - q.x) - (q.x - p.x) * (r.y - q.y);\n    if (val == 0) return 0;\n    return (val > 0) ? 1 : -1;\n}\n\nint isStarShape(Point points[], int n) {\n    int l = 0, r = n - 1;\n    while (l < r) {\n        int m = l + (r - l) / 2;\n        int o = orientation(points[l], points[m], points[r]);\n        if (o == 0) return 0;\n        if (o == -1) l = m + 1;\n        else r = m;\n    }\n    return 1;\n}\n\nint main() {\n    int n;\n    while (scanf(\"%d\", &n) == 1) {\n        if (n == 0) break;\n        Point points[n];\n        for (int i = 0; i < n; i++) {\n            scanf(\"%d %d\", &points[i].x, &points[i].y);\n        }\n        printf(\"%d\\n\", isStarShape(points, n));\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

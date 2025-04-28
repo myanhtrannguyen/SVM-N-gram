@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2324",
+    "problem_id": "p03576",
+    "language": "Python",
+    "solution": "```python\nimport sys\n\ndef min_rectangle_area():\n    n, k = map(int, input().split())\n    points = [list(map(int, input().split())) for _ in range(n)]\n\n    points.sort(key=lambda x: x[0])\n    min_area = float('inf')\n\n    for i in range(n - k + 1):\n        x_min, x_max = points[i][0], points[i + k - 1][0]\n        y_min, y_max = min(point[1] for point in points[i:i + k]), max(point[1] for point in points[i:i + k])\n\n        area = (x_max - x_min) * (y_max - y_min)\n        min_area = min(min_area, area)\n\n    print(min_area)\n\nif __name__ == \"__main__\":\n    min_rectangle_area()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

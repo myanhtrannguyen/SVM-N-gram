@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-203",
+    "problem_id": "p00361",
+    "language": "Python",
+    "solution": "```python\nfrom collections import deque\n\ndef min_roads(n, roads):\n    graph = [[] for _ in range(n)]\n    indegree = [0] * n\n    for s, t in roads:\n        graph[s].append(t)\n        indegree[t] += 1\n\n    queue = deque([i for i in range(n) if indegree[i] == 0])\n    count = 0\n    while queue:\n        node = queue.popleft()\n        count += 1\n        for neighbor in graph[node]:\n            indegree[neighbor] -= 1\n            if indegree[neighbor] == 0:\n                queue.append(neighbor)\n\n    return count - 1 if count == n else -1\n\nn, m = map(int, input().split())\nroads = [tuple(map(int, input().split())) for _ in range(m)]\nprint(min_roads(n, roads))\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

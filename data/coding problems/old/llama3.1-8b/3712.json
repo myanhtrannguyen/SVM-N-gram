@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3712",
+    "problem_id": "p02249",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <string.h>\n\n#define MAX_H 1000\n#define MAX_W 1000\n#define MAX_R 1000\n#define MAX_C 1000\n\nint main() {\n    int H, W, R, C;\n    char region[MAX_H][MAX_W + 1];\n    char pattern[MAX_R][MAX_C + 1];\n\n    scanf(\"%d %d\", &H, &W);\n    for (int i = 0; i < H; i++) {\n        scanf(\"%s\", region[i]);\n    }\n\n    scanf(\"%d %d\", &R, &C);\n    for (int i = 0; i < R; i++) {\n        scanf(\"%s\", pattern[i]);\n    }\n\n    for (int i = 0; i <= H - R; i++) {\n        for (int j = 0; j <= W - C; j++) {\n            int match = 1;\n            for (int k = 0; k < R && match; k++) {\n                for (int l = 0; l < C && match; l++) {\n                    if (region[i + k][j + l] != pattern[k][l]) {\n                        match = 0;\n                    }\n                }\n            }\n            if (match) {\n                printf(\"%d %d\\n\", i, j);\n            }\n        }\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

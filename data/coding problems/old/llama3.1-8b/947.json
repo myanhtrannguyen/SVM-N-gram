@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-947",
+    "problem_id": "p00773",
+    "language": "Python",
+    "solution": "```python\nimport math\n\ndef calculate_after_tax_price(x, y, s):\n    max_after_tax_price = 0\n    for i in range(1, s):\n        for j in range(i, s):\n            if i + j == s:\n                after_tax_price_i = (i * (100 + x)) / 100\n                after_tax_price_j = (j * (100 + x)) / 100\n                after_tax_price_i_new = (i * (100 + y)) / 100\n                after_tax_price_j_new = (j * (100 + y)) / 100\n                max_after_tax_price = max(max_after_tax_price, math.ceil(after_tax_price_i_new + after_tax_price_j_new))\n    return max_after_tax_price\n\ndef main():\n    while True:\n        x, y, s = map(int, input().split())\n        if x == 0 and y == 0 and s == 0:\n            break\n        print(calculate_after_tax_price(x, y, s))\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

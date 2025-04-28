@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-295",
+    "problem_id": "p00384",
+    "language": "Python",
+    "solution": "```python\nimport sys\ninput = sys.stdin.readline\n\nN = int(input())\nP = [0] + [int(input()) for _ in range(N)]\nE = [[] for _ in range(N + 1)]\nfor _ in range(N - 1):\n    u, v = map(int, input().split())\n    E[u].append(v)\n    E[v].append(u)\n\ndef dfs(u, p):\n    global ans\n    for v in E[u]:\n        if v == p: continue\n        dfs(v, u)\n        dp[u][1] = max(dp[u][1], dp[v][0] + P[v])\n        dp[u][0] = max(dp[u][0], dp[v][0])\n    dp[u][1] += P[u]\n    ans = max(ans, dp[u][0] + P[u] + dp[u][1] - (N - 1))\n\ndp = [[0, 0] for _ in range(N + 1)]\nans = 0\ndfs(1, 1)\nprint(ans)\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

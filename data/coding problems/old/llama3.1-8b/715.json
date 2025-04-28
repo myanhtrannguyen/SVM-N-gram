@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-715",
+    "problem_id": "p00715",
+    "language": "Python",
+    "solution": "```python\nfrom collections import defaultdict\n\ndef solve():\n    N = int(input())\n    graph = defaultdict(list)\n    for _ in range(N):\n        u, v = input().split('-')\n        graph[u].append(v)\n        graph[v].append(u)\n\n    def dfs(u, v, visited):\n        if u == v:\n            return True\n        visited.add(u)\n        for neighbor in graph[u]:\n            if neighbor not in visited:\n                if dfs(neighbor, v, visited):\n                    return True\n        return False\n\n    def are_orthogonal(u, v):\n        return dfs(u, v, set())\n\n    def are_stronger(u, v):\n        return are_orthogonal(u, v) and u > v\n\n    M = int(input())\n    for _ in range(M):\n        u, v = input().split('-')\n        if are_stronger(u, v):\n            print('YES')\n        else:\n            print('NO')\n\nwhile True:\n    try:\n        solve()\n    except ValueError:\n        break\n    try:\n        input()\n    except NameError:\n        break\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

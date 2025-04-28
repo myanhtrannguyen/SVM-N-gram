@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2762",
+    "problem_id": "p03686",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nusing namespace std;\n\nstruct Interval {\n    int l, r;\n};\n\nbool cmp(const Interval& a, const Interval& b) {\n    return a.r < b.r;\n}\n\nint main() {\n    int n, m;\n    cin >> n >> m;\n\n    vector<Interval> a(n + 1);\n    for (int i = 1; i <= n; i++) {\n        cin >> a[i].l >> a[i].r;\n    }\n\n    sort(a.begin() + 1, a.end(), cmp);\n\n    int ans = 0;\n    int r = 0;\n    for (int i = 1; i <= n; i++) {\n        if (a[i].l > r) {\n            ans += a[i].l - r;\n            r = a[i].l;\n        }\n        r = max(r, a[i].r);\n    }\n\n    ans += m + 1 - r;\n    cout << ans << endl;\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

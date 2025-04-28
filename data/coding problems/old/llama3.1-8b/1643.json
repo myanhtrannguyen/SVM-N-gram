@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1643",
+    "problem_id": "p02950",
+    "language": "Java",
+    "solution": "```java\nimport java.io.*;\nimport java.util.*;\n\npublic class Main {\n    static final int N = 3000;\n    static int[] a = new int[N];\n    static int[] b = new int[N];\n\n    public static void main(String[] args) throws IOException {\n        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));\n        PrintWriter pw = new PrintWriter(System.out);\n\n        int p = Integer.parseInt(br.readLine());\n        StringTokenizer st = new StringTokenizer(br.readLine());\n        for (int i = 0; i < p; i++) {\n            a[i] = Integer.parseInt(st.nextToken());\n        }\n\n        for (int i = 0; i < p; i++) {\n            for (int j = 0; j < p; j++) {\n                if (mod(i * j, p) == 1) {\n                    b[i] = mod(j, p);\n                    break;\n                }\n            }\n        }\n\n        for (int i = 0; i < p; i++) {\n            pw.print(mod(b[i] + p - a[i], p) + \" \");\n        }\n\n        pw.close();\n    }\n\n    static int mod(int a, int b) {\n        return (a % b + b) % b;\n    }\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-675",
+    "problem_id": "p00705",
+    "language": "Python",
+    "solution": "```python\nfrom collections import defaultdict\n\ndef find_meeting_date():\n    n, q = map(int, input().split())\n    dates = defaultdict(int)\n    for _ in range(n):\n        m, *d = map(int, input().split())\n        for date in d:\n            dates[date] += 1\n    max_count = 0\n    best_date = 0\n    for date, count in dates.items():\n        if count >= q and (count > max_count or (count == max_count and date < best_date)):\n            max_count = count\n            best_date = date\n    print(best_date if max_count >= q else 0)\n\nwhile True:\n    try:\n        find_meeting_date()\n    except ValueError:\n        break\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

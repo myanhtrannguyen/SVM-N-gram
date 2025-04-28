@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-142",
+    "problem_id": "p00105",
+    "language": "Java",
+    "solution": "```java\nimport java.util.*;\n\npublic class BookIndex {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        Map<String, List<Integer>> bookIndex = new TreeMap<>();\n\n        while (scanner.hasNextLine()) {\n            String[] line = scanner.nextLine().split(\" \");\n            String word = line[0];\n            int page = Integer.parseInt(line[1]);\n\n            bookIndex.computeIfAbsent(word, k -> new ArrayList<>()).add(page);\n        }\n\n        for (Map.Entry<String, List<Integer>> entry : bookIndex.entrySet()) {\n            System.out.println(entry.getKey());\n            Collections.sort(entry.getValue());\n            for (int page : entry.getValue()) {\n                System.out.print(page + \" \");\n            }\n            System.out.println();\n        }\n    }\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

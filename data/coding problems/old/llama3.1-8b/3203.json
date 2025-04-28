@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3203",
+    "problem_id": "p01787",
+    "language": "Python",
+    "solution": "```python\nimport re\n\ndef rle_to_list(s):\n    result = []\n    i = 0\n    while i < len(s):\n        c = s[i]\n        j = i + 1\n        while j < len(s) and s[j].isdigit():\n            j += 1\n        result.append((c, int(s[i+1:j])))\n        i = j\n    return result\n\ndef list_to_rle(lst):\n    result = []\n    for c, l in lst:\n        result.append(c + str(l))\n    return ' '.join(result) + ' \\$'\n\ndef replace_rle(A, B, C):\n    A_list = rle_to_list(A)\n    B_list = rle_to_list(B)\n    C_list = rle_to_list(C)\n\n    A_str = list_to_rle(A_list)\n    B_str = list_to_rle(B_list)\n    C_str = list_to_rle(C_list)\n\n    index = A_str.find(B_str)\n    if index != -1:\n        A_list = A_list[:index] + C_list + A_list[index + len(B_list):]\n        return list_to_rle(A_list)\n    else:\n        return A_str\n\nA = input()\nB = input()\nC = input()\n\nprint(replace_rle(A, B, C))\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

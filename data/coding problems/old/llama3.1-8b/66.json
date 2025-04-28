@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-66",
+    "problem_id": "p00016",
+    "language": "Java",
+    "solution": "```java\nimport java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        int x = 0, y = 0;\n        while (true) {\n            String[] input = scanner.next().split(\",\");\n            int d = Integer.parseInt(input[0]);\n            int t = Integer.parseInt(input[1]);\n            x += d * Math.cos(Math.toRadians(t));\n            y += d * Math.sin(Math.toRadians(t));\n            if (d == 0 && t == 0) break;\n        }\n        System.out.println((int) Math.round(x));\n        System.out.println((int) Math.round(y));\n    }\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

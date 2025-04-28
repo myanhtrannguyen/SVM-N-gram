@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2251",
+    "problem_id": "p03558",
+    "language": "Java",
+    "solution": "```java\nimport java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        int K = scanner.nextInt();\n        int minSum = Integer.MAX_VALUE;\n\n        for (int i = 1; i <= 1000; i++) {\n            if (isMultiple(K, i)) {\n                int sum = getDigitSum(i);\n                minSum = Math.min(minSum, sum);\n            }\n        }\n\n        System.out.println(minSum);\n    }\n\n    public static boolean isMultiple(int K, int num) {\n        return (num % K) == 0;\n    }\n\n    public static int getDigitSum(int num) {\n        int sum = 0;\n        while (num > 0) {\n            sum += num % 10;\n            num /= 10;\n        }\n        return sum;\n    }\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1170",
+    "problem_id": "p00829",
+    "language": "Java",
+    "solution": "```java\nimport java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        int t = scanner.nextInt();\n        scanner.nextLine();\n\n        for (int i = 0; i < t; i++) {\n            String[] input = scanner.nextLine().split(\" \");\n            long[] numbers = new long[9];\n            for (int j = 0; j < 9; j++) {\n                numbers[j] = Long.parseLong(input[j], 16);\n            }\n\n            long sum = 0;\n            for (int j = 0; j < 8; j++) {\n                sum = (sum + numbers[j]) % (1L << 32);\n            }\n\n            long key = 0;\n            for (int j = 0; j < 8; j++) {\n                if ((sum & 1) != (numbers[8] & 1)) {\n                    key |= 1L << j;\n                }\n                sum >>= 1;\n                numbers[8] >>= 1;\n            }\n\n            System.out.println(Long.toHexString(key));\n        }\n    }\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

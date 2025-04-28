@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1169",
+    "problem_id": "p00829",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <string>\n#include <sstream>\n\nint main() {\n    int t;\n    std::cin >> t;\n    std::cin.ignore();\n\n    for (int i = 0; i < t; i++) {\n        std::vector<long long> a(9);\n        std::vector<long long> b(9);\n\n        for (int j = 0; j < 9; j++) {\n            std::string s;\n            std::getline(std::cin, s);\n            std::istringstream iss(s);\n            iss >> std::hex >> a[j];\n        }\n\n        for (int j = 0; j < 8; j++) {\n            b[j] = (a[j] ^ a[j + 8]) % (1LL << 32);\n        }\n\n        b[8] = 0;\n        for (int j = 0; j < 8; j++) {\n            b[8] = (b[8] + b[j]) % (1LL << 32);\n        }\n\n        long long k = 0;\n        for (int j = 0; j < 32; j++) {\n            if ((b[8] >> j) & 1) {\n                if ((a[8] >> j) & 1) {\n                    k |= 1LL << j;\n                }\n            }\n        }\n\n        std::cout << std::hex << k << std::endl;\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

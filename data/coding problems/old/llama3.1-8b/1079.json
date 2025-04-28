@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1079",
+    "problem_id": "p00806",
+    "language": "Python",
+    "solution": "```python\nfrom collections import defaultdict\nfrom itertools import permutations\n\ndef get_letters(num):\n    letters = {\n        '2': 'abc',\n        '3': 'def',\n        '4': 'ghi',\n        '5': 'jkl',\n        '6': 'mno',\n        '7': 'pqrs',\n        '8': 'tuv',\n        '9': 'wxyz'\n    }\n    return letters[num]\n\ndef get_words(num):\n    words = {}\n    for i in range(1, 10):\n        words[i] = get_letters(str(i))\n    return words\n\ndef get_permutations(word):\n    return [''.join(p) for p in permutations(word)]\n\ndef solve():\n    n = int(input())\n    words = []\n    for _ in range(n):\n        words.append(input())\n    sequence = input()\n    words_dict = defaultdict(list)\n    for word in words:\n        for p in get_permutations(word):\n            words_dict[p].append(word)\n    result = []\n    for p in get_permutations(sequence):\n        if p in words_dict:\n            result.append(' '.join(words_dict[p]) + '.')\n    print('\\n'.join(result))\n    print('--')\n\nt = 1\nfor _ in range(t):\n    solve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

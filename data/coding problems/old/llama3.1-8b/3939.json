@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3939",
+    "problem_id": "p02305",
+    "language": "Python",
+    "solution": "```python\nimport math\n\ndef intersection_of_circles(c1x, c1y, c1r, c2x, c2y, c2r):\n    d = math.sqrt((c1x - c2x)**2 + (c1y - c2y)**2)\n    if d > c1r + c2r:\n        return 4\n    elif d == c1r + c2r:\n        return 3\n    elif d < abs(c1r - c2r):\n        return 0\n    elif d == abs(c1r - c2r):\n        return 1\n    else:\n        return 2\n\nc1x, c1y, c1r = map(int, input().split())\nc2x, c2y, c2r = map(int, input().split())\n\nprint(intersection_of_circles(c1x, c1y, c1r, c2x, c2y, c2r))\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2389",
+    "problem_id": "p03593",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <string.h>\n\n#define MAX_H 105\n#define MAX_W 105\n\nint main() {\n    int h, w;\n    char str[MAX_H][MAX_W + 1];\n\n    scanf(\"%d %d\", &h, &w);\n    for (int i = 0; i < h; i++) {\n        scanf(\"%s\", str[i]);\n    }\n\n    for (int i = 0; i < h; i++) {\n        int cnt[26] = {0};\n        for (int j = 0; j < w; j++) {\n            cnt[str[i][j] - 'a']++;\n        }\n        int odd = 0;\n        for (int j = 0; j < 26; j++) {\n            if (cnt[j] % 2) {\n                odd++;\n            }\n        }\n        if (odd > 1) {\n            printf(\"No\\n\");\n            return 0;\n        }\n    }\n\n    for (int j = 0; j < w; j++) {\n        int cnt[26] = {0};\n        for (int i = 0; i < h; i++) {\n            cnt[str[i][j] - 'a']++;\n        }\n        int odd = 0;\n        for (int i = 0; i < 26; i++) {\n            if (cnt[i] % 2) {\n                odd++;\n            }\n        }\n        if (odd > 1) {\n            printf(\"No\\n\");\n            return 0;\n        }\n    }\n\n    printf(\"Yes\\n\");\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

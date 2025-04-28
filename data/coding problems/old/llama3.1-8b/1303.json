@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1303",
+    "problem_id": "p00862",
+    "language": "Python",
+    "solution": "```python\nimport math\n\ndef distance(p1, p2):\n    return math.sqrt((p1[0] - p2[0])**2 + (p1[1] - p2[1])**2)\n\ndef point_to_line_distance(p, line_start, line_end):\n    return abs((line_end[0] - line_start[0]) * (line_start[1] - p[1]) - (line_start[0] - p[0]) * (line_end[1] - line_start[1])) / math.sqrt((line_end[0] - line_start[0])**2 + (line_end[1] - line_start[1])**2)\n\ndef find_most_distant_point(vertices):\n    max_distance = 0\n    for i in range(len(vertices)):\n        distance_to_line = point_to_line_distance(vertices[i], vertices[(i-1)%len(vertices)], vertices[(i+1)%len(vertices)])\n        if distance_to_line > max_distance:\n            max_distance = distance_to_line\n    return max_distance\n\ndef main():\n    while True:\n        n = int(input())\n        if n == 0:\n            break\n        vertices = []\n        for _ in range(n):\n            x, y = map(int, input().split())\n            vertices.append((x, y))\n        print(f\"{find_most_distant_point(vertices):.6f}\")\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

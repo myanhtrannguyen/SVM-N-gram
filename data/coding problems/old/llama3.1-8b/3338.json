@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3338",
+    "problem_id": "p01838",
+    "language": "Java",
+    "solution": "```java\nimport java.util.Arrays;\nimport java.util.Scanner;\n\npublic class Main {\n    static int N, K;\n    static int[] A;\n\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        N = scanner.nextInt();\n        K = scanner.nextInt();\n        A = new int[N];\n        for (int i = 0; i < N; i++) {\n            A[i] = scanner.nextInt();\n        }\n        Arrays.sort(A);\n        System.out.println(solve());\n    }\n\n    static long solve() {\n        long[][] dp = new long[N + 1][N + 1];\n        for (int i = 0; i <= N; i++) {\n            Arrays.fill(dp[i], Long.MAX_VALUE / 2);\n        }\n        dp[0][0] = 0;\n        for (int i = 1; i <= N; i++) {\n            for (int j = 0; j <= i; j++) {\n                if (j > 0) {\n                    dp[i][j] = Math.min(dp[i][j], dp[i - 1][j - 1] + Math.abs(A[i - 1] - A[i - 2]));\n                }\n                if (j < i) {\n                    dp[i][j] = Math.min(dp[i][j], dp[i - 1][j] + Math.abs(A[i - 1] - A[i - j - 1]));\n                }\n            }\n        }\n        return dp[N][N / 2];\n    }\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

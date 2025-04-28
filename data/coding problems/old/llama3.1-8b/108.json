@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-108",
+    "problem_id": "p00027",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n\nint main() {\n    int m, d, y = 2004;\n    char days[7][10] = {\"Monday\", \"Tuesday\", \"Wednesday\", \"Thursday\", \"Friday\", \"Saturday\", \"Sunday\"};\n    int days_in_month[] = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};\n\n    while (scanf(\"%d %d\", &m, &d) == 2) {\n        if (m < 1 || m > 12 || d < 1 || d > days_in_month[m - 1]) {\n            printf(\"Invalid date\\n\");\n            continue;\n        }\n\n        int t = (y - 1) * 365 + (y - 1) / 4 - (y - 1) / 100 + (y - 1) / 400;\n        for (int i = 1; i < m; i++) {\n            t += days_in_month[i - 1];\n        }\n        t += d - 1;\n\n        int w = t % 7;\n        printf(\"%s\\n\", days[w]);\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

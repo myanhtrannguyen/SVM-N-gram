@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-779",
+    "problem_id": "p00731",
+    "language": "Python",
+    "solution": "```python\nfrom collections import deque\n\ndef bfs(cliff):\n    h, w = len(cliff) - 2, len(cliff[0]) - 2\n    start = [(i, j) for i in range(h) for j in range(w) if cliff[i][j] == 'S']\n    end = [(i, j) for i in range(h) for j in range(w) if cliff[i][j] == 'T']\n    queue = deque([(s, 0) for s in start])\n    visited = set(start)\n    directions = [(0, 1), (0, -1), (1, 0), (-1, 0), (1, 1), (-1, -1), (1, -1), (-1, 1)]\n\n    while queue:\n        (x, y), time = queue.popleft()\n        if (x, y) in end:\n            return time\n        for dx, dy in directions:\n            nx, ny = x + dx, y + dy\n            if 0 <= nx < h and 0 <= ny < w and (nx, ny) not in visited:\n                if cliff[nx][ny] != 'X':\n                    queue.append(((nx, ny), time + int(cliff[nx][ny])))\n                    visited.add((nx, ny))\n    return -1\n\ndef solve():\n    while True:\n        w, h = map(int, input().split())\n        cliff = [input() for _ in range(h)]\n        print(bfs(cliff))\n\nsolve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

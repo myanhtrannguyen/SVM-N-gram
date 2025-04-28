@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3151",
+    "problem_id": "p01734",
+    "language": "Python",
+    "solution": "```python\nimport sys\n\ndef main():\n    N = int(sys.stdin.readline())\n    tiles = []\n    for _ in range(N):\n        xLower1, xLower2, xUpper1, xUpper2 = map(int, sys.stdin.readline().split())\n        tiles.append((xLower1, xLower2, xUpper1, xUpper2))\n\n    tiles.sort(key=lambda x: x[0])\n\n    ans = 0\n    prev = -1\n    for xLower1, xLower2, xUpper1, xUpper2 in tiles:\n        if xLower1 > prev:\n            ans += 1\n        prev = xUpper2\n\n    print(ans)\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

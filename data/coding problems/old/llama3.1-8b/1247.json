@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1247",
+    "problem_id": "p00848",
+    "language": "Python",
+    "solution": "```python\ndef sieve_of_eratosthenes(n):\n    primes = [True] * (n + 1)\n    primes[0] = primes[1] = False\n    p = 2\n    while p**2 <= n:\n        if primes[p]:\n            for i in range(p**2, n + 1, p):\n                primes[i] = False\n        p += 1\n    return [p for p in range(2, n + 1) if primes[p]]\n\ndef count_ways(n, k, primes):\n    ways = 0\n    def backtrack(i, current_sum, current_set):\n        nonlocal ways\n        if len(current_set) == k:\n            if current_sum == n:\n                ways += 1\n            return\n        for j in range(i, len(primes)):\n            if current_sum + primes[j] <= n:\n                backtrack(j + 1, current_sum + primes[j], current_set + [primes[j]])\n    backtrack(0, 0, [])\n    return ways\n\nprimes = sieve_of_eratosthenes(1120)\nwhile True:\n    try:\n        n, k = map(int, input().split())\n        print(count_ways(n, k, primes))\n    except ValueError:\n        break\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

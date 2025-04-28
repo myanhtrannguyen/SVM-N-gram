@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2835",
+    "problem_id": "p03704",
+    "language": "Java",
+    "solution": "```java\nimport java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        int D = scanner.nextInt();\n        int count = 0;\n\n        for (int i = 1; i < 100000; i++) {\n            int rev = reverse(i);\n            if (rev - i == D && isPalindrome(rev)) {\n                count++;\n            }\n        }\n\n        System.out.println(count);\n    }\n\n    public static int reverse(int num) {\n        int reversed = 0;\n        while (num > 0) {\n            int digit = num % 10;\n            reversed = reversed * 10 + digit;\n            num /= 10;\n        }\n        return reversed;\n    }\n\n    public static boolean isPalindrome(int num) {\n        int reversed = reverse(num);\n        return num == reversed;\n    }\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

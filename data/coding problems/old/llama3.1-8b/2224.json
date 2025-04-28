@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2224",
+    "problem_id": "p03551",
+    "language": "Python",
+    "solution": "```python\nimport math\n\nn, m = map(int, input().split())\n\ntotal_time = 100 * (n - m) + 1900\n\nprob = 1\nfor i in range(m):\n    prob *= 0.5\n\nexpected_attempts = 1 / prob\n\nexpected_time = total_time * (1 + 2 * prob + 3 * prob**2 + 4 * prob**3 + 5 * prob**4 + 6 * prob**5)\n\nprint(int(expected_time))\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1822",
+    "problem_id": "p03134",
+    "language": "Python",
+    "solution": "```python\nMOD = 998244353\nN = 2000\n\ndef add(a, b):\n    return (a + b) % MOD\n\ndef mul(a, b):\n    return (a * b) % MOD\n\ndef pow(a, b):\n    res = 1\n    while b:\n        if b & 1:\n            res = mul(res, a)\n        a = mul(a, a)\n        b >>= 1\n    return res\n\ndef solve(s):\n    n = len(s)\n    dp = [[0] * 3 for _ in range(n + 1)]\n    dp[0][0] = 1\n    for i in range(n):\n        for j in range(3):\n            if j == 0:\n                dp[i + 1][0] = add(dp[i + 1][0], dp[i][j])\n                dp[i + 1][1] = add(dp[i + 1][1], dp[i][j])\n                dp[i + 1][2] = add(dp[i + 1][2], dp[i][j])\n            elif j == 1:\n                dp[i + 1][0] = add(dp[i + 1][0], mul(dp[i][j], 2))\n                dp[i + 1][1] = add(dp[i + 1][1], add(dp[i][j], dp[i][j]))\n                dp[i + 1][2] = add(dp[i + 1][2], dp[i][j])\n            else:\n                dp[i + 1][0] = add(dp[i + 1][0], mul(dp[i][j], 3))\n                dp[i + 1][1] = add(dp[i + 1][1], mul(dp[i][j], 2))\n                dp[i + 1][2] = add(dp[i + 1][2], dp[i][j])\n    return dp[n][0]\n\ns = input()\nprint(solve(s))\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1073",
+    "problem_id": "p00805",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <cmath>\n#include <iomanip>\n\nusing namespace std;\n\ndouble calculateMeshSize(vector<double> a, vector<double> b, vector<double> c, vector<double> d) {\n    double minDistance = 1.0;\n    for (int i = 0; i < a.size(); i++) {\n        double distance = abs((b[i] - a[i]) * (c[0] - c[i]) / (d[0] - d[i]));\n        minDistance = min(minDistance, distance);\n    }\n    return minDistance;\n}\n\nint main() {\n    int n;\n    while (cin >> n) {\n        if (n == 0) break;\n\n        vector<double> a(n), b(n), c(n), d(n);\n        for (int i = 0; i < n; i++) cin >> a[i];\n        for (int i = 0; i < n; i++) cin >> b[i];\n        for (int i = 0; i < n; i++) cin >> c[i];\n        for (int i = 0; i < n; i++) cin >> d[i];\n\n        double meshSize = calculateMeshSize(a, b, c, d);\n        cout << fixed << setprecision(6) << meshSize << endl;\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

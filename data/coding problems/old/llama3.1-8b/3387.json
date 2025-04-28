@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3387",
+    "problem_id": "p01945",
+    "language": "Python",
+    "solution": "```python\ndef count_pairs(s):\n    n = len(s)\n    pairs = 0\n    open_count = 0\n    for i in range(n):\n        if s[i] == '(':\n            open_count += 1\n        elif s[i] == ')':\n            open_count -= 1\n            if open_count == 0:\n                for j in range(i + 1, n):\n                    if s[j] == '*':\n                        pairs += 1\n                        break\n    return pairs\n\ns = input()\nprint(count_pairs(s))\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1772",
+    "problem_id": "p03122",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <algorithm>\n#include <utility>\n\nusing namespace std;\n\ntypedef long long ll;\n\nconst int N = 1e4 + 5;\n\nll n, x[N], y[N];\n\nint main() {\n    cin >> n;\n    for (int i = 1; i <= n; i++) {\n        cin >> x[i] >> y[i];\n    }\n    sort(x + 1, x + n + 1);\n    sort(y + 1, y + n + 1);\n    ll X = x[1], Y = y[1];\n    for (int i = 2; i <= n; i++) {\n        if (x[i] != x[i - 1] || y[i] != y[i - 1] + 1) {\n            X = x[i], Y = y[i];\n            break;\n        }\n    }\n    cout << X << \" \" << Y << endl;\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

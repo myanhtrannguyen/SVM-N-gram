@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-489",
+    "problem_id": "p00615",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nint main() {\n    int n, m;\n    while (std::cin >> n >> m) {\n        if (n == 0 && m == 0) break;\n\n        std::vector<int> tl(n), tr(m);\n        for (int i = 0; i < n; ++i) std::cin >> tl[i];\n        for (int i = 0; i < m; ++i) std::cin >> tr[i];\n\n        std::sort(tl.begin(), tl.end());\n        std::sort(tr.begin(), tr.end());\n\n        int i = 0, j = 0;\n        int max_interval = 0;\n        int prev_time = 0;\n\n        while (i < n && j < m) {\n            if (tl[i] < tr[j]) {\n                max_interval = std::max(max_interval, tr[j] - prev_time);\n                prev_time = tl[i];\n                ++i;\n            } else {\n                max_interval = std::max(max_interval, tr[j] - prev_time);\n                prev_time = tr[j];\n                ++j;\n            }\n        }\n\n        max_interval = std::max(max_interval, 1000000 - prev_time);\n\n        std::cout << max_interval << std::endl;\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

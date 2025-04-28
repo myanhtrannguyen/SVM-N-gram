@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-100",
+    "problem_id": "p00025",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n\nint main() {\n    int a[4], b[4], hit = 0, blow = 0;\n    int i, j;\n\n    while (scanf(\"%d %d %d %d\", &a[0], &a[1], &a[2], &a[3]) == 4) {\n        for (i = 0; i < 4; i++) {\n            scanf(\"%d\", &b[i]);\n        }\n\n        for (i = 0; i < 4; i++) {\n            for (j = 0; j < 4; j++) {\n                if (a[i] == b[j]) {\n                    if (i == j) {\n                        hit++;\n                    } else {\n                        blow++;\n                    }\n                }\n            }\n        }\n\n        printf(\"%d %d\\n\", hit, blow);\n        hit = 0;\n        blow = 0;\n\n        for (i = 0; i < 4; i++) {\n            scanf(\"%*d\");\n        }\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

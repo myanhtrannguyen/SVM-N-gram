@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1448",
+    "problem_id": "p02769",
+    "language": "Python",
+    "solution": "```python\nMOD = 10**9 + 7\n\ndef nCr(n, r):\n    if r > n - r:\n        r = n - r\n    ans = 1\n    for i in range(r):\n        ans = (ans * (n - i)) % MOD\n        ans = (ans * pow(i + 1, MOD - 2, MOD)) % MOD\n    return ans\n\ndef solve():\n    n, k = map(int, input().split())\n    ans = 0\n    for i in range(n + 1):\n        if k >= i * (n - i):\n            ans += nCr(n, i) * pow(n - i, k - i * (n - i), MOD)\n            ans %= MOD\n    print(ans)\n\nif __name__ == \"__main__\":\n    solve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

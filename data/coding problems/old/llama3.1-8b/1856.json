@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1856",
+    "problem_id": "p03143",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nusing namespace std;\n\nconst int N = 1e5 + 5;\n\nint n, m;\nint x[N], y[N];\nvector<int> g[N];\nint sz[N], vis[N];\n\nvoid dfs(int u) {\n    vis[u] = 1;\n    sz[u] = 1;\n    for (int v : g[u]) {\n        if (!vis[v]) {\n            dfs(v);\n            sz[u] += sz[v];\n        }\n    }\n}\n\nint main() {\n    ios_base::sync_with_stdio(false);\n    cin.tie(nullptr);\n\n    cin >> n >> m;\n    for (int i = 1; i <= n; i++) {\n        cin >> x[i];\n    }\n    for (int i = 1; i <= m; i++) {\n        int u, v;\n        cin >> u >> v >> y[i];\n        g[u].push_back(v);\n        g[v].push_back(u);\n    }\n\n    int ans = 0;\n    for (int i = 1; i <= m; i++) {\n        int u, v;\n        cin >> u >> v >> y[i];\n        if (sz[u] + x[u] < y[i]) {\n            ans++;\n        } else {\n            dfs(u);\n            if (sz[v] + x[v] < y[i]) {\n                ans++;\n            } else {\n                dfs(v);\n            }\n        }\n    }\n\n    cout << ans << '\\n';\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

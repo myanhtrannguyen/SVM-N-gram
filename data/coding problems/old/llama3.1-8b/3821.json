@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3821",
+    "problem_id": "p02276",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\nusing namespace std;\n\nvoid swap(int* a, int* b) {\n    int temp = *a;\n    *a = *b;\n    *b = temp;\n}\n\nint partition(int A[], int p, int r) {\n    int x = A[r];\n    int i = p - 1;\n    for (int j = p; j < r; j++) {\n        if (A[j] <= x) {\n            i++;\n            swap(&A[i], &A[j]);\n        }\n    }\n    swap(&A[i + 1], &A[r]);\n    return i + 1;\n}\n\nvoid quickSort(int A[], int p, int r) {\n    if (p < r) {\n        int q = partition(A, p, r);\n        quickSort(A, p, q - 1);\n        quickSort(A, q + 1, r);\n    }\n}\n\nint main() {\n    int n;\n    cin >> n;\n    int A[n];\n    for (int i = 0; i < n; i++) {\n        cin >> A[i];\n    }\n    quickSort(A, 0, n - 1);\n    for (int i = 0; i < n; i++) {\n        if (A[i] == A[n - 1]) {\n            cout << \"[\" << A[i] << \"] \";\n        } else {\n            cout << A[i] << \" \";\n        }\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

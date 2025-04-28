@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1097",
+    "problem_id": "p00811",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <cmath>\n#include <algorithm>\n\nbool isPrime(int n) {\n    if (n <= 1) return false;\n    if (n == 2) return true;\n    if (n % 2 == 0) return false;\n    for (int i = 3; i <= std::sqrt(n); i += 2) {\n        if (n % i == 0) return false;\n    }\n    return true;\n}\n\nint main() {\n    while (true) {\n        int m, a, b;\n        std::cin >> m >> a >> b;\n        if (m == 0 && a == 0 && b == 0) break;\n\n        int p = 0, q = 0;\n        for (int i = 2; i <= m; ++i) {\n            if (isPrime(i)) {\n                for (int j = 2; j <= m; ++j) {\n                    if (isPrime(j)) {\n                        if (a * j <= b * i && i / j >= a / b && i / j <= 1) {\n                            if (i * j > p * q) {\n                                p = i;\n                                q = j;\n                            }\n                        }\n                    }\n                }\n            }\n        }\n\n        std::cout << p << \" \" << q << std::endl;\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

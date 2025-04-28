@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3132",
+    "problem_id": "p01711",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <string.h>\n\n#define MAX 128\n\nint pow2[MAX];\nint filter[MAX];\nint filter2[MAX];\n\nint main() {\n    int i, j, k;\n    int n;\n\n    pow2[0] = 1;\n    for (i = 1; i < MAX; i++) {\n        pow2[i] = pow2[i - 1] * 2;\n    }\n\n    while (1) {\n        char str[MAX];\n        scanf(\"%s\", str);\n        if (strcmp(str, \"#\") == 0) {\n            break;\n        }\n\n        for (i = 0; i < MAX; i++) {\n            filter[i] = str[i] - '0';\n        }\n\n        for (i = 0; i < MAX; i++) {\n            filter2[i] = 0;\n            for (j = 0; j < 7; j++) {\n                for (k = 0; k < 7; k++) {\n                    if (j != 3) {\n                        filter2[i] += filter[pow2[j] + pow2[k]] * pow2[j + k];\n                    }\n                }\n            }\n        }\n\n        int flag = 1;\n        for (i = 0; i < MAX; i++) {\n            if (filter[i] != filter2[i]) {\n                flag = 0;\n                break;\n            }\n        }\n\n        if (flag) {\n            printf(\"yes\\n\");\n        } else {\n            printf(\"no\\n\");\n        }\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

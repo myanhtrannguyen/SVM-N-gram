@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-464",
+    "problem_id": "p00609",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint compare(const void *a, const void *b) {\n    int *x = (int *)a;\n    int *y = (int *)b;\n    return (*x - *y);\n}\n\nint main() {\n    int T;\n    scanf(\"%d\", &T);\n    while (T--) {\n        int N, M, R;\n        scanf(\"%d %d %d\", &N, &M, &R);\n        int X[N], Y[N], X1[M], Y1[M];\n        for (int i = 0; i < N; i++) {\n            scanf(\"%d %d\", &X[i], &Y[i]);\n        }\n        for (int i = 0; i < M; i++) {\n            scanf(\"%d %d\", &X1[i], &Y1[i]);\n        }\n        qsort(X, N, sizeof(int), compare);\n        qsort(Y, N, sizeof(int), compare);\n        qsort(X1, M, sizeof(int), compare);\n        qsort(Y1, M, sizeof(int), compare);\n        int i = 0, j = 0, ans = 0;\n        while (i < N && j < M) {\n            if (X[i] - X1[j] <= 2 * R && Y[i] - Y1[j] <= 2 * R) {\n                ans++;\n                j++;\n            } else {\n                i++;\n            }\n        }\n        printf(\"%d\\n\", ans);\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2708",
+    "problem_id": "p03672",
+    "language": "Python",
+    "solution": "```python\ndef longest_even_string(s):\n    n = len(s)\n    for i in range(n // 2, 0, -1):\n        if n % i == 0 and s[:n-i] == s[n-i:]:\n            return i\n    return 0\n\ns = input()\nprint(longest_even_string(s))\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

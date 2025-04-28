@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3390",
+    "problem_id": "p01946",
+    "language": "Java",
+    "solution": "```java\nimport java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n\n        int S = scanner.nextInt();\n        int T = scanner.nextInt();\n        int D = scanner.nextInt();\n\n        int[] w = new int[D];\n        for (int i = 0; i < D; i++) {\n            w[i] = scanner.nextInt();\n        }\n\n        int day = 0;\n        while (true) {\n            day++;\n            if (S <= T) {\n                System.out.println(day);\n                break;\n            }\n            S += w[day % D];\n        }\n    }\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

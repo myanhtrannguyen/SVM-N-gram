@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1363",
+    "problem_id": "p00877",
+    "language": "Python",
+    "solution": "```python\ndef separate_points():\n    while True:\n        try:\n            n, m = map(int, input().split())\n            points = []\n            for _ in range(n + m):\n                x, y = map(int, input().split())\n                points.append((x, y))\n            if n == 0 or m == 0:\n                print(\"YES\")\n                continue\n            points.sort(key=lambda x: x[0])\n            slope = None\n            for i in range(n + m - 1):\n                x1, y1 = points[i]\n                x2, y2 = points[i + 1]\n                if y2 - y1 != 0:\n                    slope = (y2 - y1) / (x2 - x1)\n                    break\n            if slope is None:\n                print(\"NO\")\n                continue\n            for i in range(n + m):\n                x, y = points[i]\n                if (y - points[0][1]) * slope != x - points[0][0]:\n                    print(\"NO\")\n                    break\n            else:\n                print(\"YES\")\n        except ValueError:\n            break\n\nseparate_points()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

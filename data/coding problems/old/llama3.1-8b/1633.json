@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1633",
+    "problem_id": "p02948",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n#define MAX_N 100005\n\ntypedef struct {\n    int a, b;\n} Job;\n\nint compare_jobs(const void *a, const void *b) {\n    Job *ja = (Job *)a;\n    Job *jb = (Job *)b;\n    return (ja->a - jb->a);\n}\n\nint main() {\n    int n, m;\n    scanf(\"%d %d\", &n, &m);\n\n    Job jobs[MAX_N];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d %d\", &jobs[i].a, &jobs[i].b);\n    }\n\n    qsort(jobs, n, sizeof(Job), compare_jobs);\n\n    int dp[MAX_N];\n    memset(dp, 0, sizeof(dp));\n\n    for (int i = 0; i < n; i++) {\n        for (int j = m; j >= jobs[i].a; j--) {\n            dp[j] = dp[j] > dp[j - jobs[i].a] + jobs[i].b ? dp[j] : dp[j - jobs[i].a] + jobs[i].b;\n        }\n    }\n\n    int max_reward = 0;\n    for (int i = 0; i <= m; i++) {\n        max_reward = max_reward > dp[i] ? max_reward : dp[i];\n    }\n\n    printf(\"%d\\n\", max_reward);\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

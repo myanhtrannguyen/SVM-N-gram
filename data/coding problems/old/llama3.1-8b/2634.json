@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2634",
+    "problem_id": "p03654",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nusing namespace std;\n\nconst int N = 1e5 + 5;\n\nint n;\nvector<int> g[N];\nint d[N];\nint p[N];\n\nvoid dfs(int u, int par) {\n    for (int v : g[u]) {\n        if (v == par) continue;\n        dfs(v, u);\n        p[u] = max(p[u], p[v] + d[u] - d[v]);\n    }\n    p[u] = max(p[u], n - 1 - p[u]);\n}\n\nint main() {\n    ios_base::sync_with_stdio(false);\n    cin.tie(nullptr);\n\n    cin >> n;\n    for (int i = 1; i < n; i++) {\n        int u, v, w;\n        cin >> u >> v >> w;\n        g[u].push_back(v);\n        g[v].push_back(u);\n        d[u] = w;\n        d[v] = w;\n    }\n\n    dfs(1, 0);\n    int ans = 0;\n    for (int i = 1; i <= n; i++) {\n        ans = max(ans, p[i]);\n    }\n\n    cout << ans << '\\n';\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

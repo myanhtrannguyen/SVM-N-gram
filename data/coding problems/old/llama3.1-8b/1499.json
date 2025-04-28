@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1499",
+    "problem_id": "p02782",
+    "language": "Java",
+    "solution": "```java\nimport java.io.*;\nimport java.util.*;\n\npublic class Main {\n    static final int MOD = 1000000007;\n    static final int MAX = 1000000;\n\n    static long[][] C = new long[MAX + 1][MAX + 1];\n\n    public static void main(String[] args) throws IOException {\n        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));\n        PrintWriter pw = new PrintWriter(System.out);\n\n        for (int i = 0; i <= MAX; i++) {\n            C[i][0] = 1;\n            for (int j = 1; j <= i; j++) {\n                C[i][j] = (C[i - 1][j] + C[i - 1][j - 1]) % MOD;\n            }\n        }\n\n        StringTokenizer st = new StringTokenizer(br.readLine());\n        int r1 = Integer.parseInt(st.nextToken());\n        int c1 = Integer.parseInt(st.nextToken());\n        int r2 = Integer.parseInt(st.nextToken());\n        int c2 = Integer.parseInt(st.nextToken());\n\n        long ans = 0;\n        for (int i = r1; i <= r2; i++) {\n            for (int j = c1; j <= c2; j++) {\n                ans = (ans + C[i + j][i] % MOD) % MOD;\n            }\n        }\n\n        pw.println(ans);\n        pw.close();\n    }\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

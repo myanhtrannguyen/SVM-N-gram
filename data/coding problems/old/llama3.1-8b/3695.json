@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3695",
+    "problem_id": "p02244",
+    "language": "Python",
+    "solution": "```python\ndef print_board(board):\n    for row in board:\n        print(''.join(row))\n\ndef is_safe(board, row, col):\n    for i in range(row):\n        if board[i][col] == 'Q':\n            return False\n        if col - (row - i) >= 0 and board[i][col - (row - i)] == 'Q':\n            return False\n        if col + (row - i) < 8 and board[i][col + (row - i)] == 'Q':\n            return False\n    return True\n\ndef solve_n_queens(n, k, board, row):\n    if row == n:\n        return True\n    if row >= k:\n        return False\n    for col in range(8):\n        if is_safe(board, row, col):\n            board[row][col] = 'Q'\n            if solve_n_queens(n, k, board, row + 1):\n                return True\n            board[row][col] = '.'\n    return False\n\ndef find_solution(k, queens):\n    board = [['.' for _ in range(8)] for _ in range(8)]\n    for r, c in queens:\n        board[r][c] = 'Q'\n    solve_n_queens(8, k, board, 0)\n    print_board(board)\n\nk = int(input())\nqueens = []\nfor _ in range(k):\n    r, c = map(int, input().split())\n    queens.append((r - 1, c - 1))\nfind_solution(k, queens)\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-135",
+    "problem_id": "p00103",
+    "language": "Python",
+    "solution": "```python\nn = int(input())\n\nfor _ in range(n):\n    score = 0\n    outs = 0\n    runners = [0, 0, 0]\n    events = input().split()\n\n    for event in events:\n        if event == \"HIT\":\n            runners[0] += 1\n        elif event == \"HOMERUN\":\n            score += sum(runners) + 1\n            runners = [0, 0, 0]\n        elif event == \"OUT\":\n            outs += 1\n            if outs == 3:\n                break\n\n    print(score)\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

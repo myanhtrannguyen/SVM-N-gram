@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-347",
+    "problem_id": "p00397",
+    "language": "Python",
+    "solution": "```python\ndef kth_number(n, k):\n    a = [0] * (n + 1)\n    for i in range(1, n + 1):\n        a[i] = i\n    for i in range(1, n + 1):\n        for j in range(i * 2, n + 1, i):\n            a[j] ^= a[i]\n    return a[k]\n\nn, k = map(int, input().split())\na = list(map(int, input().split()))\nprint(kth_number(n, k))\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

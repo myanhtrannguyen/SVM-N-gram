@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2624",
+    "problem_id": "p03651",
+    "language": "Python",
+    "solution": "```python\nimport sys\n\ndef solve():\n    n, k = map(int, sys.stdin.readline().split())\n    a = list(map(int, sys.stdin.readline().split()))\n\n    if k in a:\n        print(\"POSSIBLE\")\n        return\n\n    a.sort()\n    for i in range(n - 1):\n        if abs(a[i] - a[i + 1]) == k:\n            print(\"POSSIBLE\")\n            return\n\n    for i in range(n - 1):\n        if (a[i] - a[i + 1]) % 2 == 0 and (a[i + 1] - k) % 2 == 0:\n            print(\"POSSIBLE\")\n            return\n        if (a[i] - a[i + 1]) % 2 == 1 and (a[i] - k) % 2 == 1:\n            print(\"POSSIBLE\")\n            return\n\n    print(\"IMPOSSIBLE\")\n\nt = 1\nwhile t > 0:\n    solve()\n    t -= 1\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

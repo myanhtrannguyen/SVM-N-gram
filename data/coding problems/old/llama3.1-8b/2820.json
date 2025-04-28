@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2820",
+    "problem_id": "p03700",
+    "language": "Python",
+    "solution": "```python\nimport sys\n\nn, a, b = map(int, input().split())\nh = list(map(int, input().split()))\n\ndef solve():\n    ans = 0\n    for i in range(n):\n        if h[i] <= b:\n            continue\n        h[i] -= b\n        ans += 1\n        for j in range(n):\n            if j != i and h[j] > 0:\n                h[j] -= (a - b)\n                if h[j] <= 0:\n                    ans += 1\n                    h[j] = 0\n    print(ans)\n\nsolve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

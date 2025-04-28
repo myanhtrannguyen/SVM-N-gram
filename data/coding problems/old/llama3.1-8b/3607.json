@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3607",
+    "problem_id": "p02092",
+    "language": "Python",
+    "solution": "```python\nimport sys\ninput = sys.stdin.readline\n\nN, K = map(int, input().split())\nA = list(map(int, input().split()))\nR = list(map(int, input().split()))\nB = list(map(int, input().split()))\n\nR.sort()\nB.sort()\n\ndef check(x):\n    r = 0\n    b = 0\n    for i in range(N):\n        if r + B[b] >= A[i]:\n            r += B[b] - A[i]\n            b += 1\n        elif b + R[r] >= A[i]:\n            b += R[r] - A[i]\n            r += 1\n        else:\n            return False\n    return True\n\nl, r = 0, 2 * K\nwhile l < r:\n    mid = (l + r) // 2\n    if check(mid):\n        r = mid\n    else:\n        l = mid + 1\n\nif check(l):\n    print(l)\nelse:\n    print(-1)\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

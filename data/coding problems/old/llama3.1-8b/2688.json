@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2688",
+    "problem_id": "p03667",
+    "language": "Python",
+    "solution": "```python\nimport sys\ninput = sys.stdin.readline\n\nN, M = map(int, input().split())\nA = [0] + list(map(int, input().split()))\nX = [0] * (M + 1)\nY = [0] * (M + 1)\nfor i in range(1, M + 1):\n    X[i], Y[i] = map(int, input().split())\n\nclass BIT:\n    def __init__(self, n):\n        self.n = n\n        self.tree = [0] * (n + 1)\n\n    def update(self, i, x):\n        while i <= self.n:\n            self.tree[i] += x\n            i += i & -i\n\n    def query(self, i):\n        res = 0\n        while i:\n            res += self.tree[i]\n            i -= i & -i\n\n    def range_query(self, l, r):\n        return self.query(r) - self.query(l - 1)\n\ndef solve():\n    bit = BIT(N)\n    cnt = [0] * (N + 1)\n    for i in range(1, N + 1):\n        bit.update(A[i], 1)\n        cnt[A[i]] += 1\n    ans = 0\n    for i in range(1, M + 1):\n        bit.update(X[i], -1)\n        bit.update(Y[i], 1)\n        cnt[Y[i]] += 1\n        cnt[X[i]] -= 1\n        ans = max(ans, N - bit.range_query(1, N))\n    print(ans - cnt[1])\n\nfor _ in range(1, M + 1):\n    solve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

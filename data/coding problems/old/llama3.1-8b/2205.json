@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2205",
+    "problem_id": "p03547",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <ctype.h>\n\nint main() {\n    char x, y;\n\n    scanf(\" %c %c\", &x, &y);\n\n    if (x == y) {\n        printf(\"=\");\n    } else if (x == 'A' && y == 'B' || x == 'B' && y == 'C' || x == 'C' && y == 'D' ||\n               x == 'D' && y == 'E' || x == 'E' && y == 'F' || x == 'F' && y == 'A' ||\n               x == 'A' && y == 'C' || x == 'B' && y == 'D' || x == 'C' && y == 'E' ||\n               x == 'D' && y == 'F' || x == 'E' && y == 'A' || x == 'F' && y == 'B') {\n        printf(\">\");\n    } else {\n        printf(\"<\");\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

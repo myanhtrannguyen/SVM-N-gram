@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-957",
+    "problem_id": "p00776",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <string>\n#include <algorithm>\n\nvoid solve(const std::string& s) {\n    std::vector<std::string> candidates;\n    std::string t = s;\n    for (int i = 'b'; i <= 'z'; ++i) {\n        while (t.size() > 0 && t[0] == i + 1) {\n            t.erase(0, 1);\n        }\n        if (t.size() > 0 && t[0] == (char)i) {\n            t[0] = (char)(i - 1);\n        }\n        candidates.push_back(t);\n    }\n    std::sort(candidates.begin(), candidates.end());\n    int n = candidates.size();\n    if (n <= 10) {\n        for (const auto& c : candidates) {\n            std::cout << c << std::endl;\n        }\n    } else {\n        for (int i = 0; i < 5; ++i) {\n            std::cout << candidates[i] << std::endl;\n        }\n        for (int i = n - 5; i < n; ++i) {\n            std::cout << candidates[i] << std::endl;\n        }\n    }\n    std::cout << n << std::endl;\n}\n\nint main() {\n    std::string s;\n    while (std::getline(std::cin, s)) {\n        if (s == \"#\") {\n            break;\n        }\n        solve(s);\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

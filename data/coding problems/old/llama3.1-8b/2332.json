@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2332",
+    "problem_id": "p03578",
+    "language": "Python",
+    "solution": "```python\nfrom collections import Counter\n\nn = int(input())\ndifficulties = list(map(int, input().split()))\nm = int(input())\ntargets = list(map(int, input().split()))\n\ndifficulties.sort()\ntargets.sort()\n\ndiff_count = Counter(difficulties)\ntarget_count = Counter(targets)\n\nfor target in target_count:\n    if diff_count[target] < target_count[target]:\n        print(\"NO\")\n        exit()\n\nprint(\"YES\")\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

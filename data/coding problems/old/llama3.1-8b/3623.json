@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3623",
+    "problem_id": "p02096",
+    "language": "Python",
+    "solution": "```python\ndef restore_sequence():\n    t = int(input())\n    for _ in range(t):\n        n, k = map(int, input().split())\n        c = list(map(int, input().split()))\n        a = [0] * n\n        for i in range(n - 1, -1, -1):\n            a[i] = pow(k, i, 65537) * c[i] % 65537\n            for j in range(i - 1, -1, -1):\n                a[j] = (k * a[j + 1] + a[j + 2]) % 65537\n        print(*a)\n\nrestore_sequence()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

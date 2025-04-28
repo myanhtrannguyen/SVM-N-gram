@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-559",
+    "problem_id": "p00653",
+    "language": "Python",
+    "solution": "```python\nimport sys\n\ndef solve():\n    r, c, q = map(int, sys.stdin.readline().split())\n    grid = [list(map(int, sys.stdin.readline().split())) for _ in range(r)]\n    for _ in range(q):\n        r1, c1, r2, c2 = map(int, sys.stdin.readline().split())\n        r1 -= 1\n        c1 -= 1\n        r2 -= 1\n        c2 -= 1\n        print(min(min(row[c1:c2+1]) for row in grid[r1:r2+1]))\n\nif __name__ == \"__main__\":\n    t = 1\n    for _ in range(t):\n        solve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

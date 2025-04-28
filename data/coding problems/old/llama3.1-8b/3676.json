@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3676",
+    "problem_id": "p02240",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\n#define MAX_N 100000\n#define MAX_M 100000\n\nint parent[MAX_N];\n\nint find(int x) {\n    if (parent[x] == x) return x;\n    return parent[x] = find(parent[x]);\n}\n\nvoid union_set(int x, int y) {\n    int root_x = find(x);\n    int root_y = find(y);\n    if (root_x != root_y) parent[root_x] = root_y;\n}\n\nint main() {\n    int n, m, q;\n    scanf(\"%d %d\", &n, &m);\n    for (int i = 0; i < n; i++) parent[i] = i;\n    for (int i = 0; i < m; i++) {\n        int x, y;\n        scanf(\"%d %d\", &x, &y);\n        union_set(x, y);\n    }\n    scanf(\"%d\", &q);\n    for (int i = 0; i < q; i++) {\n        int x, y;\n        scanf(\"%d %d\", &x, &y);\n        if (find(x) == find(y)) printf(\"yes\\n\");\n        else printf(\"no\\n\");\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

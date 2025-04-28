@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-808",
+    "problem_id": "p00739",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\n#define MAX_W 12\n#define MAX_H 12\n\nint w, h;\nint grid[MAX_H][MAX_W];\n\nint dfs(int x, int y, int color) {\n    if (x < 0 || x >= w || y < 0 || y >= h || grid[y][x] != 1) {\n        return 0;\n    }\n    grid[y][x] = color;\n    return dfs(x - 1, y, color) + dfs(x + 1, y, color) + dfs(x, y - 1, color) + dfs(x, y + 1, color);\n}\n\nint is_bipartite() {\n    int color = 2;\n    for (int i = 0; i < h; i++) {\n        for (int j = 0; j < w; j++) {\n            if (grid[i][j] == 1) {\n                if (dfs(j, i, color) % 2 == 0) {\n                    return 1;\n                }\n                color++;\n            }\n        }\n    }\n    return 0;\n}\n\nint main() {\n    int t;\n    scanf(\"%d\", &t);\n    while (t--) {\n        scanf(\"%d %d\", &w, &h);\n        for (int i = 0; i < h; i++) {\n            for (int j = 0; j < w; j++) {\n                scanf(\"%1d\", &grid[i][j]);\n            }\n        }\n        if (is_bipartite()) {\n            printf(\"YES\\n\");\n        } else {\n            printf(\"NO\\n\");\n        }\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

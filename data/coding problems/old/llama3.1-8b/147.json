@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-147",
+    "problem_id": "p00106",
+    "language": "Python",
+    "solution": "```python\ndef calculate_cost(amount):\n    costs = {\n        'A': {'unit_price': 380, 'discount': 20, 'discount_unit': 5},\n        'B': {'unit_price': 550, 'discount': 15, 'discount_unit': 4},\n        'C': {'unit_price': 850, 'discount': 12, 'discount_unit': 3}\n    }\n\n    min_cost = float('inf')\n\n    for shop in costs:\n        num_bags = amount // 200 if shop == 'A' else amount // 300 if shop == 'B' else amount // 500\n        discounted_bags = num_bags // costs[shop]['discount_unit']\n        remaining_bags = num_bags - discounted_bags\n\n        cost = (costs[shop]['unit_price'] * (discounted_bags * costs[shop]['discount_unit'] + remaining_bags)) * (1 - costs[shop]['discount'] / 100)\n\n        min_cost = min(min_cost, cost)\n\n    return int(min_cost)\n\nt = int(input())\nfor _ in range(t):\n    amount = int(input())\n    if amount == 0:\n        break\n    print(calculate_cost(amount))\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1592",
+    "problem_id": "p02937",
+    "language": "Python",
+    "solution": "```python\nimport sys\n\ns = input()\nt = input()\n\nn = len(s)\nm = len(t)\n\ni = 0\nj = 0\nans = 0\n\nwhile j < m:\n    if i < n and s[i] == t[j]:\n        j += 1\n        i += 1\n        ans = max(ans, i)\n    else:\n        i = 0\n        ans = max(ans, i)\n        i += 1\n\nif j == m:\n    print(ans * 100)\nelse:\n    print(-1)\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

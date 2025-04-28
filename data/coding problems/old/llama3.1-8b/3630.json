@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3630",
+    "problem_id": "p02225",
+    "language": "Java",
+    "solution": "```java\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        int n = scanner.nextInt();\n        scanner.nextLine(); // Consume newline left-over\n\n        Map<String, Integer> frequencyMap = new HashMap<>();\n\n        for (int i = 0; i < n; i++) {\n            String word = scanner.nextLine().toLowerCase();\n            frequencyMap.put(word, frequencyMap.getOrDefault(word, 0) + 1);\n        }\n\n        List<Map.Entry<String, Integer>> list = new ArrayList<>(frequencyMap.entrySet());\n        Collections.sort(list, (o1, o2) -> o2.getValue().compareTo(o1.getValue()));\n\n        for (Map.Entry<String, Integer> entry : list) {\n            System.out.println(entry.getKey() + \" \" + entry.getValue());\n        }\n    }\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

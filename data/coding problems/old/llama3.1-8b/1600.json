@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1600",
+    "problem_id": "p02939",
+    "language": "Python",
+    "solution": "```python\ndef maxPartition(s):\n    n = len(s)\n    last = {}\n    max_len = 0\n    for i in range(n):\n        if s[i] not in last:\n            last[s[i]] = i\n        else:\n            for c in last:\n                if last[c] < i - 1 and s[i] == c:\n                    last[c] = i\n            last[s[i]] = i\n        max_len = max(max_len, len(last))\n    return max_len\n\ns = input()\nprint(maxPartition(s))\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

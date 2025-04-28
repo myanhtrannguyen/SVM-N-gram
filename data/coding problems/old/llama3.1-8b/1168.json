@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1168",
+    "problem_id": "p00829",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n#define MAX 1000\n#define MAXN 9\n\nint main() {\n    int T;\n    scanf(\"%d\", &T);\n    while (T--) {\n        int N[MAXN];\n        for (int i = 0; i < MAXN; i++) {\n            char str[20];\n            scanf(\"%s\", str);\n            sscanf(str, \"%x\", &N[i]);\n        }\n        int sum = 0;\n        for (int i = 0; i < MAXN - 1; i++) {\n            sum = (sum + N[i]) % (1 << 32);\n        }\n        int key = 0;\n        for (int i = 0; i < 32; i++) {\n            int bit_sum = (sum >> i) & 1;\n            int bit_N9 = (N[MAXN - 1] >> i) & 1;\n            if (bit_sum != bit_N9) {\n                key |= 1 << i;\n            }\n        }\n        printf(\"%x\\n\", key);\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

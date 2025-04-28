@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-111",
+    "problem_id": "p00027",
+    "language": "Python",
+    "solution": "```python\nfrom datetime import datetime\n\ndef get_day_of_week(m, d):\n    date = datetime(2004, m, d)\n    return date.strftime(\"%A\")\n\ndef main():\n    while True:\n        line = input()\n        if line == \"0 0\":\n            break\n        m, d = map(int, line.split())\n        print(get_day_of_week(m, d))\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

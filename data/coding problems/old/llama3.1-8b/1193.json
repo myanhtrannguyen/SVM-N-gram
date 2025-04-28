@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1193",
+    "problem_id": "p00835",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <cmath>\n#include <iomanip>\n\nusing namespace std;\n\ndouble calculateSurfaceArea(int n, int points[][2]) {\n    double totalSurfaceArea = 0;\n    for (int i = 0; i < n; i++) {\n        int x1 = points[i][0];\n        int y1 = points[i][1];\n        int x2 = points[(i + 1) % n][0];\n        int y2 = points[(i + 1) % n][1];\n\n        double baseArea = abs(x2 - x1) * abs(y2 - y1);\n        double height = max(abs(x1), abs(y1));\n        double surfaceArea = 2 * baseArea + 2 * height * abs(x2 - x1);\n\n        totalSurfaceArea += surfaceArea;\n    }\n\n    return totalSurfaceArea;\n}\n\nint main() {\n    int n;\n    while (true) {\n        cin >> n;\n        if (n == 0) break;\n\n        int points[n][2];\n        for (int i = 0; i < n; i++) {\n            cin >> points[i][0] >> points[i][1];\n        }\n\n        double surfaceArea = calculateSurfaceArea(n, points);\n        cout << fixed << setprecision(5) << surfaceArea << endl;\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

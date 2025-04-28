@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3356",
+    "problem_id": "p01884",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n#define N 100000\n\ntypedef struct {\n    int num;\n    int parent;\n    int child;\n    int depth;\n    int size;\n    int similar;\n} Node;\n\nNode nodes[N];\nint num_nodes;\n\nvoid dfs(int node) {\n    nodes[node].depth = 0;\n    nodes[node].size = 1;\n    nodes[node].similar = 1;\n    nodes[node].parent = -1;\n    nodes[node].child = -1;\n\n    for (int i = nodes[node].child; i != -1; i = nodes[i].child) {\n        dfs(i);\n        nodes[node].size += nodes[i].size;\n        nodes[node].similar *= nodes[i].similar;\n    }\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    num_nodes = n;\n\n    for (int i = 1; i < n; i++) {\n        int a, b;\n        scanf(\"%d %d\", &a, &b);\n        nodes[b].parent = a;\n        nodes[a].child = b;\n    }\n\n    dfs(1);\n\n    long long ans = 0;\n    for (int i = 2; i < n; i++) {\n        if (nodes[i].similar == 1) {\n            ans += nodes[i].size;\n        }\n    }\n\n    printf(\"%lld\\n\", ans);\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

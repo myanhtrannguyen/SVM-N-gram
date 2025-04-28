@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-356",
+    "problem_id": "p00560",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n#define MAXN 3005\n\nint n, m, k;\nint a, b, c;\nint t;\nint s[MAXN];\nint dp[MAXN];\n\nint main() {\n    scanf(\"%d %d %d\", &n, &m, &k);\n    scanf(\"%d %d %d\", &a, &b, &c);\n    scanf(\"%d\", &t);\n    for (int i = 1; i <= m; i++) {\n        scanf(\"%d\", &s[i]);\n    }\n    s[m + 1] = n;\n    for (int i = 1; i <= m; i++) {\n        dp[i] = (s[i] - s[i - 1]) * b;\n    }\n    for (int i = 1; i <= m; i++) {\n        for (int j = 1; j <= i; j++) {\n            int d = (s[i] - s[j - 1]) * c;\n            if (dp[j - 1] + d <= t) {\n                dp[i] = dp[i] > dp[j - 1] + d ? dp[i] : dp[j - 1] + d;\n            }\n        }\n    }\n    int ans = 0;\n    for (int i = 1; i <= m; i++) {\n        int d = (s[i] - s[i - 1]) * c;\n        if (dp[i] + d <= t) {\n            ans = i;\n        }\n    }\n    int sum = 0;\n    for (int i = 1; i <= ans; i++) {\n        sum += (s[i] - s[i - 1]) - 1;\n    }\n    printf(\"%d\\n\", sum + 1);\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

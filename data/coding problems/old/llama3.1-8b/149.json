@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-149",
+    "problem_id": "p00107",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <cmath>\n\nint main() {\n    int a, b, c, n, i, j;\n    double r, result;\n\n    while (true) {\n        std::cin >> a >> b >> c;\n        if (a == 0 && b == 0 && c == 0) break;\n\n        std::cin >> n;\n        for (i = 0; i < n; i++) {\n            std::cin >> r;\n            result = std::pow(a, 2) + std::pow(b, 2) + std::pow(c, 2);\n            if (result <= std::pow(r, 2) * 4) {\n                std::cout << \"NA\" << std::endl;\n            } else {\n                std::cout << \"OK\" << std::endl;\n            }\n        }\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

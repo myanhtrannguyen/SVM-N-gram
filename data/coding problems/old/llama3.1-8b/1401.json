@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1401",
+    "problem_id": "p02758",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n#define MOD 998244353\n#define MAXN 200005\n\ntypedef struct {\n    int x, d;\n} Robot;\n\nint cmp(const void *a, const void *b) {\n    Robot *x = (Robot *)a;\n    Robot *y = (Robot *)b;\n    return x->x - y->x;\n}\n\nint n;\nRobot a[MAXN];\nint f[MAXN];\n\nint main() {\n    scanf(\"%d\", &n);\n    for (int i = 1; i <= n; i++) {\n        scanf(\"%d %d\", &a[i].x, &a[i].d);\n    }\n    qsort(a + 1, n, sizeof(Robot), cmp);\n    f[0] = 1;\n    for (int i = 1; i <= n; i++) {\n        int l = 1, r = i - 1;\n        while (l < r) {\n            int mid = (l + r + 1) >> 1;\n            if (a[i].x + a[i].d >= a[mid].x) {\n                l = mid;\n            } else {\n                r = mid - 1;\n            }\n        }\n        for (int j = 0; j <= i - 1; j++) {\n            if (a[i].x + a[i].d >= a[j].x) {\n                f[i] = (f[i] + f[j]) % MOD;\n            }\n        }\n        f[i] = (f[i] + MOD - f[r]) % MOD;\n    }\n    printf(\"%d\\n\", f[n]);\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

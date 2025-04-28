@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-139",
+    "problem_id": "p00104",
+    "language": "Python",
+    "solution": "```python\ndef magic_tile():\n    while True:\n        try:\n            H, W = map(int, input().split())\n            room = []\n            for _ in range(H):\n                room.append(input())\n            x, y = 0, 0\n            while True:\n                if room[y][x] == '>':\n                    x = (x + 1) % W\n                elif room[y][x] == '<':\n                    x = (x - 1) % W\n                elif room[y][x] == '^':\n                    y = (y - 1) % H\n                elif room[y][x] == 'v':\n                    y = (y + 1) % H\n                elif room[y][x] == '.':\n                    break\n                if (x, y) == (0, 0):\n                    print(\"LOOP\")\n                    break\n                print(x, y)\n        except ValueError:\n            break\n\nmagic_tile()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

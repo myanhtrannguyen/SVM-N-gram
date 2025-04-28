@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2021",
+    "problem_id": "p03378",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int n, m, x, i, j, cost = 0;\n    scanf(\"%d %d %d\", &n, &m, &x);\n    int* a = (int*)malloc((m + 1) * sizeof(int));\n    for (i = 0; i < m; i++) {\n        scanf(\"%d\", &a[i]);\n    }\n    a[m] = n;\n    for (i = 0; i < m; i++) {\n        if (a[i] < x && a[i + 1] > x) {\n            cost += a[i + 1] - a[i] - 1;\n        }\n    }\n    printf(\"%d\\n\", cost);\n    free(a);\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2004",
+    "problem_id": "p03373",
+    "language": "Python",
+    "solution": "```python\nimport sys\n\nA, B, C, X, Y = map(int, sys.stdin.readline().split())\n\nmin_cost = min(A * X, B * Y)\nab_pizzas = min((X + Y) // 2, (A + B) // C)\nmin_cost = min(min_cost, ab_pizzas * C + (X + Y - 2 * ab_pizzas) * min(A, B))\n\nprint(min_cost)\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3829",
+    "problem_id": "p02278",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nint minCostSort(int n, std::vector<int>& arr) {\n    std::vector<int> sortedArr = arr;\n    std::sort(sortedArr.begin(), sortedArr.end());\n    int cost = 0;\n    for (int i = 0; i < n; i++) {\n        if (arr[i] != sortedArr[i]) {\n            int temp = arr[i];\n            arr[i] = arr[std::lower_bound(sortedArr.begin(), sortedArr.end(), arr[i]) - sortedArr.begin()];\n            arr[std::lower_bound(sortedArr.begin(), sortedArr.end(), temp) - sortedArr.begin()] = temp;\n            cost += arr[i] + temp;\n        }\n    }\n    return cost;\n}\n\nint main() {\n    int n;\n    std::cin >> n;\n    std::vector<int> arr(n);\n    for (int i = 0; i < n; i++) {\n        std::cin >> arr[i];\n    }\n    std::cout << minCostSort(n, arr) << std::endl;\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

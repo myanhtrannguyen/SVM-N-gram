@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-403",
+    "problem_id": "p00593",
+    "language": "Python",
+    "solution": "```python\ndef zigzag(n):\n    matrix = [[0]*n for _ in range(n)]\n    count = 1\n    row, col = 0, 0\n    while count <= n*n:\n        matrix[row][col] = count\n        count += 1\n        if row == 0 and col < n-1:\n            col += 1\n        elif row == n-1 and col > 0:\n            row += 1\n        elif row > 0 and col == n-1:\n            row -= 1\n        elif row < n-1 and col == 0:\n            col += 1\n        elif (row - col) % 2 == 0:\n            row += 1\n        else:\n            col += 1\n    return matrix\n\ndef print_matrix(matrix):\n    for i in range(len(matrix)):\n        for j in range(len(matrix[0])):\n            print(f\"{matrix[i][j]:3d}\", end=\" \")\n        print()\n\ndef main():\n    case = 1\n    while True:\n        n = int(input())\n        if n == 0:\n            break\n        matrix = zigzag(n)\n        print(f\"Case {case}:\")\n        print_matrix(matrix)\n        case += 1\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

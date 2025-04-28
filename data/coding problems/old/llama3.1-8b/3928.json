@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3928",
+    "problem_id": "p02303",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <math.h>\n\n#define N 100000\n\nstruct point {\n    double x, y;\n};\n\nint compare(const void *a, const void *b) {\n    struct point *p1 = (struct point *)a;\n    struct point *p2 = (struct point *)b;\n    return (p1->x - p2->x) ? (p1->x - p2->x) : (p1->y - p2->y);\n}\n\ndouble closest_pair(struct point points[], int n) {\n    double min_distance = 1000000.0;\n    for (int i = 0; i < n; i++) {\n        for (int j = i + 1; j < n; j++) {\n            double distance = sqrt(pow(points[i].x - points[j].x, 2) + pow(points[i].y - points[j].y, 2));\n            if (distance < min_distance) {\n                min_distance = distance;\n            }\n        }\n    }\n    return min_distance;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    struct point points[n];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%lf %lf\", &points[i].x, &points[i].y);\n    }\n    qsort(points, n, sizeof(struct point), compare);\n    printf(\"%.9f\\n\", closest_pair(points, n));\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

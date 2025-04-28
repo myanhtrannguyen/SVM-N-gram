@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1629",
+    "problem_id": "p02947",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n#define N 100000\n#define M 10\n\nint main() {\n    int n;\n    char s[N][M + 1];\n\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%s\", s[i]);\n    }\n\n    int ans = 0;\n    for (int i = 0; i < n; i++) {\n        int cnt[M] = {0};\n        for (int j = 0; j < M; j++) {\n            cnt[s[i][j] - 'a']++;\n        }\n\n        for (int j = i + 1; j < n; j++) {\n            int match = 1;\n            int cnt2[M] = {0};\n            for (int k = 0; k < M; k++) {\n                cnt2[s[j][k] - 'a']++;\n            }\n\n            for (int k = 0; k < M; k++) {\n                if (cnt[k] != cnt2[k]) {\n                    match = 0;\n                    break;\n                }\n            }\n\n            if (match) {\n                ans++;\n            }\n        }\n    }\n\n    printf(\"%d\\n\", ans);\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

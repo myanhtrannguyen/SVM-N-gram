@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2299",
+    "problem_id": "p03570",
+    "language": "Java",
+    "solution": "```java\nimport java.util.HashMap;\nimport java.util.Map;\nimport java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        String s = scanner.next();\n        int n = s.length();\n        Map<Character, Integer> map = new HashMap<>();\n        for (int i = 0; i < n; i++) {\n            char c = s.charAt(i);\n            map.put(c, map.getOrDefault(c, 0) + 1);\n        }\n        int ans = 0;\n        for (int value : map.values()) {\n            if (value % 2 == 1) {\n                ans++;\n            }\n            ans += (value - 1) / 2;\n        }\n        System.out.println(ans);\n    }\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

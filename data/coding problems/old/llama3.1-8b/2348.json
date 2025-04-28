@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2348",
+    "problem_id": "p03582",
+    "language": "Python",
+    "solution": "```python\nimport sys\ninput = sys.stdin.readline\n\ndef solve():\n    x, y, z = map(int, input().split())\n    ans = []\n    for _ in range(x):\n        ans.append('a')\n    for _ in range(y):\n        ans.append('b')\n    for _ in range(z):\n        ans.append('c')\n    ans.sort()\n    for i in range(len(ans)):\n        if ans[i] == 'a':\n            ans[i] = '1'\n        elif ans[i] == 'b':\n            ans[i] = '2'\n        else:\n            ans[i] = '3'\n    print(''.join(ans))\n\nt = 1\nfor _ in range(t):\n    solve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1795",
+    "problem_id": "p03128",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n#define MAX 10000\n\nint matchsticks[10] = {2, 5, 5, 4, 5, 6, 3, 7, 6};\nchar max_num[10000];\n\nvoid dfs(int n, int m, int used, int idx) {\n    if (idx == m) {\n        int i;\n        int sum = 0;\n        for (i = 0; i < n; i++) {\n            sum += matchsticks[max_num[i] - '0'];\n        }\n        if (sum == used) {\n            for (i = 0; i < n; i++) {\n                printf(\"%c\", max_num[i]);\n            }\n            printf(\"\\n\");\n        }\n        return;\n    }\n    for (int i = 0; i <= 9; i++) {\n        if (i != 0 || idx == 0) {\n            max_num[n] = i + '0';\n            dfs(n + 1, m, used, idx + 1);\n        }\n    }\n}\n\nint main() {\n    int n, m;\n    scanf(\"%d %d\", &n, &m);\n    int i;\n    for (i = 0; i < m; i++) {\n        int a;\n        scanf(\"%d\", &a);\n        dfs(0, m, n, 0);\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

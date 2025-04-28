@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-190",
+    "problem_id": "p00358",
+    "language": "Java",
+    "solution": "```java\nimport java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        int H = scanner.nextInt();\n        int N = scanner.nextInt();\n        boolean[] inhibited = new boolean[H];\n        for (int i = 0; i < N; i++) {\n            int x = scanner.nextInt();\n            int y = scanner.nextInt();\n            inhibited[y] = true;\n        }\n        int count = 0;\n        for (int i = 0; i < H; i++) {\n            if (!inhibited[i]) {\n                count++;\n                for (int j = i + 1; j < H; j++) {\n                    if (!inhibited[j]) {\n                        count++;\n                        j = H;\n                    }\n                }\n            }\n        }\n        System.out.println(count);\n    }\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

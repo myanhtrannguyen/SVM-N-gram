@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2588",
+    "problem_id": "p03642",
+    "language": "Python",
+    "solution": "```python\nimport math\n\ndef is_prime(n):\n    if n <= 1:\n        return False\n    if n <= 3:\n        return True\n    if n % 2 == 0 or n % 3 == 0:\n        return False\n    i = 5\n    while i * i <= n:\n        if n % i == 0 or n % (i + 2) == 0:\n            return False\n        i += 6\n    return True\n\ndef solve():\n    n = int(input())\n    nums = list(map(int, input().split()))\n    nums.sort()\n    ans = 0\n    for i in range(n):\n        if i == 0:\n            p = nums[i]\n        else:\n            p = math.gcd(p, nums[i] - nums[i - 1])\n        while p >= 3 and is_prime(p):\n            ans += 1\n            j = nums[i] - nums[i - 1]\n            while j >= p:\n                j -= p\n            nums[i] = nums[i] - j\n            p = math.gcd(p, nums[i] - nums[i - 1])\n    print(ans + n)\n\nif __name__ == \"__main__\":\n    solve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

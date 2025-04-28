@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1584",
+    "problem_id": "p02935",
+    "language": "Python",
+    "solution": "```python\nimport sys\nimport math\n\ndef solve():\n    n = int(input())\n    v = list(map(int, input().split()))\n    v.sort(reverse=True)\n    dp = [[0.0 for _ in range(n)] for _ in range(n)]\n    for i in range(n):\n        dp[i][i] = v[i]\n    for length in range(2, n + 1):\n        for i in range(n - length + 1):\n            j = i + length - 1\n            dp[i][j] = (dp[i][j - 1] + dp[i + 1][j]) / 2\n    print(f\"{dp[0][n - 1]:.5f}\")\n\nif __name__ == \"__main__\":\n    solve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1698",
+    "problem_id": "p02964",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <map>\n#include <algorithm>\n\nusing namespace std;\n\nint main() {\n    int N;\n    long long K;\n    cin >> N >> K;\n\n    vector<int> A(N);\n    for (int i = 0; i < N; i++) {\n        cin >> A[i];\n    }\n\n    map<int, int> last;\n    for (int i = 0; i < N; i++) {\n        last[A[i]] = i;\n    }\n\n    vector<int> ans;\n    int i = 0;\n    while (i < N * K) {\n        int j = last[A[i % N]];\n        while (j < N * K - 1) {\n            ans.push_back(A[j + 1]);\n            j = last[A[j + 1]];\n        }\n        i++;\n    }\n\n    for (int i = ans.size() - 1; i >= 0; i--) {\n        cout << ans[i] << \" \";\n    }\n    cout << endl;\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

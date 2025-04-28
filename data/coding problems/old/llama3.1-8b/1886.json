@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1886",
+    "problem_id": "p03150",
+    "language": "Python",
+    "solution": "```python\ndef is_keyence(s):\n    for i in range(len(s)):\n        for j in range(i + 1, len(s) + 1):\n            substr = s[i:j]\n            if s.replace(substr, '') == 'keyence' and len(substr) == 1:\n                return 'YES'\n    return 'NO'\n\nt = 1\nfor _ in range(t):\n    s = input()\n    print(is_keyence(s))\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3133",
+    "problem_id": "p01711",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <string>\n#include <vector>\n#include <algorithm>\n\nusing namespace std;\n\nint main() {\n    string line;\n    vector<string> filters;\n    while (getline(cin, line)) {\n        if (line == \"#\") break;\n        filters.push_back(line);\n    }\n\n    for (int i = 0; i < filters.size(); i++) {\n        string filter = filters[i];\n        string filter2 = filters[i];\n        for (int j = 0; j < 4; j++) {\n            for (int k = 0; k < 32; k++) {\n                int bit = (k >> j) & 1;\n                int bit2 = (k >> (j + 4)) & 1;\n                filter2[k] = (filter[k] == '1' && bit == 1) ? '1' : '0';\n                filter2[k + 32] = (filter[k + 32] == '1' && bit2 == 1) ? '1' : '0';\n            }\n        }\n        if (filter == filter2) cout << \"yes\" << endl;\n        else cout << \"no\" << endl;\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

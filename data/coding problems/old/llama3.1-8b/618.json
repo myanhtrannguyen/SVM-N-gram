@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-618",
+    "problem_id": "p00691",
+    "language": "Java",
+    "solution": "```java\nimport java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        while (scanner.hasNextInt()) {\n            int z = scanner.nextInt();\n            int maxSum = 0;\n            for (int x = 1; x * x * x <= z * z * z; x++) {\n                for (int y = x; y * y * y <= z * z * z; y++) {\n                    if (x * x * x + y * y * y <= z * z * z) {\n                        maxSum = Math.max(maxSum, x * x * x + y * y * y);\n                    }\n                }\n            }\n            System.out.println(z * z * z - maxSum);\n        }\n        scanner.close();\n    }\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

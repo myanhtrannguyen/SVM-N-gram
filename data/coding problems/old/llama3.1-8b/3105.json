@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3105",
+    "problem_id": "p01704",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n#include <cmath>\n\nusing namespace std;\n\nstruct Flower {\n    double vw, pf, vf, th;\n};\n\nbool compareFlowers(Flower a, Flower b) {\n    return a.th < b.th;\n}\n\ndouble solve(vector<Flower>& flowers, int pw) {\n    double w = 0;\n    double cost = 0;\n    for (int i = 0; i < flowers.size(); i++) {\n        double f = (flowers[i].th - w * flowers[i].vw) / flowers[i].vf;\n        if (f > w) {\n            w = f;\n            cost += w * pw;\n        }\n        cost += flowers[i].pf * f;\n    }\n    return cost;\n}\n\nint main() {\n    int n;\n    while (cin >> n && n != 0) {\n        int pw;\n        cin >> pw;\n        vector<Flower> flowers(n);\n        for (int i = 0; i < n; i++) {\n            cin >> flowers[i].vw >> flowers[i].pf >> flowers[i].vf >> flowers[i].th;\n        }\n        sort(flowers.begin(), flowers.end(), compareFlowers);\n        double cost = solve(flowers, pw);\n        cout << fixed << setprecision(4) << cost << endl;\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

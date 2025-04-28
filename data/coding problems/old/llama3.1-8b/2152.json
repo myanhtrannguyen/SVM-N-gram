@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2152",
+    "problem_id": "p03410",
+    "language": "Python",
+    "solution": "```python\ndef xor_of_sums(n, a, b):\n    xor = 0\n    for i in range(n):\n        for j in range(n):\n            xor ^= (a[i] + b[j])\n    return xor\n\nn = int(input(\"Enter the value of n: \"))\na = list(map(int, input(\"Enter the first sequence of integers: \").split()))\nb = list(map(int, input(\"Enter the second sequence of integers: \").split()))\n\nprint(xor_of_sums(n, a, b))\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

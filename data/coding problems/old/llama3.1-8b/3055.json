@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3055",
+    "problem_id": "p01677",
+    "language": "Python",
+    "solution": "```python\ndef can_recover_uniquely(n, a):\n    broken = [i for i in range(n) if a[i] == 'x']\n    if len(broken) == 0:\n        return 'none'\n    if len(broken) == n:\n        return 'ambiguous'\n    for i in range(n):\n        if i in broken:\n            continue\n        if (i % 2 == 0 and a[i] > a[i-1] and a[i] > a[i+1]) or \\\n           (i % 2 != 0 and a[i] < a[i-1] and a[i] < a[i+1]):\n            return 'ambiguous'\n    return a[broken[0]]\n\nt = int(input())\nfor _ in range(t):\n    n = int(input())\n    a = list(map(str, input().split()))\n    print(can_recover_uniquely(n, a))\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

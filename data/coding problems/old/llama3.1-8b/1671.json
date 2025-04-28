@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1671",
+    "problem_id": "p02957",
+    "language": "Java",
+    "solution": "```java\nimport java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        int a = scanner.nextInt();\n        int b = scanner.nextInt();\n        int min = Math.min(a, b);\n        int max = Math.max(a, b);\n        int mid = (min + max) / 2;\n        int diff = Math.abs(a - mid);\n        int diff2 = Math.abs(b - mid);\n        if (diff == diff2) {\n            System.out.println(mid);\n        } else {\n            int min2 = Math.min(a, b);\n            int max2 = Math.max(a, b);\n            int mid2 = (min2 + max2 + 1) / 2;\n            int diff3 = Math.abs(a - mid2);\n            int diff4 = Math.abs(b - mid2);\n            if (diff3 == diff4) {\n                System.out.println(mid2);\n            } else {\n                System.out.println(\"IMPOSSIBLE\");\n            }\n        }\n    }\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

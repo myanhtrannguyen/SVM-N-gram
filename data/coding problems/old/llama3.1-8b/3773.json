@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3773",
+    "problem_id": "p02264",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <queue>\n#include <string>\n\nstruct Process {\n    std::string name;\n    int time;\n    int finishTime;\n};\n\nint main() {\n    int n, q;\n    std::cin >> n >> q;\n\n    std::queue<Process> queue;\n    for (int i = 0; i < n; i++) {\n        std::string name;\n        int time;\n        std::cin >> name >> time;\n        queue.push({name, time, 0});\n    }\n\n    while (!queue.empty()) {\n        Process process = queue.front();\n        queue.pop();\n\n        int timeHandled = std::min(q, process.time);\n        process.time -= timeHandled;\n        process.finishTime += timeHandled;\n\n        if (process.time > 0) {\n            queue.push(process);\n        } else {\n            std::cout << process.name << \" \" << process.finishTime << std::endl;\n        }\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

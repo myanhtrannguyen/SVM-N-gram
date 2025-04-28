@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-643",
+    "problem_id": "p00697",
+    "language": "Python",
+    "solution": "```python\nimport itertools\nimport re\n\ndef is_rotationally_equal(piece1, piece2):\n    return sorted(piece1) == sorted(piece2)\n\ndef is_rotationally_symmetric(piece):\n    return is_rotationally_equal(piece, piece[::-1])\n\ndef count_solutions(puzzle):\n    pieces = re.findall(r'\\w\\w\\w\\w', puzzle)\n    if len(set(pieces)) != len(pieces) or any(is_rotationally_equal(piece1, piece2) for piece1, piece2 in itertools.combinations(pieces, 2)) or any(is_rotationally_symmetric(piece) for piece in pieces):\n        return 0\n    solutions = set()\n    for rotation in itertools.permutations(pieces):\n        solution = ''.join(rotation)\n        solutions.add(solution)\n        for _ in range(3):\n            solution = solution[1:] + solution[0]\n            solutions.add(solution)\n    return len(solutions) // 4\n\ndef main():\n    n = int(input())\n    for _ in range(n):\n        puzzle = input()\n        print(count_solutions(puzzle))\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

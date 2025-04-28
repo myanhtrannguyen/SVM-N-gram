@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3631",
+    "problem_id": "p02225",
+    "language": "Python",
+    "solution": "```python\nfrom collections import deque\n\nclass Solution:\n    def canVisitAllRooms(self, rooms: list[list[int]]) -> bool:\n        n = len(rooms)\n        visited = set()\n        queue = deque([0])\n\n        while queue:\n            room = queue.popleft()\n            if room not in visited:\n                visited.add(room)\n                for key in rooms[room]:\n                    queue.append(key)\n\n        return len(visited) == n\n\n# Example usage:\nsolution = Solution()\nrooms = [[1],[2],[3],[]]\nprint(solution.canVisitAllRooms(rooms))  # Output: True\n\nrooms = [[1,3],[3,0,1],[2],[0]]\nprint(solution.canVisitAllRooms(rooms))  # Output: False\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

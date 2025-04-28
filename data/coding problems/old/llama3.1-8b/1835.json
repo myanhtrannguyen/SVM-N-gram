@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1835",
+    "problem_id": "p03138",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint max(int a, int b) {\n    return (a > b) ? a : b;\n}\n\nint max_xor(int* arr, int n, int k) {\n    int max_val = 0;\n    for (int i = 0; i < n; i++) {\n        int xor = 0;\n        for (int j = 0; j < n; j++) {\n            if (i != j) {\n                xor ^= arr[j];\n            }\n        }\n        max_val = max(max_val, xor);\n    }\n    return max_val;\n}\n\nint main() {\n    int n;\n    printf(\"Enter the number of elements: \");\n    scanf(\"%d\", &n);\n    int* arr = (int*)malloc(n * sizeof(int));\n    printf(\"Enter %d elements: \", n);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &arr[i]);\n    }\n    int k;\n    printf(\"Enter the value of K: \");\n    scanf(\"%d\", &k);\n    printf(\"Maximum value of f(X) is: %d\\n\", max_xor(arr, n, k));\n    free(arr);\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2318",
+    "problem_id": "p03575",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nusing namespace std;\n\nconst int MAXN = 55;\n\nint n, m;\nvector<int> g[MAXN];\nint low[MAXN], disc[MAXN], parent[MAXN], time = 0;\nbool visited[MAXN];\nint ans = 0;\n\nvoid dfs(int u) {\n    disc[u] = low[u] = time++;\n    visited[u] = true;\n    int child = 0;\n    for (int v : g[u]) {\n        if (!disc[v]) {\n            parent[v] = u;\n            child++;\n            dfs(v);\n            low[u] = min(low[u], low[v]);\n            if (low[v] > disc[u]) {\n                ans++;\n            }\n        } else if (v != parent[u]) {\n            low[u] = min(low[u], disc[v]);\n        }\n    }\n}\n\nint main() {\n    cin >> n >> m;\n    for (int i = 0; i < m; i++) {\n        int u, v;\n        cin >> u >> v;\n        g[u].push_back(v);\n        g[v].push_back(u);\n    }\n    dfs(1);\n    cout << ans << endl;\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

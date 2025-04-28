@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-143",
+    "problem_id": "p00105",
+    "language": "Python",
+    "solution": "```python\nclass BookIndex:\n    def __init__(self):\n        self.books = {}\n\n    def add_book(self, word, page_number):\n        if word not in self.books:\n            self.books[word] = []\n        self.books[word].append(page_number)\n\n    def print_index(self):\n        for word in sorted(self.books.keys()):\n            print(word)\n            page_numbers = sorted(self.books[word])\n            for page_number in page_numbers:\n                print(page_number, end=' ')\n            print()\n\ndef main():\n    book_index = BookIndex()\n    for _ in range(int(input())):\n        word, page_number = input().split()\n        book_index.add_book(word, int(page_number))\n    book_index.print_index()\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

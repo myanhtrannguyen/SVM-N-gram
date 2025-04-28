@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3477",
+    "problem_id": "p01968",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nusing namespace std;\n\nint main() {\n    int N;\n    cin >> N;\n    vector<int> a(N);\n    for (int i = 0; i < N; i++) {\n        cin >> a[i];\n    }\n\n    vector<int> dp(N, 1);\n    for (int i = 0; i < N; i++) {\n        dp[i] = max(dp[i], a[i]);\n        for (int j = 0; j < i; j++) {\n            dp[i] = max(dp[i], dp[j] * a[i]);\n        }\n    }\n\n    int k = 0;\n    for (int i = 0; i < N; i++) {\n        if (dp[i] == dp.back()) {\n            k++;\n        }\n    }\n\n    cout << k << endl;\n    for (int i = 0; i < N; i++) {\n        if (dp[i] == dp.back()) {\n            cout << i + 1 << endl;\n        }\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

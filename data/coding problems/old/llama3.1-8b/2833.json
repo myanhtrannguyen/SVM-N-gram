@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2833",
+    "problem_id": "p03704",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint count(int D) {\n    int count = 0;\n    for (int i = 1; i < 1000000; i++) {\n        int rev = 0;\n        int n = i;\n        while (n > 0) {\n            rev = rev * 10 + n % 10;\n            n /= 10;\n        }\n        if (rev == i + D) {\n            count++;\n        }\n    }\n    return count;\n}\n\nint main() {\n    int D;\n    scanf(\"%d\", &D);\n    printf(\"%d\\n\", count(D));\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

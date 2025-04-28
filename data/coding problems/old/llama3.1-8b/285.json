@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-285",
+    "problem_id": "p00382",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <queue>\n#include <vector>\n#include <algorithm>\n\nusing namespace std;\n\nstruct Node {\n    int fare;\n    int index;\n};\n\nbool compareNodes(const Node& a, const Node& b) {\n    return a.fare > b.fare;\n}\n\nint main() {\n    int N;\n    cin >> N;\n\n    priority_queue<Node> pq;\n    vector<vector<int>> customers(N);\n\n    for (int i = 0; i < N; i++) {\n        int M;\n        cin >> M;\n        customers[i].resize(M);\n        for (int j = 0; j < M; j++) {\n            cin >> customers[i][j];\n        }\n        if (!customers[i].empty()) {\n            pq.push({customers[i][0], i});\n        }\n    }\n\n    int maxFare = 0;\n    while (!pq.empty()) {\n        Node node = pq.top();\n        pq.pop();\n        if (customers[node.index].empty()) {\n            continue;\n        }\n        maxFare = max(maxFare, customers[node.index][0]);\n        customers[node.index].erase(customers[node.index].begin());\n        if (!customers[node.index].empty()) {\n            pq.push({customers[node.index][0], node.index});\n        }\n    }\n\n    cout << maxFare << endl;\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

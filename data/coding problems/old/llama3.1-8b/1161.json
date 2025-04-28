@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1161",
+    "problem_id": "p00827",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nusing namespace std;\n\nint main() {\n    int a, b, d;\n    while (cin >> a >> b >> d) {\n        if (a == 0 && b == 0 && d == 0) break;\n\n        vector<pair<int, int>> solutions;\n        for (int x = 0; x <= d / a; x++) {\n            int y = (d - x * a) / b;\n            if ((d - x * a) % b == 0) {\n                solutions.push_back(make_pair(x, y));\n            }\n        }\n\n        int min_weights = INT_MAX;\n        for (auto& solution : solutions) {\n            int total_weights = solution.first + solution.second;\n            if (total_weights < min_weights) {\n                min_weights = total_weights;\n            }\n        }\n\n        for (auto& solution : solutions) {\n            if (solution.first + solution.second == min_weights) {\n                cout << solution.first << \" \" << solution.second << endl;\n                break;\n            }\n        }\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

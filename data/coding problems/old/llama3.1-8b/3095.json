@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3095",
+    "problem_id": "p01701",
+    "language": "Python",
+    "solution": "```python\nimport re\n\ndef calculate_angle(direction):\n    north_count = len(re.findall('north', direction))\n    west_count = len(re.findall('west', direction))\n    total_count = north_count + west_count\n    angle = 90 * (north_count - west_count) / (2 ** total_count)\n    if angle.is_integer():\n        return int(angle)\n    else:\n        return f\"{int(angle * 2)} / 2\"\n\ndef main():\n    while True:\n        direction = input()\n        if direction == '#':\n            break\n        print(calculate_angle(direction))\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

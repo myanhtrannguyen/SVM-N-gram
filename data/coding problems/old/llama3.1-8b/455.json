@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-455",
+    "problem_id": "p00606",
+    "language": "Python",
+    "solution": "```python\nimport sys\n\ndef dfs(x, y, n, s, t, b, vis, prob):\n    if n == 0:\n        return 1 if x == t else 0\n    if vis[x][y][n] == 1:\n        return prob[x][y][n]\n    vis[x][y][n] = 1\n    prob[x][y][n] = 0\n    for dx, dy in [(1, 0), (-1, 0), (0, 1), (0, -1)]:\n        nx, ny = x + dx, y + dy\n        if 0 <= nx < 3 and 0 <= ny < 3 and (nx, ny) != (b // 3, b % 3):\n            prob[x][y][n] += dfs(nx, ny, n - 1, s, t, b, vis, prob) / 4\n    return prob[x][y][n]\n\ndef solve():\n    for _ in range(int(input())):\n        n = int(input())\n        s, t, b = input().split()\n        s, t, b = ord(s) - ord('A'), ord(t) - ord('A'), ord(b) - ord('A')\n        vis = [[[0] * 16 for _ in range(3)] for _ in range(3)]\n        prob = [[[0.0] * 16 for _ in range(3)] for _ in range(3)]\n        print(dfs(s // 3, s % 3, n, s, t, b, vis, prob))\n\nif __name__ == \"__main__\":\n    solve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

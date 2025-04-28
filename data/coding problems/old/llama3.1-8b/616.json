@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-616",
+    "problem_id": "p00691",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n\nint main() {\n    int z;\n    while (scanf(\"%d\", &z) == 1) {\n        int max_sum = 0;\n        for (int x = 1; x * x * x <= z * z * z; x++) {\n            int y = (int) ((z * z * z - x * x * x) / (double) (x * x * x)) + 1;\n            if (y > 0 && x * x * x + y * y * y <= z * z * z) {\n                max_sum = (x * x * x + y * y * y) > max_sum ? (x * x * x + y * y * y) : max_sum;\n            }\n        }\n        printf(\"%d\\n\", z * z * z - max_sum);\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

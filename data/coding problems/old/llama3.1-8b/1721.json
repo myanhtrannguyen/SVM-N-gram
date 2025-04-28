@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1721",
+    "problem_id": "p02970",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n\nint dp[21][21];\n\nint solve(int n, int d) {\n    if (n == 0) return 0;\n    if (dp[n][d] != -1) return dp[n][d];\n    int ans = n;\n    for (int i = 1; i <= n; i++) {\n        int left = i - d;\n        int right = i + d;\n        if (left <= 0) left = 1;\n        if (right >= n + 1) right = n;\n        ans = std::min(ans, 1 + solve(right - 1, d) + solve(left - 2, d));\n    }\n    return dp[n][d] = ans;\n}\n\nint main() {\n    int n, d;\n    scanf(\"%d %d\", &n, &d);\n    for (int i = 0; i <= n; i++) {\n        for (int j = 0; j <= n; j++) {\n            dp[i][j] = -1;\n        }\n    }\n    printf(\"%d\\n\", solve(n, d));\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

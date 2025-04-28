@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2902",
+    "problem_id": "p03721",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <queue>\n#include <vector>\n\nusing namespace std;\n\nint main() {\n    int n, k;\n    cin >> n >> k;\n\n    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;\n\n    for (int i = 0; i < n; i++) {\n        int a, b;\n        cin >> a >> b;\n        pq.push({a, b});\n    }\n\n    int count = 0;\n    int ans = 0;\n\n    while (!pq.empty()) {\n        auto [a, b] = pq.top();\n        pq.pop();\n\n        for (int i = 0; i < b; i++) {\n            count++;\n            if (count == k) {\n                ans = a;\n                break;\n            }\n        }\n\n        if (count == k) break;\n    }\n\n    cout << ans << endl;\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

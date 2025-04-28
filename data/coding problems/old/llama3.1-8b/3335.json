@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3335",
+    "problem_id": "p01837",
+    "language": "Python",
+    "solution": "```python\nimport sys\nimport heapq\n\nN, M, P, s, t = map(int, input().split())\nedges = [[] for _ in range(N + 1)]\nfor _ in range(M):\n    u, v, d, c = map(int, input().split())\n    edges[u].append((v, d, c))\n\ndef dijkstra():\n    dist = [float('inf')] * (N + 1)\n    dist[s] = 0\n    pq = [(0, s)]\n    while pq:\n        d, u = heapq.heappop(pq)\n        if d > dist[u]:\n            continue\n        for v, l, c in edges[u]:\n            if dist[v] > dist[u] + l:\n                dist[v] = dist[u] + l\n                heapq.heappush(pq, (dist[v], v))\n    return dist\n\ndist = dijkstra()\ndp = [0] * (N + 1)\nfor i in range(1, N + 1):\n    dp[i] = dist[i]\n\nfor i in range(1, N + 1):\n    for v, l, c in edges[i]:\n        dp[i] = max(dp[i], dp[v] + l)\n\nfor i in range(1, N + 1):\n    for v, l, c in edges[i]:\n        if dp[i] == dp[v] + l:\n            cost = (dp[i] - l - 1) * c\n            if cost <= P:\n                dp[i] = l + 1 + (P - cost) / c\n\nprint(max(dp[1:]))\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

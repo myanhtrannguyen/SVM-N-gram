@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1931",
+    "problem_id": "p03162",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <limits.h>\n\n#define MAX_N 100005\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n\n    int a[MAX_N], b[MAX_N], c[MAX_N];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d %d %d\", &a[i], &b[i], &c[i]);\n    }\n\n    int dp[MAX_N][3][3] = {{0}};\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < 3; j++) {\n            for (int k = 0; k < 3; k++) {\n                if (i == 0) {\n                    dp[i][j][k] = (j == k) ? a[i] : INT_MIN;\n                } else {\n                    int max_val = INT_MIN;\n                    for (int l = 0; l < 3; l++) {\n                        if (l != k) {\n                            max_val = std::max(max_val, dp[i - 1][l][k] + (j == l) ? a[i] : b[i]);\n                        }\n                    }\n                    dp[i][j][k] = max_val;\n                }\n            }\n        }\n    }\n\n    int max_val = INT_MIN;\n    for (int i = 0; i < 3; i++) {\n        max_val = std::max(max_val, dp[n - 1][i][i]);\n    }\n\n    printf(\"%d\\n\", max_val);\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

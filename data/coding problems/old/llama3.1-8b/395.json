@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-395",
+    "problem_id": "p00591",
+    "language": "Python",
+    "solution": "```python\ndef find_target_student(n, matrix):\n    if n == 0:\n        return\n\n    min_heights = [float('inf')] * n\n    max_heights = [float('-inf')] * n\n\n    for i in range(n):\n        for j in range(n):\n            height = matrix[i][j]\n            min_heights[i] = min(min_heights[i], height)\n            max_heights[j] = max(max_heights[j], height)\n\n    target_height = 0\n    for i in range(n):\n        if min_heights[i] == max_heights[i]:\n            target_height = min_heights[i]\n            break\n\n    print(target_height)\n\nt = 1\nfor _ in range(t):\n    n = int(input())\n    matrix = []\n    for _ in range(n):\n        row = list(map(int, input().split()))\n        matrix.append(row)\n\n    find_target_student(n, matrix)\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

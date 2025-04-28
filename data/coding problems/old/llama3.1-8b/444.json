@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-444",
+    "problem_id": "p00604",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\n#define MAX_N 110\n\nint main() {\n    int n, i, j, p[MAX_N], dp[MAX_N][MAX_N], min[MAX_N][MAX_N];\n\n    while (scanf(\"%d\", &n) == 1) {\n        for (i = 1; i <= n; i++) {\n            scanf(\"%d\", &p[i]);\n        }\n\n        for (i = 1; i <= n; i++) {\n            for (j = 1; j <= n; j++) {\n                dp[i][j] = 0;\n                min[i][j] = 0;\n            }\n        }\n\n        for (i = 1; i <= n; i++) {\n            for (j = 1; j <= i; j++) {\n                for (int k = j; k < i; k++) {\n                    dp[i][j] = dp[i][j] > dp[i - 1][k] + p[k] ? dp[i][j] : dp[i - 1][k] + p[k];\n                    min[i][j] = min[i][j] > min[i - 1][k] + p[k] ? min[i][j] : min[i - 1][k] + p[k];\n                }\n                dp[i][i] = min[i][i] = dp[i - 1][i - 1] + p[i];\n            }\n        }\n\n        int ans = 0;\n        for (i = 1; i <= n; i++) {\n            ans += min[n][i];\n        }\n\n        printf(\"%d\\n\", ans + 20 * (n - 1));\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2874",
+    "problem_id": "p03714",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nint main() {\n    int n;\n    std::cin >> n;\n\n    std::vector<int> a(3 * n);\n    for (int i = 0; i < 3 * n; ++i) {\n        std::cin >> a[i];\n    }\n\n    std::vector<int> prefix_sum(3 * n + 1);\n    for (int i = 1; i <= 3 * n; ++i) {\n        prefix_sum[i] = prefix_sum[i - 1] + a[i - 1];\n    }\n\n    int max_score = -1e9;\n    for (int i = 0; i <= n; ++i) {\n        int score = prefix_sum[2 * n - i] - prefix_sum[n - i];\n        max_score = std::max(max_score, score);\n    }\n\n    std::cout << max_score << std::endl;\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2912",
+    "problem_id": "p03723",
+    "language": "Python",
+    "solution": "```python\nimport math\n\ndef gcd(a, b):\n    while b:\n        a, b = b, a % b\n    return a\n\ndef lcm(a, b):\n    return a * b // gcd(a, b)\n\ndef solve():\n    A, B, C = map(int, input().split())\n    steps = 0\n    while (A % 2 == 0 and B % 2 == 0 and C % 2 == 0):\n        A = A // 2\n        B = B // 2\n        C = C // 2\n        steps += 1\n        if A == 1 or B == 1 or C == 1:\n            break\n        A = lcm(A, lcm(B, C))\n        B = lcm(B, lcm(A, C))\n        C = lcm(C, lcm(A, B))\n    if A == 1 or B == 1 or C == 1:\n        print(steps)\n    else:\n        print(-1)\n\nif __name__ == \"__main__\":\n    solve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

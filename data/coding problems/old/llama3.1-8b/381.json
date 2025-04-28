@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-381",
+    "problem_id": "p00588",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <string>\n#include <algorithm>\n\nusing namespace std;\n\nint main() {\n    int t;\n    cin >> t;\n    while (t--) {\n        int n;\n        cin >> n;\n        string s;\n        cin >> s;\n        int cost = 0;\n        for (int i = 0; i < 4 * n; i += 2) {\n            if (s[i] == 'Y') {\n                cost++;\n            }\n        }\n        for (int i = 0; i < 4 * n - 1; i++) {\n            if (s[i] == 'Y' && s[i + 1] == 'Y') {\n                cost += (i + 1) / 2;\n            }\n        }\n        cout << cost << endl;\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

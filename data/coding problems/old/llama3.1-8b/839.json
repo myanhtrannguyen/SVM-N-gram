@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-839",
+    "problem_id": "p00746",
+    "language": "Python",
+    "solution": "```python\ndef calculate_artwork_size():\n    while True:\n        n = int(input())\n        if n == 0:\n            break\n        artwork = [[0 for _ in range(n)] for _ in range(n)]\n        max_x, max_y = 0, 0\n        for _ in range(n - 1):\n            x, y = map(int, input().split())\n            dx, dy = map(int, input().split())\n            if dx == 0:\n                x = max(x - 1, 0)\n            elif dx == 2:\n                x = min(x + 1, n - 1)\n            if dy == 1:\n                y = max(y - 1, 0)\n            elif dy == 3:\n                y = min(y + 1, n - 1)\n            artwork[y][x] = 1\n            max_x = max(max_x, x + 1)\n            max_y = max(max_y, y + 1)\n        print(max_x, max_y)\n\ncalculate_artwork_size()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

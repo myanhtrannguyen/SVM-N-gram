@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3211",
+    "problem_id": "p01789",
+    "language": "Python",
+    "solution": "```python\ndef unfair_game(n, a, b, stones):\n    total = sum(stones)\n    if total % 2 == 0:\n        return \"Jiro\"\n    if total % 2 == 1:\n        if a >= b:\n            return \"Hanako\"\n        else:\n            if n % 2 == 0:\n                return \"Jiro\"\n            else:\n                return \"Hanako\"\n\nn, a, b = map(int, input().split())\nstones = []\nfor _ in range(n):\n    stones.append(int(input()))\nprint(unfair_game(n, a, b, stones))\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

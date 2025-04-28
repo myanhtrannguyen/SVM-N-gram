@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1763",
+    "problem_id": "p03120",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n#define MOD 1000000007\n#define MAXN 20\n\ntypedef long long ll;\n\nll dp[MAXN][1 << 15];\nll sum[1 << 15];\n\nint main() {\n    int n, q;\n    scanf(\"%d%d\", &n, &q);\n    int l[q + 1], r[q + 1];\n    for (int i = 0; i < q; i++) {\n        scanf(\"%d%d\", &l[i], &r[i]);\n    }\n    memset(dp, 0, sizeof(dp));\n    dp[0][0] = 1;\n    for (int i = 0; i < q; i++) {\n        for (int j = 0; j < (1 << q); j++) {\n            sum[j] = (sum[j] + dp[i][j]) % MOD;\n        }\n        for (int j = 0; j < (1 << q); j++) {\n            if (j & (1 << i)) continue;\n            for (int k = 0; k < 10; k++) {\n                int x = (j | (1 << i));\n                if ((l[i] - 1) + k <= r[i]) {\n                    dp[i + 1][x] = (dp[i + 1][x] + sum[j] * (k % 9 == 0)) % MOD;\n                }\n            }\n        }\n    }\n    ll ans = 0;\n    for (int i = 0; i < (1 << q); i++) {\n        ans = (ans + dp[q][i]) % MOD;\n    }\n    for (int i = 0; i < n; i++) {\n        ans = (ans * 10) % MOD;\n    }\n    printf(\"%lld\\n\", ans);\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

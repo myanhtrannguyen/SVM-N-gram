@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2168",
+    "problem_id": "p03537",
+    "language": "Python",
+    "solution": "```python\nimport sys\n\ns = input()\nn = int(input())\nops = []\nfor _ in range(n):\n    l, r = map(int, input().split())\n    ops.append((l, r))\n\ndef check(s, ops):\n    n = len(s)\n    for l, r in ops:\n        for i in range(l-1, r):\n            if s[i] == 'z':\n                s[i] = 'a'\n            else:\n                s[i] = chr(ord(s[i]) + 1)\n    return s == s[::-1]\n\ndef solve(s, ops):\n    n = len(s)\n    for i in range(n // 2):\n        if s[i] != s[n - i - 1]:\n            l, r = i, n - i - 1\n            for op in ops:\n                if op[0] <= l and op[1] >= r:\n                    l = max(l, op[0])\n                    r = min(r, op[1])\n            if l > r:\n                return False\n            for j in range(l, r + 1):\n                if s[j] == 'z':\n                    s[j] = 'a'\n                else:\n                    s[j] = chr(ord(s[j]) + 1)\n    return True\n\nprint(\"YES\" if solve(s, ops) or check(s, ops) else \"NO\")\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-367",
+    "problem_id": "p00562",
+    "language": "Python",
+    "solution": "```python\nimport sys\nimport heapq\n\ninput = sys.stdin.readline\n\ndef dijkstra():\n    q = []\n    dist = [[float('inf')] * (W + 1) for _ in range(H + 1)]\n    dist[S_N][T_N] = 0\n    heapq.heappush(q, (0, S_N, T_N))\n    while q:\n        d, x, y = heapq.heappop(q)\n        if dist[x][y] < d:\n            continue\n        for dx, dy, c in [(1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, -1, 0)]:\n            nx, ny = x + dx, y + dy\n            if 0 <= nx <= H and 0 <= ny <= W:\n                nd = d + c\n                if nd < dist[nx][ny]:\n                    dist[nx][ny] = nd\n                    heapq.heappush(q, (nd, nx, ny))\n    return dist\n\nH, W = map(int, input().split())\nA, B, C = map(int, input().split())\nN = int(input())\nS = [tuple(map(int, input().split())) for _ in range(N)]\nS_N, T_N = S[-1]\nS = S[:-1]\ndist = dijkstra()\nans = 0\nfor s, t in S:\n    ans += C * (dist[s][t] - 1)\nprint(ans)\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

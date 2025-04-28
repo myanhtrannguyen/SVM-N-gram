@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-831",
+    "problem_id": "p00744",
+    "language": "Python",
+    "solution": "```python\nimport sys\nimport math\n\ndef gcd(a, b):\n    while b:\n        a, b = b, a % b\n    return a\n\ndef main():\n    input = sys.stdin.readline\n    output = sys.stdout.write\n\n    for _ in range(int(input())):\n        m, n = map(int, input().split())\n        blue = list(map(int, input().split()))\n        red = list(map(int, input().split()))\n\n        blue_set = set()\n        red_set = set()\n\n        for num in blue:\n            blue_set.add(num)\n\n        for num in red:\n            red_set.add(num)\n\n        count = 0\n\n        for num in blue_set:\n            for num2 in red_set:\n                if gcd(num, num2) > 1:\n                    count += 1\n\n        output(str(count // 2) + '\\n')\n\nif __name__ == '__main__':\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

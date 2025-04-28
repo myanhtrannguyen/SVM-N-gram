@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-200",
+    "problem_id": "p00361",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\n#define MAX_N 100005\n#define MAX_M 100005\n\nint n, m;\nint s[MAX_M], t[MAX_M];\nint in[MAX_N], out[MAX_N];\nint vis[MAX_N];\nint cnt;\n\nint dfs(int u) {\n    vis[u] = 1;\n    for (int i = 0; i < cnt; i++) {\n        if (in[u] & (1 << i)) {\n            if (!vis[t[i]]) {\n                if (dfs(t[i])) return 1;\n            }\n        }\n    }\n    return 0;\n}\n\nint main() {\n    scanf(\"%d %d\", &n, &m);\n    for (int i = 0; i < m; i++) {\n        scanf(\"%d %d\", &s[i], &t[i]);\n        in[s[i]] |= (1 << i);\n        out[t[i]] |= (1 << i);\n    }\n    for (int i = 0; i < n; i++) {\n        if (!vis[i]) {\n            cnt = 0;\n            for (int j = 0; j < m; j++) {\n                if (in[i] & (1 << j)) {\n                    cnt++;\n                }\n            }\n            if (dfs(i)) {\n                printf(\"%d\\n\", cnt - 1);\n                return 0;\n            }\n        }\n    }\n    printf(\"0\\n\");\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

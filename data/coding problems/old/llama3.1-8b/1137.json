@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1137",
+    "problem_id": "p00821",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nusing namespace std;\n\nint sign(int x) {\n    return (x > 0) - (x < 0);\n}\n\nint cross(int x1, int y1, int x2, int y2) {\n    return x1 * y2 - x2 * y1;\n}\n\nint main() {\n    int m, x, y;\n    vector<int> xs, ys;\n    int area = 0;\n\n    while (cin >> m) {\n        if (m == 0) break;\n\n        for (int i = 0; i < m; i++) {\n            cin >> x >> y;\n            xs.push_back(x);\n            ys.push_back(y);\n        }\n\n        for (int i = 0; i < m; i++) {\n            int x1 = xs[i], y1 = ys[i];\n            int x2 = xs[(i + 1) % m], y2 = ys[(i + 1) % m];\n\n            for (int j = i + 2; j < m; j++) {\n                int x3 = xs[j], y3 = ys[j];\n                int x4 = xs[(j + 1) % m], y4 = ys[(j + 1) % m];\n\n                area += abs(cross(x2 - x1, y2 - y1, x4 - x3, y4 - y3));\n            }\n        }\n\n        cout << area / 2 << endl;\n        area = 0;\n        xs.clear();\n        ys.clear();\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

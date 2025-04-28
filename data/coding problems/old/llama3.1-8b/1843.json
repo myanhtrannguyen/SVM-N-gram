@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1843",
+    "problem_id": "p03140",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <string.h>\n\n#define N 100\n\nint min(int a, int b) {\n    return (a < b) ? a : b;\n}\n\nint main() {\n    int n;\n    char a[N + 1], b[N + 1], c[N + 1];\n\n    scanf(\"%d %s %s %s\", &n, a, b, c);\n\n    int dp[n + 1][n + 1][n + 1];\n    for (int i = 0; i <= n; i++) {\n        for (int j = 0; j <= n; j++) {\n            for (int k = 0; k <= n; k++) {\n                dp[i][j][k] = 1e9;\n            }\n        }\n    }\n\n    for (int i = 0; i <= n; i++) {\n        for (int j = 0; j <= n; j++) {\n            for (int k = 0; k <= n; k++) {\n                if (i == 0 && j == 0 && k == 0) {\n                    dp[i][j][k] = 0;\n                } else if (i > 0 && j > 0 && k > 0) {\n                    dp[i][j][k] = min(dp[i - 1][j][k] + (a[i] != b[i]), dp[i][j - 1][k] + (a[i] != c[i]), dp[i][j][k - 1] + (b[i] != c[i]));\n                }\n            }\n        }\n    }\n\n    printf(\"%d\\n\", dp[n][n][n]);\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

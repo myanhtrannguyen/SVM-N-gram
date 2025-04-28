@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3912",
+    "problem_id": "p02299",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\ntypedef struct Point {\n    int x, y;\n} Point;\n\nint orientation(Point p, Point q, Point r) {\n    int val = (q.y - p.y) * (r.x - q.x) - (q.x - p.x) * (r.y - q.y);\n    if (val == 0) return 0;\n    return (val > 0) ? 1 : 2;\n}\n\nint isPointInside(Point p, Point *q, int n) {\n    int i, cnt = 0;\n    for (i = 0; i < n; i++) {\n        if (orientation(p, q[i], q[(i + 1) % n]) == 0) return 1;\n        if (orientation(p, q[i], q[(i + 1) % n]) == 2) cnt++;\n    }\n    return (cnt % 2 == 0) ? 0 : 1;\n}\n\nint main() {\n    int n, q, i, j;\n    Point p[100], q[100];\n\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) {\n        scanf(\"%d %d\", &p[i].x, &p[i].y);\n    }\n    scanf(\"%d\", &q);\n    for (i = 0; i < q; i++) {\n        scanf(\"%d %d\", &q[i].x, &q[i].y);\n        printf(\"%d\\n\", isPointInside(q[i], p, n));\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

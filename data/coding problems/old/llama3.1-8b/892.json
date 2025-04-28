@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-892",
+    "problem_id": "p00760",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n\nint days_in_month(int month, int year) {\n    if (year % 3 == 0) {\n        return 20;\n    } else if (month % 2 == 1) {\n        return 20;\n    } else {\n        return 19;\n    }\n}\n\nint days_since_birth(int year, int month, int day) {\n    int total_days = 0;\n    for (int y = 1; y < year; y++) {\n        for (int m = 1; m <= 10; m++) {\n            total_days += days_in_month(m, y);\n        }\n    }\n    for (int m = 1; m < month; m++) {\n        total_days += days_in_month(m, year);\n    }\n    total_days += day - 1;\n    return total_days;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    while (n--) {\n        int year, month, day;\n        scanf(\"%d %d %d\", &year, &month, &day);\n        printf(\"%d\\n\", days_since_birth(year, month, day));\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

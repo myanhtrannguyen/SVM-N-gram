@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2721",
+    "problem_id": "p03676",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\n#define MOD 1000000007\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[n + 2];\n    for (int i = 1; i <= n + 1; i++) {\n        scanf(\"%d\", &a[i]);\n    }\n\n    int freq[100001] = {0};\n    for (int i = 1; i <= n + 1; i++) {\n        freq[a[i]]++;\n    }\n\n    int dp[n + 2] = {0};\n    dp[1] = 1;\n    for (int i = 2; i <= n + 1; i++) {\n        int sum = 0;\n        for (int j = 1; j <= i; j++) {\n            sum = (sum + dp[j]) % MOD;\n            if (freq[j] > 0) {\n                sum = (sum + (MOD + 1) * freq[j]) % MOD;\n            }\n        }\n        dp[i] = sum;\n    }\n\n    for (int i = 1; i <= n + 1; i++) {\n        printf(\"%d\\n\", dp[i]);\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

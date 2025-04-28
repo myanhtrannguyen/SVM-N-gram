@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3975",
+    "problem_id": "p02314",
+    "language": "Python",
+    "solution": "```python\ndef min_coins(n, m, denominations):\n    dp = [float('inf')] * (n + 1)\n    dp[0] = 0\n\n    for denomination in denominations:\n        for i in range(denomination, n + 1):\n            dp[i] = min(dp[i], dp[i - denomination] + 1)\n\n    return dp[n] if dp[n] != float('inf') else -1\n\n\nn, m = map(int, input().split())\ndenominations = list(map(int, input().split()))\n\nprint(min_coins(n, m, denominations))\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

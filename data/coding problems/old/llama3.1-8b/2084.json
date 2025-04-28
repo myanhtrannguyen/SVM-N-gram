@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2084",
+    "problem_id": "p03393",
+    "language": "Python",
+    "solution": "```python\nimport string\n\ndef next_word(word):\n    alphabet = string.ascii_lowercase\n    n = len(word)\n    for i in range(n, 26):\n        for c in alphabet:\n            if c not in word:\n                new_word = word + c\n                if all(c not in new_word[:j] for j in range(1, len(new_word))):\n                    return new_word\n    return -1\n\nword = input()\nprint(next_word(word))\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1690",
+    "problem_id": "p02962",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <string>\n#include <algorithm>\n\nusing namespace std;\n\nint main() {\n    string s, t;\n    cin >> s >> t;\n\n    int n = s.size();\n    int m = t.size();\n\n    int sLen = n;\n    int tLen = m;\n\n    while (sLen % m == 0) {\n        sLen /= m;\n        tLen /= m;\n    }\n\n    if (sLen == 0) {\n        cout << -1 << endl;\n        return 0;\n    }\n\n    int i = 0;\n    while (true) {\n        if (s.size() >= (i + 1) * t.size()) {\n            string ss = s.substr(0, (i + 1) * t.size());\n            if (ss.find(t) != string::npos) {\n                i++;\n            } else {\n                break;\n            }\n        } else {\n            break;\n        }\n    }\n\n    cout << i << endl;\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

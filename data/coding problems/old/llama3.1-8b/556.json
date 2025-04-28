@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-556",
+    "problem_id": "p00653",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\n#define MAX_SIZE 1000000\n\nint min(int a, int b) {\n    return (a < b) ? a : b;\n}\n\nint main() {\n    int r, c, q;\n    int grid[MAX_SIZE][MAX_SIZE];\n    int subgrid[MAX_SIZE][MAX_SIZE];\n\n    while (scanf(\"%d %d %d\", &r, &c, &q) == 3) {\n        for (int i = 0; i < r; i++) {\n            for (int j = 0; j < c; j++) {\n                scanf(\"%d\", &grid[i][j]);\n            }\n        }\n\n        for (int i = 0; i < r; i++) {\n            for (int j = 0; j < c; j++) {\n                subgrid[i][j] = grid[i][j];\n            }\n        }\n\n        for (int k = 0; k < q; k++) {\n            int r1, c1, r2, c2;\n            scanf(\"%d %d %d %d\", &r1, &c1, &r2, &c2);\n\n            for (int i = r1; i <= r2; i++) {\n                for (int j = c1; j <= c2; j++) {\n                    subgrid[i][j] = min(subgrid[i][j], grid[i][j]);\n                }\n            }\n\n            printf(\"%d\\n\", subgrid[r2][c2]);\n        }\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

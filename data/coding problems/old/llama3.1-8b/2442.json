@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2442",
+    "problem_id": "p03606",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nint main() {\n    int n;\n    std::cin >> n;\n\n    std::vector<std::pair<int, int>> intervals(n);\n    for (int i = 0; i < n; ++i) {\n        std::cin >> intervals[i].first >> intervals[i].second;\n    }\n\n    std::sort(intervals.begin(), intervals.end());\n\n    int count = 0;\n    int end = 0;\n    for (const auto& interval : intervals) {\n        if (interval.first > end) {\n            count += interval.second - interval.first + 1;\n            end = interval.second;\n        } else {\n            count += interval.second - end + 1;\n        }\n    }\n\n    std::cout << count << std::endl;\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3183",
+    "problem_id": "p01781",
+    "language": "Python",
+    "solution": "```python\ndef cube_coloring(x, y, z, a, b, c, n):\n    result = [0] * n\n    for i in range(x):\n        for j in range(y):\n            for k in range(z):\n                d = abs(i - a) + abs(j - b) + abs(k - c)\n                result[d % n] += 1\n    return ' '.join(map(str, result))\n\nx, y, z, a, b, c, n = map(int, input().split())\nprint(cube_coloring(x, y, z, a, b, c, n))\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3179",
+    "problem_id": "p01780",
+    "language": "Python",
+    "solution": "```python\nfrom collections import deque\n\ndef bfs(n, parents):\n    queue = deque([(1, 0, 0)])\n    visited = set([1])\n    total_distance = 0\n    while queue:\n        node, parent, distance = queue.popleft()\n        total_distance += distance\n        for child in range(parent + 1, n + 1):\n            if child not in visited:\n                queue.append((child, node, distance + 1))\n                visited.add(child)\n    return total_distance\n\nn = int(input())\nparents = [0] + list(map(int, input().split()))\nprint(bfs(n, parents))\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

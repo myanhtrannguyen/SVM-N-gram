@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3403",
+    "problem_id": "p01949",
+    "language": "Python",
+    "solution": "```python\nimport sys\ninput = sys.stdin.readline\n\ndef calc(x, y):\n    if x == H - 1 and y == W - 1:\n        return 0\n    if dp[x][y] != -1:\n        return dp[x][y]\n    res = 0\n    if x + y < H + W - 2:\n        res = max(res, calc(x + 1, y) + val[x + 1][y])\n        res = max(res, calc(x, y + 1) + val[x][y + 1])\n    if x + y > H + W - 2:\n        res = max(res, calc(x + 1, y) * val[x + 1][y])\n        res = max(res, calc(x, y + 1) * val[x][y + 1])\n    if x + y == H + W - 2:\n        res = max(res, calc(x + 1, y) + val[x + 1][y])\n        res = max(res, calc(x, y + 1) + val[x][y + 1])\n        res = max(res, calc(x + 1, y) * val[x + 1][y])\n        res = max(res, calc(x, y + 1) * val[x][y + 1])\n    dp[x][y] = res\n    return res\n\nH, W = map(int, input().split())\nval = []\nfor _ in range(H):\n    val.append(list(input().rstrip()))\ndp = [[-1] * W for _ in range(H)]\nans = calc(0, 0)\nif ans >= 10**15:\n    print(-1)\nelse:\n    print(ans)\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

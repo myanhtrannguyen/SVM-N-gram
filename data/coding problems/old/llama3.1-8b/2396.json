@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2396",
+    "problem_id": "p03594",
+    "language": "Python",
+    "solution": "```python\nH, W, d = map(int, input().split())\n\ncolors = ['R', 'Y', 'G', 'B']\ncolor_index = 0\n\nfor i in range(H):\n    for j in range(W):\n        if (i + j) % d == 0:\n            print(colors[color_index], end='')\n            color_index = (color_index + 1) % 4\n        else:\n            print('Y', end='')\n    print()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

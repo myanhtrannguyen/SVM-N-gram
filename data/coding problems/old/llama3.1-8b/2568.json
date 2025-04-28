@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2568",
+    "problem_id": "p03637",
+    "language": "Python",
+    "solution": "```python\nimport sys\n\ndef solve():\n    n = int(input())\n    a = list(map(int, input().split()))\n\n    odd = sum(1 for x in a if x % 2)\n    even = n - odd\n\n    if odd % 2 == 0 and even % 2 == 0:\n        print(\"Yes\")\n    elif odd == 1 or even == 1:\n        print(\"Yes\")\n    else:\n        print(\"No\")\n\nt = 1\nfor _ in range(t):\n    solve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

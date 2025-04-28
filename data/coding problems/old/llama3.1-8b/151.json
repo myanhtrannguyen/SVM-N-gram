@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-151",
+    "problem_id": "p00107",
+    "language": "Python",
+    "solution": "```python\nimport math\n\ndef can_pass_cheese(A, B, C, R):\n    if A <= 2 * R and B <= 2 * R and C <= 2 * R:\n        return \"NA\"\n    elif math.sqrt(A**2 + B**2) <= 2 * R or math.sqrt(B**2 + C**2) <= 2 * R or math.sqrt(A**2 + C**2) <= 2 * R:\n        return \"NA\"\n    else:\n        return \"OK\"\n\ndef main():\n    while True:\n        A, B, C = map(int, input().split())\n        if A == 0 and B == 0 and C == 0:\n            break\n        n = int(input())\n        for _ in range(n):\n            R = float(input())\n            print(can_pass_cheese(A, B, C, R))\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

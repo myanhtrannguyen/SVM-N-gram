@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2781",
+    "problem_id": "p03691",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\n#define N 405\n#define M 100005\n\nint main() {\n    int n, m, i, j, k, x, y, cnt, ans;\n    int a[N][N], b[N][N];\n\n    scanf(\"%d %d\", &n, &m);\n    for (i = 1; i <= m; i++) {\n        scanf(\"%d %d\", &x, &y);\n        a[x][y] = a[y][x] = 1;\n    }\n\n    for (i = 1; i <= n; i++) {\n        for (j = 1; j <= n; j++) {\n            if (i != j) {\n                for (k = 1; k <= m; k++) {\n                    if (a[i][k] && a[j][k]) {\n                        b[i][j] = b[j][i] = 1;\n                        break;\n                    }\n                    if (a[i][k] || a[j][k]) {\n                        b[i][j] = b[j][i] = 1;\n                        break;\n                    }\n                }\n            }\n        }\n    }\n\n    ans = 0;\n    for (i = 1; i <= n; i++) {\n        for (j = i + 1; j <= n; j++) {\n            if (b[i][j]) {\n                ans++;\n            }\n        }\n    }\n\n    printf(\"%d\\n\", ans);\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

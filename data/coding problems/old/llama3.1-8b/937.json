@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-937",
+    "problem_id": "p00771",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <cmath>\n#include <algorithm>\n\nstruct Point {\n    double x, y;\n};\n\nstruct Rope {\n    Point p;\n    double l;\n};\n\ndouble distance(const Point& p1, const Point& p2) {\n    return std::sqrt(std::pow(p1.x - p2.x, 2) + std::pow(p1.y - p2.y, 2));\n}\n\ndouble height(const std::vector<Rope>& ropes, double h) {\n    for (const auto& rope : ropes) {\n        double d = distance(rope.p, {rope.p.x, rope.p.y - h});\n        if (d > rope.l) return -1;\n    }\n    return h;\n}\n\nint main() {\n    int n;\n    while (std::cin >> n && n != 0) {\n        std::vector<Rope> ropes(n);\n        for (auto& rope : ropes) {\n            std::cin >> rope.p.x >> rope.p.y >> rope.l;\n        }\n        double h = 0;\n        while (true) {\n            double h1 = height(ropes, h + 1);\n            if (h1 == -1) break;\n            h = h1;\n        }\n        std::cout << std::fixed << std::setprecision(10) << h << std::endl;\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

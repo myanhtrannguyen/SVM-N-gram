@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2802",
+    "problem_id": "p03696",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <string>\n#include <algorithm>\n\nint main() {\n    int n;\n    std::cin >> n;\n    std::string s;\n    std::cin >> s;\n\n    int open = 0;\n    int close = 0;\n    for (char c : s) {\n        if (c == '(') open++;\n        else close++;\n    }\n\n    if (open == 0 && close == 0) {\n        std::cout << \"()\";\n    } else if (open == 0) {\n        std::cout << std::string(close, '(') << std::string(close, ')');\n    } else if (close == 0) {\n        std::cout << std::string(open, '(') << std::string(open, ')');\n    } else {\n        std::string ans = std::string(open, '(') + std::string(close, ')');\n        int i = 0;\n        while (i < n && s[i] == '(') i++;\n        int j = n - 1;\n        while (j >= 0 && s[j] == ')') j--;\n        if (i > j) {\n            std::cout << ans;\n        } else {\n            std::cout << std::string(i, '(') << ans << std::string(n - j - 1, ')');\n        }\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

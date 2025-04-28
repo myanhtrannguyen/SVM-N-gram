@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3903",
+    "problem_id": "p02296",
+    "language": "Python",
+    "solution": "```python\nimport math\n\nq = int(input())\n\nfor _ in range(q):\n    x0, y0, x1, y1, x2, y2, x3, y3 = map(int, input().split())\n\n    a = x1 - x0\n    b = y1 - y0\n    c = x2 - x3\n    d = y2 - y3\n\n    e = 2 * (a * (y3 - y2) - b * (x3 - x2))\n    f = 2 * (a * (y0 - y2) - b * (x0 - x2))\n    g = 2 * (a * (y3 - y0) - b * (x3 - x0))\n\n    h = a * a + b * b\n    i = c * c + d * d\n    j = f * f + g * g + e * e - h * i\n\n    if j < 0:\n        print(\"0.0000000000\")\n    elif j == 0:\n        print(abs(e / math.sqrt(h)))\n    else:\n        print(abs(math.sqrt(j) / math.sqrt(h)))\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

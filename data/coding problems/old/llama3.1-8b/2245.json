@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2245",
+    "problem_id": "p03557",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n#define MAXN 100005\n\ntypedef struct {\n    int a, b, c;\n} part;\n\nint cmp(const void *a, const void *b) {\n    part *p1 = (part *)a;\n    part *p2 = (part *)b;\n    return p1->a - p2->a;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    part p[MAXN];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &p[i].a);\n    }\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &p[i].b);\n    }\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &p[i].c);\n    }\n    qsort(p, n, sizeof(part), cmp);\n    long long ans = 0;\n    for (int i = 0; i < n; i++) {\n        int j = i;\n        while (j < n && p[j].b > p[i].a) j++;\n        int k = j;\n        while (k < n && p[k].c > p[j].b) k++;\n        ans += (long long)(j - i) * (k - j);\n    }\n    printf(\"%lld\\n\", ans);\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

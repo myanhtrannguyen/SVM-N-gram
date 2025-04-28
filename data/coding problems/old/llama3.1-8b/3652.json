@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3652",
+    "problem_id": "p02234",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\n#define MAX_N 100\n\nint min(int a, int b) {\n    return (a < b) ? a : b;\n}\n\nint matrix_chain_order(int *p, int n) {\n    int i, j, k, l, q;\n    int m[n + 1][n + 1];\n\n    for (i = 1; i <= n; i++)\n        m[i][i] = 0;\n\n    for (l = 2; l <= n; l++) {\n        for (i = 1; i <= n - l + 1; i++) {\n            j = i + l - 1;\n            m[i][j] = 1000000;\n            for (k = i; k <= j - 1; k++) {\n                q = m[i][k] + m[k + 1][j] + p[i - 1] * p[k] * p[j];\n                if (q < m[i][j])\n                    m[i][j] = q;\n            }\n        }\n    }\n\n    return m[1][n];\n}\n\nint main() {\n    int n, i, r, c, p[MAX_N];\n    int m[MAX_N][MAX_N];\n\n    scanf(\"%d\", &n);\n    for (i = 1; i <= n; i++) {\n        scanf(\"%d %d\", &r, &c);\n        p[i - 1] = r * c;\n    }\n\n    printf(\"%d\\n\", matrix_chain_order(p, n));\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1508",
+    "problem_id": "p02784",
+    "language": "Python",
+    "solution": "```python\nimport sys\n\ndef can_win(h, n, a):\n    a.sort()\n    total = 0\n    for i in range(n):\n        total += a[i]\n        if total >= h:\n            if i == 0 or a[i] != a[i-1]:\n                return \"Yes\"\n            else:\n                return \"No\"\n    return \"No\"\n\nh, n = map(int, input().split())\na = list(map(int, input().split()))\nprint(can_win(h, n, a))\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

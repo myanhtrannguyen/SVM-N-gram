@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-385",
+    "problem_id": "p00589",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <string>\n#include <unordered_map>\n\nusing namespace std;\n\nint main() {\n    unordered_map<int, string> buttonMap = {\n        {1, \"()\"},\n        {2, \"abcABC\"},\n        {3, \"defDEF\"},\n        {4, \"ghiGHI\"},\n        {5, \"jklJKL\"},\n        {6, \"mnoMNO\"},\n        {7, \"pqrsPQRS\"},\n        {8, \"tuvTUV\"},\n        {9, \"wxyzWXYZ\"},\n        {0, \" \"}\n    };\n\n    string input;\n    while (getline(cin, input)) {\n        string output;\n        int count = 1;\n        for (int i = 0; i < input.length(); i++) {\n            int num = input[i] - '0';\n            if (i + 1 < input.length() && input[i + 1] - '0' == num) {\n                count++;\n            } else {\n                if (num == 0) {\n                    output += string(count - 1, ' ');\n                } else {\n                    output += buttonMap[num][count - 1];\n                }\n                count = 1;\n            }\n        }\n        cout << output << endl;\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

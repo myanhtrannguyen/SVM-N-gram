@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3889",
+    "problem_id": "p02293",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <cmath>\n\nint main() {\n    int q;\n    std::cin >> q;\n\n    while (q--) {\n        int x0, y0, x1, y1, x2, y2, x3, y3;\n        std::cin >> x0 >> y0 >> x1 >> y1 >> x2 >> y2 >> x3 >> y3;\n\n        int dx1 = x1 - x0;\n        int dy1 = y1 - y0;\n        int dx2 = x3 - x2;\n        int dy2 = y3 - y2;\n\n        if (dx1 * dy2 == dx2 * dy1) {\n            std::cout << \"2\" << std::endl;\n        } else if (dx1 * dx2 + dy1 * dy2 == 0) {\n            std::cout << \"1\" << std::endl;\n        } else {\n            std::cout << \"0\" << std::endl;\n        }\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

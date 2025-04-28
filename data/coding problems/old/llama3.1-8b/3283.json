@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3283",
+    "problem_id": "p01824",
+    "language": "Python",
+    "solution": "```python\nfrom collections import defaultdict\n\ndef get_surface_area(a, b, c, n, removed):\n    surface_area = 2 * (a * b + b * c + c * a)\n    visited = defaultdict(int)\n    for x, y, z in removed:\n        visited[(x, y, z)] = 1\n        for dx, dy, dz in [(-1, 0, 0), (1, 0, 0), (0, -1, 0), (0, 1, 0), (0, 0, -1), (0, 0, 1)]:\n            nx, ny, nz = x + dx, y + dy, z + dz\n            if 0 <= nx < a and 0 <= ny < b and 0 <= nz < c and (nx, ny, nz) not in visited:\n                surface_area -= 1\n    return surface_area\n\na, b, c, n = map(int, input().split())\nremoved = []\nfor _ in range(n):\n    x, y, z = map(int, input().split())\n    removed.append((x, y, z))\nprint(get_surface_area(a, b, c, n, removed))\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

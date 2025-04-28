@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2336",
+    "problem_id": "p03579",
+    "language": "Python",
+    "solution": "```python\nfrom collections import deque\n\ndef bfs(graph, start):\n    visited = set()\n    queue = deque([start])\n    visited.add(start)\n    level = {start: 0}\n    while queue:\n        node = queue.popleft()\n        for neighbor in graph[node]:\n            if neighbor not in visited:\n                visited.add(neighbor)\n                queue.append(neighbor)\n                level[neighbor] = level[node] + 1\n    return visited, level\n\ndef max_edges(n, m, edges):\n    graph = {i: set() for i in range(1, n + 1)}\n    for u, v in edges:\n        graph[u].add(v)\n        graph[v].add(u)\n    \n    visited, level = bfs(graph, 1)\n    max_level = max(level.values())\n    if max_level <= 3:\n        return m\n    else:\n        count = 0\n        for node in visited:\n            if level[node] == 3:\n                for neighbor in graph[node]:\n                    if level[neighbor] == 2:\n                        count += 1\n        return m + count // 2\n\nn, m = map(int, input().split())\nedges = []\nfor _ in range(m):\n    u, v = map(int, input().split())\n    edges.append((u, v))\nprint(max_edges(n, m, edges))\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

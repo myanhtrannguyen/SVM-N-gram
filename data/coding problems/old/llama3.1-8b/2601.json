@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-2601",
+    "problem_id": "p03646",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n#define MAXN 55\n\nlong long K;\nlong long N;\nlong long a[MAXN];\n\nvoid solve() {\n    scanf(\"%lld\", &K);\n    N = 2;\n    while (N <= 50 && K > 0) {\n        long long x = (N - 1) * N / 2;\n        if (K >= x) {\n            K -= x;\n            a[N - 1] = N - 1;\n            N++;\n        } else {\n            a[N - 1] = K / (N - 1) + 1;\n            K = 0;\n        }\n    }\n    printf(\"%lld\\n\", N - 1);\n    for (int i = 0; i < N - 1; i++) {\n        printf(\"%lld \", a[i]);\n    }\n    printf(\"\\n\");\n}\n\nint main() {\n    int T = 1;\n    while (T--) {\n        solve();\n    }\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

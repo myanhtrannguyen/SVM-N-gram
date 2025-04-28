@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3423",
+    "problem_id": "p01954",
+    "language": "Python",
+    "solution": "```python\nimport sys\n\nN, M, K, Q = map(int, input().split())\nO = list(map(int, input().split()))\nX = list(map(int, input().split()))\n\nfor i in range(Q):\n    if X[i] == 0:\n        print(-1)\n        continue\n\n    O.sort()\n    X[i] = min(X[i], K)\n    if X[i] < O[0]:\n        print(-1)\n        continue\n\n    S = [0] * (K + 1)\n    for j in range(1, K + 1):\n        S[j] = S[j - 1] + 1\n\n    for j in range(1, N + 1):\n        S[O[j - 1]] = 0\n\n    ans = []\n    for j in range(1, N + 1):\n        if X[i] - O[j - 1] >= 0 and S[X[i] - O[j - 1]] == 0:\n            ans.append(j)\n            X[i] -= O[j - 1]\n            S[X[i]] = 0\n\n    print(*ans)\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

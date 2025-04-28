@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-435",
+    "problem_id": "p00601",
+    "language": "Python",
+    "solution": "```python\nfrom collections import deque\n\ndef min_dominating_set(n, edges):\n    graph = [[] for _ in range(n)]\n    for u, v in edges:\n        graph[u].append(v)\n        graph[v].append(u)\n\n    visited = [False] * n\n    dominating_set = set()\n\n    for i in range(n):\n        if not visited[i]:\n            queue = deque([i])\n            visited[i] = True\n            dominating_set.add(i)\n\n            while queue:\n                u = queue.popleft()\n                for v in graph[u]:\n                    if not visited[v]:\n                        visited[v] = True\n                        dominating_set.add(v)\n                        queue.append(v)\n\n    return len(dominating_set)\n\n\ndef main():\n    while True:\n        n, m = map(int, input().split())\n        if n == 0 and m == 0:\n            break\n        edges = []\n        for _ in range(m):\n            u, v = map(int, input().split())\n            edges.append((u, v))\n        print(min_dominating_set(n, edges))\n\n\nif __name__ == \"__main__\":\n    main()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

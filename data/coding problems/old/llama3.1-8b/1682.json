@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1682",
+    "problem_id": "p02960",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <string>\n#include <vector>\n#include <algorithm>\n\nusing namespace std;\n\nconst int MOD = 1e9 + 7;\n\nint main() {\n    string s;\n    cin >> s;\n\n    int n = s.size();\n    vector<int> dp(13, 0);\n    dp[0] = 1;\n\n    for (int i = 0; i < n; i++) {\n        vector<int> ndp(13, 0);\n        for (int j = 0; j < 13; j++) {\n            if (s[i] == '?') {\n                for (int k = 0; k < 10; k++) {\n                    ndp[(j * 10 + k) % 13] = (ndp[(j * 10 + k) % 13] + dp[j]) % MOD;\n                }\n            } else {\n                int num = s[i] - '0';\n                ndp[(j * 10 + num) % 13] = (ndp[(j * 10 + num) % 13] + dp[j]) % MOD;\n            }\n        }\n        dp = ndp;\n    }\n\n    int ans = 0;\n    for (int i = 0; i < 13; i++) {\n        ans = (ans + dp[i]) % MOD;\n    }\n\n    cout << ans << endl;\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1838",
+    "problem_id": "p03138",
+    "language": "Python",
+    "solution": "```python\ndef max_xor(a, b):\n    return a ^ b\n\ndef max_f(A, K):\n    max_val = 0\n    for i in range(K + 1):\n        f = sum(max_xor(i, x) for x in A)\n        max_val = max(max_val, f)\n    return max_val\n\n# Example usage:\nA = [1, 2, 3]\nK = 2\nprint(max_f(A, K))\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

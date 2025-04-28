@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-332",
+    "problem_id": "p00394",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n#define MOD 1000000007\n#define N 110\n\ntypedef long long ll;\n\nll power(ll a, ll b) {\n    ll res = 1;\n    while (b) {\n        if (b & 1) res = res * a % MOD;\n        a = a * a % MOD;\n        b >>= 1;\n    }\n    return res;\n}\n\nint main() {\n    int n, m, d;\n    scanf(\"%d %d %lld\", &n, &m, &d);\n\n    ll s[N], t[N], f[N];\n    for (int i = 0; i < n; i++) scanf(\"%lld\", &s[i]);\n    for (int i = 0; i < n; i++) scanf(\"%lld\", &t[i]);\n    for (int i = 0; i < m; i++) scanf(\"%lld\", &f[i]);\n\n    ll ans = 0;\n    for (ll i = 0; i < d; i++) {\n        int id = i % n;\n        ll sum = 0;\n        for (int j = 0; j < n; j++) {\n            int k = (j + i % n) % n;\n            sum = (sum + s[k] * t[j]) % MOD;\n        }\n        s[id] = (s[id] + f[i % m]) % MOD;\n        ans = (ans + sum) % MOD;\n    }\n\n    printf(\"%lld\\n\", ans);\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

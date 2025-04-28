@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-695",
+    "problem_id": "p00710",
+    "language": "Python",
+    "solution": "```python\ndef hanafuda_shuffle(n, r, cuts):\n    deck = list(range(1, n + 1))\n    for p, c in cuts:\n        p -= 1\n        c = min(c, n - p)\n        deck = deck[p:] + deck[:p] + deck[p + c:n] + deck[p:p + c]\n    return deck[0]\n\nt = 1\nfor _ in range(t):\n    n, r = map(int, input().split())\n    cuts = []\n    for _ in range(r):\n        p, c = map(int, input().split())\n        cuts.append((p, c))\n    print(hanafuda_shuffle(n, r, cuts))\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

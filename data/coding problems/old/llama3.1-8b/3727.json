@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3727",
+    "problem_id": "p02252",
+    "language": "Python",
+    "solution": "```python\nimport sys\nimport math\n\ndef fractional_knapsack():\n    n, w = map(int, input().split())\n    items = []\n    for _ in range(n):\n        v, w = map(float, input().split())\n        items.append((v/w, v, w))\n    \n    items.sort(reverse=True)\n    \n    total_value = 0\n    for v, w, item_w in items:\n        if w <= w:\n            total_value += v * w\n            w -= w\n        else:\n            fraction = w / item_w\n            total_value += v * fraction\n            break\n    \n    print(f\"{total_value:.9f}\")\n\nif __name__ == \"__main__\":\n    fractional_knapsack()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

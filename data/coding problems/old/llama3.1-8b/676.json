@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-676",
+    "problem_id": "p00706",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n\n#define MAX_N 500\n#define MAX_W 100\n#define MAX_H 100\n\nint main() {\n    int n, w, h, s, t, i, j, k, x, y, count, max_count;\n    int field[MAX_W][MAX_H];\n\n    while (scanf(\"%d\", &n) == 1) {\n        if (n == 0) break;\n\n        scanf(\"%d %d\", &w, &h);\n        for (i = 0; i < w; i++) {\n            for (j = 0; j < h; j++) {\n                field[i][j] = 0;\n            }\n        }\n\n        for (i = 0; i < n; i++) {\n            scanf(\"%d %d\", &x, &y);\n            field[x - 1][y - 1] = 1;\n        }\n\n        scanf(\"%d %d\", &s, &t);\n\n        max_count = 0;\n        for (i = 0; i <= w - s; i++) {\n            for (j = 0; j <= h - t; j++) {\n                count = 0;\n                for (k = i; k < i + s; k++) {\n                    for (k2 = j; k2 < j + t; k2++) {\n                        count += field[k][k2];\n                    }\n                }\n                if (count > max_count) {\n                    max_count = count;\n                }\n            }\n        }\n\n        printf(\"%d\\n\", max_count);\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

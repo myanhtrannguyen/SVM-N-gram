@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-727",
+    "problem_id": "p00718",
+    "language": "Python",
+    "solution": "```python\ndef mcxi_value(s):\n    value = 0\n    i = 0\n    while i < len(s):\n        if s[i].isdigit():\n            j = i\n            while j < len(s) and s[j].isdigit():\n                j += 1\n            value += int(s[i:j]) * {'m': 1000, 'c': 100, 'x': 10, 'i': 1}[s[j]]\n            i = j\n        else:\n            value += {'m': 1000, 'c': 100, 'x': 10, 'i': 1}[s[i]]\n            i += 1\n    return value\n\ndef mcxi_string(n):\n    if n < 1000:\n        return 'i' * n\n    elif n < 10000:\n        return 'i' + mcxi_string(n - 1000)\n    elif n < 1000000:\n        return 'c' + mcxi_string(n - 1000)\n    elif n < 10000000:\n        return 'c' + mcxi_string(n - 1000)\n    else:\n        return 'm' + mcxi_string(n - 1000)\n\ndef solve(s1, s2):\n    value = mcxi_value(s1) + mcxi_value(s2)\n    return mcxi_string(value)\n\nn = int(input())\nfor _ in range(n):\n    s1, s2 = input().split()\n    print(solve(s1, s2))\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

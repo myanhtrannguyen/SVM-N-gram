@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-3605",
+    "problem_id": "p02092",
+    "language": "C++",
+    "solution": "```cpp\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nusing namespace std;\n\nconst int MAXN = 60;\nconst int MAXK = 60;\n\nint main() {\n    int N, K;\n    cin >> N >> K;\n\n    vector<int> a(N);\n    for (int i = 0; i < N; i++) {\n        cin >> a[i];\n    }\n\n    vector<int> r(K);\n    for (int i = 0; i < K; i++) {\n        cin >> r[i];\n    }\n\n    vector<int> b(K);\n    for (int i = 0; i < K; i++) {\n        cin >> b[i];\n    }\n\n    vector<int> dp(N + 1, 1e9);\n    dp[0] = 0;\n\n    for (int i = 0; i < N; i++) {\n        for (int j = 0; j <= i; j++) {\n            int cost = 0;\n            for (int k = 0; k <= K; k++) {\n                int minR = min(r[k], a[i] - j);\n                int minB = min(b[k], a[i] - j);\n                cost += abs(minR - r[k]) + abs(minB - b[k]);\n            }\n            dp[i + 1] = min(dp[i + 1], dp[j] + cost);\n        }\n    }\n\n    if (dp[N] == 1e9) {\n        cout << -1 << endl;\n    } else {\n        cout << dp[N] << endl;\n    }\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

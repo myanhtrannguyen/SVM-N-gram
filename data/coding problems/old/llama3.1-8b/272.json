@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-272",
+    "problem_id": "p00379",
+    "language": "C",
+    "solution": "```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int a, n, m;\n    int count = 0;\n\n    scanf(\"%d %d %d\", &a, &n, &m);\n\n    for (int i = 1; i <= m; i++) {\n        int sum = 0;\n        int temp = i;\n        while (temp > 0) {\n            sum += temp % 10;\n            temp /= 10;\n        }\n        if (pow(sum + a, n) <= m && pow(sum + a, n) == i) {\n            count++;\n        }\n    }\n\n    printf(\"%d\\n\", count);\n\n    return 0;\n}\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}

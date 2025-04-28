@@ -1,0 +1,8 @@
+{
+    "solution_id": "llama3.1-8b-1420",
+    "problem_id": "p02762",
+    "language": "Python",
+    "solution": "```python\nfrom collections import deque\n\ndef bfs(graph, start, end):\n    queue = deque([(start, 0)])\n    visited = set()\n    while queue:\n        node, distance = queue.popleft()\n        if node == end:\n            return distance\n        if node not in visited:\n            visited.add(node)\n            for neighbor in graph[node]:\n                if neighbor not in visited:\n                    queue.append((neighbor, distance + 1))\n    return -1\n\ndef solve():\n    n, m, k = map(int, input().split())\n    graph = {i: [] for i in range(1, n + 1)}\n    blockships = set()\n    for _ in range(m):\n        a, b = map(int, input().split())\n        graph[a].append(b)\n        graph[b].append(a)\n    for _ in range(k):\n        c, d = map(int, input().split())\n        blockships.add((c, d))\n        blockships.add((d, c))\n    for i in range(1, n + 1):\n        count = 0\n        for j in range(1, n + 1):\n            if i != j and (j, i) not in blockships and (i, j) not in blockships:\n                count += bfs(graph, i, j) != -1\n        print(count, end=' ')\n\nsolve()\n```",
+    "model": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+    "prompt": "You are a university student working on a programming assignment for a course. Your task is to provide the coding solution to a problem using the most appropriate programming language and practices for the given scenario. Your output should be only the code, without any explanations. Ensure the code is functional, correct for the specified language. Do not include any introductory text or output besides the code itself."
+}
